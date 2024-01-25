@@ -131,7 +131,7 @@ const Hero = () => {
           </div>
         </CCarouselItem>
         <CCarouselItem>
-          <div className="bg-[#228ab3fb] w-full">
+          <div className="bg-[#1bb1ecfb] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                 <Heading variant="large" className="">We are</Heading>
