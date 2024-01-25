@@ -69,7 +69,7 @@ const Button = ({
   if (size === "small") {
     width = "w-[6rem]";
   } else if (size === "large") {
-    width = "w-[12rem]";
+    width = "w-[10rem]";
   } else if (size === "full") {
     width = "w-full";
   } else if (size === "none") {
