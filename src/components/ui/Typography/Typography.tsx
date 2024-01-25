@@ -4,17 +4,17 @@ import React from "react";
 interface HeadingProps {
   variant: "small" | "medium" | "large" | "xlarge";
   children: React.ReactNode;
-  textColor: String;
+  className?:string
 }
 
-const baseStyles = `
-`;
 
-const Heading: React.FC<HeadingProps> = ({ variant, children, textColor }) => {
+
+const Heading: React.FC<HeadingProps> = ({ variant, children }) => {
   let fontSize = "text-[36px]";
   let lineHeight = "leading-[36px]";
   let letterSpacing = `tracking[-1.125px]`;
   let fontWeight = "font-extabold";
+  let textColor = "text-[#fff]"
 
   if (variant === "small") {
     fontSize = "text-[18px]";
@@ -22,24 +22,24 @@ const Heading: React.FC<HeadingProps> = ({ variant, children, textColor }) => {
     fontWeight = "font-semibold";
     letterSpacing = "tracking-normal";
   } else if (variant === "medium") {
-    fontSize = "text-[20px] lg:text-[30px]";
+    fontSize = "text-[33px] lg:text-[30px]";
     lineHeight = "leading-[30px] lg:leading-[46px]";
     letterSpacing = "tracking-normal";
     fontWeight = "font-semibold";
   } else if (variant === "large") {
-    fontSize = "text-[33px] lg:text-[46px]";
+    fontSize = "text-[40px] 2xl:text-[5rem]";
     lineHeight = "leading-[30px] lg:leading-[67px]";
     letterSpacing = "tracking-normal";
-    fontWeight = "font-bold";
+    fontWeight = "2xl:font-extrabold";
   } else if (variant === "xlarge") {
-    fontSize = "text-[31px] lg:text-[55px]";
-    lineHeight = "leading-[46px] lg:leading-[83]";
-    fontWeight = "font-bold";
+    fontSize = "text-[31px] lg:text-[6rem]";
+    lineHeight = "leading-[46px] lg:leading-[83px]";
+    fontWeight = "font-extrabold";
   }
 
   return (
     <h1
-      className={`${baseStyles} ${fontSize} ${lineHeight} ${textColor} ${letterSpacing} ${fontWeight}`}
+      className={` ${fontSize} ${lineHeight} ${textColor} ${letterSpacing} ${fontWeight}`}
     >
       {children}
     </h1>
@@ -64,7 +64,7 @@ const Title: React.FC<Titleprops> = ({ children, small }) => {
 
   return (
     <h2
-      className={`font-semibold ${baseStyles} ${fontSize} ${letterSpacing} ${lineHeight}`}
+      className={`font-semibold ${fontSize} ${letterSpacing} ${lineHeight}`}
     >
       {children}
     </h2>
@@ -139,7 +139,7 @@ const Text: React.FC<TextProps> = ({
 
   return (
     <p
-      className={`${baseStyles} ${fontWeight} ${color} ${lineHeight} ${fontSize} ${className}`}
+      className={` ${fontWeight} ${color} ${lineHeight} ${fontSize} ${className}`}
     >
       {children}
     </p>
