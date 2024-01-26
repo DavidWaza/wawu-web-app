@@ -6,6 +6,9 @@ import Section from "@/components/ui/Section/Section";
 import Hero from "@/components/Header/Hero/Hero";
 import Testimonial from "@/components/Testimonial/Testimonial";
 import { Container } from "@/components/ui/Container/Container";
+import { TypeWriter } from "@/components/Typewriter/Typewriter";
+import { Text } from "@/components/ui/Typography/Typography";
+import Typewriter from "typewriter-effect";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,11 +17,23 @@ export default function Home() {
     <>
       <Navbar id={0} link="" href="" isCaret />
       <Hero />
-      <Container backgroundColor="">
+      <div className="bg-white">
         <Section>
           <Testimonial />
         </Section>
-      </Container>
+      </div>
+      <div className="bg-[#F7ABD1] px-20">
+        <Section>
+          <Text variant="medium" className="sora">
+            {" "}
+            Who is your Girl?
+          </Text>
+          <TypeWriter />
+          <div className="flex mt-5">
+            <Text>Start Here</Text>
+          </div>
+        </Section>
+      </div>
     </>
   );
 }

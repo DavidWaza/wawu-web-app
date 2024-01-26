@@ -14,7 +14,8 @@
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-fast-marquee": "^1.6.3"
+    "react-fast-marquee": "^1.6.3",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -113,12 +113,14 @@ const Text: React.FC<TextProps> = ({
   } else if (variant === "medium") {
     fontSize = "text-[18px] lg:text-[20px]";
     lineHeight = "leading-[24px] lg:leading-[30px]";
+    fontWeight = "font-bold"
   } else if (variant === "base") {
     fontSize = "text-[18px]";
     lineHeight = "leading-[20px]";
   } else if (variant === "large") {
     fontSize = "lg:text-[30px] text-[25px]";
     lineHeight = "lg:leading-[46px] leading-[30px]";
+    fontWeight = "font-extrabold"
   }
 
   if (textWeight === "semi-bold") {

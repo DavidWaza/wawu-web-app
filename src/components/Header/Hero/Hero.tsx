@@ -86,7 +86,7 @@ const Hero = () => {
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                 <Heading variant="large" className="">We are</Heading>
                 <Heading variant="xlarge" className="rubik">
-                  Builders
+                 Leaders
                 </Heading>
                 <Text className="text-white mt-4">
                   Forgot the old rules. You can have the best girls <br /> Right
@@ -136,7 +136,57 @@ const Hero = () => {
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                 <Heading variant="large" className="">We are</Heading>
                 <Heading variant="xlarge" className="rubik">
-                  Builders
+                  Creators
+                </Heading>
+                <Text className="text-white mt-4">
+                  Forgot the old rules. You can have the best girls <br /> Right
+                  now. Right here
+                </Text>
+                <div className="flex">
+                  <input
+                    placeholder="Search for anything"
+                    className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
+                  />
+                  <Button
+                    variant="primary"
+                    className="rounded-l-none p-2 border-none"
+                  >
+                    {" "}
+                    Search
+                  </Button>
+                </div>
+                <div className="hidden 2xl:flex gap-2 w-full mt-4">
+                  {buttons.map((button) => (
+                    <Button
+                      variant="secondary"
+                      size="large"
+                      className="py-1"
+                      key={button.label}
+                    >
+                      {button.label}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
+                <CImage
+                  className="d-block w-1/2"
+                  src="/assets/slide-1-img.png"
+                  alt="slide 1"
+                  width={"50px"}
+                  height={"50px"}
+                />
+              </div>
+            </div>
+          </div>
+        </CCarouselItem>
+        <CCarouselItem>
+          <div className="bg-[#1bb1ecfb] w-full">
+            <div className="grid 2xl:grid-cols-2">
+              <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
+                <Heading variant="large" className="">We are</Heading>
+                <Heading variant="xlarge" className="rubik">
+                  Caretakers
                 </Heading>
                 <Text className="text-white mt-4">
                   Forgot the old rules. You can have the best girls <br /> Right

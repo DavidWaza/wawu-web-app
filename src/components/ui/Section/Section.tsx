@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 interface sectionProps {
   children: React.ReactNode;
+  className?: string;
 }
 
 const Section = ({ children }: sectionProps) => {
