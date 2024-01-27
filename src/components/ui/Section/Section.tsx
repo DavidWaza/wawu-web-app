@@ -8,7 +8,7 @@ interface sectionProps {
 const Section = ({ children }: sectionProps) => {
   return (
     <>
-      <div className="py-[4rem]">{children}</div>
+      <section className="py-[4rem] px-[3rem]">{children}</section>
     </>
   );
 };

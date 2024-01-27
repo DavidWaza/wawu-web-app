@@ -3,18 +3,17 @@ import React from "react";
 // Header component
 interface HeadingProps {
   variant: "small" | "medium" | "large" | "xlarge";
+  fontColor: "primary" | "secondary";
   children: React.ReactNode;
-  className?:string
+  className?: string;
 }
 
-
-
-const Heading: React.FC<HeadingProps> = ({ variant, children }) => {
+const Heading: React.FC<HeadingProps> = ({ variant, children, fontColor }) => {
   let fontSize = "text-[36px]";
   let lineHeight = "leading-[36px]";
   let letterSpacing = `tracking[-1.125px]`;
   let fontWeight = "font-extabold";
-  let textColor = "text-[#fff]"
+  let textColor = "secondary";
 
   if (variant === "small") {
     fontSize = "text-[18px]";
@@ -36,10 +35,14 @@ const Heading: React.FC<HeadingProps> = ({ variant, children }) => {
     lineHeight = "leading-[46px] lg:leading-[83px]";
     fontWeight = "font-extrabold";
   }
-
+  if (fontColor === "primary") {
+    textColor = "text-[#fff]";
+  } else {
+    textColor = "text-[#000]";
+  }
   return (
     <h1
-      className={` ${fontSize} ${lineHeight} ${textColor} ${letterSpacing} ${fontWeight}`}
+      className={` ${fontSize} ${lineHeight} ${letterSpacing} ${fontWeight} ${textColor}`}
     >
       {children}
     </h1>
@@ -63,9 +66,7 @@ const Title: React.FC<Titleprops> = ({ children, small }) => {
   }
 
   return (
-    <h2
-      className={`font-semibold ${fontSize} ${letterSpacing} ${lineHeight}`}
-    >
+    <h2 className={`font-semibold ${fontSize} ${letterSpacing} ${lineHeight}`}>
       {children}
     </h2>
   );
@@ -113,14 +114,14 @@ const Text: React.FC<TextProps> = ({
   } else if (variant === "medium") {
     fontSize = "text-[18px] lg:text-[20px]";
     lineHeight = "leading-[24px] lg:leading-[30px]";
-    fontWeight = "font-bold"
+    fontWeight = "font-bold";
   } else if (variant === "base") {
     fontSize = "text-[18px]";
     lineHeight = "leading-[20px]";
   } else if (variant === "large") {
     fontSize = "lg:text-[30px] text-[25px]";
     lineHeight = "lg:leading-[46px] leading-[30px]";
-    fontWeight = "font-extrabold"
+    fontWeight = "font-extrabold";
   }
 
   if (textWeight === "semi-bold") {

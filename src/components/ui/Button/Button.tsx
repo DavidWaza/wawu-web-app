@@ -42,6 +42,8 @@ const Button = ({
   let backgroundColor = "bg-[#ED459A]";
   const borderWidth = "border";
   let borderColor = "border-[#D1D5DB]";
+  let paddingVertical = "py-[10px]";
+  let paddingHorizontal = "px-[24px]" 
 
   // Button Variants
   if (variant === "primary") {
@@ -59,10 +61,11 @@ const Button = ({
   } else if (variant === "tertiary") {
     backgroundColor = "bg-[#810FAF]";
     color = "text-[#fff]";
-    borderColor ="border-[#810FAF]"
+    borderColor ="border-none"
     fontWeight = "font-medium";
-    borderRadius = "rounded-sm";
-    width = "w-[3rem] !important";
+    borderRadius = "rounded-md";
+    paddingHorizontal = "py-[10px]"
+    paddingVertical = "px-[28px]"
   }
 
   // Button Sizes
@@ -87,6 +90,8 @@ const Button = ({
       ${borderWidth} 
       ${borderColor} 
       ${fontWeight} 
+      ${paddingVertical}
+      ${paddingHorizontal}
       ${color} 
       ${className} 
       ${state}

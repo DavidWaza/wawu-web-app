@@ -34,8 +34,14 @@ const Hero = () => {
           <div className="bg-[#A812E3] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" className="">We are</Heading>
-                <Heading variant="xlarge" className="rubik">
+                <Heading variant="large" fontColor="primary">
+                  We are
+                </Heading>
+                <Heading
+                  variant="xlarge"
+                  className=" bg-neutral-200 text-stroke-gray-1"
+                  fontColor="primary"
+                >
                   Builders
                 </Heading>
                 <Text className="text-white mt-4">
@@ -84,9 +90,11 @@ const Hero = () => {
           <div className="bg-[#39044e] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" className="">We are</Heading>
-                <Heading variant="xlarge" className="rubik">
-                 Leaders
+                <Heading variant="large" fontColor="primary">
+                  We are
+                </Heading>
+                <Heading variant="xlarge" className="rubik" fontColor="primary">
+                  Leaders
                 </Heading>
                 <Text className="text-white mt-4">
                   Forgot the old rules. You can have the best girls <br /> Right
@@ -134,8 +142,10 @@ const Hero = () => {
           <div className="bg-[#1bb1ecfb] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" className="">We are</Heading>
-                <Heading variant="xlarge" className="rubik">
+                <Heading variant="large" fontColor="primary">
+                  We are
+                </Heading>
+                <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Creators
                 </Heading>
                 <Text className="text-white mt-4">
@@ -184,8 +194,10 @@ const Hero = () => {
           <div className="bg-[#1bb1ecfb] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" className="">We are</Heading>
-                <Heading variant="xlarge" className="rubik">
+                <Heading variant="large" fontColor="primary">
+                  We are
+                </Heading>
+                <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Caretakers
                 </Heading>
                 <Text className="text-white mt-4">

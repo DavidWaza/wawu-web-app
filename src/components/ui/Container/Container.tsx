@@ -1,20 +1,21 @@
-interface containerProps {
-  children: React.ReactNode;
-  bgColorVariant?: "bg-colorVariance" | "bg-primary";
-}
-export function Container({ children, bgColorVariant }: containerProps) {
-  let backgroundColor = "bg-[#fff]";
+import cn from "clsx";
+import { HTMLAttributes } from "react";
 
-  if (bgColorVariant === "bg-primary") {
-    backgroundColor = "bg-[#fff]";
-  } else {
-    return bgColorVariant;
-  }
-  return (
-    <>
-      <div className={`px-[5.3rem] text-[#000] ${backgroundColor}`}>
-        {children}
-      </div>
-    </>
-  );
+interface containerProps extends HTMLAttributes<HTMLElement> {
+  className?: string;
 }
+const Container = (props: containerProps) => {
+  return (
+    <section
+      {...props}
+      className={cn(
+        props.className,
+        "px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl bg-white mt-8"
+      )}
+    >
+      {props.children}
+    </section>
+  );
+};
+
+export default Container;
