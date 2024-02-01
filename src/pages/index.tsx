@@ -9,10 +9,28 @@ import { Text } from "@/components/ui/Typography/Typography";
 import { WawuProps } from "@/components/WawuProps/WawuProps";
 import WawuPlatforms from "@/components/WawuProps/WawuPlatforms/WawuPlatforms";
 import Button from "@/components/ui/Button/Button";
+import VideoCarousel from "@/components/VideoCarousel/VideoCarousel";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import { useState } from "react";
+import NextSlideVideoCarousel from "@/components/VideoCarousel/NextSlideVideoCarousel";
+import next from "next";
+import DigitalReality from "@/components/DigitalReality/DigitalReality";
+import Adverts from "@/components/Adverts/Adverts";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [nextVideo, setNextVideo] = useState(false);
+
+  // function NextVideoSlide() {
+  //   setNextVideo(true)
+  //   console.log('set new slide')
+  // }
+  const NextVideoSlider = () => {
+    setNextVideo(!nextVideo);
+    // console.log('server')
+  };
+
   return (
     <>
       <Navbar id={0} link="" href="" isCaret />
@@ -45,11 +63,54 @@ export default function Home() {
               <img src="/assets/girl-with-earth.png" alt="girl-with-earth" />
             </div>
           </div>
-          <Button variant="tertiary" className="mt-20" size="large">
-            Get Started
-          </Button>
+          <div className="flex 2xl:justify-start justify-center">
+            <Button
+              variant="tertiary"
+              className="mt-20"
+              size="large"
+              // onClick={() => console.log("next video slide")}
+            >
+              Get Started
+            </Button>
+          </div>
         </Section>
       </div>
+      <div className="bg-[#471471] py-10">
+        <Section>
+          <div className={`${!nextVideo ? "block" : "hidden"}`}>
+            <VideoCarousel />
+          </div>
+          {nextVideo && (
+            <div className="text-white text-lg  transition-all ease-in-out">
+              <NextSlideVideoCarousel />
+            </div>
+          )}
+        </Section>
+        <div className={` flex px-10 justify-end`}>
+          <Button
+            variant="primary"
+            className="flex w-1/5 justify-center items-center gap-2"
+            onClick={NextVideoSlider}
+          >
+            {nextVideo ? "Previous Video" : "Next Video"}
+            {!nextVideo ? (
+              <IoIosArrowRoundForward className="w-7 h-auto" />
+            ) : (
+              <IoIosArrowRoundBack className="w-7 h-auto" />
+            )}
+          </Button>
+        </div>
+      </div>
+      <div className="bg-white">
+        <Section>
+          <div className="flex justify-center items-center align-middle">
+            {" "}
+            blog posts
+          </div>
+        </Section>
+      </div>
+      <DigitalReality />
+      <Adverts />
     </>
   );
 }

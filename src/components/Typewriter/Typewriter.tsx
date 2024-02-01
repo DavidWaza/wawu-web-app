@@ -1,7 +1,7 @@
 import Typewriter from "typewriter-effect";
 export function TypeWriter() {
   return (
-    <div className="sora text-[3rem] font-bold text-[#9510c9]">
+    <div className="sora text-[2em] 2xl:text-[3em] font-bold text-[#9510c9]">
       <Typewriter
         options={{
           strings: [

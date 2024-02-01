@@ -5,7 +5,7 @@ import Image from "next/image";
 export const WawuProps = () => {
   return (
     <>
-      <div>
+      <div className="2xl:text-justify">
         <Heading variant="medium" fontColor="secondary">
           Wawu Props
         </Heading>

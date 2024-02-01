@@ -44,7 +44,7 @@ const Hero = () => {
                 >
                   Builders
                 </Heading>
-                <Text className="text-white mt-4">
+                <Text className="text-white mt-4" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
@@ -96,7 +96,7 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Leaders
                 </Heading>
-                <Text className="text-white mt-4">
+                <Text className="text-white mt-4" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
@@ -148,7 +148,7 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Creators
                 </Heading>
-                <Text className="text-white mt-4">
+                <Text className="text-white mt-4" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
@@ -200,7 +200,7 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Caretakers
                 </Heading>
-                <Text className="text-white mt-4">
+                <Text className="text-white mt-4"variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>

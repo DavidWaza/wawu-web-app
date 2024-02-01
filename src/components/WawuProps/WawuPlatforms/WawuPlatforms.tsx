@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 
+
 const platforms = [
   {
     iconSrc: "/icons/paper-plane.svg",
