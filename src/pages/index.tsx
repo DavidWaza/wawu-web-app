@@ -16,6 +16,7 @@ import next from "next";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
 import Adverts from "@/components/Adverts/Adverts";
 import Footer from "@/components/Footer/Footer";
+import Mentorship from "./mentorship";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,7 +54,7 @@ export default function Home() {
       </div>
       <div className="bg-[#fff]">
         <Section>
-          <div className="grid 2xl:grid-cols-2">
+          <div className="grid 2xl:grid-cols-2 px-16">
             <div>
               <WawuProps />
               <WawuPlatforms />
@@ -62,10 +63,10 @@ export default function Home() {
               <img src="/assets/girl-with-earth.png" alt="girl-with-earth" />
             </div>
           </div>
-          <div className="flex 2xl:justify-start justify-center">
+          <div className="flex 2xl:justify-start justify-center px-16">
             <Button
               variant="tertiary"
-              className="mt-20"
+              className="mt-20 hover:bg-[#ED459A] transition-all ease-in-out py-2"
               size="large"
               // onClick={() => console.log("next video slide")}
             >
@@ -85,10 +86,10 @@ export default function Home() {
             </div>
           )}
         </Section>
-        <div className={` flex px-10 justify-end`}>
+        <div className={`flex px-10 justify-end`}>
           <Button
             variant="primary"
-            className="flex w-1/5 justify-center items-center gap-2"
+            className="flex w-1/5 justify-center items-center gap-2 py-2"
             onClick={NextVideoSlider}
           >
             {nextVideo ? "Previous Video" : "Next Video"}

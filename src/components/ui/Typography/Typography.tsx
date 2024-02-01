@@ -75,7 +75,7 @@ const Title: React.FC<Titleprops> = ({ children, small }) => {
 // Text component
 interface TextProps {
   children: React.ReactNode;
-  variant?: "tiny" | "extrasmall" | "small" | "base" | "medium" | "large";
+  variant?: "tiny" | "extrasmall" | "small" | "base" | "largeText" | "medium" | "large";
   textWeight?: "medium" | "semi-bold" | "bold" | "normal";
   hover?: boolean;
   textCenter?: boolean;
@@ -118,6 +118,9 @@ const Text: React.FC<TextProps> = ({
     fontWeight = "font-bold";
   } else if (variant === "base") {
     fontSize = "text-[18px]";
+    lineHeight = "leading-[20px]";
+  } else if (variant === "largeText") {
+    fontSize = "2xl:text-[28px]";
     lineHeight = "leading-[20px]";
   } else if (variant === "large") {
     fontSize = "lg:text-[30px] text-[25px]";

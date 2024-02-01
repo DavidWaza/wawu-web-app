@@ -31,7 +31,7 @@ const Hero = () => {
     <>
       <CCarousel controls transition="crossfade">
         <CCarouselItem>
-          <div className="bg-[#A812E3] w-full">
+          <div className="bg-[#A812E3] w-full px-10">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                 <Heading variant="large" fontColor="primary">

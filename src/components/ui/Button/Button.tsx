@@ -27,7 +27,7 @@ const Button = ({
   children,
   width = "w-full",
   href,
-  height = "h-full",
+  // height = "h-full",
   disabled,
   onClick,
   isActive,
@@ -42,8 +42,6 @@ const Button = ({
   let backgroundColor = "bg-[#ED459A]";
   const borderWidth = "border";
   let borderColor = "border-[#D1D5DB]";
-  let paddingVertical = "py-[10px]";
-  let paddingHorizontal = "px-[24px]" 
 
   // Button Variants
   if (variant === "primary") {
@@ -64,8 +62,6 @@ const Button = ({
     borderColor ="border-none"
     fontWeight = "font-medium";
     borderRadius = "rounded-md";
-    paddingHorizontal = "py-[10px]"
-    paddingVertical = "px-[28px]"
   }
 
   // Button Sizes
@@ -84,14 +80,11 @@ const Button = ({
       className={`
       ${width} 
       ${maxHeight} 
-      ${height} 
       ${borderRadius} 
       ${backgroundColor} 
       ${borderWidth} 
       ${borderColor} 
       ${fontWeight} 
-      ${paddingVertical}
-      ${paddingHorizontal}
       ${color} 
       ${className} 
       ${state}
