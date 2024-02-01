@@ -1,9 +1,12 @@
 import React from "react"
-import Image from "next/image"
-const Logo = () => {
+
+interface LogoProps {
+    className:string;
+}
+const Logo = ({className}:LogoProps) => {
     return(
         <div>
-            <img src='/assets/logo.png' alt='' className="w-[70%] h-full" />
+            <img src='/assets/logo.png' alt='' className={className} />
         </div>
     )
 }

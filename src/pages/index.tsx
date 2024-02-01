@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/Header/Navbar/Navbar";
 import Section from "@/components/ui/Section/Section";
 import Hero from "@/components/Header/Hero/Hero";
 import Testimonial from "@/components/Testimonial/Testimonial";
@@ -16,6 +15,7 @@ import NextSlideVideoCarousel from "@/components/VideoCarousel/NextSlideVideoCar
 import next from "next";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
 import Adverts from "@/components/Adverts/Adverts";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +33,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
         <Section>
