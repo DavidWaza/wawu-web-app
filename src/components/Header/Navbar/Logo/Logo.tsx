@@ -1,13 +1,13 @@
-import React from "react"
+import React from "react";
 
 interface LogoProps {
-    className:string;
+  className: string;
 }
-const Logo = ({className}:LogoProps) => {
-    return(
-        <div>
-            <img src='/assets/logo.png' alt='' className={className} />
-        </div>
-    )
-}
-export default Logo
+const Logo = ({ className }: LogoProps) => {
+  return (
+    <div>
+      <img src="/assets/logo.png" alt="" className={className} />
+    </div>
+  );
+};
+export default Logo;

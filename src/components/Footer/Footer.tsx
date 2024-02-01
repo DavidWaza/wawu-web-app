@@ -1,5 +1,6 @@
 import Logo from "../Header/Navbar/Logo/Logo";
 import { Text } from "../ui/Typography/Typography";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -52,18 +53,35 @@ const Footer = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex justify-end gap-10 px-[3rem] mt-20">
-                <img src="/icons/Logo (1).svg" alt="social-logo" />
-                <img src="/icons/fb.svg" alt="social-logo" />
-                <img src="/icons/tiktok.svg" alt="social-logo" />
-                <img src="/icons/vector.svg" alt="social-logo" />
-
+              <div className="flex justify-end gap-10 px-[3rem]  mt-20">
+                <Link href="/">
+                  <img src="/icons/ig.svg" alt="social-logo" />
+                </Link>
+                <Link href="">
+                  <img src="/icons/fb.svg" alt="social-logo" />
+                </Link>
+                <Link href="/">
+                  <img src="/icons/tiktok.svg" alt="social-logo" />
+                </Link>
+                <Link href={"/"}>
+                  <img src="/icons/vector.svg" alt="social-logo" />
+                </Link>
               </div>
             </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center"></div>
+          <div className="flex justify-between text-[#5F6D7E] ">
+            <Text variant="small" className="w-full mx-auto">
+              2023 wawutech. All Rights Reserved
+            </Text>
+            <div className="flex justify-center items-center">
+              <Text variant="small" className="w-full  mx-auto">
+                Privacy Policy
+              </Text>
+              <div className="w-full px-4 mx-auto lg:w-[50%]">
+                Terms & Condition
+              </div>
+            </div>
           </div>
         </div>
       </footer>
