@@ -1,9 +1,23 @@
-import React from "react";
 import Section from "@/components/ui/Section/Section";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
-
+import ButtonComponent from "./components/ToggleButton/ToggleButton";
 
 export default function Mentorship() {
+  // const [mentorToggle, setMentorToggle] = useState(false);
+  // const [mentorActive, setMentorActive] = useState(false);
+
+  // const [menteeToggle, setMenteeToggle] = useState(false);
+  // const [menteeActive, setMenteeActive] = useState(false);
+
+  // const MentorToggleButton = () => {
+  //   setMentorToggle(!mentorToggle);
+  //   setMentorActive(!mentorActive);
+  // };
+  // const MenteeToggleButton = () => {
+  //   setMenteeToggle(!menteeToggle);
+  //   setMenteeActive(!menteeActive);
+  // };
+
   return (
     <>
       <HeroComponent
@@ -19,7 +33,7 @@ export default function Mentorship() {
       />
       <div className="bg-white">
         <Section>
-          <div></div>
+          <ButtonComponent />
         </Section>
       </div>
     </>

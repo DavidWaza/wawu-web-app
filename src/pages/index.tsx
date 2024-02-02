@@ -88,8 +88,8 @@ export default function Home() {
         </Section>
         <div className={`flex px-10 justify-end`}>
           <Button
-            variant="primary"
-            className="flex w-1/5 justify-center items-center gap-2 py-2"
+            size="large"
+            className="flex justify-center items-center gap-2 py-2"
             onClick={NextVideoSlider}
           >
             {nextVideo ? "Previous Video" : "Next Video"}
