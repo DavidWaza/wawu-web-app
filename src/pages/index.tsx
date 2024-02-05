@@ -42,14 +42,14 @@ export default function Home() {
           <Testimonial />
         </Section>
       </div>
-      <div className="bg-[#F7ABD1] px-20">
+      <div className="bg-[#F7ABD1] 2xl:px-20 2xl:text-left text-center">
         <Section>
           <Text variant="medium" className="sora">
             {" "}
             Who is your Girl?
           </Text>
           <TypeWriter />
-          <div className="flex mt-5">
+          <div className="flex mt-5 2xl:justify-start justify-center">
             <Text>Start Here</Text>
           </div>
         </Section>
