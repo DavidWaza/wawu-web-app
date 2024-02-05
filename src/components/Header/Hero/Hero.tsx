@@ -1,15 +1,8 @@
-import "@coreui/coreui/dist/css/coreui.min.css";
-import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-
-// const heroDetails = [
-//     {
-//         id:1,
-//         src:"/assets/slide-1-img.png",
-//         bgColor:"bg-[#A812E3]"
-//     }
-// ]
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const buttons = [
   {
@@ -27,10 +20,22 @@ const buttons = [
 ];
 
 const Hero = () => {
+  const settings = {
+    dots: false,
+    fade: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    autoplay: true,
+    speed: 5000,
+    autoplaySpeed: 10000,
+    cssEase: "linear"
+  };
   return (
     <>
-      <CCarousel controls transition="crossfade">
-        <CCarouselItem>
+      <Slider {...settings}>
+        <div>
           <div className="bg-[#A812E3] w-full px-10">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
@@ -44,11 +49,11 @@ const Hero = () => {
                 >
                   Builders
                 </Heading>
-                <Text className="text-white mt-4" variant="small">
+                <Text className="text-white mt-5" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
-                <div className="flex">
+                <div className="flex py-5">
                   <input
                     placeholder="Search for anything"
                     className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
@@ -75,7 +80,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <CImage
+                <img
                   className="d-block w-1/2"
                   src="/assets/slide-1-img.png"
                   alt="slide 1"
@@ -85,8 +90,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </CCarouselItem>
-        <CCarouselItem>
+        </div>
+        <div>
           <div className="bg-[#39044e] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
@@ -96,11 +101,11 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Leaders
                 </Heading>
-                <Text className="text-white mt-4" variant="small">
+                <Text className="text-white mt-5" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
-                <div className="flex">
+                <div className="flex py-5">
                   <input
                     placeholder="Search for anything"
                     className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
@@ -127,7 +132,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <CImage
+                <img
                   className="d-block w-1/2"
                   src="/assets/slide-1-img.png"
                   alt="slide 1"
@@ -137,8 +142,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </CCarouselItem>
-        <CCarouselItem>
+        </div>
+        <div>
           <div className="bg-[#1bb1ecfb] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
@@ -148,11 +153,11 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Creators
                 </Heading>
-                <Text className="text-white mt-4" variant="small">
+                <Text className="text-white mt-5" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
-                <div className="flex">
+                <div className="flex py-5">
                   <input
                     placeholder="Search for anything"
                     className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
@@ -179,7 +184,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <CImage
+                <img
                   className="d-block w-1/2"
                   src="/assets/slide-1-img.png"
                   alt="slide 1"
@@ -189,8 +194,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </CCarouselItem>
-        <CCarouselItem>
+        </div>
+        <div>
           <div className="bg-[#1bb1ecfb] w-full">
             <div className="grid 2xl:grid-cols-2">
               <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
@@ -200,11 +205,11 @@ const Hero = () => {
                 <Heading variant="xlarge" className="rubik" fontColor="primary">
                   Caretakers
                 </Heading>
-                <Text className="text-white mt-4"variant="small">
+                <Text className="text-white mt-5" variant="small">
                   Forgot the old rules. You can have the best girls <br /> Right
                   now. Right here
                 </Text>
-                <div className="flex">
+                <div className="flex py-5">
                   <input
                     placeholder="Search for anything"
                     className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
@@ -231,7 +236,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <CImage
+                <img
                   className="d-block w-1/2"
                   src="/assets/slide-1-img.png"
                   alt="slide 1"
@@ -241,8 +246,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </CCarouselItem>
-      </CCarousel>
+        </div>
+      </Slider>
     </>
   );
 };
