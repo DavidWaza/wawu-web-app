@@ -9,7 +9,7 @@ export const WawuProps = () => {
         <Heading variant="medium" fontColor="secondary">
           Wawu Props
         </Heading>
-        <Text variant="small">
+        <Text variant="small" className="mt-3">
           Aggregating a diverse pool of women spearheads, professionals for
           patrons or businesses so they can find the right stewards for their
           projects or digital assignments on a single trusted platform.

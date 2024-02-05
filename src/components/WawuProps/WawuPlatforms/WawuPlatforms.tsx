@@ -30,11 +30,11 @@ const WawuPlatforms = () => {
     <>
       {platforms.map((platform) => (
         <>
-          <div className="flex gap-5 mt-10">
+          <div className="2xl:flex gap-5 mt-10">
             <img
               src={platform.iconSrc}
               alt={platform.alt}
-              className="w-10 h-auto "
+              className="w-10 h-auto mb-2 "
             />
             <div>
               <Text variant="small" textWeight="semi-bold">

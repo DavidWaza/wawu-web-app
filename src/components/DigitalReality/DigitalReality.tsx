@@ -8,11 +8,11 @@ const DigitalReality = () => {
       <Section>
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
-            <Text variant="medium">
+            <Text variant="medium" className="2xl:text-left text-center">
               Welcome to your new digital reality that will <br /> rock your
               world.
             </Text>
-            <Text variant="small" className="text-[#ED459A]">
+            <Text variant="small" className="text-[#ED459A] mt-2 2xl:text-left text-center">
               Welcome to a digital solution that improves women&aposs life and
               means of subsistence through formal and informal
               income-generating opportunities.

@@ -22,7 +22,7 @@ const NextSlideVideoCarousel = () => {
       <div className="bg-[#471471]">
         <div className="bg-white h-[50vh] w-full">...</div>
       </div>
-      <div className="flex py-20 gap-5 flex-col">
+      <div className="flex py-20 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">
           Video Title
         </Heading>
