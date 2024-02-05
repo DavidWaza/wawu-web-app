@@ -1,4 +1,5 @@
 import Section from "@/components/ui/Section/Section";
+import Navbar from "@/components/Header/Navbar/Navbar";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
 import ButtonComponent from "./components/ToggleButton/ToggleButton";
 
@@ -20,6 +21,7 @@ export default function Mentorship() {
 
   return (
     <>
+     <Navbar id={0} link="" href="" isCaret />
       <HeroComponent
         backgroundColor="bg-[#471471]"
         header="Mentorship"
@@ -30,6 +32,7 @@ export default function Mentorship() {
         confident a mentor has been encouraging you or pointing the way
         if you do it effectively.`}
         buttonText="Sign In"
+        src="/mentor-girl.png"
       />
       <div className="bg-white">
         <Section>

@@ -51,24 +51,24 @@ const Button = ({
     borderWidth;
     borderColor = "border-[#fff]";
   } else if (variant === "secondary") {
-    backgroundColor = "bg-transparent";
-    color = "text-[#fff]";
+    backgroundColor = "bg-slate-100";
+    color = "text-[#000]";
     fontWeight;
     borderWidth;
     borderColor;
   } else if (variant === "tertiary") {
     backgroundColor = "bg-[#810FAF]";
     color = "text-[#fff]";
-    borderColor ="border-none"
+    borderColor = "border-none";
     fontWeight = "font-medium";
     borderRadius = "rounded-md";
   }
 
   // Button Sizes
   if (size === "small") {
-    width = "w-[6rem]";
+    width = "w-[8rem]";
   } else if (size === "large") {
-    width = "w-[10rem]";
+    width = "w-[13rem]";
   } else if (size === "full") {
     width = "w-full";
   } else if (size === "none") {

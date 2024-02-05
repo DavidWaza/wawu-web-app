@@ -6,7 +6,6 @@ import Navbar from "@/components/Header/Navbar/Navbar";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Navbar id={0} link="" href="" isCaret />
       <Component {...pageProps} />
       <Footer />
     </>

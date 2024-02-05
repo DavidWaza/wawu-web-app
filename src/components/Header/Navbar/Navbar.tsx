@@ -35,13 +35,13 @@ const links = [
   },
   {
     id: 4,
-    href: "",
+    href: "/mentorship",
     link: "Mentorship",
     isCaret: false,
   },
   {
     id: 5,
-    href: "",
+    href: "/about",
     link: "About Us",
     isCaret: false,
   },

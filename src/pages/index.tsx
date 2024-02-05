@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import Section from "@/components/ui/Section/Section";
+import Navbar from "@/components/Header/Navbar/Navbar";
 import Hero from "@/components/Header/Hero/Hero";
 import Testimonial from "@/components/Testimonial/Testimonial";
 import { TypeWriter } from "@/components/Typewriter/Typewriter";
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <>
+     <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
         <Section>

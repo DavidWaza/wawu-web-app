@@ -8,6 +8,7 @@ const Adverts = () => {
         <Text variant="small" className="text-center">
           Advertistment
         </Text>
+        <div className="bg-slate-600 w-full h-40"></div>
       </Section>
     </div>
   );

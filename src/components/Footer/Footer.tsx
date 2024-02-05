@@ -36,7 +36,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="w-full lg:w-6/12 px-4 sora capitalize pt-[3rem]">
-              <div className="flex items-top mb-6 justify-end">
+              <div className="flex items-top mb-6 justify-end text-black">
                 <div className="w-full lg:w-4/12 px-4 ml-auto">
                   <span className="block  text-blueGray-500 text-sm font-semibold mb-2">
                     About Us

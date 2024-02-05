@@ -1,6 +1,6 @@
-import Button from "../ui/Button/Button";
+import Button from "../../ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Heading, Text } from "../ui/Typography/Typography";
+import { Heading, Text } from "../../ui/Typography/Typography";
 import { MdCheckBox } from "react-icons/md";
 import Link from "next/link";
 

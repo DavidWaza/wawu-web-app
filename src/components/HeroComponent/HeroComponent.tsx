@@ -10,6 +10,7 @@ interface HeroComponentProps {
   subText: string;
   buttonText: string;
   backgroundColor: string;
+  src:string;
 }
 
 const HeroComponent = (props: HeroComponentProps) => {
@@ -17,8 +18,8 @@ const HeroComponent = (props: HeroComponentProps) => {
     <div className={`${props.backgroundColor}`}>
       <Container>
         <div className="grid 2xl:grid-cols-2 ">
-          <div className=" 2xl:mt-[23%] w-full  2xl:py-0  sora">
-            <Heading variant="medium" fontColor="primary">
+          <div className=" 2xl:mt-[23%] w-full  2xl:py-0">
+            <Heading variant="large" fontColor="primary">
               {props.header}
             </Heading>
             <Text
@@ -37,13 +38,15 @@ const HeroComponent = (props: HeroComponentProps) => {
               size="small"
               className="p-2 border-none my-5 flex items-center gap-1"
             >
-              {props.buttonText} <FaAngleRight />
+              {props.buttonText} 
+              {<FaAngleRight /> && <FaAngleRight />}
+              
             </Button>
           </div>
           <div className="hidden 2xl:flex justify-center items-center mt-[60px]">
             <img
               className="d-block w-[70%] h-auto p-5"
-              src="/assets/mentor-girl.png"
+              src={`/assets/${props.src}`}
               alt="slide 2"
             />
           </div>

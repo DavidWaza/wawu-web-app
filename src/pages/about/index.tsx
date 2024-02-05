@@ -1,6 +1,7 @@
 import Hero from "@/components/Header/Hero/Hero";
 import Section from "@/components/ui/Section/Section";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
+import Navbar from "@/components/Header/Navbar/Navbar";
 import AboutCompany from "./components/AboutCompany/AboutCompany";
 import Container from "@/components/Container/Container";
 import AboutCarousel from "./components/AboutCompany/AboutCarousel/AboutCarousel";
@@ -9,6 +10,7 @@ import GetInTouch from "./components/AboutCompany/GetInTouch/GetInTouch";
 const AboutUs = () => {
   return (
     <>
+     <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
         <Section>

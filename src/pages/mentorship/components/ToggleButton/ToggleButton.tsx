@@ -2,12 +2,14 @@ import { MouseEventHandler } from "react";
 import React, { useState } from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 import Section from "@/components/ui/Section/Section";
-import Forms from "@/components/Forms/Forms";
+import Forms from "@/components/Forms/MentorForms/Forms";
+import MenteeForms from "@/components/Forms/MenteeForms/Forms";
 
 interface toggleButtonProps {
   label: string;
   active: boolean;
   onToggle: () => void;
+  className?:string;
 }
 
 const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
@@ -59,11 +61,13 @@ const ButtonComponent = () => {
         label="Mentor"
         active={mentor.active}
         onToggle={() => handleToggle("mentor")}
+        className='text-white'
       />
       <ToggleButton
         label="Mentee"
         active={mentee.active}
         onToggle={() => handleToggle("mentee")}
+        className="text-white"
       />
       <div className="mt-20">
         {mentor.active ? (
@@ -84,7 +88,13 @@ If you have any questions regarding the mentoring programme or the application p
       </div>
       <Section>
         <div className="grid 2xl:grid-cols-2 justify-center">
-          {mentor.active ? <Forms /> : <div>Hello</div>}
+          {mentor.active ? (
+            <Forms />
+          ) : (
+            <div>
+              <MenteeForms />
+            </div>
+          )}
         </div>
       </Section>
     </div>
