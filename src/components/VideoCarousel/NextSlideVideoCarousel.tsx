@@ -26,7 +26,7 @@ const NextSlideVideoCarousel = () => {
         <Heading variant="medium" fontColor="primary">
           Video Title
         </Heading>
-        <div className="flex-col -mt-10">
+        <div className="flex-col mt-5">
           <Text variant="small" className="text-[#F7ABD1]">
             Velit purus egestas tellus phasellus. Mattis eget sed faucibus magna
             vulputate pellentesque a diam tincidunt. Aenean malesuada tellus

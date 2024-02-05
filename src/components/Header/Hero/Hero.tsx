@@ -30,6 +30,7 @@ const Hero = () => {
     autoplay: true,
     speed: 5000,
     autoplaySpeed: 10000,
+    arrows:false,
     cssEase: "linear"
   };
   return (
