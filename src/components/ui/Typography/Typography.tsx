@@ -21,7 +21,7 @@ const Heading: React.FC<HeadingProps> = ({ variant, children, fontColor }) => {
     fontWeight = "font-semibold";
     letterSpacing = "tracking-normal";
   } else if (variant === "medium") {
-    fontSize = "text-[33px] lg:text-[30px]";
+    fontSize = "2xl:text-[33px] lg:text-[20px] text-[20px]";
     lineHeight = "leading-[30px] lg:leading-[46px]";
     letterSpacing = "tracking-normal";
     fontWeight = "font-semibold";

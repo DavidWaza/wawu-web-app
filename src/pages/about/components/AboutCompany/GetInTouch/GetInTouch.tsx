@@ -4,7 +4,7 @@ import { Text } from "@/components/ui/Typography/Typography";
 const GetInTouch = () => {
   return (
     <div className="grid 2xl:grid-cols-2 py-20">
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-4 w-full">
         <Text variant="medium" className="sora text-black">
           We are <span className="text-[#FF0084]">“A Girl Tech Spearheads</span>{" "}
           community represented by persons of all{" "}
