@@ -37,7 +37,7 @@ const Forms = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
-      <div className="2xl:flex 2xl:justify-between text-center my-10">
+      <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center my-10">
         {/* FIRST NAME */}
         <div className="mb-6">
           <label className="text-black block">First Name</label>
@@ -75,7 +75,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="2xl:flex 2xl:justify-between text-center">
+      <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center">
         {/* EMAIL */}
         <div className="mb-6">
           <label className="text-black block">Email</label>
@@ -119,7 +119,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="2xl:flex justify-between text-center my-10">
+      <div className="2xl:flex justify-between 2xl:text-left text-center my-10">
         {/* PROFESSIONAL ROLE */}
         <div className="mb-6">
           <label className="text-black block">Professional Role</label>
@@ -157,7 +157,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="2xl:flex 2xl:justify-between text-center my-3">
+      <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center my-3">
         {/* YEARS OF EXPERIENCE */}
         <div>
           <label className="text-black block">
@@ -181,7 +181,7 @@ const Forms = () => {
       </div>
 
       {/* TEXT-AREAS */}
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             Please give a brief overview of your current job, main
@@ -204,7 +204,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *Are you able to (have capacity and) commit ten hours in sixteen
@@ -229,7 +229,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *Please select the reason(s) for wanting to be a mentor:
@@ -253,7 +253,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *Are you able to (have capacity and) commit ten hours in sixteen
@@ -278,7 +278,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full ">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *Please share your top five values (core characteristics, what do
@@ -301,7 +301,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *How will you demonstrate your commitment to support your assigned
@@ -324,7 +324,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *What are some challenges you may face as a mentor?
@@ -346,7 +346,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             *Have you mentored a mentee before – formally or informally?
@@ -371,7 +371,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="block mt-10 px-10 2xl:px-full">
+      <div className="block mt-10 px-10 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             If yes, may you please indicate in what area was the mentorship
