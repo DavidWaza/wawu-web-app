@@ -1,7 +1,6 @@
 import React from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 
-
 const platforms = [
   {
     iconSrc: "/icons/paper-plane.svg",
@@ -34,7 +33,7 @@ const WawuPlatforms = () => {
             <img
               src={platform.iconSrc}
               alt={platform.alt}
-              className="w-10 h-auto mb-2 "
+              className="w-10 h-auto mb-2 -mt-5 "
             />
             <div>
               <Text variant="small" textWeight="semi-bold">
@@ -45,7 +44,6 @@ const WawuPlatforms = () => {
           </div>
         </>
       ))}
-   
     </>
   );
 };

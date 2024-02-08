@@ -70,14 +70,14 @@ const Hero = () => {
                   </Heading>
                   <Heading
                     variant="xlarge"
-                    className=" bg-neutral-200 stroke-black stroke-1 mt-3"
+                    className=" bg-neutral-200 stroke-orange-100 stroke-1 mt-3"
                     fontColor="primary"
                   >
-                   {heroContent.roles}
+                    {heroContent.roles}
                   </Heading>
-                  <Text className="text-white mt-5" variant="small">
+                  <Text className="text-white mt-5 capitalize" variant="small">
                     Forgot the old rules. You can have the best girls <br />{" "}
-                    Right now. Right here
+                    Right now. Right here.
                   </Text>
                   <div className="flex py-5">
                     <input
@@ -107,7 +107,7 @@ const Hero = () => {
                 </div>
                 <div className="hidden 2xl:flex justify-center items-center">
                   <img
-                    className="d-block w-full"
+                    className="d-block lg:w-[85%]"
                     src="/assets/slide-1-img.png"
                     alt="slide 1"
                     width={"50px"}
