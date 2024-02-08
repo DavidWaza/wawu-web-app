@@ -38,19 +38,19 @@ export default function Home() {
      <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
-        <Section>
+        {/* <Section>
           <Testimonial />
-        </Section>
+        </Section> */}
       </div>
       <div className="bg-[#F7ABD1] 2xl:px-20 2xl:text-left text-center">
         <Section>
-          <Text variant="medium" className="sora">
+          <Text variant="medium" className="sora text-black">
             {" "}
             Who is your Girl?
           </Text>
           <TypeWriter />
           <div className="flex mt-5 2xl:justify-start justify-center">
-            <Text>Start Here</Text>
+            <Text className="text-black">Start Here</Text>
           </div>
         </Section>
       </div>
@@ -68,7 +68,7 @@ export default function Home() {
           <div className="flex justify-start  px-16">
             <Button
               variant="tertiary"
-              className="mt-20 hover:bg-[#ED459A] transition-all ease-in-out py-2"
+              className="mt-20 py-2"
               size="large"
               // onClick={() => console.log("next video slide")}
             >

@@ -19,6 +19,28 @@ const buttons = [
   },
 ];
 
+const heroContents = [
+  {
+    roles: "Leaders",
+    backgroundColor: "",
+    src: "",
+  },
+  {
+    roles: "Builders",
+    backgroundColor: "bg-[#A812E3]",
+    src: "",
+  },
+  {
+    roles: "Creators",
+    backgroundColor: "",
+    src: "",
+  },
+  {
+    roles: "Caretakers",
+    backgroundColor: "",
+    src: "",
+  },
+];
 const Hero = () => {
   const settings = {
     dots: false,
@@ -30,224 +52,72 @@ const Hero = () => {
     autoplay: true,
     speed: 5000,
     autoplaySpeed: 10000,
-    arrows:false,
-    cssEase: "linear"
+    arrows: false,
+    cssEase: "linear",
   };
   return (
     <>
       <Slider {...settings}>
-        <div>
-          <div className="bg-[#A812E3] w-full px-10">
-            <div className="grid 2xl:grid-cols-2">
-              <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" fontColor="primary">
-                  We are
-                </Heading>
-                <Heading
-                  variant="xlarge"
-                  className=" bg-neutral-200 text-stroke-gray-1"
-                  fontColor="primary"
-                >
-                  Builders
-                </Heading>
-                <Text className="text-white mt-5" variant="small">
-                  Forgot the old rules. You can have the best girls <br /> Right
-                  now. Right here
-                </Text>
-                <div className="flex py-5">
-                  <input
-                    placeholder="Search for anything"
-                    className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
-                  />
-                  <Button
-                    variant="primary"
-                    className="rounded-l-none p-2 border-none"
+        {heroContents.map((heroContent, index) => (
+          <div key={index}>
+            <div
+              className={` ${heroContent.backgroundColor} w-full px-10 h-[90vh]`}
+            >
+              <div className="grid 2xl:grid-cols-2 pt-[10vh]">
+                <div className="mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
+                  <Heading variant="large" fontColor="primary">
+                    We are
+                  </Heading>
+                  <Heading
+                    variant="xlarge"
+                    className=" bg-neutral-200 stroke-black stroke-1 mt-3"
+                    fontColor="primary"
                   >
-                    {" "}
-                    Search
-                  </Button>
-                </div>
-                <div className="hidden 2xl:flex gap-2 w-full mt-4">
-                  {buttons.map((button) => (
+                   {heroContent.roles}
+                  </Heading>
+                  <Text className="text-white mt-5" variant="small">
+                    Forgot the old rules. You can have the best girls <br />{" "}
+                    Right now. Right here
+                  </Text>
+                  <div className="flex py-5">
+                    <input
+                      placeholder="Search for anything"
+                      className="py-2 px-3 rounded-r-none rounded-md w-full border-none"
+                    />
                     <Button
-                      variant="secondary"
-                      size="large"
-                      className="py-1"
-                      key={button.label}
+                      variant="primary"
+                      className="rounded-l-none p-2 border-none"
                     >
-                      {button.label}
+                      {" "}
+                      Search
                     </Button>
-                  ))}
+                  </div>
+                  <div className="hidden 2xl:flex gap-2 w-full mt-4">
+                    {buttons.map((button) => (
+                      <Button
+                        variant="secondary"
+                        size="small"
+                        className="py-1"
+                        key={button.label}
+                      >
+                        {button.label}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <img
-                  className="d-block w-1/2"
-                  src="/assets/slide-1-img.png"
-                  alt="slide 1"
-                  width={"50px"}
-                  height={"50px"}
-                />
+                <div className="hidden 2xl:flex justify-center items-center">
+                  <img
+                    className="d-block w-full"
+                    src="/assets/slide-1-img.png"
+                    alt="slide 1"
+                    width={"50px"}
+                    height={"50px"}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <div className="bg-[#39044e] w-full">
-            <div className="grid 2xl:grid-cols-2">
-              <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" fontColor="primary">
-                  We are
-                </Heading>
-                <Heading variant="xlarge" className="rubik" fontColor="primary">
-                  Leaders
-                </Heading>
-                <Text className="text-white mt-5" variant="small">
-                  Forgot the old rules. You can have the best girls <br /> Right
-                  now. Right here
-                </Text>
-                <div className="flex py-5">
-                  <input
-                    placeholder="Search for anything"
-                    className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
-                  />
-                  <Button
-                    variant="primary"
-                    className="rounded-l-none p-2 border-none"
-                  >
-                    {" "}
-                    Search
-                  </Button>
-                </div>
-                <div className="hidden 2xl:flex gap-2 w-full mt-4">
-                  {buttons.map((button) => (
-                    <Button
-                      variant="secondary"
-                      size="large"
-                      className="py-1"
-                      key={button.label}
-                    >
-                      {button.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <img
-                  className="d-block w-1/2"
-                  src="/assets/slide-1-img.png"
-                  alt="slide 1"
-                  width={"50px"}
-                  height={"50px"}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="bg-[#1bb1ecfb] w-full">
-            <div className="grid 2xl:grid-cols-2">
-              <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" fontColor="primary">
-                  We are
-                </Heading>
-                <Heading variant="xlarge" className="rubik" fontColor="primary">
-                  Creators
-                </Heading>
-                <Text className="text-white mt-5" variant="small">
-                  Forgot the old rules. You can have the best girls <br /> Right
-                  now. Right here
-                </Text>
-                <div className="flex py-5">
-                  <input
-                    placeholder="Search for anything"
-                    className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
-                  />
-                  <Button
-                    variant="primary"
-                    className="rounded-l-none p-2 border-none"
-                  >
-                    {" "}
-                    Search
-                  </Button>
-                </div>
-                <div className="hidden 2xl:flex gap-2 w-full mt-4">
-                  {buttons.map((button) => (
-                    <Button
-                      variant="secondary"
-                      size="large"
-                      className="py-1"
-                      key={button.label}
-                    >
-                      {button.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <img
-                  className="d-block w-1/2"
-                  src="/assets/slide-1-img.png"
-                  alt="slide 1"
-                  width={"50px"}
-                  height={"50px"}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="bg-[#1bb1ecfb] w-full">
-            <div className="grid 2xl:grid-cols-2">
-              <div className=" mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                <Heading variant="large" fontColor="primary">
-                  We are
-                </Heading>
-                <Heading variant="xlarge" className="rubik" fontColor="primary">
-                  Caretakers
-                </Heading>
-                <Text className="text-white mt-5" variant="small">
-                  Forgot the old rules. You can have the best girls <br /> Right
-                  now. Right here
-                </Text>
-                <div className="flex py-5">
-                  <input
-                    placeholder="Search for anything"
-                    className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
-                  />
-                  <Button
-                    variant="primary"
-                    className="rounded-l-none p-2 border-none"
-                  >
-                    {" "}
-                    Search
-                  </Button>
-                </div>
-                <div className="hidden 2xl:flex gap-2 w-full mt-4">
-                  {buttons.map((button) => (
-                    <Button
-                      variant="secondary"
-                      size="large"
-                      className="py-1"
-                      key={button.label}
-                    >
-                      {button.label}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden 2xl:flex justify-center items-center mt-40 pb-20">
-                <img
-                  className="d-block w-1/2"
-                  src="/assets/slide-1-img.png"
-                  alt="slide 1"
-                  width={"50px"}
-                  height={"50px"}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </Slider>
     </>
   );

@@ -27,7 +27,6 @@ const Button = ({
   children,
   width = "w-full",
   href,
-  // height = "h-full",
   disabled,
   onClick,
   isActive,
@@ -51,13 +50,15 @@ const Button = ({
     borderWidth;
     borderColor = "border-[#fff]";
   } else if (variant === "secondary") {
-    backgroundColor = "bg-slate-100";
-    color = "text-[#000]";
+    backgroundColor = "bg-transparent";
+    color = "text-[#fff]";
     fontWeight;
     borderWidth;
     borderColor;
   } else if (variant === "tertiary") {
-    backgroundColor = "bg-[#810FAF]";
+    className = "mt-20 transition-all ease-in-out py-2";
+    backgroundColor =
+      "bg-[#810FAF] hover:bg-blue-500 transition-all ease-in-out";
     color = "text-[#fff]";
     borderColor = "border-none";
     fontWeight = "font-medium";
