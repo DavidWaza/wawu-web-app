@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <>
-     <Navbar id={0} link="" href="" isCaret />
+      <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
         {/* <Section>
