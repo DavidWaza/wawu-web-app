@@ -6,7 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 // Turn this props when the data is given
 const Card = () => {
   return (
-    <div className="shadow-md rounded-md border border-slate-300 w-full h-full p-3">
+    <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3">
       <div>
         <img src={"/assets/SD.jpg"} alt="img-placeholder" />
       </div>

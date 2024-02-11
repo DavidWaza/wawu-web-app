@@ -15,7 +15,7 @@ const CreatePortfolioSection = () => {
         <Button
           variant="secondary"
           size="large"
-          className="py-1 hover:bg-slate-50 ease-in transition-all"
+          className="py-1 hover:bg-slate-50 ease-in transition-all text-black"
         >
           Create Portfolio
         </Button>
