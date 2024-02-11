@@ -138,7 +138,7 @@ export default function Home() {
           </div>
         </Section>
       </div>
-      <DigitalReality />
+      <DigitalReality backgrondColor="bg-[#290D43]"/>
       <Adverts />
     </>
   );

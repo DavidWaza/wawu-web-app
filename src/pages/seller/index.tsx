@@ -6,6 +6,7 @@ import Section from "@/components/ui/Section/Section";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import Accordion from "@/components/AccordionComponent/Accordion";
+import DigitalReality from "@/components/DigitalReality/DigitalReality";
 
 const professions = [
   "I am a developer",
@@ -107,6 +108,18 @@ const Seller = () => {
                 Seller FAQs
               </Text>
               <Accordion />
+            </div>
+            <div className="bg-[#290D43] py-10">
+              <Section>
+                <Text variant="small" className="text-center text-white">
+                  blog
+                </Text>
+              </Section>
+            </div>
+            <div className="">
+              <Section>
+                <DigitalReality backgrondColor="bg-white" textColor="text-black"/>
+              </Section>
             </div>
           </div>
         </div>

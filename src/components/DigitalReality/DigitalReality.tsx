@@ -2,13 +2,18 @@ import React from "react";
 import Section from "../ui/Section/Section";
 import { Text } from "../ui/Typography/Typography";
 import Button from "../ui/Button/Button";
-const DigitalReality = () => {
+
+interface DigitalProps {
+  backgrondColor: string,
+  textColor?:string
+}
+const DigitalReality = (props:DigitalProps) => {
   return (
-    <div className="bg-[#471471]">
+    <div className={`${props.backgrondColor}`}>
       <Section>
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
-            <Text variant="medium" className="2xl:text-left text-center">
+            <Text variant="medium" className={`2xl:text-left text-center ${props.textColor}`}>
               Welcome to your new digital reality that will <br /> rock your
               world.
             </Text>
@@ -22,7 +27,7 @@ const DigitalReality = () => {
             <div className=" flex justify-center items-center mt-[3rem]">
               <input
                 placeholder="Search for anything"
-                className="py-2 px-3 rounded-r-none rounded-md w-1/2 border-none"
+                className="py-2 px-3 rounded-r-none rounded-md w-1/2 border"
               />
               <Button
                 variant="primary"
