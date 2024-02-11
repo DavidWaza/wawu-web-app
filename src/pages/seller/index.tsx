@@ -118,7 +118,11 @@ const Seller = () => {
             </div>
             <div className="">
               <Section>
-                <DigitalReality backgrondColor="bg-white" textColor="text-black"/>
+                <DigitalReality
+                  backgrondColor="bg-white"
+                  textColor="text-black"
+                  borderColor="border-[#ED459A]"
+                />
               </Section>
             </div>
           </div>

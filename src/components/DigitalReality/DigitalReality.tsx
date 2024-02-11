@@ -28,7 +28,7 @@ const DigitalReality = (props:DigitalProps) => {
             <div className=" flex justify-center items-center mt-[3rem]">
               <input
                 placeholder="Search for anything"
-                className="py-2 px-3 rounded-r-none rounded-md w-1/2 border"
+                className={`py-2 px-3 rounded-r-none rounded-md w-1/2 border ${props.borderColor}`}
               />
               <Button
                 variant="primary"
