@@ -5,7 +5,8 @@ import Button from "../ui/Button/Button";
 
 interface DigitalProps {
   backgrondColor: string,
-  textColor?:string
+  textColor?:string,
+  borderColor?:string,
 }
 const DigitalReality = (props:DigitalProps) => {
   return (

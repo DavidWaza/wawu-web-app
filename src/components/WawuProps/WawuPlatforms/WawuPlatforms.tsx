@@ -28,7 +28,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
           {props.link && (
             <div className="flex gap-4 items-center mt-5">
               <Text variant="small">
-                <Link href={""}>{props.link}</Link>
+                <Link href={""} className="!text-[#ED459A]">{props.link}</Link>
               </Text>
               <GoArrowRight className="text-[#ED459A]" />
             </div>
