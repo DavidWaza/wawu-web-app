@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </Section>
       </div>
-      <div className="bg-[#471471] py-10">
+      <div className="bg-[#471471] py-10 transition-all ease-linear">
         <Section>
           <div className={`${!nextVideo ? "block" : "hidden"}`}>
             <VideoCarousel />
@@ -121,12 +121,12 @@ export default function Home() {
             className="flex justify-center items-center gap-2 py-2 border-none"
             onClick={NextVideoSlider}
           >
-            {nextVideo ? "Previous Video" : "Next Video"}
             {!nextVideo ? (
-              <IoIosArrowRoundForward className="w-7 h-auto" />
+              <IoIosArrowRoundForward className="w-7 h-auto order-1" />
             ) : (
-              <IoIosArrowRoundBack className="w-7 h-auto" />
+              <IoIosArrowRoundBack className="w-7 h-auto " />
             )}
+            {nextVideo ? "Previous Video" : "Next Video"}
           </Button>
         </div>
       </div>
