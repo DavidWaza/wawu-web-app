@@ -24,14 +24,32 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [nextVideo, setNextVideo] = useState(false);
 
-  // function NextVideoSlide() {
-  //   setNextVideo(true)
-  //   console.log('set new slide')
-  // }
   const NextVideoSlider = () => {
     setNextVideo(!nextVideo);
-    // console.log('server')
   };
+
+  const platforms = [
+    {
+      iconSrc: "/icons/paper-plane.svg",
+      alt: "paper plain",
+      title: "Stewards",
+      desc: `   Leaving no one behind as we set out on this amazing journey building
+          sustainable businesses, creating employment opportunities and becoming
+          effective, efficient and transformative stewards.`,
+    },
+    {
+      iconSrc: "/icons/light-bulb.svg",
+      alt: "light bulb",
+      title: "Mentorship",
+      desc: `The NextGen community of stewards, incubators, builders, creators, and leaders`,
+    },
+    {
+      iconSrc: "/icons/pie-chart.svg",
+      alt: "pie chart",
+      title: "Patrons",
+      desc: `Savy Startups, Industry Leaders, Movers + Shakers, Innovators, Great Partnerships, Daring Disruptors, all Start here .`,
+    },
+  ];
 
   return (
     <>
@@ -59,7 +77,16 @@ export default function Home() {
           <div className="grid 2xl:grid-cols-2 2xl:px-16 ">
             <div>
               <WawuProps />
-              <WawuPlatforms />
+              {platforms.map((platform, index) => (
+                <div key={index}>
+                  <WawuPlatforms
+                    iconSrc={platform.iconSrc}
+                    alt={platform.alt}
+                    title={platform.title}
+                    desc={platform.desc}
+                  />
+                </div>
+              ))}
             </div>
             <div className="2xl:flex hidden">
               <img src="/assets/girl-with-earth.png" alt="girl-with-earth" />

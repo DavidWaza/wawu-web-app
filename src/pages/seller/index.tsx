@@ -1,6 +1,11 @@
+import Adverts from "@/components/Adverts/Adverts";
 import Navbar from "@/components/Header/Navbar/Navbar";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
-import { Text } from "@/components/ui/Typography/Typography";
+import WawuPlatforms from "@/components/WawuProps/WawuPlatforms/WawuPlatforms";
+import Section from "@/components/ui/Section/Section";
+import { Heading, Text } from "@/components/ui/Typography/Typography";
+import Button from "@/components/ui/Button/Button";
+import Accordion from "@/components/AccordionComponent/Accordion";
 
 const professions = [
   "I am a developer",
@@ -9,6 +14,26 @@ const professions = [
   "I am into Web3",
 ];
 
+const ProductFeatures = [
+  {
+    iconSrc: "/icons/paper-plane.svg",
+    alt: "paper plain",
+    title: "FreeLancers",
+    desc: `Engage audience segments finally create actionable insights. Amplify vertical integration.`,
+  },
+  {
+    iconSrc: "/icons/light-bulb.svg",
+    alt: "light bulb",
+    title: "Institution",
+    desc: `Engage audience segments finally create actionable insights. Amplify vertical integration.`,
+  },
+  {
+    iconSrc: "/icons/pie-chart.svg",
+    alt: "pie chart",
+    title: "Client",
+    desc: `Engage audience segments finally create actionable insights. Amplify vertical integration.`,
+  },
+];
 const Seller = () => {
   return (
     <div>
@@ -26,14 +51,63 @@ const Seller = () => {
             Join our growing steward’s community
           </Text>
           <div className="flex justify-center gap-4 mt-10">
-          {professions.map((profession, index) => (
-            <div key={index} className="block">
-              <img src={"/assets/photo-girl.png"} alt="photo-girl" />
-              <Text variant="small" textWeight="bold" className="text-black text-center my-2 capitalize">
-                {profession}
+            {professions.map((profession, index) => (
+              <div key={index} className="block">
+                <img src={"/assets/photo-girl.png"} alt="photo-girl" />
+                <Text
+                  variant="small"
+                  textWeight="bold"
+                  className="text-black text-center my-2 capitalize"
+                >
+                  {profession}
+                </Text>
+              </div>
+            ))}
+          </div>
+          <div className="bg-white">
+            <Adverts />
+            <Section>
+              <Heading variant="medium" fontColor="secondary">
+                Redefining Product Features
+              </Heading>
+              <Text variant="small" className="leading-6 mt-5">
+                Keeping your eye on the ball while performing a deep dive on the
+                start-up mentality to drive <br /> convergence
               </Text>
+              <div className="grid lg:grid-cols-2">
+                <div className="block">
+                  {ProductFeatures.map((product, index) => (
+                    <>
+                      <div key={index}>
+                        <WawuPlatforms
+                          iconSrc={product.iconSrc}
+                          alt={product.alt}
+                          title={product.title}
+                          desc={product.desc}
+                          link="Learn more"
+                        />
+                      </div>
+                    </>
+                  ))}
+                  <Button size="large" variant="tertiary">
+                    Get Started
+                  </Button>
+                </div>
+                <div className="flex justify-center items-center">
+                  <img
+                    src="/assets/additional-service.png"
+                    alt="right girl"
+                    className="lg:w-3/4"
+                  />
+                </div>
+              </div>
+            </Section>
+            <div className="bg-[#ECECEC] py-10">
+              <Text variant="large" className="text-black text-center pt-7">
+                Seller FAQs
+              </Text>
+              <Accordion />
             </div>
-          ))}
           </div>
         </div>
       </div>

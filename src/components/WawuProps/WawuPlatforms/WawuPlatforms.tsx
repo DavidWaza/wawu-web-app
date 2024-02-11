@@ -1,49 +1,40 @@
 import React from "react";
 import { Text } from "@/components/ui/Typography/Typography";
+import Link from "next/link";
+import { GoArrowRight } from "react-icons/go";
 
-const platforms = [
-  {
-    iconSrc: "/icons/paper-plane.svg",
-    alt: "paper plain",
-    title: "Stewards",
-    desc: `   Leaving no one behind as we set out on this amazing journey building
-        sustainable businesses, creating employment opportunities and becoming
-        effective, efficient and transformative stewards.`,
-  },
-  {
-    iconSrc: "/icons/light-bulb.svg",
-    alt: "light bulb",
-    title: "Mentorship",
-    desc: `The NextGen community of stewards, incubators, builders, creators, and leaders`,
-  },
-  {
-    iconSrc: "/icons/pie-chart.svg",
-    alt: "pie chart",
-    title: "Patrons",
-    desc: `Savy Startups, Industry Leaders, Movers + Shakers, Innovators, Great Partnerships, Daring Disruptors, all Start here .`,
-  },
-];
+interface PlatFormProps {
+  iconSrc: string;
+  alt: string;
+  title: string;
+  desc: string;
+  link?: string;
+}
 
-const WawuPlatforms = () => {
+const WawuPlatforms = (props: PlatFormProps) => {
   return (
     <>
-      {platforms.map((platform) => (
-        <>
-          <div className="2xl:flex gap-5 mt-10">
-            <img
-              src={platform.iconSrc}
-              alt={platform.alt}
-              className="w-10 h-auto mb-2 -mt-5 "
-            />
-            <div>
-              <Text variant="small" textWeight="semi-bold">
-                {platform.title}
+      <div className="2xl:flex gap-5 mt-10">
+        <img
+          src={props.iconSrc}
+          alt={props.alt}
+          className="w-10 h-auto mb-2 -mt-5 "
+        />
+        <div>
+          <Text variant="small" textWeight="semi-bold">
+            {props.title}
+          </Text>
+          <Text variant="small">{props.desc}</Text>
+          {props.link && (
+            <div className="flex gap-4 items-center mt-5">
+              <Text variant="small">
+                <Link href={""}>{props.link}</Link>
               </Text>
-              <Text variant="small">{platform.desc}</Text>
+              <GoArrowRight className="text-[#ED459A]" />
             </div>
-          </div>
-        </>
-      ))}
+          )}
+        </div>
+      </div>
     </>
   );
 };

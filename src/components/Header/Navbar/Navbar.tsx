@@ -58,7 +58,7 @@ const Navbar: React.FC<linkProps> = () => {
       <nav className="bg-white w-2/3 h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full 2xl:flex items-center px-10 z-10 hidden">
         <div className="flex justify-between items-center w-full">
           <div className="flex">
-            <Logo className="w-[7rem]"/>
+            <Logo className="w-[7rem]" />
             <div className="hidden gap-4 pt-[2.7rem] z-10 2xl:text-black 2xl:flex">
               {links.map((link) => (
                 <ul key={link.id}>
