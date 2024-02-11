@@ -10,7 +10,7 @@ import GetInTouch from "./components/AboutCompany/GetInTouch/GetInTouch";
 const AboutUs = () => {
   return (
     <>
-     <Navbar id={0} link="" href="" isCaret />
+      <Navbar id={0} link="" href="" isCaret />
       <Hero />
       <div className="bg-white">
         <Section>
