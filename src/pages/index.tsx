@@ -92,7 +92,7 @@ export default function Home() {
               <img src="/assets/girl-with-earth.png" alt="girl-with-earth" />
             </div>
           </div>
-          <div className="flex justify-start  px-16">
+          <div className="flex justify-start 2xl:px-16">
             <Button
               variant="tertiary"
               className="mt-20 py-2"
