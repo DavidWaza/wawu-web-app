@@ -61,9 +61,9 @@ const Hero = () => {
         {heroContents.map((heroContent, index) => (
           <div key={index}>
             <div
-              className={` ${heroContent.backgroundColor} w-full px-10 h-[90vh]`}
+              className={` ${heroContent.backgroundColor} w-full px-10`}
             >
-              <div className="grid 2xl:grid-cols-2 pt-[10vh]">
+              <div className="grid grid-cols-2 2xl:py-20">
                 <div className="mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                   <Heading variant="large" fontColor="primary">
                     We are
@@ -105,9 +105,9 @@ const Hero = () => {
                     ))}
                   </div>
                 </div>
-                <div className="hidden 2xl:flex justify-center items-center">
+                <div className="hidden md:flex justify-center items-center">
                   <img
-                    className="d-block lg:w-[85%]"
+                    className="d-block w-[85%]"
                     src="/assets/slide-1-img.png"
                     alt="slide 1"
                     width={"50px"}
