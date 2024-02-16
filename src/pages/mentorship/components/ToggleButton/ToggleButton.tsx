@@ -23,14 +23,16 @@ const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
   );
 };
 
+
 const ButtonComponent = () => {
   const [mentor, setMentor] = useState({ toggle: false, active: true });
   const [mentee, setMentee] = useState({ toggle: false, active: false });
 
+ 
   const handleToggle = (type: string) => {
     if (type === "mentor") {
       setMentor({
-        toggle: !mentor.toggle,
+        toggle: true,
         active: !mentor.active,
       });
       setMentee({
@@ -39,7 +41,7 @@ const ButtonComponent = () => {
       });
     } else if (type === "mentee") {
       setMentee({
-        toggle: !mentee.toggle,
+        toggle: true,
         active: !mentee.active,
       });
       setMentor({
@@ -49,8 +51,16 @@ const ButtonComponent = () => {
     }
   };
 
+  // const [slip, setSlip] = useState(false);
+  //  const handleSlip = () => {
+  //   setSlip(true)
+  //  }
+
   return (
     <div>
+      {/* <button onClick={handleSlip} className="text-black border">
+        {slip ? 'Slip right': 'Slip wrong'}
+      </button> */}
       <Text variant="medium" className="text-black my-2 sora">
         {!mentee.active ? "Mentor" : "Mentee"}
       </Text>
