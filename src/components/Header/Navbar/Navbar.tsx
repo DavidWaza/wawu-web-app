@@ -2,9 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo/Logo";
-import Caret from "@/components/Caret/Caret";
 import Button from "@/components/ui/Button/Button";
-import ExampleHeader from "./FullDropDown";
+import { RxCaretDown } from "react-icons/rx";
 import FullDropDown from "./FullDropDown";
 
 interface linkProps {
@@ -66,7 +65,7 @@ const Navbar: React.FC<linkProps> = () => {
                     <li className="flex justify-center items-center">
                       {link.link}{" "}
                       <button onClick={toggleNav}>
-                        {link.isCaret && <Caret />}
+                        {link.isCaret && <RxCaretDown className="text-black"/>}
                       </button>
                     </li>
                   </Link>

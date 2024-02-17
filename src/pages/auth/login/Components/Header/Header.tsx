@@ -2,17 +2,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import AuthLogo from "../../assets/logo.png";
-import Caret from "@/components/Caret/Caret";
 import Button from "@/components/ui/Button/Button";
-import FullDropDown from "../../../../components/Header/Navbar/FullDropDown";
+import FullDropDown from "@/components/Header/Navbar/FullDropDown";
 import Image from "next/image";
+import { RxCaretDown } from "react-icons/rx";
 
 interface linkProps {
   id: number;
   href: string;
   link: string;
   isCaret: boolean;
-  bgColor: string;
 }
 const links = [
   {
@@ -48,7 +47,7 @@ const links = [
   },
 ];
 
-const AuthNavbar: React.FC<linkProps> = ({ bgColor }) => {
+const AuthNavbar: React.FC<linkProps> = () => {
   const [isToggle, setIsToggle] = useState(false);
 
   function toggleNav() {
@@ -69,7 +68,7 @@ const AuthNavbar: React.FC<linkProps> = ({ bgColor }) => {
                     <li className="flex justify-center items-center text-white">
                       {link.link}{" "}
                       <button onClick={toggleNav}>
-                        {link.isCaret && <Caret color="text-white" />}
+                        {link.isCaret && <RxCaretDown />}
                       </button>
                     </li>
                   </Link>

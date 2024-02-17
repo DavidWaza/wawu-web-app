@@ -1,6 +1,5 @@
 "use client";
 import Accordion from "@/components/AccordionComponent/Accordion";
-import AnitaCard from "@/components/Cards/AnitaCard";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import { usePathname } from "next/navigation";
 
@@ -24,8 +23,6 @@ const FAQ = () => {
       <div>
         <Accordion />
       </div>
-
-     
     </div>
   );
 };

@@ -36,7 +36,7 @@ const LoginForm = () => {
             })}
             type="text"
             placeholder="Email"
-            className="py-2 px-2 text-black border border-1 rounded-md w-[20rem]"
+            className="py-2 px-2 text-black border border-1 rounded-md w-full"
           />
           {errors.email && (
             <p className="text-red-600">{errors.email.message}</p>
@@ -52,7 +52,7 @@ const LoginForm = () => {
               })}
               type="number"
               placeholder="Minimum of 8 characters"
-              className="py-2 px-2 text-black border border-1 rounded-md w-[20rem] "
+              className="py-2 px-2 text-black border border-1 rounded-md w-full "
             />
             <div>
               <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
@@ -85,7 +85,7 @@ const LoginForm = () => {
       <p className="text-black text-center mt-4">
         Not registered?{" "}
         <span className="font-bold ">
-          <Link href={"/sign-up"} className="!text-[#ED459A]">
+          <Link href={"/auth/sign-up"} className="!text-[#ED459A]">
             Sign Up
           </Link>
         </span>
