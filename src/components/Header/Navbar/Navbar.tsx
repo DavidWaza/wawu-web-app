@@ -65,7 +65,7 @@ const Navbar: React.FC<linkProps> = () => {
                     <li className="flex justify-center items-center">
                       {link.link}{" "}
                       <button onClick={toggleNav}>
-                        {link.isCaret && <RxCaretDown className="text-black"/>}
+                        {link.isCaret && <RxCaretDown className="text-black" />}
                       </button>
                     </li>
                   </Link>
@@ -75,12 +75,16 @@ const Navbar: React.FC<linkProps> = () => {
             </div>
           </div>
           <div className="flex justify-end space-x-4">
-            <button className="p-4 border-none bg-transparent text-[#ED459A]">
-              Sign Up
-            </button>
-            <Button variant="primary" size="small" className="py-2 my-3">
-              Log in
-            </Button>
+            <Link href={"/auth/sign-up"}>
+              <button className="p-4 border-none bg-transparent text-[#ED459A]">
+                Sign Up
+              </button>
+            </Link>
+            <Link href={"/auth/login"}>
+              <Button variant="primary" size="small" className="py-2 my-3">
+                Log in
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
