@@ -116,7 +116,7 @@ const SignupForm = () => {
         className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 "
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Loging in...." : "Login"}
+        {isSubmitting ? "Signing..." : "Sign up"}
       </button>
       <p className="text-black text-center mt-4">
         Already have an account?{" "}
