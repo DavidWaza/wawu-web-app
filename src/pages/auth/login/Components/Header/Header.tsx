@@ -60,7 +60,9 @@ const AuthNavbar: React.FC<linkProps> = () => {
       >
         <div className="flex justify-between items-center w-full h-[5rem]">
           <div className=" flex justify-center items-center px-20 gap-10">
-            <Image src={AuthLogo} className=" w-auto h-full" alt="logo" />
+            <Link href={"/"}>
+              <Image src={AuthLogo} className=" w-auto h-full" alt="logo" />
+            </Link>
             <div className="hidden gap-4 z-10 2xl:text-white 2xl:flex items-center">
               {links.map((link) => (
                 <ul key={link.id}>

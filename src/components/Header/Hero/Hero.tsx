@@ -22,7 +22,7 @@ const buttons = [
 const heroContents = [
   {
     roles: "Leaders",
-    backgroundColor: "",
+    backgroundColor: "bg-[#290D43]",
     src: "",
   },
   {
@@ -32,12 +32,12 @@ const heroContents = [
   },
   {
     roles: "Creators",
-    backgroundColor: "",
+    backgroundColor: "bg-[#290D43]",
     src: "",
   },
   {
     roles: "Caretakers",
-    backgroundColor: "",
+    backgroundColor: "bg-[#A812E3]",
     src: "",
   },
 ];
@@ -60,9 +60,7 @@ const Hero = () => {
       <Slider {...settings}>
         {heroContents.map((heroContent, index) => (
           <div key={index}>
-            <div
-              className={` ${heroContent.backgroundColor} w-full px-10`}
-            >
+            <div className={` ${heroContent.backgroundColor} w-full px-10`}>
               <div className="grid grid-cols-2 2xl:py-20">
                 <div className="mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
                   <Heading variant="large" fontColor="primary">
