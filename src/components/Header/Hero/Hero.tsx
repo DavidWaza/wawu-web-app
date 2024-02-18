@@ -1,6 +1,7 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import Slider from "react-slick";
+import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -60,20 +61,20 @@ const Hero = () => {
       <Slider {...settings}>
         {heroContents.map((heroContent, index) => (
           <div key={index}>
-            <div className={` ${heroContent.backgroundColor} w-full px-10`}>
+            <div className={` ${heroContent.backgroundColor} px-10`}>
               <div className="grid grid-cols-2 2xl:py-20">
-                <div className="mx-auto 2xl:mt-[23%] py-[30%] 2xl:py-0 uppercase px-[3rem]">
+                <div className="mx-auto 2xl:mt-[23%] lg:py-[30%] 2xl:py-0 uppercase px-[3rem]">
                   <Heading variant="large" fontColor="primary">
                     We are
                   </Heading>
-                  <Heading
-                    variant="xlarge"
-                    className=" bg-neutral-200 stroke-orange-100 stroke-1 mt-3"
-                    fontColor="primary"
+                  <h1
+                    // variant="xlarge"
+                    className="text-outline text-[3rem] lg:text-[6rem] stroke-white stroke-2  font-extrabold sora -mt-4"
+                    // fontColor="primary"
                   >
                     {heroContent.roles}
-                  </Heading>
-                  <Text className="text-white mt-5 capitalize" variant="small">
+                  </h1>
+                  <Text className="text-white capitalize" variant="small">
                     Forgot the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
@@ -104,12 +105,12 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="hidden md:flex justify-center items-center">
-                  <img
-                    className="d-block w-[85%]"
+                  <Image
+                    className="d-block w-1/2 lg:w-[85%]"
                     src="/assets/slide-1-img.png"
                     alt="slide 1"
-                    width={"50px"}
-                    height={"50px"}
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>

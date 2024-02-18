@@ -13,11 +13,8 @@ import VideoCarousel from "@/components/VideoCarousel/VideoCarousel";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { useState } from "react";
 import NextSlideVideoCarousel from "@/components/VideoCarousel/NextSlideVideoCarousel";
-import next from "next";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
 import Adverts from "@/components/Adverts/Adverts";
-import Footer from "@/components/Footer/Footer";
-import Mentorship from "./mentorship";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -74,7 +71,7 @@ export default function Home() {
       </div>
       <div className="bg-[#fff]">
         <Section>
-          <div className="grid 2xl:grid-cols-2 2xl:px-16 ">
+          <div className="grid lg:grid-cols-2 2xl:px-16 ">
             <div>
               <WawuProps />
               {platforms.map((platform, index) => (
@@ -88,11 +85,17 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <div className="2xl:flex hidden">
-              <img src="/assets/girl-with-earth.png" alt="girl-with-earth" />
+            <div className="flex justify-center items-center">
+              <Image
+                src="/assets/girl-with-earth.png"
+                alt="girl-with-earth"
+                width={500}
+                height={500}
+                className="w-1/2 lg:w-2/3"
+              />
             </div>
           </div>
-          <div className="flex justify-start 2xl:px-16">
+          <div className="flex 2xl:justify-start justify-center 2xl:px-16">
             <Button
               variant="tertiary"
               className="mt-20 py-2"
@@ -134,7 +137,7 @@ export default function Home() {
         <Section>
           <div className="flex justify-center items-center align-middle">
             {" "}
-            blog posts
+            <p className="text-black text-center">Blogs</p>
           </div>
         </Section>
       </div>
