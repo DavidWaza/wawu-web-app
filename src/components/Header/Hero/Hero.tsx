@@ -69,7 +69,7 @@ const Hero = () => {
                   </Heading>
                   <h1
                     // variant="xlarge"
-                    className="text-outline text-[3rem] lg:text-[6rem] stroke-white stroke-2  font-extrabold sora -mt-4"
+                    className="text-outline text-[3rem] lg:text-[6rem] font-extrabold sora -mt-4"
                     // fontColor="primary"
                   >
                     {heroContent.roles}
