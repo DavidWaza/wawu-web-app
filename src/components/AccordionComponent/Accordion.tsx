@@ -1,14 +1,13 @@
 import React, { useRef, useState } from "react";
-import { Text } from "../ui/Typography/Typography";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import data from "./AccordionData";
+
 
 interface AccordionProps {
   question: string;
   answer: string;
   isOpen: boolean;
   onClick: () => void;
-  // bgColor?:string;
 }
 
 const AccordionItem = ({
@@ -16,13 +15,15 @@ const AccordionItem = ({
   answer,
   isOpen,
   onClick,
-  // bgColor = 'bg-transparent'
-}: AccordionProps) => {
+}: // bgColor = 'bg-transparent'
+AccordionProps) => {
   const contentHeight = useRef<HTMLDivElement | null>(null);
   return (
-    <div className={`wrapper `}>
+    <div className={`wrapper`}>
       <button
-        className={`question-container bg-[#290D43] text-black ${isOpen ? "active" : ""}`}
+        className={`question-container text-black ${
+          isOpen ? "active" : ""
+        }`}
         onClick={onClick}
       >
         <p className="question-content text-black">{question}</p>
@@ -48,7 +49,7 @@ const AccordionItem = ({
 
 const Accordion = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
+  
   const handleItemClick = (index: any) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
@@ -62,7 +63,6 @@ const Accordion = () => {
             answer={item.answer}
             isOpen={activeIndex === index}
             onClick={() => handleItemClick(index)}
-            // bgColor={item.bgColor}
           />
         ))}
       </div>

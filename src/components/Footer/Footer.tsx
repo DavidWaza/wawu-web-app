@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Logo from "../Header/Navbar/Logo/Logo";
 import { Text } from "../ui/Typography/Typography";
 import Link from "next/link";
@@ -53,14 +54,14 @@ const Footer = () => {
   return (
     <div>
       <footer className="relative bg-slate-50 pt-8 pb-6">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-10">
           <div className="flex flex-wrap text-left lg:text-left items-center">
-            <div className="w-full lg:w-6/12 px-4">
-              <Logo className="w-[6.7rem]" />
+            <div className="w-full lg:w-6/12">
+              <Logo className="px-0" />
               {contactLinks.map((contactLinks, index) => (
-                <div className="block" key={index}>
+                <div className="block px-4" key={index}>
                   <div className="flex gap-3 align-middle items-center mt-3">
-                    <img src={contactLinks.src} alt="items-center" />
+                    <Image src={contactLinks.src} alt="items-center" width={15} height={15} />
                     <Text variant="small">
                       {contactLinks.contact}
                     </Text>
@@ -82,7 +83,7 @@ const Footer = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-end gap-10 px-[3rem]  mt-20">
+              <div className="flex justify-end gap-10 px-[3rem] mt-20">
                 {socialLinks.map((socialLink, index) => (
                   <Link href={socialLink.link} key={index}>
                     <img src={socialLink.src} alt="social-logo" />
@@ -92,7 +93,7 @@ const Footer = () => {
             </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
-          <div className="flex justify-between text-[#5F6D7E] w-full">
+          <div className="flex justify-between text-[#5F6D7E] w-full pl-4">
             <div className="justify-start">
               <Text variant="small" className="w-full mx-auto">
                 2023 wawutech. All Rights Reserved

@@ -25,7 +25,8 @@ const UploadImage: React.FC = () => {
   const pathname = usePathname();
   return (
     <>
-      {pathname.includes("seller-profile") ? (
+      {pathname.includes("seller-profile") ||
+      pathname.includes("client-brief") ? (
         <div className="border border-gray-400 rounded-md lg:w-[30%]">
           <div className="flex justify-end p-3">
             <MdDeleteOutline className="text-black" />
@@ -41,7 +42,11 @@ const UploadImage: React.FC = () => {
               />
               <label htmlFor="fileInput">
                 <Image
-                  src={selectedImage ? URL.createObjectURL(selectedImage) : "/assets/photo.png"}
+                  src={
+                    selectedImage
+                      ? URL.createObjectURL(selectedImage)
+                      : "/assets/photo.png"
+                  }
                   alt="Selected Image"
                   className="w-7 h-full m-auto"
                   width={500}
