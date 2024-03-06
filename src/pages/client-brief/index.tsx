@@ -33,11 +33,11 @@ const ClientBrief = () => {
               This is where you fill us in one of the big picture?
             </Text>
             <Button
-              className="border-none lg:w-[23rem] p-3 flex gap-10 items-center"
+              className="border-none lg:w-[26rem] w-full p-3 flex gap-10 items-center"
               size="large"
+              suffix={<MdArrowRightAlt />}
             >
               How does the matching thing work
-              <MdArrowRightAlt />
             </Button>
           </div>
         </div>
@@ -105,10 +105,10 @@ const ClientBrief = () => {
               <Button
                 size="small"
                 className="p-2 flex gap-5 justify-center items-center"
-                href='/'
+                href="/"
+                suffix={<MdArrowRightAlt />}
               >
                 Review
-                <MdArrowRightAlt />
               </Button>
             </div>
           </form>
