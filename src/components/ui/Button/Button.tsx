@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { ReactNode } from "react";
 
 interface buttonProps
@@ -26,7 +27,7 @@ const Button = ({
   className,
   children,
   width = "w-full",
-  href,
+  href = "/",
   disabled,
   onClick,
   isActive,
@@ -77,8 +78,9 @@ const Button = ({
   }
 
   return (
-    <button
-      className={`
+    <Link href={href}>
+      <button
+        className={`
       ${width} 
       ${maxHeight} 
       ${borderRadius} 
@@ -90,13 +92,14 @@ const Button = ({
       ${className} 
       ${state}
       `}
-      onClick={onClick}
-      type="button"
-    >
-      {prefix && <span className="px-2">{prefix}</span>}
-      {children}
-      {suffix && <span className="px-2">{suffix}</span>}
-    </button>
+        onClick={onClick}
+        type="button"
+      >
+        {prefix && <span className="px-2">{prefix}</span>}
+        {children}
+        {suffix && <span className="px-2">{suffix}</span>}
+      </button>
+    </Link>
   );
 };
 

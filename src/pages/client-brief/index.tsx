@@ -24,7 +24,7 @@ const ClientBrief = () => {
     <>
       <Header />
       <div className="lg:px-[8rem] px-10 my-10">
-        <div className="bg-[#A812E3] w-full h-[20rem]">
+        <div className="bg-[#A812E3] w-full h-[20rem] !p-0">
           <div className="py-20 px-10">
             <Heading fontColor="primary" variant="medium">
               Let&apos;s the matching begin...
@@ -105,6 +105,7 @@ const ClientBrief = () => {
               <Button
                 size="small"
                 className="p-2 flex gap-5 justify-center items-center"
+                href='/'
               >
                 Review
                 <MdArrowRightAlt />
