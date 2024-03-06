@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 
-interface buttonProps
+interface ButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
   variant?: "primary" | "secondary" | "tertiary";
-  size?: "small" | "large" | "full" | "none";
+  size?: "small" | "medium" | "large" | "full" | "none";
   state?: "hover" | "pressed" | "disabled";
   icon?: "left" | "right";
   backgroundColor?: string;
@@ -17,7 +17,7 @@ interface buttonProps
   isActive?: boolean;
   color?: string;
   prefix?: string;
-  suffix?: ReactNode;
+  suffix?: ReactNode | null;
 }
 
 const Button = ({
@@ -35,7 +35,7 @@ const Button = ({
   prefix,
   suffix,
   ...props
-}: buttonProps) => {
+}: ButtonProps) => {
   const maxHeight = "";
   let fontWeight = "font-medium";
   let borderRadius = "rounded-md";
@@ -69,8 +69,10 @@ const Button = ({
   // Button Sizes
   if (size === "small") {
     width = "w-[8rem]";
-  } else if (size === "large") {
+  } else if (size === "medium") {
     width = "w-[13rem]";
+  } else if (size === "large") {
+    width = "w-[20rem]";
   } else if (size === "full") {
     width = "w-full";
   } else if (size === "none") {
@@ -91,7 +93,7 @@ const Button = ({
       ${color} 
       ${className} 
       ${state}
-      `}
+     flex items-center justify-center`}
         onClick={onClick}
         type="button"
       >

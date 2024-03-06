@@ -1,7 +1,9 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Header from "../../buyers/Components/Header/Header";
 import Button from "@/components/ui/Button/Button";
-import { MdArrowRightAlt } from "react-icons/md";
+import { MdArrowRightAlt, MdArrowLeft } from "react-icons/md";
+import { LuMoveLeft } from "react-icons/lu";
+
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import CustomInput from "@/components/ui/Inputs/TextInput";
 import CustomSelect from "@/components/ui/Inputs/SelectInputs";
@@ -20,13 +22,6 @@ const ClientBriefReview = () => {
             <Text variant="small" className="text-white my-5">
               This is where you fill us in one of the big picture?
             </Text>
-            <Button
-              className="border-none lg:w-[26rem] w-full p-3 flex gap-10 items-center"
-              size="large"
-              suffix={<MdArrowRightAlt />}
-            >
-              How does the matching thing work
-            </Button>
           </div>
         </div>
         <div className="my-10">
@@ -74,9 +69,9 @@ const ClientBriefReview = () => {
               <Heading fontColor="secondary" variant="small">
                 Attachments
               </Heading>
-              <Text variant="small" className="text-black">
+              <div>
                 <UploadImage />
-              </Text>
+              </div>
             </div>
           </div>
           <div className=" grid lg:grid-cols-2 my-10">
@@ -97,6 +92,20 @@ const ClientBriefReview = () => {
               </Text>
             </div>
           </div>
+        </div>
+        <div className="flex justify-between my-20">
+          <Button
+            // prefix={}
+            size="small"
+            variant="primary"
+            className="p-2 !bg-[#151B28] flex items-center justify-center gap-5"
+          >
+            <LuMoveLeft />
+            Back
+          </Button>
+          <Button suffix={<MdArrowRightAlt />} size="large" className="p-2">
+            Submit & get matched
+          </Button>
         </div>
       </div>
     </>
