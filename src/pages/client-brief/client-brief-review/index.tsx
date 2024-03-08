@@ -1,12 +1,8 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Header from "../../buyers/Components/Header/Header";
 import Button from "@/components/ui/Button/Button";
-import { MdArrowRightAlt, MdArrowLeft } from "react-icons/md";
+import { MdArrowRightAlt } from "react-icons/md";
 import { LuMoveLeft } from "react-icons/lu";
-
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
-import CustomInput from "@/components/ui/Inputs/TextInput";
-import CustomSelect from "@/components/ui/Inputs/SelectInputs";
 import UploadImage from "../../profile/Components/UploadImage/UploadImage";
 
 const ClientBriefReview = () => {
@@ -98,7 +94,7 @@ const ClientBriefReview = () => {
             // prefix={}
             size="small"
             variant="primary"
-            className="p-2 !bg-[#151B28] flex items-center justify-center gap-5"
+            className="p-2 !bg-[#151B28] gap-3 flex items-center justify-center"
           >
             <LuMoveLeft />
             Back

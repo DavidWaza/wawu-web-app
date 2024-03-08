@@ -64,16 +64,7 @@ const Hero = () => {
             <div className={` ${heroContent.backgroundColor} px-10`}>
               <div className="grid grid-cols-2 2xl:py-20">
                 <div className="mx-auto 2xl:mt-[23%] lg:py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                  <Heading variant="large" fontColor="primary">
-                    We are
-                  </Heading>
-                  <h1
-                    // variant="xlarge"
-                    className="text-outline text-[3rem] lg:text-[6rem] font-extrabold sora -mt-4"
-                    // fontColor="primary"
-                  >
-                    {heroContent.roles}
-                  </h1>
+                  <Image src="/assets/builders.png" alt="" width={500} height={500} />
                   <Text className="text-white capitalize" variant="small">
                     Forgot the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.

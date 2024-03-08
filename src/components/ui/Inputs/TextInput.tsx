@@ -23,15 +23,15 @@ const CustomInput: React.FC<InputProps> = ({
   className,
 }) => (
   <div className="mb-6">
-    <label className="text-black block font-medium">{label}</label>
-    <label className="text-black block text-[12px]">{sublabel}</label>
+    <label className="text-black block font-medium text-left">{label}</label>
+    <label className="text-black block text-[12px] text-left">{sublabel}</label>
     <input
       {...register(name, {
         required: `${label} is required`,
       })}
       type={type}
       placeholder={placeholder}
-      className={` px-2 mr-3 text-black border border-1 rounded-xl w-full ${className}`}
+      className={` px-2 mr-3 text-black border border-1 w-full ${className}`}
     />
     {errors[name] && (
       <Text variant="small" className="text-red-600">

@@ -105,7 +105,7 @@ const ClientBrief = () => {
               <Button
                 size="small"
                 className="p-2 flex gap-5 justify-center items-center"
-                href="/"
+                href="/client-brief/client-brief-review"
                 suffix={<MdArrowRightAlt />}
               >
                 Review

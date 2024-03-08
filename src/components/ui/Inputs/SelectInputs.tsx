@@ -24,13 +24,13 @@ const CustomSelect: React.FC<SelectProps> = ({
   errors,
   className,
 }) => (
-  <div className="my-6">
+  <div className="">
     <label className="text-black block text-sm font-medium">{label}</label>
     <select
       {...register(name, {
         required: `${label} is required`,
       })}
-      className={` px-2 mr-3 text-black border border-1 rounded-xl w-full  ${className}`}
+      className={` px-2 text-black border border-1 w-full !text-left  ${className}`}
     >
       {options.map((option) => (
         <option key={option}>{option}</option>
