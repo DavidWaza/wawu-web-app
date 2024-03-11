@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
 import { PortfolioData } from "./portfolioData";
+import Button from "@/components/ui/Button/Button";
+import { MdArrowRightAlt } from "react-icons/md";
 
 export default function PersonalPortfolio() {
   return (
@@ -36,7 +38,12 @@ export default function PersonalPortfolio() {
             <Text>Jane Doe Portfolio</Text>
           </div>
         </div>
-        <div className="my-20">
+        <div className="flex justify-end my-10">
+          <Button size="large" suffix={<MdArrowRightAlt />} className="p-2">
+            Create new Portfolio
+          </Button>
+        </div>
+        <div className="my-10">
           <div className="grid lg:grid-cols-3 gap-5">
             {PortfolioData.map((data, index) => (
               <div className="border" key={index}>
