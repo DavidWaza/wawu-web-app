@@ -25,7 +25,7 @@ const CustomSelect: React.FC<SelectProps> = ({
   className,
 }) => (
   <div className="">
-    <label className="text-black block text-sm font-medium">{label}</label>
+    <label className="text-black block text-sm font-medium text-left">{label}</label>
     <select
       {...register(name, {
         required: `${label} is required`,
