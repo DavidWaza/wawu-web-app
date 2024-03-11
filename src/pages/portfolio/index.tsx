@@ -17,7 +17,7 @@ export default function PersonalPortfolio() {
             <Link href={"#"}>
               <div className="flex gap-3 items-center text-white">
                 <IoArrowBackSharp />
-                <p>back</p>
+                <p>Back</p>
               </div>
             </Link>
             <Link href={"#"}>
