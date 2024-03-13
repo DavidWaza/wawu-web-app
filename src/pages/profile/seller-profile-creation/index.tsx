@@ -5,6 +5,8 @@ import {  Text } from "@/components/ui/Typography/Typography";
 import { BsEyeSlash } from "react-icons/bs";
 import Education from "../Components/Education/Education";
 import ProfessionalCertificate from "../Components/ProfessionalCertificate/Certificate";
+import MeansOfIdentification from "../Components/MeansOfIdentification/MeansOfIdentification";
+import SocialHandles from "../Components/SocialHandles/SocialHandles";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
 
 type FormFields = {
@@ -17,7 +19,7 @@ type FormFields = {
   language: string;
 };
 
-const BuyerProfile = () => {
+const SellerProfileCreation = () => {
   const {
     register,
     handleSubmit,
@@ -32,9 +34,9 @@ const BuyerProfile = () => {
     <LayoutProfile>
       <div className="-mt-10">
         <ProfileHero />
-        <div className="flex justify-end">
+        <div className="flex justify-end my-10">
           <Button variant="primary" size="large" className="p-2">
-            Provide a service
+            Become a seller
           </Button>
         </div>
         <div className="py-12 grid lg:grid-cols-2">
@@ -175,13 +177,18 @@ const BuyerProfile = () => {
                 )}
               </div>
             </div>
+            
           </form>
           <div></div>
         </div>
-        <Education />
+        <div className="mt-10">
+          <Education />
+        </div>
         <ProfessionalCertificate />
+        <MeansOfIdentification />
+        <SocialHandles />
       </div>
     </LayoutProfile>
   );
 };
-export default BuyerProfile;
+export default SellerProfileCreation;
