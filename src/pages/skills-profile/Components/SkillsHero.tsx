@@ -12,13 +12,17 @@ interface SkillsHeroProps {
   imgSrc: string;
   //   children: ReactNode;
 }
-const SkillsHero: FC<SkillsHeroProps> = (
-  { bgColor, leadingText, text, buttonPresent, imgSrc }
-) => {
+const SkillsHero: FC<SkillsHeroProps> = ({
+  bgColor,
+  leadingText,
+  text,
+  buttonPresent,
+  imgSrc,
+}) => {
   return (
-    <div className="">
+    <div className="px-0 lg:px-[10rem]">
       <div
-        className={`${bgColor} px-20 rounded-md  flex justify-between items-center`}
+        className={`${bgColor} px-20 rounded-none lg:rounded-md  lg:flex justify-between items-center`}
       >
         <div className="space-y-4">
           <Text variant="medium">{leadingText}</Text>

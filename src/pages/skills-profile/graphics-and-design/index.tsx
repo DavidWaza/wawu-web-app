@@ -56,14 +56,14 @@ const marketing = [
 export default function GraphicsAndDesign() {
   return (
     <>
-      <div className="px-[10rem]">
-        <SkillsHero
-          bgColor="bg-[#290D43]"
-          leadingText="Graphics & Design"
-          text="Who is your girl?"
-          buttonPresent
-          imgSrc="/assets/graphics-girl.png"
-        />
+      <SkillsHero
+        bgColor="bg-[#290D43]"
+        leadingText="Graphics & Design"
+        text="Who is your girl?"
+        buttonPresent
+        imgSrc="/assets/graphics-girl.png"
+      />
+      <div className="px-10 lg:px-[10rem]">
         <SkillsPopularHeader
           prefixText="Most popular in"
           skillsText="Graphics & Design"
