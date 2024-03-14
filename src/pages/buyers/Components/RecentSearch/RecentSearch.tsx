@@ -4,26 +4,27 @@ import { Text } from "@/components/ui/Typography/Typography";
 import { GoArrowRight } from "react-icons/go";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
 
 const RecentSearchHistory = [
   {
-    src: "/assets/mentor-girl.png",
+    src: "/assets/logo-brand-identity.png",
     title: "Logo & Brand identity",
   },
   {
-    src: "/assets/mentor-girl.png",
+    src: "/assets/visual-design.png",
     title: "Visual Design",
   },
   {
-    src: "/assets/mentor-girl.png",
+    src: "/assets/web-app-design.png",
     title: "Web & App Design",
   },
   {
-    src: "/assets/mentor-girl.png",
+    src: "/assets/art.png",
     title: "Art Illustration",
   },
   {
-    src: "/assets/mentor-girl.png",
+    src: "/assets/marketing-design.png",
     title: "Marketing Design",
   },
 ];
@@ -71,13 +72,15 @@ const RecentSearch: FC<RecentSearchProps> = () => {
     <div>
       <Slider {...settings}>
         {RecentSearchHistory.map((history, index) => (
-          <div key={index} className="shadow-sm rounded-md p-5 border border-slate-400 mr-3">
-            <div className="flex justify-between items-center">
-              <div className="rounded-full  w-20 h-auto border border-slate-500">
-                <img
-                  src="/assets/mentor-girl.png"
+          <div key={index} className="shadow-md rounded-md p-5 border border-slate-400">
+            <div className="flex justify-between items-center gap-5">
+              <div className=" border-slate-500">
+                <Image
+                  src={history.src}
                   alt="recent img"
-                  className="rounded-full w-20 h-auto"
+                  className="rounded-full w-20 "
+                  width={500}
+                  height={500}
                 />
               </div>
               <Text variant="small" className="text-slate-500">

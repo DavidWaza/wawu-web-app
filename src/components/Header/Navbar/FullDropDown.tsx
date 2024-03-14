@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const FullDropDown = () => {
   return (
     <div className="relative">
@@ -27,10 +29,10 @@ const FullDropDown = () => {
                 </svg>
               </div>
               <div>
-                <a href="#" className="font-semibold text-gray-900">
+                <Link href="#" className="font-semibold text-gray-900">
                   Analytics
                   <span className="absolute inset-0"></span>
-                </a>
+                </Link>
                 <p className="mt-1 text-gray-600">
                   Get a better understanding of your traffic
                 </p>
@@ -54,10 +56,10 @@ const FullDropDown = () => {
                 </svg>
               </div>
               <div>
-                <a href="#" className="font-semibold text-gray-900">
+                <Link href="#" className="font-semibold text-gray-900">
                   Engagement
                   <span className="absolute inset-0"></span>
-                </a>
+                </Link>
                 <p className="mt-1 text-gray-600">
                   Speak directly to your customers
                 </p>
@@ -81,10 +83,10 @@ const FullDropDown = () => {
                 </svg>
               </div>
               <div>
-                <a href="#" className="font-semibold text-gray-900">
+                <Link href="#" className="font-semibold text-gray-900">
                   Security
                   <span className="absolute inset-0"></span>
-                </a>
+                </Link>
                 <p className="mt-1 text-gray-600">
                   Your customers&#039; data will be safe and secure
                 </p>
@@ -108,10 +110,10 @@ const FullDropDown = () => {
                 </svg>
               </div>
               <div>
-                <a href="#" className="font-semibold text-gray-900">
+                <Link href="#" className="font-semibold text-gray-900">
                   Integrations
                   <span className="absolute inset-0"></span>
-                </a>
+                </Link>
                 <p className="mt-1 text-gray-600">
                   Connect with third-party tools
                 </p>
@@ -135,10 +137,10 @@ const FullDropDown = () => {
                 </svg>
               </div>
               <div>
-                <a href="#" className="font-semibold text-gray-900">
+                <Link href="#" className="font-semibold text-gray-900">
                   Automations
                   <span className="absolute inset-0"></span>
-                </a>
+                </Link>
                 <p className="mt-1 text-gray-600">
                   Build strategic funnels that will convert
                 </p>
