@@ -4,7 +4,7 @@ import { BsShare } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
-import { PortfolioData } from "./portfolioData";
+import { PortfolioData } from "../../data/portfolioData";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
 
