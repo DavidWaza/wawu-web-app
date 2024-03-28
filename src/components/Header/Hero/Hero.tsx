@@ -62,16 +62,16 @@ const Hero = () => {
         {heroContents.map((heroContent, index) => (
           <div key={index}>
             <div className={` ${heroContent.backgroundColor} px-10`}>
-              <div className="grid grid-cols-2 2xl:py-20">
+              <div className="grid lg:grid-cols-2 2xl:py-20">
                 <div className="mx-auto 2xl:mt-[23%] lg:py-[30%] 2xl:py-0 uppercase px-[3rem]">
                   <Image src="/assets/builders.png" alt="" width={500} height={500} />
-                  <Text className="text-white capitalize" variant="small">
+                  <Text className="text-white capitalize py-5" variant="small">
                     Forgot the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
                   <div className="flex py-5">
                     <input
-                      placeholder="Search for anything"
+                      placeholder="Search for any services"
                       className="py-2 px-3 rounded-r-none rounded-md w-full border-none"
                     />
                     <Button

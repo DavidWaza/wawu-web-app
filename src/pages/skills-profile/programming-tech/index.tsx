@@ -12,66 +12,81 @@ import SkillsNavbarLayout from "../layout";
 const graphicsSkills = [
   {
     src: "/assets/logo-brand-identity.png",
-    title: "Logo & Brand identity",
+    title: "Python Developers",
   },
   {
     src: "/assets/visual-design.png",
-    title: "Visual Design",
+    title: "HTML & CSS Developers",
   },
   {
     src: "/assets/web-app-design.png",
-    title: "Web & App Design",
+    title: "Website Platforms",
   },
-  //   {
-  //     src: "/assets/Art_illustration.png",
-  //     title: "Art Illustration",
-  //   },
+  {
+    src: "/assets/Art_illustration.png",
+    title: "Cloud Computing",
+  },
   {
     src: "/assets/marketing-design.png",
-    title: "Marketing Design",
+    title: "Cybersecurity",
+  },
+  {
+    src: "/assets/marketing-design.png",
+    title: "Javascript",
   },
 ];
 
-const visualSkills = [
-  "Image Editing",
-  "Presentation Design",
-  "Background Removal",
-  "Infographic Design",
-  "Resume Design",
+const softwareDevment = [
+  "Web Applications",
+  "Desktop Applications",
+  "APIs & Integrations",
+  "Scripting",
+  "Browser Extensions",
 ];
 
-const artSkills = [
-  "Illustrations",
-  "AI Artists",
-  "Childrens Book Illustrations",
-  "Portraits & Caricature",
-  "Cartoons & Comics",
-  "Pattern Design",
-  "Tatoo Design",
+const softwareDevs = [
+  "Python Developers",
+  "HTML & CSS Developer",
+  "Javascript Developers",
+  "Java Developers",
+  "PHP Developers",
 ];
 
-const marketing = [
-  "Social Media Design",
-  "Social Posts & Banners",
-  "Email Design",
-  "Web Design",
-  "Web Banners",
-  "Signage Design",
+const websitePlatforms = [
+  "Wordpress",
+  "Shopify",
+  "Wix",
+  "Custom Websites",
+  "Go Daddy",
 ];
-export default function GraphicsAndDesign() {
+
+const mobileAppsDev = [
+  "Andriod Developers",
+  "Cross-Platform Apps",
+  "Apps Customization",
+  "Bug Fixes",
+];
+const gameDev = [
+  "PC Games",
+  "Mobile Games",
+  "Console Games",
+  "VR Games",
+  "Game Mods",
+];
+export default function ProgrammingTech() {
   return (
     <SkillsNavbarLayout id={0} href={""} link={""} isCaret={false}>
       <SkillsHero
         bgColor="bg-[#290D43]"
-        leadingText="Graphics & Design"
+        leadingText="Programming & Tech"
         text="Who is your girl?"
         buttonPresent
-        imgSrc="/assets/graphics-girl.png"
+        imgSrc="/assets/tech.png"
       />
       <div className="px-10 lg:px-[5rem]">
         <SkillsPopularHeader
           prefixText="Most popular in"
-          skillsText="Graphics & Design"
+          skillsText="Programming & Tech"
           textColor="!text-[#A2A2A2]"
         />
         <div className="lg:flex gap-5 w-full flex-wrap pb-5">
@@ -81,37 +96,59 @@ export default function GraphicsAndDesign() {
         </div>
         <SkillsPopularHeader
           prefixText="Explore"
-          skillsText="Graphics & Design"
+          skillsText="Programming & Tech"
         />
         <div className="grid lg:grid-cols-3 gap-10">
           <ExploreCard
-            cardImg="/assets/design-card-1.png"
-            title="Visual Design"
+            cardImg="/assets/sw-dm.png"
+            title="Software Development"
             fontColor="primary"
           >
-            {visualSkills.map((skill, index) => (
+            {softwareDevment.map((skill, index) => (
               <Text variant="small" key={index} className="py-2">
                 {skill}
               </Text>
             ))}
           </ExploreCard>
           <ExploreCard
-            cardImg="/assets/design-card-3.png"
-            title="Art & Illustration"
+            cardImg="/assets/sw-dps.png"
+            title="Software Developers"
             fontColor="primary"
           >
-            {artSkills.map((skill, index) => (
+            {softwareDevs.map((skill, index) => (
               <Text variant="small" key={index} className="py-2">
                 {skill}
               </Text>
             ))}
           </ExploreCard>
           <ExploreCard
-            cardImg="/assets/design-card-2.png"
-            title="Marketing Design"
+            cardImg="/assets/ws-pfs.png"
+            title="Website Platforms"
             fontColor="primary"
           >
-            {marketing.map((skill, index) => (
+            {websitePlatforms.map((skill, index) => (
+              <Text variant="small" key={index} className="py-2">
+                {skill}
+              </Text>
+            ))}
+          </ExploreCard>
+          <ExploreCard
+            cardImg="/assets/ma-dm.png"
+            title="Website Platforms"
+            fontColor="primary"
+          >
+            {mobileAppsDev.map((skill, index) => (
+              <Text variant="small" key={index} className="py-2">
+                {skill}
+              </Text>
+            ))}
+          </ExploreCard>
+          <ExploreCard
+            cardImg="/assets/g-dm.png"
+            title="Website Platforms"
+            fontColor="primary"
+          >
+            {gameDev.map((skill, index) => (
               <Text variant="small" key={index} className="py-2">
                 {skill}
               </Text>

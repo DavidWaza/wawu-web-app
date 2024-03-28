@@ -7,6 +7,7 @@ import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import Accordion from "@/components/AccordionComponent/Accordion";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
+import Image from "next/image";
 
 const professions = [
   "I am a developer",
@@ -95,10 +96,12 @@ const Seller = () => {
                   </Button>
                 </div>
                 <div className="flex justify-center items-center">
-                  <img
+                  <Image
                     src="/assets/additional-service.png"
                     alt="right girl"
                     className="lg:w-3/4"
+                    width={400}
+                    height={400}
                   />
                 </div>
               </div>
@@ -119,7 +122,7 @@ const Seller = () => {
             <div className="">
               <Section>
                 <DigitalReality
-                  backgrondColor="bg-white"
+                  backgroundColor="bg-white"
                   textColor="text-black"
                   borderColor="border-[#ED459A]"
                 />

@@ -5,6 +5,7 @@ import Logo from "./Logo/Logo";
 import Button from "@/components/ui/Button/Button";
 import { RxCaretDown } from "react-icons/rx";
 import FullDropDown from "./FullDropDown";
+import { useRouter } from "next/router";
 
 interface linkProps {
   id: number;
@@ -49,12 +50,22 @@ const links = [
 const Navbar: React.FC<linkProps> = () => {
   const [isToggle, setIsToggle] = useState(false);
 
+  const router = useRouter();
+
   function toggleNav() {
     setIsToggle(!isToggle);
   }
+
+  const handleSignUp = () => {
+    router.push("/auth/sign-up");
+  };
+
+  const handleLogin = () => {
+    router.push("/auth/login");
+  };
   return (
     <>
-      <nav className="bg-white w-2/3 h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full 2xl:flex items-center px-10 z-10 hidden">
+      <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full 2xl:flex items-center px-10 z-10 hidden">
         <div className="flex justify-between items-center w-full">
           <div className="flex">
             <Logo className="w-[7rem]" />
@@ -74,17 +85,29 @@ const Navbar: React.FC<linkProps> = () => {
               {isToggle && <FullDropDown />}
             </div>
           </div>
-          <div className="flex justify-end space-x-4">
-            <Link href={"/auth/sign-up"}>
-              <button className="p-4 border-none bg-transparent text-[#ED459A]">
-                Sign Up
-              </button>
-            </Link>
-            <Link href={"/auth/login"}>
-              <Button variant="primary" size="small" className="py-2 my-3">
-                Log in
-              </Button>
-            </Link>
+          <div className="flex justify-end items-center space-x-4">
+            <select
+              className="px-4 py-3 border border-[#ED459A] bg-transparent text-black rounded-lg"
+            >
+              <option>English</option>
+              <option>Arabic</option>
+              <option>French</option>
+              <option>Spanish</option>
+            </select>
+            <button
+              className="p-4 border-none bg-transparent text-[#ED459A]"
+              onClick={handleSignUp}
+            >
+              Sign Up
+            </button>
+            <Button
+              variant="primary"
+              size="small"
+              className="py-2 my-3"
+              onClick={handleLogin}
+            >
+              Log in
+            </Button>
           </div>
         </div>
       </nav>

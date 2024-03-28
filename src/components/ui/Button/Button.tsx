@@ -11,7 +11,7 @@ interface ButtonProps
   state?: "hover" | "pressed" | "disabled";
   icon?: "left" | "right";
   backgroundColor?: string;
-  href?: string;
+  // href?: string;
   height?: string;
   width?: string;
   isActive?: boolean;
@@ -27,7 +27,7 @@ const Button = ({
   className,
   children,
   width = "w-full",
-  href = "/",
+  // href = "#",
   disabled,
   onClick,
   isActive,
@@ -80,7 +80,6 @@ const Button = ({
   }
 
   return (
-    <Link href={href}>
       <button
         className={`
       ${width} 
@@ -101,7 +100,6 @@ const Button = ({
         {children}
         {suffix && <span className="px-2">{suffix}</span>}
       </button>
-    </Link>
   );
 };
 

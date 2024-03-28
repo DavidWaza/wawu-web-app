@@ -64,8 +64,9 @@ export default function Home() {
             Who is your Girl?
           </Text>
           <TypeWriter />
-          <div className="flex mt-5 2xl:justify-start justify-center">
-            <Text className="text-black">Start Here</Text>
+          <div className="flex mt-5 gap-5 2xl:justify-start items-center justify-center">
+            <Text className="text-black">Start Here </Text>
+            <div className=" rounded-full p-1 w-1 mt-3 bg-[#730C99] text-transparent"></div>
           </div>
         </Section>
       </div>
@@ -99,13 +100,16 @@ export default function Home() {
             <Button
               variant="tertiary"
               className="mt-20 py-2"
-              size="large"
+              size="medium"
               // onClick={() => console.log("next video slide")}
             >
               Get Started
             </Button>
           </div>
         </Section>
+      </div>
+      <div>
+        <Adverts />
       </div>
       <div className="bg-[#471471] py-10 transition-all ease-linear">
         <Section>
@@ -120,7 +124,7 @@ export default function Home() {
         </Section>
         <div className={`flex px-10 2xl:justify-end justify-center`}>
           <Button
-            size="large"
+            size="medium"
             className="flex justify-center items-center gap-2 py-2 border-none"
             onClick={NextVideoSlider}
           >
@@ -141,7 +145,11 @@ export default function Home() {
           </div>
         </Section>
       </div>
-      <DigitalReality backgrondColor="bg-[#290D43]" />
+      <DigitalReality
+        backgroundColor="bg-[#290D43]"
+        submitText="Submit"
+        placeholder="Enter your email"
+      />
       <Adverts />
     </>
   );

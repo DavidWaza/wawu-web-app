@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button/Button";
 import { Text } from "@/components/ui/Typography/Typography";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 interface SkillsHeroProps {
   bgColor: string;
@@ -19,8 +20,10 @@ const SkillsHero: FC<SkillsHeroProps> = ({
   buttonPresent,
   imgSrc,
 }) => {
+
+  const pathname = usePathname()
   return (
-    <div className="px-0 lg:px-[10rem]">
+    <div className="px-0 lg:px-[5rem]">
       <div
         className={`${bgColor} px-20 rounded-none lg:rounded-md  lg:flex justify-between items-center`}
       >
@@ -34,6 +37,8 @@ const SkillsHero: FC<SkillsHeroProps> = ({
               size="small"
               suffix={<FaArrowRightLong />}
               className="border-none p-2 my-4"
+              
+              // {pathname.includes('/skills-profile/digital-marketing') ? variant}
             >
               Start now
             </Button>

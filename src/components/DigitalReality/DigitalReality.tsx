@@ -4,13 +4,15 @@ import { Text } from "../ui/Typography/Typography";
 import Button from "../ui/Button/Button";
 
 interface DigitalProps {
-  backgrondColor: string,
+  backgroundColor: string,
   textColor?:string,
   borderColor?:string,
+  submitText?:string,
+  placeholder:string,
 }
 const DigitalReality = (props:DigitalProps) => {
   return (
-    <div className={`${props.backgrondColor}`}>
+    <div className={`${props.backgroundColor}`}>
       <Section>
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
@@ -27,7 +29,7 @@ const DigitalReality = (props:DigitalProps) => {
           <div>
             <div className=" flex justify-center items-center mt-[3rem]">
               <input
-                placeholder="Search for anything"
+                placeholder={props.placeholder}
                 className={`py-2 px-3 rounded-r-none rounded-md w-1/2 border ${props.borderColor}`}
               />
               <Button
@@ -35,7 +37,7 @@ const DigitalReality = (props:DigitalProps) => {
                 className="rounded-l-none p-2 border-none"
               >
                 {" "}
-                Search
+               {props.submitText}
               </Button>
             </div>
           </div>

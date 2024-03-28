@@ -119,7 +119,7 @@ const BuyerLandingComponent = () => {
             <div className="">
               <Section>
                 <DigitalReality
-                  backgrondColor="bg-white"
+                  backgroundColor="bg-white"
                   textColor="text-black"
                   borderColor="border-[#ED459A]"
                 />
