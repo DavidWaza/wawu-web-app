@@ -24,7 +24,7 @@ const HeroComponent = (props: HeroComponentProps) => {
             </Heading>
             <Text
               variant="largeText"
-              className=" text-[#FF0084] 2xl:leading-[45px] capitalize "
+              className=" text-[#FF0084] 2xl:leading-[45px] capitalize py-5 "
             >
               {props.secondaryText}
             </Text>
