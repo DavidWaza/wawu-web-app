@@ -25,10 +25,10 @@ export default function Mentorship() {
       <HeroComponent
         backgroundColor="bg-[#471471]"
         header="Mentorship"
-        secondaryText="The NextGen community of stewards, incubators, builders,
-                creators, and leaders."
-        subText={`Show me a good steward, and Ill show you a mentor who truly made
-        a difference in her life. Whatever your line of work, were
+        secondaryText="The NextGen Community of Stewards, Incubators, Builders,
+                Creators, and Leaders."
+        subText={`Show me a good steward, and i will show you a mentor who truly made
+        a difference in her life. Whatever your line of work, we are
         confident a mentor has been encouraging you or pointing the way
         if you do it effectively.`}
         buttonText="Sign In"

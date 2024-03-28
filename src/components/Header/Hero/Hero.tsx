@@ -66,7 +66,7 @@ const Hero = () => {
                 <div className="mx-auto 2xl:mt-[23%] lg:py-[30%] 2xl:py-0 uppercase px-[3rem]">
                   <Image src="/assets/builders.png" alt="" width={500} height={500} />
                   <Text className="text-white capitalize py-5" variant="small">
-                    Forgot the old rules. You can have the best girls <br />{" "}
+                    Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
                   <div className="flex py-5">

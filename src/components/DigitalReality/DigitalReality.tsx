@@ -21,7 +21,7 @@ const DigitalReality = (props:DigitalProps) => {
               world.
             </Text>
             <Text variant="small" className="text-[#ED459A] mt-8 2xl:text-left text-center">
-              Welcome to a digital solution that improves women&aposs life and
+              Welcome to a digital solution that improves women&apos;s lives and
               means of subsistence through formal and informal
               income-generating opportunities.
             </Text>

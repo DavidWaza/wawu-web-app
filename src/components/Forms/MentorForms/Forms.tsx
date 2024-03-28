@@ -37,17 +37,17 @@ const Forms = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
-      <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center my-10">
+      <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center my-6">
         {/* FIRST NAME */}
-        <div className="mb-6">
-          <label className="text-black block">First Name</label>
+        <div className="mb-4">
+          <label className="text-black block !text-left">First Name</label>
           <input
             {...register("firstName", {
               required: "First Name is required",
             })}
             type="text"
             placeholder="First Name"
-            className="py-2 px-10 mr-3 text-black border border-1 rounded-md"
+            className="py-2 px-4 mr-3 text-black border border-1 rounded-md"
           />
           {errors.firstName && (
             <Text variant="small" className="text-red-600">
@@ -58,14 +58,14 @@ const Forms = () => {
 
         {/* LAST NAME */}
         <div className="flex-wrap">
-          <label className="text-black block">Last Name</label>
+          <label className="text-black block !text-left">Last Name</label>
           <input
             {...register("lastName", {
               required: "Last Name is required",
             })}
             type="text"
             placeholder="Last Name"
-            className="py-2 px-10 mr-3 text-black border border-1 rounded-md"
+            className="py-2 px-4 mr-3 text-black border border-1 rounded-md"
           />
           {errors.lastName && (
             <Text variant="small" className="text-red-600">
@@ -77,7 +77,7 @@ const Forms = () => {
 
       <div className="2xl:flex 2xl:justify-between 2xl:text-left text-center">
         {/* EMAIL */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="text-black block">Email</label>
           <input
             {...register("email", {
@@ -91,7 +91,7 @@ const Forms = () => {
             })}
             type="text"
             placeholder="Email"
-            className="py-2 px-10 text-black border border-1 rounded-md"
+            className="py-2 px-4 text-black border border-1 rounded-md"
           />
           {errors.email && (
             <Text variant="small" className="text-red-600">
@@ -109,7 +109,7 @@ const Forms = () => {
             })}
             type="text"
             placeholder="Gender"
-            className="py-2 px-10 mr-3 text-black border border-1 rounded-md"
+            className="py-2 px-4 mr-3 text-black border border-1 rounded-md"
           />
           {errors.gender && (
             <Text variant="small" className="text-red-600">
@@ -119,9 +119,9 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="2xl:flex justify-between 2xl:text-left text-center my-10">
+      <div className="2xl:flex justify-between 2xl:text-left text-center my-4">
         {/* PROFESSIONAL ROLE */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="text-black block">Professional Role</label>
           <input
             {...register("role", {
@@ -129,7 +129,7 @@ const Forms = () => {
             })}
             type="text"
             placeholder="Profesional Role"
-            className="py-2 px-10 text-black border border-1 rounded-md"
+            className="py-2 px-4 text-black border border-1 rounded-md"
           />
           {errors.role && (
             <Text variant="small" className="text-red-600">
@@ -147,7 +147,7 @@ const Forms = () => {
             })}
             type="number"
             placeholder="Phone Number"
-            className="py-2 px-10 mr-3 text-black border border-1 rounded-md"
+            className="py-2 px-4 mr-3 text-black border border-1 rounded-md"
           />
           {errors.number && (
             <Text variant="small" className="text-red-600">
@@ -170,7 +170,7 @@ const Forms = () => {
             })}
             type="number"
             placeholder="Years of Experience"
-            className="py-2 px-10 text-black border border-1 rounded-md"
+            className="py-2 px-4 text-black border border-1 rounded-md"
           />
           {errors.experienceLevel && (
             <Text variant="small" className="text-red-600">
@@ -181,7 +181,7 @@ const Forms = () => {
       </div>
 
       {/* TEXT-AREAS */}
-      <div className="block mt-10 px-10 2xl:px-0">
+      <div className="block mt-4 px-4 2xl:px-0">
         <div>
           <label className="text-black block text-sm">
             Please give a brief overview of your current job, main
@@ -394,7 +394,7 @@ const Forms = () => {
         </div>
       </div>
 
-      <div className="mt-10 2xl:text-left text-center mx-5">
+      <div className="mt-10 mx-0 text-justify">
         <Heading
           variant="small"
           fontColor="secondary"
@@ -420,10 +420,10 @@ const Forms = () => {
           </Text>
         </div>
       </div>
-      <div className="flex justify-center 2xl:justify-start">
+      <div className="flex 2xl:justify-start">
         <button
           type="submit"
-          className="py-1 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md mt-20"
+          className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md mt-20"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Loading..." : "Submit"}

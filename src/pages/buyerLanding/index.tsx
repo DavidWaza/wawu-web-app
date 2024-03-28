@@ -121,8 +121,8 @@ const BuyerLandingComponent = () => {
                 <DigitalReality
                   backgroundColor="bg-white"
                   textColor="text-black"
-                  borderColor="border-[#ED459A]"
-                />
+                  borderColor="border-[#ED459A]" 
+                  placeholder={""}                />
               </Section>
             </div>
           </div>

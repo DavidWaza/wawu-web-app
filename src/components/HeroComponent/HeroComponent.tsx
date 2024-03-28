@@ -24,13 +24,13 @@ const HeroComponent = (props: HeroComponentProps) => {
             </Heading>
             <Text
               variant="largeText"
-              className=" text-[#FF0084] 2xl:leading-[45px] capitalize py-5 "
+              className=" text-[#FF0084] 2xl:leading-[45px] -py-2 "
             >
               {props.secondaryText}
             </Text>
             <Text
               variant="extrasmall"
-              className="text-[#fff] leading-6 my-4 lowercase"
+              className="text-[#fff] leading-6 my-4"
             >
               {props.subText}
             </Text>
@@ -42,7 +42,7 @@ const HeroComponent = (props: HeroComponentProps) => {
               {<FaAngleRight /> && <FaAngleRight />}
             </Button>
           </div>
-          <div className="hidden 2xl:flex justify-center items-center mt-[60px]">
+          <div className="hidden 2xl:flex justify-center items-center pt-[70px]">
             <img
               className="d-block w-[70%] h-auto p-5"
               src={`/assets/${props.src}`}

@@ -65,7 +65,7 @@ const ButtonComponent = () => {
         {!mentee.active ? "Mentor" : "Mentee"}
       </Text>
       <Text variant="small" className="text-black my-2 sora">
-        interested to be a {!mentee.active ? "mentor" : "mentee"}
+         {!mentee.active ? "Interested in being a Mentor?" : "Do you want to be mentored?"}
       </Text>
       <ToggleButton
         label="Mentor"
@@ -93,7 +93,7 @@ const ButtonComponent = () => {
           {mentor.active
             ? `Thank you for applying to be a mentor. Please see the mentoring guideline document for further information. The information contained on the completed form is confidential and will not be shared with any persons other than the Mentorship Committee. We request that you complete this form as fully as possible. The information you provide will help us to match you with a mentee that has development/learning needs that most closely meet your experience and skills`
             : `Thank you for applying to be on the WAWU mentoring scheme. This form will help us match you with a mentor that has the experience and skills that match your interests, career goals and developmental needs.
-If you have any questions regarding the mentoring programme or the application process please do not hesitate to contact Laura Puiggalí (puiggali@wawu.ngo).`}
+If you have any questions regarding the mentoring programme or the application process please do not hesitate to contact wawu customer support`}
         </Text>
       </div>
       <Section>

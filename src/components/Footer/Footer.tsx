@@ -57,14 +57,17 @@ const Footer = () => {
         <div className="container mx-auto px-10">
           <div className="flex flex-wrap text-left lg:text-left items-center">
             <div className="w-full lg:w-6/12">
-              <Logo className="px-0" />
+              <Logo className="px-0 " />
               {contactLinks.map((contactLinks, index) => (
                 <div className="block px-4" key={index}>
                   <div className="flex gap-3 align-middle items-center mt-3">
-                    <Image src={contactLinks.src} alt="items-center" width={15} height={15} />
-                    <Text variant="small">
-                      {contactLinks.contact}
-                    </Text>
+                    <Image
+                      src={contactLinks.src}
+                      alt="items-center"
+                      width={15}
+                      height={15}
+                    />
+                    <Text variant="small">{contactLinks.contact}</Text>
                   </div>
                 </div>
               ))}
@@ -100,11 +103,14 @@ const Footer = () => {
               </Text>
             </div>
             <div className="flex justify-end items-center">
-              <Text variant="small" className="w-full  mx-auto">
+            <Text variant="small" className="w-full  mx-auto">
                 Privacy Policy
               </Text>
-              <Text variant="small" className="w-full mx-auto">
-                Terms & Condition
+              <Text variant="small" className="w-full  mx-auto">
+                Cookie Policy
+              </Text>
+              <Text variant="small" className="w-full">
+                T&C
               </Text>
             </div>
           </div>

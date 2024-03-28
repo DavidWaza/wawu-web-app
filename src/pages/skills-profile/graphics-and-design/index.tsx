@@ -138,7 +138,7 @@ export default function GraphicsAndDesign() {
         </div>
       </div>
       <div>
-        <DigitalReality backgroundColor="bg-[#290D43]" />
+        <DigitalReality backgroundColor="bg-[#290D43]" placeholder={""} />
       </div>
     </SkillsNavbarLayout>
   );
