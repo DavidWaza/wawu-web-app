@@ -1,23 +1,22 @@
 import Button from "@/components/ui/Button/Button";
 import { Text } from "@/components/ui/Typography/Typography";
+import Image from "next/image";
 
 const GetInTouch = () => {
   return (
-    <div className="block md:flex md:justify-between justify-center items-center py-20">
-      <div className="flex gap-10 w-full md:w-3/4 items-center">
-        <Text variant="medium" className="sora text-black w-full">
-          We are{" "}
-          <span className="text-[#FF0084]">\“A Girl Tech Spearheads</span>{" "}
-          Community&quot; represented by persons of all{" "}
-          <span className="text-[#730C99]">abilities.</span>
-        </Text>
-
-        <img src="/icons/arms-1.svg" alt="" className="hidden md:flex" />
+    <>
+      <div className="flex justify-between">
+        <div>
+          <Text variant="medium" className="sora text-black">
+            We are{" "}
+            <span className="text-[#FF0084]">A Girl Tech Spearheads</span>{" "}
+            Community represented by persons of all{" "}
+            <span className="text-[#730C99]">abilities.</span>
+          </Text>
+          <Image src={'/icons/arms-1.svg'} alt="arms" width={0} height={0} className="w-full " />
+        </div>
       </div>
-      <Button variant="tertiary" size="large">
-        Get in touch
-      </Button>
-    </div>
+    </>
   );
 };
 export default GetInTouch;

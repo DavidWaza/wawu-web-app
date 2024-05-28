@@ -16,11 +16,11 @@ const DigitalReality = (props:DigitalProps) => {
       <Section>
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
-            <Text variant="medium" className={`2xl:text-left text-center ${props.textColor}`}>
+            <Text variant="medium" className={`${props.textColor}`}>
               Welcome to your new digital reality that will <br /> rock your
               world.
             </Text>
-            <Text variant="small" className="text-[#ED459A] mt-8 2xl:text-left text-center">
+            <Text variant="small" className="text-[#ED459A] mt-8 ">
               Welcome to a digital solution that improves women&apos;s lives and
               means of subsistence through formal and informal
               income-generating opportunities.

@@ -6,7 +6,7 @@ interface containerProps {
 const Container = ({ children }: containerProps) => {
   return (
     <>
-      <div className="px-20">{children}</div>
+      <div className="md:px-20 text-center md:text-left">{children}</div>
     </>
   );
 };

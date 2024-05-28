@@ -4,44 +4,8 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { buttons, heroContents } from "@/data/portfolioData";
 
-const buttons = [
-  {
-    label: "Web Design",
-    link: "",
-  },
-  {
-    label: "WordPress",
-    link: "",
-  },
-  {
-    label: "Logo Design",
-    link: "",
-  },
-];
-
-const heroContents = [
-  {
-    roles: "Leaders",
-    backgroundColor: "bg-[#290D43]",
-    src: "",
-  },
-  {
-    roles: "Builders",
-    backgroundColor: "bg-[#A812E3]",
-    src: "",
-  },
-  {
-    roles: "Creators",
-    backgroundColor: "bg-[#290D43]",
-    src: "",
-  },
-  {
-    roles: "Caretakers",
-    backgroundColor: "bg-[#A812E3]",
-    src: "",
-  },
-];
 const Hero = () => {
   const settings = {
     dots: false,
@@ -61,11 +25,21 @@ const Hero = () => {
       <Slider {...settings}>
         {heroContents.map((heroContent, index) => (
           <div key={index}>
-            <div className={` ${heroContent.backgroundColor} px-10`}>
-              <div className="grid lg:grid-cols-2 2xl:py-20">
-                <div className="mx-auto 2xl:mt-[23%] lg:py-[30%] 2xl:py-0 uppercase px-[3rem]">
-                  <Image src="/assets/builders.png" alt="" width={500} height={500} />
-                  <Text className="text-white capitalize py-5" variant="small">
+            <div className={`${heroContent.backgroundColor}`}>
+              <div className="grid md:grid-cols-2 lg:pt-32 px-10 lg:px-20">
+                <div className="lg:px-[5rem] pt-20">
+                  <Image
+                    src="/assets/builders.png"
+                    alt=""
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto object-contain object-center"
+                  />
+                  <Text
+                    className="text-white leading-[30px] capitalize py-7"
+                    variant="small"
+                  >
                     Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
@@ -95,13 +69,14 @@ const Hero = () => {
                     ))}
                   </div>
                 </div>
-                <div className="hidden md:flex justify-center items-center">
+                <div className="flex justify-center items-center">
                   <Image
-                    className="d-block w-1/2 lg:w-[85%]"
+                    className="w-full h-auto object-contain object-center"
                     src="/assets/slide-1-img.png"
                     alt="slide 1"
-                    width={500}
-                    height={500}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                   />
                 </div>
               </div>

@@ -24,7 +24,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
           <Text variant="small" textWeight="semi-bold">
             {props.title}
           </Text>
-          <Text variant="small">{props.desc}</Text>
+          <Text variant="small" className="leading-[30px]">{props.desc}</Text>
           {props.link && (
             <div className="flex gap-4 items-center mt-5">
               <Text variant="small">

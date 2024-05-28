@@ -65,11 +65,11 @@ const Navbar: React.FC<linkProps> = () => {
   };
   return (
     <>
-      <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full 2xl:flex items-center px-10 z-10 hidden">
+      <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
         <div className="flex justify-between items-center w-full">
-          <div className="flex">
-            <Logo className="w-[7rem]" />
-            <div className="hidden gap-4 pt-[2.7rem] z-10 2xl:text-black 2xl:flex">
+          <div className="flex items-center">
+            <Logo className="w-full h-auto object-contain object-center" />
+            <div className="hidden gap-4 z-10 2xl:text-black 2xl:flex">
               {links.map((link) => (
                 <ul key={link.id}>
                   <Link href={link.href}>
@@ -86,9 +86,7 @@ const Navbar: React.FC<linkProps> = () => {
             </div>
           </div>
           <div className="flex justify-end items-center space-x-4">
-            <select
-              className="px-4 py-3 border border-[#ED459A] bg-transparent text-black rounded-lg"
-            >
+            <select className="px-4 py-3 border border-[#ED459A] bg-transparent text-black rounded-lg">
               <option>English</option>
               <option>Arabic</option>
               <option>French</option>
