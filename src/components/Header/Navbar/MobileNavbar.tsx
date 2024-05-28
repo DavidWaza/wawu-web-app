@@ -1,10 +1,9 @@
-"use client";
-
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 const MobileNavbar = () => {
   const [hamburgerClick, setHamburgerClick] = useState(false);
@@ -12,7 +11,9 @@ const MobileNavbar = () => {
   const handleClickHamburger = () => {
     setHamburgerClick(!hamburgerClick);
   };
-
+  const handleClose = () => {
+    setHamburgerClick(false);
+  };
   return (
     <nav className="bg-[#fefefe] h-[10.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
       <Image
@@ -36,15 +37,18 @@ const MobileNavbar = () => {
         </button>
       </div>
       {hamburgerClick && (
-        <div className="absolute top-full left-0 w-full bg-[#ffffff] flex flex-col items-center space-y-4 py-4 z-auto">
+        <div className="fixed top-0 right-0 h-full w-[70%] bg-[#ffffff] flex flex-col items-right px-10 space-y-4 py-32 z-50 transition-all ease-in-out">
+          <div onClick={handleClose} className="absolute right-[30px] top-7">
+            <RiCloseLargeLine className="text-black" size={30}/>
+          </div>
           <Link href="/" className="text-black text-lg">
             Home
           </Link>
           <Link href="/about" className="text-black text-lg">
             About
           </Link>
-          <Link href="/faq" className="text-black text-lg">
-            FAQ
+          <Link href="/mentorship" className="text-black text-lg">
+            Mentorship
           </Link>
           <Link href="/contact" className="text-black text-lg">
             Contact us
