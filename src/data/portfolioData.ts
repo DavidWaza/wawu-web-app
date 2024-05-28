@@ -146,3 +146,42 @@ interface PortfolioDataProps {
       src: "",
     },
   ];
+
+  export const sliderContent = [
+    {
+      src: "/assets/artisan.png",
+      backgroundColor: "bg-[#F5F7F6]",
+      title: "Artisan/Domestic",
+      text: "text-black",
+    },
+    {
+      src: "/assets/business.png",
+      backgroundColor: "bg-[#290D43]",
+      title: "Business",
+      text: "text-white",
+    },
+    {
+      src: "/assets/events.png",
+      backgroundColor: "bg-[#F5F7F6]",
+      title: "Events",
+      text: "text-black",
+    },
+    {
+      src: "/assets/graphics.png",
+      backgroundColor: "bg-[#290D43]",
+      title: "Graphics & Design",
+      text: "text-white",
+    },
+    {
+      src: "/assets/tech.png",
+      backgroundColor: "bg-[#F5F7F6]",
+      title: "Programming & Tech",
+      text: "text-black",
+    },
+    {
+      src: "/assets/additional-service.png",
+      backgroundColor: "bg-[#290D43]",
+      title: "Additional Services",
+      text: "text-white",
+    },
+  ];

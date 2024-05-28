@@ -3,48 +3,20 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 import { Text } from "@/components/ui/Typography/Typography";
+import { sliderContent } from "@/data/portfolioData";
 
 const AboutCarousel = () => {
-  const sliderContent = [
-    {
-      src: "/assets/artisan.png",
-      backgroundColor: "bg-[#F5F7F6]",
-      title: "Artisan/Domestic",
-      text: "text-black",
-    },
-    {
-      src: "/assets/business.png",
-      backgroundColor: "bg-[#290D43]",
-      title: "Business",
-      text: "text-white",
-    },
-    {
-      src: "/assets/events.png",
-      backgroundColor: "bg-[#F5F7F6]",
-      title: "Events",
-      text: "text-black",
-    },
-    {
-      src: "/assets/graphics.png",
-      backgroundColor: "bg-[#290D43]",
-      title: "Graphics & Design",
-      text: "text-white",
-    },
-    {
-      src: "/assets/tech.png",
-      backgroundColor: "bg-[#F5F7F6]",
-      title: "Programming & Tech",
-      text: "text-black",
-    },
-    {
-      src: "/assets/additional-service.png",
-      backgroundColor: "bg-[#290D43]",
-      title: "Additional Services",
-      text: "text-white",
-    },
-  ];
+  const PrevArrow = (props:any) => {
+    return <></>; // Return an empty fragment to hide the previous arrow
+  };
+  
+  const NextArrow = (props:any) => {
+    return <></>; // Return an empty fragment to hide the next arrow
+  };
+  
+ 
   const settings = {
-    dots: false,
+    dots:false,
     infinite: true,
     speed: 2500,
     slidesToShow: 3,
@@ -52,6 +24,8 @@ const AboutCarousel = () => {
     initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 2000,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     cssEase: "linear",
     responsive: [
       {
@@ -60,25 +34,25 @@ const AboutCarousel = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
-        },
+          dots:false
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
+          initialSlide: 2
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <>

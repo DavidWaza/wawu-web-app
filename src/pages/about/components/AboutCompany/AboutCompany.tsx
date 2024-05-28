@@ -2,11 +2,11 @@ import { Heading, Text } from "@/components/ui/Typography/Typography";
 const AboutCompany = () => {
   return (
     <>
-      <div className="w-full text-center 2xl:text-left">
+      <div className="w-full text-left">
         <Heading variant="medium" fontColor="secondary">
           Welcome to Wawu Technology Home of the Best Girl Tech Spearheads
         </Heading>
-        <Text variant="small" className="text-black 2xl:w-full mt-3 leading-8 text-xl tracking-wider">
+        <Text variant="small" className="text-black 2xl:w-full mt-3 leading-[25px] md:leading-[30px]">
           By nature, we are incubators, creators, caretakers, protectors &
           preservers. We are everything that’s required to serve enterprises
           through cutting edge digital solutions & experiences. <br />Stewards that

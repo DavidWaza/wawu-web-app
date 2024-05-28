@@ -13,7 +13,13 @@ const GetInTouch = () => {
             Community represented by persons of all{" "}
             <span className="text-[#730C99]">abilities.</span>
           </Text>
-          <Image src={'/icons/arms-1.svg'} alt="arms" width={0} height={0} className="w-full " />
+          <Image
+            src={"/icons/arms-1.svg"}
+            alt="arms"
+            width={0}
+            height={0}
+            className="lg:w-full w-[20%] hidden md:block"
+          />
         </div>
       </div>
     </>
