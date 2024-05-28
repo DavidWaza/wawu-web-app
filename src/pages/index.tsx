@@ -11,10 +11,10 @@ import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 const Home = () => {
   return (
     <div>
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
-      <div className="block lg:hidden">
+      <div className="block md:hidden">
         <MobileNavbar />
       </div>
       <Hero />
