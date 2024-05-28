@@ -12,10 +12,10 @@ import Image from "next/image";
 const AboutUs = () => {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden lgs:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
-      <div className="block md:hidden">
+      <div className="block lgs:hidden">
         <MobileNavbar />
       </div>
       <Hero />

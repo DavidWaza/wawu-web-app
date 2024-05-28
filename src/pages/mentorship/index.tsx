@@ -7,10 +7,10 @@ import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 export default function Mentorship() {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <MobileNavbar />
       </div>
       <HeroComponent
