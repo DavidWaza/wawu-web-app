@@ -45,7 +45,7 @@ const Seller = () => {
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
         buttonText="Become a seller"
         backgroundColor="bg-[#A812E3]"
-        src="/artisan.png"
+        imgSrc="/assets/artisan.png"
       />
       <div className="bg-white">
         <div className="py-10">

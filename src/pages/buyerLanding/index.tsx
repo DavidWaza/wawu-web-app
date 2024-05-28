@@ -44,7 +44,7 @@ const BuyerLandingComponent = () => {
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
         buttonText="Become a buyer"
         backgroundColor="bg-[#A812E3]"
-        src="/hanger-girl.png"
+        imgSrc="/assets/hanger-girl.png"
       />
       <div className="bg-white">
         <div className="py-10">

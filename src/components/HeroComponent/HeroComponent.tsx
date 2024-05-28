@@ -11,6 +11,7 @@ interface HeroComponentProps {
   subText: string;
   buttonText: string;
   backgroundColor: string;
+  imgSrc:any
 }
 
 const HeroComponent = (props: HeroComponentProps) => {
@@ -45,7 +46,7 @@ const HeroComponent = (props: HeroComponentProps) => {
               width={0}
               height={0}
               sizes="100vw"
-              src={"/assets/life-mentor.svg"}
+              src={props.imgSrc}
               alt="slide 2"
             />
           </div>

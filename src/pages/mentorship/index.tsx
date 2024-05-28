@@ -23,6 +23,7 @@ export default function Mentorship() {
         confident a mentor has been encouraging you or pointing the way
         if you do it effectively.`}
         buttonText="Sign In"
+        imgSrc={'/assets/life-mentor.svg'}
       />
       <div className="bg-white">
         <div className=" px-10 md:px-20 lg:px-[12rem] py-20">
