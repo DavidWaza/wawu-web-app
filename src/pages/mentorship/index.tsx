@@ -2,26 +2,17 @@ import Section from "@/components/ui/Section/Section";
 import Navbar from "@/components/Header/Navbar/Navbar";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
 import ButtonComponent from "./components/ToggleButton/ToggleButton";
+import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 
 export default function Mentorship() {
-  // const [mentorToggle, setMentorToggle] = useState(false);
-  // const [mentorActive, setMentorActive] = useState(false);
-
-  // const [menteeToggle, setMenteeToggle] = useState(false);
-  // const [menteeActive, setMenteeActive] = useState(false);
-
-  // const MentorToggleButton = () => {
-  //   setMentorToggle(!mentorToggle);
-  //   setMentorActive(!mentorActive);
-  // };
-  // const MenteeToggleButton = () => {
-  //   setMenteeToggle(!menteeToggle);
-  //   setMenteeActive(!menteeActive);
-  // };
-
   return (
     <>
-     <Navbar id={0} link="" href="" isCaret />
+      <div className="hidden lg:block">
+        <Navbar id={0} link="" href="" isCaret />
+      </div>
+      <div className="block lg:hidden">
+        <MobileNavbar />
+      </div>
       <HeroComponent
         backgroundColor="bg-[#471471]"
         header="Mentorship"
@@ -32,12 +23,11 @@ export default function Mentorship() {
         confident a mentor has been encouraging you or pointing the way
         if you do it effectively.`}
         buttonText="Sign In"
-        src="/mentor-girl.png"
       />
       <div className="bg-white">
-        <Section>
+        <div className=" px-10 md:px-20 lg:px-[12rem] py-20">
           <ButtonComponent />
-        </Section>
+        </div>
       </div>
     </>
   );

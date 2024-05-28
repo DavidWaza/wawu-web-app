@@ -9,7 +9,7 @@ interface toggleButtonProps {
   label: string;
   active: boolean;
   onToggle: () => void;
-  className?:string;
+  className?: string;
 }
 
 const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
@@ -23,12 +23,10 @@ const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
   );
 };
 
-
 const ButtonComponent = () => {
   const [mentor, setMentor] = useState({ toggle: false, active: true });
   const [mentee, setMentee] = useState({ toggle: false, active: false });
 
- 
   const handleToggle = (type: string) => {
     if (type === "mentor") {
       setMentor({
@@ -50,28 +48,21 @@ const ButtonComponent = () => {
       });
     }
   };
-
-  // const [slip, setSlip] = useState(false);
-  //  const handleSlip = () => {
-  //   setSlip(true)
-  //  }
-
   return (
     <div>
-      {/* <button onClick={handleSlip} className="text-black border">
-        {slip ? 'Slip right': 'Slip wrong'}
-      </button> */}
       <Text variant="medium" className="text-black my-2 sora">
         {!mentee.active ? "Mentor" : "Mentee"}
       </Text>
       <Text variant="small" className="text-black my-2 sora">
-         {!mentee.active ? "Interested in being a Mentor?" : "Do you want to be mentored?"}
+        {!mentee.active
+          ? "Interested in being a Mentor?"
+          : "Do you want to be mentored?"}
       </Text>
       <ToggleButton
         label="Mentor"
         active={mentor.active}
         onToggle={() => handleToggle("mentor")}
-        className='text-white'
+        className="text-white"
       />
       <ToggleButton
         label="Mentee"
@@ -96,17 +87,15 @@ const ButtonComponent = () => {
 If you have any questions regarding the mentoring programme or the application process please do not hesitate to contact wawu customer support`}
         </Text>
       </div>
-      <Section>
-        <div className="grid 2xl:grid-cols-2 justify-center">
-          {mentor.active ? (
-            <Forms />
-          ) : (
-            <div>
-              <MenteeForms />
-            </div>
-          )}
-        </div>
-      </Section>
+      <div className="grid 2xl:grid-cols-2">
+        {mentor.active ? (
+          <Forms />
+        ) : (
+          <div>
+            <MenteeForms />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
