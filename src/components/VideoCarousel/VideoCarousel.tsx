@@ -21,7 +21,7 @@ const VideoCarousel = () => {
   return (
     <div className="grid 2xl:grid-cols-2 lg:px-[5rem]">
       <div className="bg-[#471471]">
-        <ReactPlayer url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE" />
+        <ReactPlayer url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE" width={`100%`} />
       </div>
       <div className="flex py-20 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">

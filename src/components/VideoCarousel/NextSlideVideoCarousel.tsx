@@ -22,7 +22,7 @@ const NextSlideVideoCarousel = () => {
   return (
     <div className="grid 2xl:grid-cols-2 lg:px-[5rem]">
       <div className="bg-[#471471]">
-        <ReactPlayer url="https://youtu.be/JZagrGUUEM0?si=ZGTW9-mNFu0CtJQp" />
+        <ReactPlayer url="https://youtu.be/JZagrGUUEM0?si=ZGTW9-mNFu0CtJQp" width={`100%`}/>
       </div>
       <div className="flex py-20 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">
