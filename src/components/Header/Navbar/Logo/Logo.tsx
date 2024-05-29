@@ -2,14 +2,17 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
-const Logo = () => {
+interface IlogoProps{
+  classname?:string
+}
+const Logo = ({classname}:IlogoProps) => {
   return (
     <div>
       <Link href={"/"}>
         <Image
-          src="/assets/logo.png"
+          src="/assets/WAWU-logo.svg"
           alt=""
-          className={"w-full h-auto object-contain object-center"}
+          className={`${classname} w-full h-auto object-contain object-center`}
           width={0}
           height={0}
           sizes="100vw"

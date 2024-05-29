@@ -18,6 +18,7 @@ interface ButtonProps
   color?: string;
   prefix?: string;
   suffix?: ReactNode | null;
+  children: ReactNode
 }
 
 const Button = ({

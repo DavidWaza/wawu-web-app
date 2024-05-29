@@ -12,9 +12,9 @@ const Type = () => {
           Who is your Girl?
         </Text>
         <TypeWriter />
-        <div className="flex mt-5 gap-5">
-          <Text className="text-black">Start Here </Text>
-          <div className=" rounded-full p-1 w-1 mt-3 bg-[#730C99] text-transparent"></div>
+        <div className="flex pt-6 gap-1">
+          <Text className="text-black">Start Here</Text>
+          <div className=" rounded-full w-2 h-2 mt-3 bg-[#730C99] text-transparent"></div>
         </div>
       </Section>
     </div>

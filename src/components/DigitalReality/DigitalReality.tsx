@@ -17,7 +17,7 @@ const DigitalReality = (props:DigitalProps) => {
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
             <Text variant="medium" className={`${props.textColor}`}>
-              Welcome to your new digital reality that will <br /> rock your
+              Welcome to your new digital reality that will rock your
               world.
             </Text>
             <Text variant="small" className="text-[#ED459A] mt-8 ">
@@ -30,11 +30,11 @@ const DigitalReality = (props:DigitalProps) => {
             <div className=" flex justify-center items-center mt-[3rem]">
               <input
                 placeholder={props.placeholder}
-                className={`py-2 px-3 rounded-r-none rounded-md w-1/2 border ${props.borderColor}`}
+                className={`py-2 px-3 rounded-r-none rounded-md w-1/2 border text-black ${props.borderColor}`}
               />
               <Button
                 variant="primary"
-                className="rounded-l-none p-2 border-none"
+                className="rounded-l-none p-[10px] border-none"
               >
                 {" "}
                {props.submitText}

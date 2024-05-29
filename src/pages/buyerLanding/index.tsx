@@ -7,6 +7,8 @@ import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import Accordion from "@/components/AccordionComponent/Accordion";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
+import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
+import Image from "next/image";
 
 const professions = [
   "I am a developer",
@@ -38,7 +40,12 @@ const ProductFeatures = [
 const BuyerLandingComponent = () => {
   return (
     <div>
-      <Navbar id={0} href={""} link={""} isCaret={false} />
+      <div className="hidden lg:block">
+        <Navbar id={0} link="" href="" isCaret />
+      </div>
+      <div className="block lg:hidden">
+        <MobileNavbar />
+      </div>
       <HeroComponent
         header="We bring the work to you"
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
@@ -51,13 +58,20 @@ const BuyerLandingComponent = () => {
           <Text variant="medium" className="text-center text-black">
             Join our growing steward’s community
           </Text>
-          <div className="flex justify-center gap-4 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 mt-10 px-10 justify-center">
             {professions.map((profession, index) => (
               <div key={index} className="block">
-                <img src={"/assets/photo-girl.png"} alt="photo-girl" />
+                <Image
+                  src={`/assets/photo-girl.png`}
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-[80%] m-auto h-auto object-contain object-center"
+                />
                 <Text
                   variant="small"
-                  textWeight="bold"
+                  textWeight="semi-bold"
                   className="text-black text-center my-2 capitalize"
                 >
                   {profession}
@@ -73,7 +87,7 @@ const BuyerLandingComponent = () => {
               </Heading>
               <Text variant="small" className="leading-6 mt-5">
                 Keeping your eye on the ball while performing a deep dive on the
-                start-up mentality to drive <br /> convergence
+                start-up mentality to drive convergence
               </Text>
               <div className="grid lg:grid-cols-2">
                 <div className="block">
@@ -121,8 +135,10 @@ const BuyerLandingComponent = () => {
                 <DigitalReality
                   backgroundColor="bg-white"
                   textColor="text-black"
-                  borderColor="border-[#ED459A]" 
-                  placeholder={""}                />
+                  borderColor="border-[#ED459A]"
+                  placeholder={""}
+                  submitText="Get Started"
+                />
               </Section>
             </div>
           </div>

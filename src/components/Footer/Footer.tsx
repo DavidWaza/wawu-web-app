@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row text-left lg:text-left items-center">
           <div className="w-full lg:w-6/12">
-            <Logo className="px-0" />
+            <Logo classname="lg:!w-[50%]" />
             {contactLinks.map((contactLink, index) => (
               <div className="block px-4" key={index}>
                 <div className="flex gap-3 align-middle items-center mt-3">
@@ -26,7 +26,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="w-full lg:w-6/12 px-4 sora capitalize pt-6 lg:pt-0">
-            <div className="flex flex-wrap items-top mb-6 justify-end text-black">
+            <div className="flex flex-wrap items-top mb-6 lg:justify-end text-black">
               {pageLinks.map((pageLink, index) => (
                 <div className="mx-2 lg:mx-4" key={index}>
                   <span className="block text-sm font-semibold mb-2">

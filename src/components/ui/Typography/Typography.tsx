@@ -108,7 +108,7 @@ const Text: React.FC<TextProps> = ({
     lineHeight = "leading-[21px]";
     color = "text-[#4E5058]";
   } else if (variant === "small") {
-    fontSize = "text-[16px]";
+    fontSize = "md:text-[16px] text-sm";
     lineHeight = "leading-[21px]";
     color = "text-[#4E5058]";
   } else if (variant === "medium") {
