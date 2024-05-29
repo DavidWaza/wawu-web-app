@@ -3,6 +3,8 @@ import CustomSelect from "@/components/ui/Inputs/SelectInputs";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import Button from "@/components/ui/Button/Button";
+import Navbar from "@/components/Header/Navbar/Navbar";
+import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 
 const salutationOptions = ["Reason number 1", "Reason number 2"];
 
@@ -10,7 +12,7 @@ const ContactUs = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FieldValues>();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -19,7 +21,13 @@ const ContactUs = () => {
   };
   return (
     <div>
-      <div className="text-center py-10 px-10 lg:px-[20rem]">
+      <div className="hidden lg:block">
+        <Navbar id={0} link="" href="" isCaret />
+      </div>
+      <div className="block lg:hidden">
+        <MobileNavbar />
+      </div>
+      <div className="text-center pt-[12rem] px-10 lg:px-[20rem]">
         <Heading fontColor="secondary" variant="medium">
           Get In Touch With Us
         </Heading>
@@ -29,7 +37,7 @@ const ContactUs = () => {
           corrupti officia ut reiciendis eos quidem distinctio iure placeat
           harum ab?
         </Text>
-        <div className="my-20">
+        <div className="mt-20">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="lg:grid grid-cols-2 gap-10">
               <CustomInput

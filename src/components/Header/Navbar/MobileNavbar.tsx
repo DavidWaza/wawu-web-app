@@ -50,7 +50,7 @@ const MobileNavbar = () => {
           <Link href="/mentorship" className="text-black text-lg">
             Mentorship
           </Link>
-          <Link href="/contact" className="text-black text-lg">
+          <Link href="/contact-us" className="text-black text-lg">
             Contact us
           </Link>
         </div>

@@ -93,6 +93,7 @@ const ClientBriefReview = () => {
           <Button
             size="small"
             variant="primary"
+            href={'/client-brief'}
             className="p-2 !bg-[#151B28] mb-5 gap-3 flex items-center justify-center"
           >
             <LuMoveLeft />
