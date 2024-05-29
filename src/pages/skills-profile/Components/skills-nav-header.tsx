@@ -1,36 +1,8 @@
+import { navLinks } from "@/data/portfolioData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
-  {
-    href: "/skills-profile/graphics-and-design",
-    label: "Graphics & Design",
-  },
-  {
-    href: "/skills-profile/programming-tech",
-    label: "Programming & Tech",
-  },
-  {
-    href: "/skills-profile/digital-marketing",
-    label: "Digital Marketing",
-  },
-  {
-    href: "/skills-profile/video-and-animation",
-    label: "Video & Animation",
-  },
-  {
-    href: "/skills-profile/writing-and-translation",
-    label: "Writing & Translation",
-  },
-  {
-    href: "/skills-profile/music-and-audio",
-    label: "Music & Audio",
-  },
-  {
-    href: "/skills-profile/business",
-    label: "Business",
-  },
-];
+
 
 export default function SkillsHeaderNav() {
   const pathname = usePathname();

@@ -21,7 +21,7 @@ const Buyers = () => {
     <div>
       <Header />
       <GigPortfolio />
-      <div className="bg-white px-[2rem] 2xl:p-[5rem]">
+      <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black">
           Nice to see you, Mavis
         </Text>
