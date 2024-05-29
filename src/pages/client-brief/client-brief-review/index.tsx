@@ -91,10 +91,9 @@ const ClientBriefReview = () => {
         </div>
         <div className="lg:flex justify-between my-20">
           <Button
-            // prefix={}
             size="small"
             variant="primary"
-            className="p-2 !bg-[#151B28] gap-3 flex items-center justify-center"
+            className="p-2 !bg-[#151B28] mb-5 gap-3 flex items-center justify-center"
           >
             <LuMoveLeft />
             Back
