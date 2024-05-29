@@ -53,6 +53,9 @@ const MobileNavbar = () => {
           <Link href="/contact-us" className="text-black text-lg">
             Contact us
           </Link>
+          <Link href="/faq" className="text-black text-lg">
+            FAQ
+          </Link>
         </div>
       )}
     </nav>

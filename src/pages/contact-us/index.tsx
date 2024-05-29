@@ -27,7 +27,7 @@ const ContactUs = () => {
       <div className="block lg:hidden">
         <MobileNavbar />
       </div>
-      <div className="text-center pt-[12rem] px-10 lg:px-[20rem]">
+      <div className="text-center pt-10 lg:pt-[12rem] px-10 lg:px-[20rem]">
         <Heading fontColor="secondary" variant="medium">
           Get In Touch With Us
         </Heading>
@@ -37,7 +37,7 @@ const ContactUs = () => {
           corrupti officia ut reiciendis eos quidem distinctio iure placeat
           harum ab?
         </Text>
-        <div className="mt-20">
+        <div className="mt-10 lg:mt-20">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="lg:grid grid-cols-2 gap-10">
               <CustomInput
