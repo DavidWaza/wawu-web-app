@@ -10,7 +10,7 @@ const ClientBriefReview = () => {
     <>
       <Header />
       <div className="lg:px-[8rem] px-10 my-10">
-        <div className="bg-[#A812E3] w-full h-[20rem] !p-0">
+        <div className="bg-[#A812E3] w-full py-10 rounded-md !p-0">
           <div className="py-20 px-10">
             <Heading fontColor="primary" variant="medium">
               Let&apos;s the matching begin...
@@ -89,7 +89,7 @@ const ClientBriefReview = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between my-20">
+        <div className="lg:flex justify-between my-20">
           <Button
             // prefix={}
             size="small"

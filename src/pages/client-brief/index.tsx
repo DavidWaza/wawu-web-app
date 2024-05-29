@@ -92,6 +92,20 @@ const ClientBrief = () => {
               />
             </div>
             <UploadImage />
+            <div className="my-6">
+              <div className="flex gap-2 items-center py-5 ">
+                <input type="checkbox" value={""} />
+                <label className="text-black">My budget is flexible</label>
+              </div>
+              <Button
+                size="small"
+                className="p-2 flex gap-5 justify-center items-center"
+                href="/client-brief/client-brief-review"
+                suffix={<MdArrowRightAlt />}
+              >
+                Review
+              </Button>
+            </div>
           </form>
         </div>
       </div>
