@@ -20,7 +20,7 @@ const perks = [
 ];
 const NextSlideVideoCarousel = () => {
   return (
-    <div className="grid 2xl:grid-cols-2 gap-10">
+    <div className="grid 2xl:grid-cols-2 lg:px-[5rem]">
       <div className="bg-[#471471]">
         <ReactPlayer url="https://youtu.be/JZagrGUUEM0?si=ZGTW9-mNFu0CtJQp" />
       </div>

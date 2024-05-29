@@ -19,11 +19,11 @@ const perks = [
 ];
 const VideoCarousel = () => {
   return (
-    <div className="grid 2xl:grid-cols-2 gap-10">
+    <div className="grid 2xl:grid-cols-2 lg:px-[5rem]">
       <div className="bg-[#471471]">
         <ReactPlayer url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE" />
       </div>
-      <div className="flex 2xl:gap-5 flex-col ">
+      <div className="flex py-20 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">
           Video Title
         </Heading>

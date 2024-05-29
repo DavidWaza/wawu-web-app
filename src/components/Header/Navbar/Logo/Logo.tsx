@@ -12,7 +12,7 @@ const Logo = ({classname}:IlogoProps) => {
         <Image
           src="/assets/WAWU-logo.svg"
           alt=""
-          className={`${classname} w-full h-auto object-contain object-center`}
+          className={`${classname} h-auto object-contain object-center`}
           width={0}
           height={0}
           sizes="100vw"

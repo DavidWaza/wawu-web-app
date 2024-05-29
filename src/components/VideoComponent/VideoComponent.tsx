@@ -14,15 +14,17 @@ const VideoComponent = () => {
   };
   return (
     <>
-      <div className="bg-[#471471] py-10 transition-all ease-linear">
-        <div className={`${!nextVideo ? "block" : "hidden"}`}>
-          <VideoCarousel />
-        </div>
-        {nextVideo && (
-          <div className="text-white text-lg transition-all ease-in-out">
-            <NextSlideVideoCarousel />
+      <div className="bg-[#471471] py-20 transition-all ease-linear">
+        <div className="px-20">
+          <div className={`${!nextVideo ? "block" : "hidden"}`}>
+            <VideoCarousel />
           </div>
-        )}
+          {nextVideo && (
+            <div className="text-white text-lg transition-all ease-in-out">
+              <NextSlideVideoCarousel />
+            </div>
+          )}
+        </div>
         <div className={`flex px-10 2xl:justify-end justify-center`}>
           <div
             className="flex justify-center items-center gap-2 p-2 border-none cursor-pointer bg-[#E54D9A] rounded-md"

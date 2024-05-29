@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row text-left lg:text-left items-center">
           <div className="w-full lg:w-6/12">
-            <Logo classname="lg:!w-[50%]" />
+            <Logo classname="w-[30%] lg:w-[50%]" />
             {contactLinks.map((contactLink, index) => (
               <div className="block px-4" key={index}>
                 <div className="flex gap-3 align-middle items-center mt-3">
