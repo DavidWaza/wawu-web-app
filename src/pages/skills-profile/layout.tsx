@@ -70,7 +70,7 @@ const SkillsNavbarLayout: React.FC<linkProps> = ({children}) => {
       <nav className="px-[5rem]">
         <div className="flex justify-between items-center w-full">
           <div className="flex">
-            <Logo className="w-[7rem]" />
+            <Logo  />
             <div className="hidden gap-4 pt-[2.7rem] z-10 2xl:text-black 2xl:flex">
               {links.map((link) => (
                 <ul key={link.id}>
