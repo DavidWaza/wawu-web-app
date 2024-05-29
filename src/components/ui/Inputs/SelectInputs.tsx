@@ -24,7 +24,7 @@ const CustomSelect: React.FC<SelectProps> = ({
   errors,
   className,
 }) => (
-  <div className="">
+  <div className="mb-6">
     <label className="text-black block text-sm font-medium text-left">{label}</label>
     <select
       {...register(name, {

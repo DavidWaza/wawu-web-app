@@ -22,7 +22,7 @@ const CustomInput: React.FC<InputProps> = ({
   type,
   className,
 }) => (
-  <div className="mb-6">
+  <div className="mb-6 rounded-md">
     <label className="text-black block font-medium text-left">{label}</label>
     <label className="text-black block text-[12px] text-left">{sublabel}</label>
     <input

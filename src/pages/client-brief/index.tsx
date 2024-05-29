@@ -24,8 +24,8 @@ const ClientBrief = () => {
     <>
       <Header />
       <div className="lg:px-[8rem] px-10 my-10">
-        <div className="bg-[#A812E3] w-full h-[20rem] !p-0">
-          <div className="py-20 px-10">
+        <div className="bg-[#A812E3] w-full rounded-md !p-0">
+          <div className="py-10 px-10">
             <Heading fontColor="primary" variant="medium">
               Let&apos;s the matching begin...
             </Heading>
@@ -33,7 +33,7 @@ const ClientBrief = () => {
               This is where you fill us in one of the big picture?
             </Text>
             <Button
-              className="border-none lg:w-[26rem] w-full p-3 flex gap-10 items-center"
+              className="border-none lg:w-[26rem] w-full p-1 lg:p-3 flex gap-10 items-center text-sm"
               size="large"
               suffix={<MdArrowRightAlt />}
             >
@@ -43,74 +43,55 @@ const ClientBrief = () => {
         </div>
         <div className="my-10">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid lg:grid-cols-2 gap-5">
-              <div>
-                <CustomInput
-                  label="Project brief title"
-                  sublabel="Keep it as brief as possible, this will help us match you to the right category"
-                  name="project"
-                  className="bg-transparent pt-5 pb-12"
-                  placeholder="Example: Social media marketing for my business"
-                  register={register}
-                  errors={errors}
-                  type="text"
-                />
-                <CustomInput
-                  label="What are you looking to get done?"
-                  sublabel="This will help get your brief to the right talent. Sepcifics help here."
-                  name="project"
-                  className="bg-transparent pt-5 pb-12"
-                  placeholder="Example: Social media marketing for my business"
-                  register={register}
-                  errors={errors}
-                  type="text"
-                />{" "}
-                <div>
-                  <UploadImage />
-                </div>
-              </div>
-              <div>
-                <CustomSelect
-                  label="Best category for your project"
-                  name="capacity"
-                  className="bg-transparent py-4"
-                  options={salutationOptions}
-                  register={register}
-                  errors={errors}
-                />
-                <CustomSelect
-                  label="Which industry are you in?"
-                  name="capacity"
-                  className="bg-transparent py-4"
-                  options={salutationOptions}
-                  register={register}
-                  errors={errors}
-                />
-                <CustomInput
-                  label="Budget"
-                  name="project"
-                  className="bg-transparent py-4"
-                  placeholder="Up to"
-                  register={register}
-                  errors={errors}
-                  type="text"
-                />{" "}
-                <div className="flex gap-2 items-center">
-                  <input type="checkbox" value={""} />
-                  <label className="text-black">My budget is flexible</label>
-                </div>
-              </div>
+            <div className="grid lg:grid-cols-2 items-center gap-10">
+              <CustomInput
+                label="Project brief title"
+                sublabel="Keep it as brief as possible, this will help us match you to the right category"
+                name="project"
+                className="bg-transparent pt-5 pb-12"
+                placeholder="Example: Social media marketing for my business"
+                register={register}
+                errors={errors}
+                type="text"
+              />
+              <CustomSelect
+                label="Best category for your project"
+                name="capacity"
+                className="bg-transparent py-4"
+                options={salutationOptions}
+                register={register}
+                errors={errors}
+              />
+
+              <CustomInput
+                label="What are you looking to get done?"
+                sublabel="This will help get your brief to the right talent. Sepcifics help here."
+                name="project"
+                className="bg-transparent pt-5 pb-12"
+                placeholder="Example: Social media marketing for my business"
+                register={register}
+                errors={errors}
+                type="text"
+              />
+              <CustomSelect
+                label="Which industry are you in?"
+                name="capacity"
+                className="bg-transparent py-4"
+                options={salutationOptions}
+                register={register}
+                errors={errors}
+              />
+              <CustomInput
+                label="Budget"
+                name="project"
+                className="bg-transparent py-4"
+                placeholder="Up to"
+                register={register}
+                errors={errors}
+                type="text"
+              />
             </div>
-            <div className="flex justify-center my-10">
-              <Button
-                size="small"
-                className="p-2 flex gap-5 justify-center items-center"
-                // href="/client-brief/client-brief-review"
-                suffix={<MdArrowRightAlt />}
-              >
-                Review
-              </Button>
-            </div>
+            <UploadImage />
           </form>
         </div>
       </div>
