@@ -26,7 +26,7 @@ AccordionProps) => {
         }`}
         onClick={onClick}
       >
-        <p className="question-content text-black">{question}</p>
+        <p className="question-content text-sm lg:text-lg text-black">{question}</p>
         <RiArrowDropDownLine
           className={`arrow text-black ${isOpen ? "active" : ""}`}
         />

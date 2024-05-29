@@ -21,7 +21,7 @@ const FAQ = () => {
           <Heading variant="medium" fontColor="secondary">
             Frequently Asked Questions
           </Heading>
-          <div className="px-20">
+          <div className="px-10">
             <Text variant="small" className="pt-3">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been <br />
