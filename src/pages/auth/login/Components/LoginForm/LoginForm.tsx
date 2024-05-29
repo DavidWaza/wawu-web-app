@@ -21,7 +21,7 @@ const LoginForm = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
-      <div>
+      <div className="lg:pt-32">
         <div className="mb-6">
           <label className="text-black block">Email</label>
           <input

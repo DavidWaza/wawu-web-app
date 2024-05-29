@@ -1,6 +1,8 @@
+'use client'
 import React from "react";
 import { Heading, Text } from "../ui/Typography/Typography";
 import { IoCheckmark } from "react-icons/io5";
+import ReactPlayer from "react-player";
 
 const perks = [
   {
@@ -20,7 +22,7 @@ const NextSlideVideoCarousel = () => {
   return (
     <div className="grid 2xl:grid-cols-2 gap-10">
       <div className="bg-[#471471]">
-        <div className="bg-white h-[50vh] w-full">...</div>
+        <ReactPlayer url="https://youtu.be/JZagrGUUEM0?si=ZGTW9-mNFu0CtJQp" />
       </div>
       <div className="flex py-20 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">

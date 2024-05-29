@@ -127,23 +127,27 @@ interface PortfolioDataProps {
   export const heroContents = [
     {
       roles: "Leaders",
-      backgroundColor: "bg-[#290D43]",
-      src: "",
+      backgroundColor: "leaders-bg",
+      textSrc: "/assets/leaders-text.svg",
+      imageSrc:'/assets/leader-hero.svg'
     },
     {
       roles: "Builders",
-      backgroundColor: "bg-[#A812E3]",
-      src: "",
+      backgroundColor: "builders-bg",
+      textSrc: "/assets/builders.svg",
+      imageSrc:'/assets/slide-1-img.png'
     },
     {
       roles: "Creators",
-      backgroundColor: "bg-[#290D43]",
-      src: "",
+      backgroundColor: "creators-bg",
+      textSrc: "/assets/creators-text.svg",
+      imageSrc:'/assets/creators-hero.svg'
     },
     {
       roles: "Caretakers",
-      backgroundColor: "bg-[#A812E3]",
-      src: "",
+      backgroundColor: "caretakers-bg",
+      textSrc: "/assets/caretaker-text.svg",
+      imageSrc:'/assets/caretaker-hero.svg'
     },
   ];
 

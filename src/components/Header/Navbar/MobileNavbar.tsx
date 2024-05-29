@@ -22,7 +22,7 @@ const MobileNavbar = () => {
         height={0}
         sizes="100vw"
         alt="logo"
-        className="w-full h-auto object-cover object-center"
+        className="w-full md:w-[50%] h-auto object-cover object-center"
       />
       <div>
         <button

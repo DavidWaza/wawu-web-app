@@ -20,16 +20,30 @@ const Hero = () => {
     arrows: false,
     cssEase: "linear",
   };
+
+  const backgroundChange = (roles: any) => {
+    if (roles === "Leaders") {
+      return "bg-[#F060A8]";
+    } else if (roles === "Builders") {
+      return "bg-[#A812E3]";
+    } else if (roles === "Creators") {
+      return "bg-[#290D43]";
+    } else if (roles === "Caretakers") {
+      return "bg-[#151B28]";
+    } else {
+      return "bg-black";
+    }
+  };
   return (
     <>
       <Slider {...settings}>
         {heroContents.map((heroContent, index) => (
           <div key={index}>
-            <div className={`${heroContent.backgroundColor}`}>
-              <div className="grid md:grid-cols-2 lg:pt-32 px-10 lg:px-20">
+            <div className={backgroundChange(heroContent.roles)}>
+              <div className="grid md:grid-cols-2 lg:pt-20 px-10 lg:px-20">
                 <div className="lg:px-[5rem] pt-20">
                   <Image
-                    src="/assets/builders.png"
+                    src={`${heroContent.textSrc}`}
                     alt=""
                     width={0}
                     height={0}
@@ -71,8 +85,8 @@ const Hero = () => {
                 </div>
                 <div className="flex justify-center items-center">
                   <Image
-                    className="w-full h-auto object-contain object-center"
-                    src="/assets/slide-1-img.png"
+                    className="w-[80%] h-auto object-contain object-center"
+                    src={`${heroContent.imageSrc}`}
                     alt="slide 1"
                     width={0}
                     height={0}

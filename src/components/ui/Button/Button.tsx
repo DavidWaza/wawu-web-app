@@ -18,7 +18,7 @@ interface ButtonProps
   color?: string;
   prefix?: string;
   suffix?: ReactNode | null;
-  children: ReactNode
+  children: ReactNode;
 }
 
 const Button = ({
@@ -28,7 +28,7 @@ const Button = ({
   className,
   children,
   width = "w-full",
-  href = "#",
+  href = "",
   disabled,
   onClick,
   isActive,
@@ -82,7 +82,7 @@ const Button = ({
 
   return (
     <Link href={href}>
-   <button
+      <button
         className={`
       ${width} 
       ${maxHeight} 
@@ -103,7 +103,6 @@ const Button = ({
         {suffix && <span className="px-2">{suffix}</span>}
       </button>
     </Link>
-   
   );
 };
 
