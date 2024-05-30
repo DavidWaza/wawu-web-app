@@ -2,7 +2,11 @@ import Image from "next/image";
 import Logo from "../Header/Navbar/Logo/Logo";
 import { Text } from "../ui/Typography/Typography";
 import Link from "next/link";
-import { contactLinks, pageLinks, socialLinks } from "@/data/portfolioData";
+import { contactLinks, pageLinks } from "@/data/portfolioData";
+import { FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa6";
+import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
@@ -40,11 +44,18 @@ const Footer = () => {
               ))}
             </div>
             <div className="flex justify-center lg:justify-end gap-4 lg:gap-10 mt-10">
-              {socialLinks.map((socialLink, index) => (
-                <Link href={socialLink.link} key={index}>
-                  <img src={socialLink.src} alt="social-logo" />
-                </Link>
-              ))}
+              <Link href={"#"}>
+                <FaFacebook size={25} />
+              </Link>
+              <Link href={"#"}>
+                <FaXTwitter size={25} />
+              </Link>
+              <Link href={"#"}>
+                <FaTiktok size={25} />
+              </Link>
+              <Link href={"#"}>
+                <RiInstagramFill size={25} />
+              </Link>
             </div>
           </div>
         </div>

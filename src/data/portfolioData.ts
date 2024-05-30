@@ -1,3 +1,7 @@
+
+
+
+
 interface PortfolioDataProps {
     imgSrc: string;
     title: string;
@@ -90,24 +94,8 @@ interface PortfolioDataProps {
       label: "Community",
     },
   ];
-  export const socialLinks = [
-    {
-      link: "#",
-      src: "/icons/ig.svg",
-    },
-    {
-      link: "#",
-      src: `/icons/fb.svg`,
-    },
-    {
-      link: "#",
-      src: "/icons/tiktok.svg",
-    },
-    {
-      link: "#",
-      src: "/icons/vector.svg",
-    },
-  ];
+
+
 
   export const buttons = [
     {
