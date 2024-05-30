@@ -12,7 +12,7 @@ interface DigitalProps {
 }
 const DigitalReality = (props:DigitalProps) => {
   return (
-    <div className={`${props.backgroundColor}`}>
+    <div className={`${props.backgroundColor} py-10`}>
       <Section>
         <div className="grid 2xl:grid-cols-2">
           <div className="block">
@@ -27,7 +27,7 @@ const DigitalReality = (props:DigitalProps) => {
             </Text>
           </div>
           <div>
-            <div className=" flex justify-center items-center mt-[3rem]">
+            <div className=" flex justify-center items-center lg:mt-[3rem] mt-10">
               <input
                 placeholder={props.placeholder}
                 className={`py-2 px-3 rounded-r-none rounded-md w-1/2 border text-black ${props.borderColor}`}

@@ -20,13 +20,13 @@ const perks = [
 ];
 const NextSlideVideoCarousel = () => {
   return (
-    <div className="grid 2xl:grid-cols-2 lg:px-[5rem]">
+    <div className="grid 2xl:grid-cols-2 gap-10 lg:px-[5rem]">
       <div className="bg-[#471471]">
         <ReactPlayer url="https://youtu.be/JZagrGUUEM0?si=ZGTW9-mNFu0CtJQp" width={`100%`}/>
       </div>
-      <div className="flex py-20 2xl:gap-5 flex-col">
+      <div className="flex py-10 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">
-          Video Title
+          Wawu Jingle
         </Heading>
         <div className="flex-col mt-5">
           <Text variant="small" className="text-[#F7ABD1]">

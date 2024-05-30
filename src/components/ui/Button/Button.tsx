@@ -58,7 +58,7 @@ const Button = ({
     borderWidth;
     borderColor;
   } else if (variant === "tertiary") {
-    className = "mt-20 transition-all ease-in-out py-2";
+    className = "transition-all ease-in-out py-2";
     backgroundColor =
       "bg-[#810FAF] hover:bg-blue-500 transition-all ease-in-out";
     color = "text-[#fff]";

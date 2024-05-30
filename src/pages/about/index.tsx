@@ -12,10 +12,10 @@ import Image from "next/image";
 const AboutUs = () => {
   return (
     <>
-      <div className="hidden lgs:block">
+      <div className="hidden lg:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
-      <div className="block lgs:hidden">
+      <div className="block lg:hidden">
         <MobileNavbar />
       </div>
       <Hero />
@@ -32,20 +32,18 @@ const AboutUs = () => {
                 sizes="100vw"
               />
             </div>
-            <AboutCompany />
+            <div className="py-3">
+              <AboutCompany />
+            </div>
           </div>
         </Section>
-        <Container>
-          <Section>
-            <Heading variant="medium" fontColor="secondary">
-              Popular Services
-            </Heading>
-          </Section>
+        <Section>
+          <Heading variant="medium" fontColor="secondary">
+            Popular Services
+          </Heading>
           <AboutCarousel />
-          <Section>
-            <GetInTouch />
-          </Section>
-        </Container>
+          <GetInTouch />
+        </Section>
       </div>
     </>
   );

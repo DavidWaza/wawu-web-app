@@ -7,7 +7,7 @@ import { contactLinks, pageLinks, socialLinks } from "@/data/portfolioData";
 const Footer = () => {
   return (
     <footer className="bg-slate-50 pt-8 pb-6">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 lg:px-[11rem]">
         <div className="flex flex-col lg:flex-row text-left lg:text-left items-center">
           <div className="w-full lg:w-6/12">
             <Logo classname="w-[30%] lg:w-[50%]" />
@@ -57,14 +57,23 @@ const Footer = () => {
             2023 wawutech. All Rights Reserved
           </Text>
           <div className="flex gap-5 items-center justify-center md:justify-start">
-            <Text variant="small" className="w-full text-center md:text-left">
+            <Text
+              variant="small"
+              className="w-full text-center md:text-left text-nowrap"
+            >
               Privacy Policy
             </Text>
-            <Text variant="small" className="w-full text-center md:text-left">
+            <Text
+              variant="small"
+              className="w-full text-center md:text-left text-nowrap"
+            >
               Cookie Policy
             </Text>
-            <Text variant="small" className="w-full text-center md:text-left">
-              T&C
+            <Text
+              variant="small"
+              className="w-full text-center md:text-left text-nowrap"
+            >
+              Terms $ Condition
             </Text>
           </div>
         </div>

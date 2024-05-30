@@ -26,7 +26,7 @@ export default function Mentorship() {
         imgSrc={"/assets/life-mentor.svg"}
       />
       <div className="bg-white">
-        <div className=" px-10 md:px-20 lg:px-[12rem] py-20">
+        <div className=" px-10 md:px-20 lg:px-[5rem] xl:px-[12rem] py-20">
           <ButtonComponent />
         </div>
       </div>

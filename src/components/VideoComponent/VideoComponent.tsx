@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Section from "../ui/Section/Section";
 import VideoCarousel from "../VideoCarousel/VideoCarousel";
 import NextSlideVideoCarousel from "../VideoCarousel/NextSlideVideoCarousel";
-import Button from "../ui/Button/Button";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 
 const VideoComponent = () => {
@@ -25,9 +24,9 @@ const VideoComponent = () => {
             </div>
           )}
         </div>
-        <div className={`flex px-10 2xl:justify-end justify-center`}>
+        <div className={`flex lg:px-[12rem] 2xl:justify-end px-9`}>
           <div
-            className="flex justify-center items-center gap-2 p-2 border-none cursor-pointer bg-[#E54D9A] rounded-md"
+            className="flex justify-center items-center gap-2 py-2 px-3 border-none cursor-pointer bg-[#E54D9A] rounded-md"
             onClick={NextVideoSlider}
             role="button"
             tabIndex={0}
