@@ -81,7 +81,6 @@ const Navbar: React.FC<linkProps> = () => {
     router.push("/auth/login");
   };
 
-  // const fullNavDropdown = ({}) => {};
   return (
     <>
       <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
