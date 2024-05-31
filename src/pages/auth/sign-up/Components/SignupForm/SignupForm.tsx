@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
 import Link from "next/link";
+import { IoEyeOutline } from "react-icons/io5";
 
 type FormFields = {
   email: string;
@@ -11,6 +12,12 @@ type FormFields = {
 };
 
 const SignupForm = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  function togglePassword() {
+    setPasswordVisible((prev) => !prev);
+  }
+
   const {
     register,
     handleSubmit,
@@ -78,27 +85,28 @@ const SignupForm = () => {
           )}
         </div>
       </div>
-      <div className="mb-2 ">
-        <label className="text-black block">Password</label>
-        <div className="relative">
-          <input
-            {...register("password", {
-              required: "Password is required",
-            })}
-            type="number"
-            placeholder="Minimum of 8 characters"
-            className="py-2 px-2 text-black border border-1 rounded-md w-full "
-          />
-          <div>
-            <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
-          </div>
+      <div className="relative">
+        <input
+          {...register("password", {
+            required: "Password is required",
+          })}
+          type={passwordVisible ? "text" : "password"}
+          placeholder="Minimum of 8 characters"
+          className="py-2 px-2 text-black border border-1 rounded-md w-full "
+        />
+        <div onClick={togglePassword}>
+          {passwordVisible ? (
+            <>
+              <IoEyeOutline className="absolute top-3 right-0 mx-6 text-black" />
+            </>
+          ) : (
+            <>
+              <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
+            </>
+          )}
         </div>
-
-        {errors.password && (
-          <p className="text-red-600">{errors.password.message}</p>
-        )}
       </div>
-      <div className="flex justify-start">
+      <div className="flex justify-start my-2">
         <div className="flex gap-2">
           <input type="checkbox" className="w-4 h-auto" />
           <p className="text-black text-sm">

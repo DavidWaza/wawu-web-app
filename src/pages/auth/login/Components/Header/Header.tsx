@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import AuthLogo from "../../assets/logo.png";
+import AuthLogo from "../../../../../../public/assets/WAWU-logo.svg";
 import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { RxCaretDown } from "react-icons/rx";
@@ -80,10 +80,17 @@ const AuthNavbar: React.FC<linkProps> = () => {
             </div>
           </div>
           <div className="flex justify-end space-x-4 px-20">
-            <button className="p-4 border-none bg-transparent text-[#ED459A]">
-              Sign Up
-            </button>
-            <Button variant="primary" size="small" className="py-2 my-3">
+            <Link href={`/auth/sign-up`}>
+              <button className="p-4 border-none bg-transparent text-[#ED459A]">
+                Sign Up
+              </button>
+            </Link>
+            <Button
+              variant="primary"
+              size="small"
+              className="py-2 my-3"
+              href="/auth/login"
+            >
               Log in
             </Button>
           </div>

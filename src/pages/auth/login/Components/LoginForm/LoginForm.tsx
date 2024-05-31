@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
+import { IoEyeOutline } from "react-icons/io5";
 import Link from "next/link";
 
 type FormFields = {
@@ -9,6 +10,11 @@ type FormFields = {
 };
 
 const LoginForm = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  function togglePassword() {
+    setPasswordVisible((prev) => !prev);
+  }
   const {
     register,
     handleSubmit,
@@ -21,48 +27,52 @@ const LoginForm = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
-      <div className="lg:pt-32">
-        <div className="mb-6">
-          <label className="text-black block">Email</label>
+      <div className="mb-6">
+        <label className="text-black block">Email</label>
+        <input
+          {...register("email", {
+            required: "Email is required",
+            //   pattern: /^[A-Za-z]+$/i,
+            validate: (value) => {
+              if (!value.includes("@")) {
+                return "Email must include @";
+              }
+            },
+          })}
+          type="text"
+          placeholder="Email"
+          className="py-2 px-2 text-black border border-1 rounded-md w-full"
+        />
+        {errors.email && <p className="text-red-600">{errors.email.message}</p>}
+      </div>
+
+      <div className="mb-2">
+        <label className="text-black block">Password</label>
+        <div className="relative">
           <input
-            {...register("email", {
-              required: "Email is required",
-              //   pattern: /^[A-Za-z]+$/i,
-              validate: (value) => {
-                if (!value.includes("@")) {
-                  return "Email must include @";
-                }
-              },
+            {...register("password", {
+              required: "Password is required",
             })}
-            type="text"
-            placeholder="Email"
-            className="py-2 px-2 text-black border border-1 rounded-md w-full"
+            type={passwordVisible ? "text" : "password"}
+            placeholder="Minimum of 8 characters"
+            className="py-2 px-2 text-black border border-1 rounded-md w-full "
           />
-          {errors.email && (
-            <p className="text-red-600">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div className="mb-2">
-          <label className="text-black block">Password</label>
-          <div className="relative">
-            <input
-              {...register("password", {
-                required: "Password is required",
-              })}
-              type="number"
-              placeholder="Minimum of 8 characters"
-              className="py-2 px-2 text-black border border-1 rounded-md w-full "
-            />
-            <div>
-              <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
-            </div>
+          <div onClick={togglePassword}>
+            {passwordVisible ? (
+              <>
+                <IoEyeOutline className="absolute top-3 right-0 mx-6 text-black" />
+              </>
+            ) : (
+              <>
+                <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
+              </>
+            )}
           </div>
-
-          {errors.password && (
-            <p className="text-red-600">{errors.password.message}</p>
-          )}
         </div>
+
+        {errors.password && (
+          <p className="text-red-600">{errors.password.message}</p>
+        )}
       </div>
       <div className="flex justify-between">
         <div className="flex gap-2">

@@ -20,7 +20,7 @@ const LayoutAuth = ({ children }: AuthWrapperProps) => {
           <div>
             <div className="w-full pb-10 ">
               <div>
-                <p className="text-black font-bold text-xl lg:pt-32">
+                <p className="text-black font-bold text-xl py-10 md:pt-20">
                   {pathname === "/auth/login"
                     ? "Login"
                     : pathname === "/auth/sign-up"
