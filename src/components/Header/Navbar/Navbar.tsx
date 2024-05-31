@@ -4,8 +4,10 @@ import Link from "next/link";
 import Logo from "./Logo/Logo";
 import Button from "@/components/ui/Button/Button";
 import { RxCaretDown } from "react-icons/rx";
-import FullDropDown from "./FullDropDown";
 import { useRouter } from "next/router";
+import WhyFullDropDown from "./WhyFullDropDown";
+import FindFullNavigation from "./FindFullDropdown";
+import WorkFullDropdown from "./WorkFullDropdown";
 
 interface linkProps {
   id: number;
@@ -48,14 +50,29 @@ const links = [
 ];
 
 const Navbar: React.FC<linkProps> = () => {
-  const [isToggle, setIsToggle] = useState(false);
+  const [whyIsToggle, setWhyIsToggle] = useState(false);
+  const [findIsToggle, setFindIsToggle] = useState(false);
+  const [workIsToggle, setWorkIsToggle] = useState(false);
 
   const router = useRouter();
 
-  function toggleNav() {
-    setIsToggle(!isToggle);
+  function whyToggleNav() {
+    setWhyIsToggle(!whyIsToggle);
+    setFindIsToggle(false);
+    setWorkIsToggle(false);
   }
 
+  function findToggleNav() {
+    setFindIsToggle(!findIsToggle);
+    setWhyIsToggle(false);
+    setWorkIsToggle(false);
+  }
+
+  function workToggleNav() {
+    setWorkIsToggle(!workIsToggle);
+    setFindIsToggle(false);
+    setWhyIsToggle(false);
+  }
   const handleSignUp = () => {
     router.push("/auth/sign-up");
   };
@@ -63,6 +80,8 @@ const Navbar: React.FC<linkProps> = () => {
   const handleLogin = () => {
     router.push("/auth/login");
   };
+
+  // const fullNavDropdown = ({}) => {};
   return (
     <>
       <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
@@ -75,14 +94,26 @@ const Navbar: React.FC<linkProps> = () => {
                   <Link href={link.href}>
                     <li className="flex justify-center items-center">
                       {link.link}{" "}
-                      <button onClick={toggleNav}>
+                      <button
+                        onClick={
+                          link.link === "Why Wawu"
+                            ? whyToggleNav
+                            : link.link === "Find Talent"
+                            ? findToggleNav
+                            : link.link === "Find Work"
+                            ? workToggleNav
+                            : undefined
+                        }
+                      >
                         {link.isCaret && <RxCaretDown className="text-black" />}
                       </button>
                     </li>
                   </Link>
                 </ul>
               ))}
-              {isToggle && <FullDropDown />}
+              {whyIsToggle && <WhyFullDropDown />}
+              {findIsToggle && <FindFullNavigation />}
+              {workIsToggle && <WorkFullDropdown />}
             </div>
           </div>
           <div className="flex justify-end items-center space-x-4">
