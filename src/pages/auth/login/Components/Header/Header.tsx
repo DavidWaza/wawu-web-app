@@ -3,9 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import AuthLogo from "../../assets/logo.png";
 import Button from "@/components/ui/Button/Button";
-import FullDropDown from "@/components/Header/Navbar/FullDropDown";
 import Image from "next/image";
 import { RxCaretDown } from "react-icons/rx";
+import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
 
 interface linkProps {
   id: number;

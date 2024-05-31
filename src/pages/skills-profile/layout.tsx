@@ -4,9 +4,9 @@ import Link from "next/link";
 import Logo from "@/components/Header/Navbar/Logo/Logo";
 import Button from "@/components/ui/Button/Button";
 import { RxCaretDown } from "react-icons/rx";
-import FullDropDown from "@/components/Header/Navbar/FullDropDown";
 import { useRouter } from "next/router";
 import SkillsHeaderNav from "./Components/skills-nav-header";
+import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
 
 interface linkProps {
   id: number;
