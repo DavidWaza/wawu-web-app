@@ -31,7 +31,7 @@ const WawuPropsComponent = () => {
                 />
               </div>
             ))}
-            <div className="flex 2xl:justify-start justify-center">
+            <div className="flex 2xl:justify-start justify-center my-12">
               <Button variant="tertiary" className="mt-20 py-2" size="medium">
                 Get Started
               </Button>
