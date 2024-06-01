@@ -12,6 +12,7 @@ interface HeroComponentProps {
   buttonText: string;
   backgroundColor: string;
   imgSrc: any;
+  link?:string;
 }
 
 const HeroComponent = (props: HeroComponentProps) => {
@@ -35,6 +36,7 @@ const HeroComponent = (props: HeroComponentProps) => {
             <Button
               size="large"
               className="p-2 border-none flex items-center justify-center gap-1 text-center"
+              href={props.link}
             >
               {props.buttonText}
               {<FaAngleRight /> && <FaAngleRight />}
