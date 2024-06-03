@@ -1,6 +1,7 @@
 import { useOnboarding } from '@/Context/onboardingContext';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 type FormFields = {
   mentorReasons: string;
@@ -14,10 +15,12 @@ const AboutUserProfileOnboarding: React.FC = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
+  const router = useRouter()
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(data);
-    goToNextStep(); // Call the function to go to the next step
+    goToNextStep(); 
+    router.push('/onboarding/user-expertise')
   };
 
   return (

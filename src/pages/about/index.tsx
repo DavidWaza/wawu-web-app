@@ -8,6 +8,7 @@ import AboutCarousel from "./components/AboutCompany/AboutCarousel/AboutCarousel
 import GetInTouch from "./components/AboutCompany/GetInTouch/GetInTouch";
 import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 import Image from "next/image";
+import PricePackage from "@/components/PricePackage/PricePackage";
 
 const AboutUs = () => {
   return (

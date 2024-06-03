@@ -14,11 +14,11 @@ const AboutSection = () => {
         Development of Shopify Dropshipping Stores is my passion and I do my
         work with full dedication making my clients satisfied over years.
       </Text>
-      <Link href={"#"}>
+      {/* <Link href={"#"}>
         <span className="flex gap-3 text-[#FF0084] items-center group my-4">
           Read more <FaArrowRight className="group-hover:animate-bounce" />
         </span>
-      </Link>
+      </Link> */}
     </div>
   );
 };

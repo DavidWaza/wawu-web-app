@@ -5,47 +5,20 @@ import { IoLocationOutline } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import Button from "@/components/ui/Button/Button";
+import UserAvatar from "../UserAvatar/UserAvatar";
 
-interface UserActiveProps {
-  userActive: "online" | "offline" | "away";
-}
 
-const UserProfile: React.FC<UserActiveProps> = ({ userActive }) => {
-  const UserActive = (active: "online" | "offline" | "away") => {
-    if (active === "online") {
-      return (
-        <div className="animate-pulse bg-[#48d848] rounded-full size-4"></div>
-      );
-    } else if (active === "offline") {
-      return (
-        <div className="animate-pulse bg-red-500 rounded-full size-4"></div>
-      );
-    } else if (active === "away") {
-      return (
-        <div className="animate-pulse bg-gray-500 rounded-full size-4"></div>
-      );
-    } else {
-      return null;
-    }
-  };
+const UserProfile = () => {
+ 
 
   return (
     <div className="lg:flex gap-5 my-5 items-center">
-      <div>
-        <Image
-          src="/assets/photo-girl.png"
-          alt="img"
-          width={400}
-          height={400}
-          className="rounded-full w-20 h-20 z-auto"
-        />
-        <div className="ml-[55px] -mt-[10px]">{UserActive(userActive)}</div>
-      </div>
+      <UserAvatar userActive={"online"} />
       <div className="">
         <Text variant="medium" className="text-black">
           Jane Doe
         </Text>
-        <div className="lg:flex gap-5 my-5 items-center">
+        <div className="lg:flex gap-5 my-5 items-center space-y-3">
           <UserDetails
             prefix={<IoLocationOutline className="text-black" size={20} />}
             suffix="Nigeria"

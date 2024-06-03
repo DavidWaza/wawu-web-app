@@ -90,7 +90,6 @@ const Text: React.FC<TextProps> = ({
   textWeight,
   variant = "medium",
   hover = false,
-  textCenter = false,
   textColor = "#576266",
   textLink = false,
   className,
@@ -99,7 +98,6 @@ const Text: React.FC<TextProps> = ({
   let lineHeight = "leading-[30px]";
   let fontWeight = "font-normal";
   let color = `text-[${textColor}]`;
-  // let textAlign = "text-start";
   if (variant === "tiny") {
     lineHeight = "leading-[16px]";
     fontSize = "text-[12px]";

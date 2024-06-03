@@ -11,7 +11,7 @@ import { RiInstagramFill } from "react-icons/ri";
 const Footer = () => {
   return (
     <footer className="bg-slate-50 pt-8 pb-6">
-      <div className="container mx-auto px-6 lg:px-[11rem]">
+      <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row text-left lg:text-left items-center">
           <div className="w-full lg:w-6/12">
             <Logo classname="w-[30%] lg:w-[50%]" />

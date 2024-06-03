@@ -6,7 +6,7 @@ import UserAvatar from "@/components/UserAvatar/UserAvatar";
 
 const Header = () => {
   return (
-    <div className="bg-[#290D43] px-[2rem] flex gap-4 justify-between h-[7rem] 2xl:h-auto">
+    <div className="bg-[#290D43] px-10 lg:px-[8.4rem] py-5 flex gap-4 justify-between">
       <div className="flex items-center gap-5">
         <Logo />
         <Search />

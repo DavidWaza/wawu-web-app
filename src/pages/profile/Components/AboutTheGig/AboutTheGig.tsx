@@ -17,7 +17,7 @@ const AboutTheGig = () => {
         </Text>
       </div>
       <div className="my-10">
-        <Text variant="medium" className="text-black">
+        <Text variant="small" className="text-black" textWeight="semi-bold">
           What&apos;s included?
         </Text>
         <Text variant="small" className="my-5">
@@ -29,7 +29,7 @@ const AboutTheGig = () => {
         </Text>
       </div>
       <div className="my-10">
-        <Text variant="medium" className="text-black">
+        <Text variant="small" className="text-black" textWeight="semi-bold">
           Why choose us?
         </Text>
         <Text variant="small" className="my-5">
@@ -40,13 +40,13 @@ const AboutTheGig = () => {
         </Text>
       </div>
       <div className="my-10">
-        <Text variant="medium" className="text-black">
+        <Text variant="small" className="text-black" textWeight="semi-bold">
           BONUS: Dropshipping Guides, Facebook Ad Strategies included with all
           packages for FREE
         </Text>
       </div>
       <div className="my-10">
-        <Text variant="medium" className="text-black">
+        <Text variant="small" className="text-black" textWeight="semi-bold">
           ORDER WITH CONFIDENCE
         </Text>
         <Text variant="small" className="my-5">
