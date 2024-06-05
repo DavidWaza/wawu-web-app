@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import PortfolioLayout from "./layout";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { BsShare } from "react-icons/bs";
@@ -7,8 +9,20 @@ import { Text } from "@/components/ui/Typography/Typography";
 import { PortfolioData } from "../../data/portfolioData";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import ModalDetails from "../buyers/Components/ModalDetails/ModalDetails";
 
 export default function PersonalPortfolio() {
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => {
+    setOpen(true);
+  };
+  const onCloseModal = () => {
+    setOpen(false);
+  };
+
   return (
     <PortfolioLayout>
       <div className="lg:px-[8.2rem]">
@@ -39,9 +53,21 @@ export default function PersonalPortfolio() {
           </div>
         </div>
         <div className="flex justify-end my-10">
-          <Button size="large" suffix={<MdArrowRightAlt />} className="p-2">
+          <Button
+            size="large"
+            suffix={<MdArrowRightAlt />}
+            className="p-2"
+            onClick={onOpenModal}
+          >
             Create new Portfolio
           </Button>
+          {open && (
+            <Modal open={open} onClose={onCloseModal} center>
+              <div className="py-20">
+                <ModalDetails />
+              </div>
+            </Modal>
+          )}
         </div>
         <div className="my-10">
           <div className="grid lg:grid-cols-3 gap-5">

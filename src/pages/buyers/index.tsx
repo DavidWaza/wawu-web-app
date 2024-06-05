@@ -23,15 +23,15 @@ const Buyers = () => {
       <GigPortfolio />
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black">
-          Nice to see you, Mavis
+          Nice to see you, MAVIS
         </Text>
         <CreatePortfolioSection />
-        <div className="mt-20 flex justify-between">
+        <div className="mt-20 mb-10 flex justify-between">
           <div className="block">
-            <Text variant="small" className="text-black" textWeight="bold">
+            <Text variant="base" className="text-black" textWeight="bold">
               Based on your recent search
             </Text>
-            <Text variant="tiny" className="text-black">
+            <Text variant="extrasmall" className="text-black">
               Here are the basic tools you need
             </Text>
           </div>
@@ -42,7 +42,6 @@ const Buyers = () => {
             <GoArrowRight className="text-[#ED459A]" />
           </div>
         </div>
-        <div className="mt-20" />
         <RecentSearch src={""} title={""} index={0} />
         <div className="mt-32">
           <Heading variant="medium" fontColor="secondary">

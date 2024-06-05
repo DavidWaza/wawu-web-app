@@ -8,6 +8,9 @@ import SkillsSection from "../Components/SkillsSection/SkillsSection";
 import AboutTheGig from "../Components/AboutTheGig/AboutTheGig";
 import AboutSeller from "../Components/AboutSeller/AboutSeller";
 import PricePackage from "@/components/PricePackage/PricePackage";
+import Userportfolio from "../Components/UserPortfolio/Userportfolio";
+import Accordion from "@/components/AccordionComponent/Accordion";
+import Card from "@/components/Cards/Card";
 
 export default function SellerProfile() {
   return (
@@ -25,6 +28,36 @@ export default function SellerProfile() {
           <PricePackage />
           <AboutSeller />
           <AboutSection />
+          <Userportfolio />
+          <div className="my-20">
+            <span className="text-black font-semibold text-2xl">FAQ</span>
+            <Accordion />
+          </div>
+        </div>
+        <div>{/* Review Section */}</div>
+      </div>
+      <div className="px-10 lg:px-[8.4rem]">
+        <span className="text-black font-semibold text-2xl ">
+          Recommended for you.
+        </span>
+        <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      </div>
+      <div className="px-10 lg:px-[8.4rem] my-20">
+        <span className="text-black font-semibold text-2xl ">
+          browsing history.
+        </span>
+        <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </div>
       </div>
     </>

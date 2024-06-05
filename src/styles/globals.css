@@ -57,7 +57,7 @@ a {
 .wrapper {
   border-bottom: 1px solid black;
   overflow: hidden;
-  margin: 20px 50px;
+  /* margin: 20px 50px; */
 }
 
 .wrapper .question-container {
