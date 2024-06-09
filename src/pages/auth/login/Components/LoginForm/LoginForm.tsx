@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
 import { IoEyeOutline } from "react-icons/io5";
 import Link from "next/link";
+import axiosInstance from "@/pages/api/axiosInstance";
 
 type FormFields = {
   email: string;
@@ -21,9 +22,8 @@ const LoginForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = async (data:FormFields) => {
+  
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">

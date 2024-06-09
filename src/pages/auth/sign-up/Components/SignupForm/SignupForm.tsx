@@ -1,18 +1,33 @@
+"use client";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
 import Link from "next/link";
 import { IoEyeOutline } from "react-icons/io5";
+import axiosInstance from "@/pages/api/axiosInstance";
+import axios from "axios";
+import { useOnboarding } from "@/Context/onboardingContext";
+import { useRouter } from "next/navigation";
+import { sign_up_url } from "@/pages/api/endpoints";
 
 type FormFields = {
   email: string;
   password: string;
   firstName: string;
   lastName: string;
+  phoneNumber: string;
 };
 
 const SignupForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const { goToNextStep } = useOnboarding();
+  const router = useRouter();
 
   function togglePassword() {
     setPasswordVisible((prev) => !prev);
@@ -24,9 +39,15 @@ const SignupForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+    try {
+      const response = await axiosInstance.post(sign_up_url, data);
+      console.log("log", response.data.data);
+      goToNextStep();
+      router.push("/onboarding/user-screen-about");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
@@ -43,6 +64,8 @@ const SignupForm = () => {
                 }
               },
             })}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="wawutech@gmail.com"
             className="py-2 px-2 text-black border border-1 rounded-md w-full"
@@ -60,6 +83,8 @@ const SignupForm = () => {
             {...register("firstName", {
               required: "First Name is required",
             })}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             type="text"
             placeholder="Jane"
             className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
@@ -76,6 +101,8 @@ const SignupForm = () => {
             {...register("lastName", {
               required: "Last Name is required",
             })}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             type="text"
             placeholder="Doe"
             className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
@@ -85,11 +112,32 @@ const SignupForm = () => {
           )}
         </div>
       </div>
+
+      {/* PASSWORD */}
+      <div className="flex-wrap mb-5">
+        <label className="text-black block">Phone Number</label>
+        <input
+          {...register("phoneNumber", {
+            required: "Last Name is required",
+          })}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          type="number"
+          placeholder="Phone number"
+          className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
+        />
+        {errors.phoneNumber && (
+          <p className="text-red-600">{errors.phoneNumber.message}</p>
+        )}
+      </div>
+
       <div className="relative">
         <input
           {...register("password", {
             required: "Password is required",
           })}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           type={passwordVisible ? "text" : "password"}
           placeholder="Minimum of 8 characters"
           className="py-2 px-2 text-black border border-1 rounded-md w-full "

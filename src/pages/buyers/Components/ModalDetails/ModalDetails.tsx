@@ -4,7 +4,7 @@ import React from "react";
 
 const ModalDetails = () => {
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between items-center gap-20 border border-b border-t-0 border-x-0">
         <div className="flex items-center gap-5 pb-5">
           <UserAvatar />

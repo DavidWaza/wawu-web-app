@@ -27,9 +27,10 @@ const CreatePortfolioSection = () => {
         <Button
           variant="secondary"
           size="large"
+          href="/buyers/create-seller-portfolio"
           className="py-2 !w-[10rem] !font-semibold !bg-[#EBEBEB] hover:bg-slate-50 ease-in transition-all text-black"
         >
-          Create a brief
+          Create a portfolio
         </Button>
       </div>
     </div>

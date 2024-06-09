@@ -1,27 +1,19 @@
-import Button from "../../ui/Button/Button";
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Heading, Text } from "../../ui/Typography/Typography";
-import { MdCheckBox } from "react-icons/md";
 import Link from "next/link";
-
-type FormFields = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  gender: string;
-  role: string;
-  number: number;
-  experienceLevel: number;
-  overview: string;
-  capacity: string;
-  reason: string;
-  values: string;
-  challenge: string;
-  mentorReasons: string;
-  pastMentor: string;
-  focus: string;
-};
+import axiosInstance from "@/pages/api/axiosInstance";
+import { mentee_url } from "@/pages/api/endpoints";
+import { FormFields } from "../../../../types/Types";
+import InputField from "@/components/TextField/InputField";
+import TextAreaField from "@/components/TextField/TextArea";
+import SelectField from "@/components/TextField/SelectField";
+import {
+  convertFileToBase64,
+  isValidFileSize,
+  isValidImageType,
+} from "../../../../utilities/imageUtils";
+import { toast } from "sonner";
 
 const MenteeForms = () => {
   const {
@@ -30,296 +22,249 @@ const MenteeForms = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+  const [salutation, setSalutation] = useState<FormFields["salutation"]>("");
+  const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
+  const [lastName, setLastName] = useState<FormFields["lastName"]>("");
+  const [email, setEmail] = useState<FormFields["email"]>("");
+  const [address, setAddress] = useState<FormFields["address"]>("");
+  const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
+  const [major, setMajor] = useState<FormFields["major"]>("");
+  const [specialization, setSpecialization] =
+    useState<FormFields["specialization"]>("");
+  const [bestContactType, setBestContactType] =
+    useState<FormFields["bestContactType"]>("");
+  const [reasonForApplication, setReasonForApplication] =
+    useState<FormFields["reasonForApplication"]>("");
+  const [challenges, setChallenges] = useState<FormFields["challenges"]>("");
+  const [helpToRender, setHelpToRender] =
+    useState<FormFields["helpToRender"]>("");
+  const [idealMentor, setIdealMentor] = useState<FormFields["idealMentor"]>("");
+  const [mentorExperienceGain, setMentorExperienceGain] =
+    useState<FormFields["mentorExperienceGain"]>("");
+  const [interests, setInterests] = useState<FormFields["interests"]>("");
+  const [additionalInfo, setAdditionalInfo] =
+    useState<FormFields["additionalInfo"]>("");
+  const [error, setError] = useState("");
+
+  const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+    if (data.file && data.file.length > 0) {
+      const signature = data.file[0];
+      if (!isValidImageType(signature) || !isValidFileSize(signature)) {
+        setError("Invalid image type or size.");
+        return;
+      }
+
+      try {
+        const base64Signature = await convertFileToBase64(signature);
+        const response = await axiosInstance.post(mentee_url, {
+          ...data,
+          signature: {
+            fileName: signature.name,
+            file: base64Signature,
+          },
+        });
+        toast.success(response.data.message);
+      } catch (err: any) {
+        // toast.error(err);
+        console.error(err);
+      }
+    } else {
+      setError("Please upload a signature image.");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block">
       <div className="py-10">
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="py-5">
+          <label className="text-black block text-sm">Salutation</label>
+          <select
+            {...register("salutation")}
+            // onChange={handleChange}
+            onChange={(e) => setSalutation(e.target.value)}
+            className="py-2 px-2 text-black border border-1 rounded-md w-full"
+          >
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Mister</option>
+          </select>
+          {errors.salutation && (
+            <Text variant="small" className="text-red-600">
+              {errors.salutation.message}
+            </Text>
+          )}
+        </div>
+        <div className="grid md:grid-cols-2 lg:gap-10 gap-5">
           {/* FIRST NAME */}
-          <div className="flex flex-col">
-            <label className="text-black">First Name</label>
-            <input
-              {...register("firstName", {
-                required: "First Name is required",
-              })}
-              type="text"
-              placeholder="First Name"
-              className="py-2 px-4 mr-3 text-black border border-1 rounded-md w-full"
-            />
-            {errors.firstName && (
-              <Text variant="small" className="text-red-600">
-                {errors.firstName.message}
-              </Text>
-            )}
-          </div>
+          <InputField
+            label="First Name"
+            name="firstName"
+            placeholder="First Name"
+            value={firstName}
+            register={register}
+            errors={errors}
+            setValue={(value) => setFirstName(value)}
+          />
 
           {/* LAST NAME */}
-          <div className="flex flex-col">
-            <label className="text-black block !text-left">Last Name</label>
-            <input
-              {...register("lastName", {
-                required: "Last Name is required",
-              })}
-              type="text"
-              placeholder="Last Name"
-              className="py-2 px-4 mr-3 text-black border border-1 rounded-md w-full"
-            />
-            {errors.lastName && (
-              <Text variant="small" className="text-red-600">
-                {errors.lastName.message}
-              </Text>
-            )}
-          </div>
+          <InputField
+            label="Last Name"
+            name="lastName"
+            placeholder="Last Name"
+            value={lastName}
+            register={register}
+            errors={errors}
+            setValue={(value) => setLastName(value)}
+          />
 
           {/* EMAIL */}
-          <div className="mb-4">
-            <label className="text-black block">Email</label>
-            <input
-              {...register("email", {
-                required: "Email is required",
-                //   pattern: /^[A-Za-z]+$/i,
-                validate: (value) => {
-                  if (!value.includes("@")) {
-                    return "Email must include @";
-                  }
-                },
-              })}
-              type="text"
-              placeholder="Email"
-              className="py-2 px-4 text-black border border-1 rounded-md w-full "
-            />
-            {errors.email && (
-              <Text variant="small" className="text-red-600">
-                {errors.email.message}
-              </Text>
-            )}
-          </div>
-
-          {/* GENDER */}
-          <div>
-            <label className="text-black block">Gender</label>
-            <input
-              {...register("gender", {
-                required: " gender is required",
-              })}
-              type="text"
-              placeholder="Gender"
-              className="py-2 px-4 mr-3 text-black border border-1 rounded-md w-full"
-            />
-            {errors.gender && (
-              <Text variant="small" className="text-red-600">
-                {errors.gender.message}
-              </Text>
-            )}
-          </div>
-
-          {/* PROFESSIONAL ROLE */}
-          <div className="mb-4">
-            <label className="text-black block">Professional Role</label>
-            <input
-              {...register("role", {
-                required: "role is required",
-              })}
-              type="text"
-              placeholder="Profesional Role"
-              className="py-2 px-4 text-black border border-1 rounded-md w-full"
-            />
-            {errors.role && (
-              <Text variant="small" className="text-red-600">
-                {errors.role.message}
-              </Text>
-            )}
-          </div>
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="johndoe@gmail.com"
+            value={email}
+            register={register}
+            errors={errors}
+            setValue={(value) => setEmail(value)}
+          />
 
           {/* PHONE NUMBER*/}
-          <div>
-            <label className="text-black block">Contact Number</label>
-            <input
-              {...register("number", {
-                required: " contact is required",
-              })}
-              type="number"
-              placeholder="Phone Number"
-              className="py-2 px-4 mr-3 text-black border border-1 rounded-md w-full"
-            />
-            {errors.number && (
-              <Text variant="small" className="text-red-600">
-                {errors.number.message}
-              </Text>
-            )}
-          </div>
-
-          {/* YEARS OF EXPERIENCE */}
-          <div>
-            <label className="text-black block">
-              Years of Experience
-              <span className="text-[12px]">(Full time role)</span>
-            </label>
-            <input
-              {...register("experienceLevel", {
-                // required: "role is required",
-              })}
-              type="number"
-              placeholder="Years of Experience"
-              className="py-2 px-4 text-black border border-1 rounded-md w-full"
-            />
-            {errors.experienceLevel && (
-              <Text variant="small" className="text-red-600">
-                {errors.experienceLevel.message}
-              </Text>
-            )}
-          </div>
-        </div>
-
-        {/* TEXT-AREAS */}
-        <div className="py-10">
-          <div>
-            <label className="text-black block text-sm">
-              Please give a brief overview of your current job, main
-              responsibilities and career to date.
-              <span className="text-[12px]">(Full time role)</span>
-            </label>
-            <textarea
-              {...register("overview", {})}
-              placeholder="Type here"
-              className="py-2 px-5 text-black border border-1 rounded-md w-full"
-            />
-            {errors.overview && (
-              <Text variant="small" className="text-red-600">
-                {errors.overview.message}
-              </Text>
-            )}
-          </div>
-        </div>
-
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *Please select the reason(s) for wanting to be a mentor:
-          </label>
-          <select
-            {...register("mentorReasons")}
-            className="py-2 px-5 text-black border border-1 rounded-md w-full"
-          >
-            <option>Reason number 1</option>
-            <option>Reason number 2</option>
-          </select>
-          {errors.mentorReasons && (
-            <Text variant="small" className="text-red-600">
-              {errors.mentorReasons.message}
-            </Text>
-          )}
-        </div>
-
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *Are you able to (have capacity and) commit ten hours in sixteen
-            weeks to your assigned mentee?
-          </label>
-          <select
-            {...register("capacity")}
-            className="py-2 px-5 text-black border border-1 rounded-md w-full"
-          >
-            <option>Reason number 1</option>
-            <option>Reason number 2</option>
-          </select>
-          {errors.capacity && (
-            <Text variant="small" className="text-red-600">
-              {errors.capacity.message}
-            </Text>
-          )}
-        </div>
-
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *Please share your top five values (core characteristics, what do
-            you value the most?)
-          </label>
-          <textarea
-            {...register("values")}
-            className="py-2 px-10 text-black border border-1 rounded-md w-full"
+          <InputField
+            label="Contact Number"
+            name="phoneNumber"
+            placeholder="0901112233345"
+            value={phoneNumber}
+            register={register}
+            errors={errors}
+            setValue={(value) => setPhoneNumber(value)}
           />
 
-          {errors.values && (
-            <Text variant="small" className="text-red-600">
-              {errors.values.message}
-            </Text>
-          )}
-        </div>
-
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *How will you demonstrate your commitment to support your assigned
-            mentee in achieving their short- and/or long-term goals?
-          </label>
-          <textarea
-            {...register("values")}
-            className="py-2 px-10 text-black border border-1 rounded-md w-full"
+          {/* CONTACT ADDRESS */}
+          <InputField
+            label="Contact Address"
+            name="address"
+            placeholder="Type here"
+            value={address}
+            register={register}
+            errors={errors}
+            setValue={(value) => setAddress(value)}
           />
 
-          {errors.values && (
-            <Text variant="small" className="text-red-600">
-              {errors.values.message}
-            </Text>
-          )}
-        </div>
-
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *What are some challenges you may face as a mentor?
-          </label>
-          <textarea
-            {...register("challenge")}
-            className="py-2 px-10 text-black border border-1 rounded-md w-full"
+          {/* MAJOR */}
+          <InputField
+            label="Major"
+            name="major"
+            placeholder="What do you do?"
+            value={major}
+            register={register}
+            errors={errors}
+            setValue={(value) => setMajor(value)}
           />
-
-          {errors.challenge && (
-            <Text variant="small" className="text-red-600">
-              {errors.challenge.message}
-            </Text>
-          )}
         </div>
 
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            *Have you mentored a mentee before – formally or informally?
-          </label>
-          <select
-            {...register("pastMentor")}
-            className="py-2 px-5 text-black border border-1 rounded-md w-full"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
+        {/* SPECIALIZATION*/}
+        <InputField
+          label="Specialization"
+          name="specialization"
+          placeholder="What do you do?"
+          value={specialization}
+          register={register}
+          errors={errors}
+          setValue={(value) => setSpecialization(value)}
+        />
 
-          {errors.pastMentor && (
-            <Text variant="small" className="text-red-600">
-              {errors.pastMentor.message}
-            </Text>
-          )}
-        </div>
+        {/* CONTACT TYPE */}
+        <InputField
+          label="Contact Type"
+          name="bestContactType"
+          type="email"
+          placeholder="What do you do?"
+          value={bestContactType}
+          register={register}
+          errors={errors}
+          setValue={(value) => setBestContactType(value)}
+        />
 
-        <div className="pb-10">
-          <label className="text-black block text-sm">
-            If yes, may you please indicate in what area was the mentorship
-            focused on?
-          </label>
-          <textarea
-            {...register("focus")}
-            className="py-2 px-10 text-black border border-1 rounded-md w-full"
-          />
+        {/* REASON FOR APPLICATION */}
+        <TextAreaField
+          label="Reason for application"
+          name="reasonForApplication"
+          placeholder="Type here"
+          value={reasonForApplication}
+          register={register}
+          errors={errors}
+          setValue={(value) => setReasonForApplication(value)}
+        />
 
-          {errors.focus && (
-            <Text variant="small" className="text-red-600">
-              {errors.focus.message}
-            </Text>
-          )}
-        </div>
+        {/* COMMITMENT */}
+        <TextAreaField
+          label="Help to render"
+          name="helpToRender"
+          placeholder="Type here"
+          value={helpToRender}
+          register={register}
+          errors={errors}
+          setValue={(value) => setHelpToRender(value)}
+        />
 
-        <div>
+        {/* REASON FOR APPLICATION */}
+        <TextAreaField
+          label="What is your ideal Mentor"
+          name="idealMentor"
+          placeholder="Type here"
+          value={idealMentor}
+          register={register}
+          errors={errors}
+          setValue={(value) => setIdealMentor(value)}
+        />
+
+        {/* CHALLENGES */}
+        <TextAreaField
+          label="*How will you demonstrate your commitment to support your assigned mentee in achieving their short- and/or long-term goals?"
+          name="challenges"
+          placeholder="Type here"
+          value={challenges}
+          register={register}
+          errors={errors}
+          setValue={(value) => setChallenges(value)}
+        />
+
+        {/* MENTOR EXPERIENCE GAIN */}
+        <SelectField
+          label="What is your mentor experience gain?"
+          name="mentorExperienceGain"
+          register={register}
+          errors={errors}
+          value={mentorExperienceGain}
+          setValue={(value) => setMentorExperienceGain(value)}
+          options={[
+            { value: "true", label: "Yes" },
+            { value: "false", label: "No" },
+          ]}
+        />
+
+        {/* INTERESTS */}
+        <TextAreaField
+          label="What are your interests"
+          name="interests"
+          placeholder="Type here"
+          value={interests}
+          register={register}
+          errors={errors}
+          setValue={(value) => setInterests(value)}
+        />
+        {/* ADDITIONAL INFO */}
+        <TextAreaField
+          label="Any other interest"
+          name="additionalInfo"
+          placeholder="Type here"
+          value={additionalInfo}
+          register={register}
+          errors={errors}
+          setValue={(value) => setAdditionalInfo(value)}
+        />
+        <div className="my-5">
           <Heading
             variant="small"
             fontColor="secondary"
@@ -327,13 +272,25 @@ const MenteeForms = () => {
           >
             Applicant Declaration
           </Heading>
-          <p className="text-black">
+          <div className="text-black">
             The information on this form will be used by the mentoring matching
-            group. By signing this agreement, I () will abide by the guidelines
-            of the mentorship programme, adhere to the mentoring scheme,
-            actively participate in the mentoring process and contribute to the
-            evaluation of the programme.
-          </p>
+            group. By signing this agreement, I
+            <label className="text-black block">Signature Upload</label>
+            <input
+              {...register("file")}
+              type="file"
+              accept="image/*"
+              className="py-2 px-4 text-black border border-1 rounded-md w-full"
+            />
+            {error && (
+              <Text variant="small" className="text-red-600">
+                {error}
+              </Text>
+            )}
+            will abide by the guidelines of the mentorship programme, adhere to
+            the mentoring scheme, actively participate in the mentoring process
+            and contribute to the evaluation of the programme.
+          </div>
           <div className="mt-8 flex gap-4">
             <input type="checkbox" />
             <p className="text-sm text-black">
@@ -347,7 +304,7 @@ const MenteeForms = () => {
         <div>
           <button
             type="submit"
-            className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md mt-20"
+            className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Loading..." : "Submit"}
