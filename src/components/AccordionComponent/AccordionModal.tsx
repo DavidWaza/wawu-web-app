@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FormFields } from "../../../types/Types";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { create_faq } from "@/pages/api/endpoints";
-import { toast } from "sonner";
 import InputField from "../TextField/InputField";
 
 const AccordionModal = () => {
