@@ -1,7 +1,4 @@
 
-
-
-
 interface PortfolioDataProps {
     imgSrc: string;
     title: string;
