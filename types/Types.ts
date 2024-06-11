@@ -36,6 +36,8 @@ export interface FormFields {
   additionalInfo?: string;
   projectTitle?:string;
   projectDescription?:string;
+  question?:string;
+  answer?:string;
 }
 
 export type InputFieldProps = {

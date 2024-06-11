@@ -3,7 +3,6 @@ import { FormFields } from "../../../types/Types";
 import { useEffect } from "react";
 import { InputFieldProps } from "../../../types/Types";
 
-
 const InputField = ({
   label,
   name,
@@ -18,10 +17,6 @@ const InputField = ({
   useEffect(() => {
     register(name, validation);
   }, [name, register, validation]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
 
   return (
     <div className="flex flex-col gap-2 !py-1">

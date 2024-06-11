@@ -15,7 +15,7 @@ const AccordionItem = ({
   answer,
   isOpen,
   onClick,
-}: // bgColor = 'bg-transparent'
+}:
 AccordionProps) => {
   const contentHeight = useRef<HTMLDivElement | null>(null);
   return (

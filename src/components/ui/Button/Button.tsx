@@ -15,6 +15,7 @@ interface ButtonProps
   height?: string;
   width?: string;
   isActive?: boolean;
+  onClick?: () => void;
   color?: string;
   prefix?: string;
   suffix?: ReactNode | null;
