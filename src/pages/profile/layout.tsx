@@ -8,7 +8,7 @@ const LayoutProfile = ({ children }: AuthWrapperProps) => {
     <div>
       <div>
         <Header />
-        <div className="w-full pb-10 bg-white px-20 pt-20">{children}</div>
+        <div className="w-full pb-10 bg-white lg:px-20 px-10 pt-20">{children}</div>
       </div>
     </div>
   );

@@ -1,25 +1,40 @@
+import { useState, ChangeEvent } from "react";
 import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {  Text } from "@/components/ui/Typography/Typography";
-import { BsEyeSlash } from "react-icons/bs";
-import Education from "../Components/Education/Education";
-import ProfessionalCertificate from "../Components/ProfessionalCertificate/Certificate";
-import MeansOfIdentification from "../Components/MeansOfIdentification/MeansOfIdentification";
-import SocialHandles from "../Components/SocialHandles/SocialHandles";
+import { Text } from "@/components/ui/Typography/Typography";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
-
-type FormFields = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  overview: string;
-  skills: string;
-  language: string;
-};
+import InputField from "@/components/TextField/InputField";
+import { FormFields } from "../../../../types/Types";
+import TextAreaField from "@/components/TextField/TextArea";
+import SelectField from "@/components/TextField/SelectField";
+import UploadImage from "../Components/UploadImage/UploadImage";
 
 const SellerProfileCreation = () => {
+  const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
+  const [lastName, setLastName] = useState<FormFields["lastName"]>("");
+  const [email, setEmail] = useState<FormFields["email"]>("");
+  const [password, setPassword] = useState<FormFields["password"]>("");
+  const [about, setAbout] = useState<FormFields["about"]>("");
+  const [skills, setSkills] = useState<FormFields["skills"]>("");
+  const [preferredLanguage, setPreferredLanguage] =
+    useState<FormFields["preferredLanguage"]>("");
+  const [certification, setCertification] =
+    useState<FormFields["certification"]>("");
+  const [institution, setInstitution] = useState<FormFields["institution"]>("");
+  const [courseOfStudy, setCourseOfStudy] =
+    useState<FormFields["courseOfStudy"]>("");
+  const [graduationDate, setGraduationDate] =
+    useState<FormFields["graduationDate"]>("");
+  const [name, setName] = useState<FormFields["name"]>("");
+  const [endDate, setEndDate] = useState<FormFields["endDate"]>(null);
+  const [country, setCountry] = useState<FormFields["country"]>("");
+  const [state, setState] = useState<FormFields["state"]>("");
+  const [twitter, setTwitter] = useState<FormFields["twitter"]>("");
+  const [facebook, setFacebook] = useState<FormFields["facebook"]>("");
+  const [linkedIn, setLinkedIn] = useState<FormFields["linkedIn"]>("");
+  const [instagram, setInstagram] = useState<FormFields["instagram"]>("");
+
   const {
     register,
     handleSubmit,
@@ -30,163 +45,292 @@ const SellerProfileCreation = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(data);
   };
+
   return (
     <LayoutProfile>
       <div className="-mt-10">
         <ProfileHero />
-        <div className="flex justify-end my-10">
+        <div className="flex  justify-center md:justify-end my-10">
           <Button variant="primary" size="large" className="p-2">
             Become a seller
           </Button>
         </div>
         <div className="py-12 grid lg:grid-cols-2">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="lg:flex justify-between">
-              <div className="mb-6">
-                <label className="text-black block">First Name</label>
-                <input
-                  {...register("firstName", {
-                    required: "First Name is required",
-                  })}
-                  type="text"
-                  placeholder="First Name"
-                  className="p-2 mr-3 text-black border border-1 rounded-md"
-                />
-                {errors.firstName && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.firstName.message}
-                  </Text>
-                )}
-              </div>
-              <div className="mb-6">
-                <label className="text-black block">Last Name</label>
-                <input
-                  {...register("lastName", {
-                    required: "Last Name is required",
-                  })}
-                  type="text"
-                  placeholder="Last Name"
-                  className="p-2  text-black border border-1 rounded-md"
-                />
-                {errors.lastName && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.lastName.message}
-                  </Text>
-                )}
-              </div>
+            <div className="grid lg:grid-cols-2 items-center gap-10">
+              <InputField
+                label="First Name"
+                name="firstName"
+                placeholder="David"
+                value={firstName}
+                register={register}
+                errors={errors}
+                setValue={(value) => setFirstName(value)}
+              />
+              <InputField
+                label="Last Name"
+                name="lastName"
+                placeholder="Waza"
+                value={lastName}
+                register={register}
+                errors={errors}
+                setValue={(value) => setLastName(value)}
+              />
+              {/* EMAIL AND PASSWORD */}
+              <InputField
+                label="Email"
+                name="email"
+                placeholder="davidwaza@gmail.com"
+                type="email"
+                value={email}
+                register={register}
+                errors={errors}
+                setValue={(value) => setEmail(value)}
+              />
+              <InputField
+                label="Password"
+                name="password"
+                placeholder="************"
+                value={password}
+                register={register}
+                errors={errors}
+                setValue={(value) => setPassword(value)}
+              />
             </div>
-            {/* EMAIL AND PASSWORD */}
-            <div className="lg:flex justify-between">
-              <div className="mb-6">
-                <label className="text-black block">Email</label>
-                <input
-                  {...register("email", {
-                    required: "Email is required",
-                    //   pattern: /^[A-Za-z]+$/i,
-                    validate: (value) => {
-                      if (!value.includes("@")) {
-                        return "Email must include @";
-                      }
-                    },
-                  })}
-                  type="text"
-                  placeholder="Email"
-                  className="p-2 text-black border border-1 rounded-md"
+            <TextAreaField
+              label="About"
+              name="about"
+              placeholder="Type here"
+              value={about}
+              register={register}
+              errors={errors}
+              setValue={(value) => setAbout(value)}
+            />
+            <div className="my-6">
+              <TextAreaField
+                label="Skills"
+                name="skills"
+                placeholder="Type here"
+                value={skills}
+                register={register}
+                errors={errors}
+                setValue={(value) => setSkills(value)}
+              />
+              <div>
+                <SelectField
+                  label="Preferred Language"
+                  name="preferredLanguage"
+                  register={register}
+                  errors={errors}
+                  value={preferredLanguage}
+                  setValue={(value) => setPreferredLanguage(value)}
+                  options={[
+                    { value: "true", label: "English" },
+                    { value: "false", label: "French" },
+                    { value: "false", label: "Spanish" },
+                    { value: "false", label: "Latin" },
+                  ]}
                 />
-                {errors.email && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.email.message}
-                  </Text>
-                )}
-              </div>
-              <div className="mb-2">
-                <label className="text-black block">Password</label>
-                <div className="relative">
-                  <input
-                    {...register("password", {
-                      required: "Password is required",
-                    })}
-                    type="password"
-                    placeholder="**********"
-                    className="py-2 px-2 text-black border border-1 rounded-md w-full "
-                  />
-                  <div>
-                    <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
-                  </div>
-                </div>
-
-                {errors.password && (
-                  <p className="text-red-600">{errors.password.message}</p>
-                )}
               </div>
             </div>
             <div>
-              <div>
-                <label className="text-black block text-sm">About</label>
-                <textarea
-                  {...register("overview", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                />
-                {errors.overview && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.overview.message}
-                  </Text>
-                )}
+              <div className="flex gap-1 items-center">
+                <Text variant="small">Education</Text>
+                <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
               </div>
-              <div className="my-6">
-                <label className="text-black block">Skills</label>
-                <input
-                  {...register("skills", {
-                    required: "Skills",
-                  })}
-                  type="text"
-                  placeholder="Select a skill"
-                  className="p-2 mr-3 text-black border border-1 rounded-md w-full"
+              <SelectField
+                label="Certification"
+                name="certification"
+                register={register}
+                errors={errors}
+                value={certification}
+                setValue={(value) => setCertification(value)}
+                options={[
+                  { value: "true", label: "BSc" },
+                  { value: "false", label: "HND" },
+                  { value: "false", label: "OND" },
+                  { value: "false", label: "Masters" },
+                  { value: "false", label: "PHD" },
+                ]}
+              />
+              <SelectField
+                label="Institution"
+                name="institution"
+                register={register}
+                errors={errors}
+                value={institution}
+                setValue={(value) => setInstitution(value)}
+                options={[
+                  { value: "true", label: "Salem University" },
+                  { value: "false", label: "Nasarawa State University" },
+                  { value: "false", label: "Covenant University" },
+                ]}
+              />
+              <SelectField
+                label="Course of Study"
+                name="courseOfStudy"
+                register={register}
+                errors={errors}
+                value={courseOfStudy}
+                setValue={(value) => setCourseOfStudy(value)}
+                options={[
+                  { value: "true", label: "Computer Science" },
+                  { value: "false", label: "Information Technology" },
+                  { value: "false", label: "Artificial Intelligence" },
+                ]}
+              />
+              <InputField
+                label="Graduation Date"
+                name="graduationDate"
+                value={graduationDate}
+                register={register}
+                errors={errors}
+                setValue={(value) => setGraduationDate(value)}
+              />
+              <Button variant="tertiary" className="!my-5">
+                Add
+              </Button>
+              <div className="mt-10">
+                <div className="flex gap-1 items-center">
+                  <Text variant="small" className="text-nowrap">
+                    Professional Certificate
+                  </Text>
+                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+                </div>
+                <SelectField
+                  label="Name"
+                  name="name"
+                  register={register}
+                  errors={errors}
+                  value={name}
+                  setValue={(value) => setName(value)}
+                  options={[
+                    { value: "true", label: "English" },
+                    { value: "false", label: "French" },
+                    { value: "false", label: "Spanish" },
+                    { value: "false", label: "Latin" },
+                  ]}
                 />
-                {errors.skills && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.skills.message}
-                  </Text>
-                )}
+                <SelectField
+                  label="Institution"
+                  name="institution"
+                  register={register}
+                  errors={errors}
+                  value={institution}
+                  setValue={(value) => setInstitution(value)}
+                  options={[
+                    { value: "true", label: "Salem University" },
+                    { value: "false", label: "Nasarawa State University" },
+                    { value: "false", label: "Covenant University" },
+                  ]}
+                />
+                <InputField
+                  label="End Date"
+                  name="endDate"
+                  value={endDate}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setEndDate(value)}
+                />
+                <UploadImage />
+                <Button variant="tertiary" className="!my-5">
+                  Add
+                </Button>
               </div>
-              <div>
-                <label className="text-black block text-sm">
-                  Preferred language
-                </label>
-                <select
-                  {...register("language", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                >
-                  <option>{""}</option>
-                  <option>English</option>
-                  <option>French</option>
-                  <option>Arabic</option>
-                </select>
-                {errors.language && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.language.message}
+              <div className="my-10">
+                <div className="flex gap-1 items-center">
+                  <Text variant="small" className="text-nowrap">
+                    Means of identification
                   </Text>
-                )}
+                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+                </div>
+                <UploadImage />
+                <SelectField
+                  label="Country"
+                  name="country"
+                  register={register}
+                  errors={errors}
+                  value={country}
+                  setValue={(value) => setCountry(value)}
+                  options={[
+                    { value: "true", label: "Nigeria" },
+                    { value: "false", label: "Ghana" },
+                    { value: "false", label: "London" },
+                    { value: "false", label: "Namibia" },
+                  ]}
+                />
+                <SelectField
+                  label="State(This information will be used for analytical purposes only)"
+                  name="state"
+                  register={register}
+                  errors={errors}
+                  value={state}
+                  setValue={(value) => setState(value)}
+                  options={[
+                    { value: "true", label: "Akwa Ibom" },
+                    { value: "false", label: "Benin" },
+                    { value: "false", label: "Abuja" },
+                    { value: "false", label: "Benue" },
+                  ]}
+                />
+                <Button variant="tertiary" className="!my-5">
+                  Verify
+                </Button>
               </div>
             </div>
-            
+            <div className="my-10 space-y-7">
+              <div className="flex gap-1 items-center my-10">
+                <Text variant="small" className="text-nowrap">
+                  Social Handles
+                </Text>
+                <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+              </div>
+              <InputField
+                label="Twitter"
+                name="twitter"
+                placeholder="Twitter Handle"
+                value={twitter}
+                register={register}
+                errors={errors}
+                setValue={(value) => setTwitter(value)}
+              />
+              <InputField
+                label="LinkedIn"
+                name="linkedIn"
+                placeholder="LinkedIn Username"
+                value={linkedIn}
+                register={register}
+                errors={errors}
+                setValue={(value) => setLinkedIn(value)}
+              />
+              <InputField
+                label="Facebook"
+                name="facebook"
+                placeholder="Facebook Handle"
+                value={facebook}
+                register={register}
+                errors={errors}
+                setValue={(value) => setFacebook(value)}
+              />
+              <InputField
+                label="Instagram"
+                name="instagram"
+                placeholder="Instagram Handle"
+                value={instagram}
+                register={register}
+                errors={errors}
+                setValue={(value) => setInstagram(value)}
+              />
+            </div>
+            <button
+              type="submit"
+              className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Loading..." : "Submit"}
+            </button>
           </form>
-          <div></div>
         </div>
-        <div className="mt-10">
-          <Education />
-        </div>
-        <ProfessionalCertificate />
-        <MeansOfIdentification />
-        <SocialHandles />
       </div>
     </LayoutProfile>
   );

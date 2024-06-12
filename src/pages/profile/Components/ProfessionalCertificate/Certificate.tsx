@@ -23,10 +23,7 @@ const ProfessionalCertificate = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-10">
-        <div className="flex gap-1 items-center">
-          <Text variant="small">Professional Certificate</Text>
-          <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
-        </div>
+       
         <div className="lg:w-2/3 w-full lg:px-0 px-10">
           <div className="my-10">
             <label className="text-black block text-sm">Name</label>

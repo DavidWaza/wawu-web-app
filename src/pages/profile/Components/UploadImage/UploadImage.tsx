@@ -27,7 +27,7 @@ const UploadImage: React.FC = () => {
     <>
       {pathname.includes("seller-profile") ||
       pathname.includes("client-brief") ? (
-        <div className="border border-gray-400 rounded-md lg:w-[30%]">
+        <div className="border border-gray-400 rounded-md lg:w-[30%] my-5">
           <div className="flex justify-end p-3">
             <MdDeleteOutline className="text-black" />
           </div>

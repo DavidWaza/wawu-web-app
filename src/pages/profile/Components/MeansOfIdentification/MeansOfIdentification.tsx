@@ -22,10 +22,7 @@ const MeansOfIdentification = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-10">
-        <div className="flex gap-1 items-center">
-          <Text variant="small">Means of identification</Text>
-          <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
-        </div>
+        
         <div className="lg:w-2/3 w-full px-10 lg:px-0">
           <div className="my-10">
             <UploadImage />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../Components/Header/Header";
+import Header from "../../buyers/Components/Header/Header";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormFields } from "../../../../types/Types";
 import { Text } from "@/components/ui/Typography/Typography";

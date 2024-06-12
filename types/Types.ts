@@ -5,6 +5,7 @@ export interface FormFields {
   lastName: string;
   email: string;
   gender?: string;
+  password?:string;
   contactNumber?: string;
   professionalRole?: string;
   highestLevelOfEducation?: string;
@@ -38,6 +39,23 @@ export interface FormFields {
   projectDescription?:string;
   question?:string;
   answer?:string;
+  about?:string;
+  skills?:string;
+  preferredLanguage?:string;
+  education?:string;
+  certification?:string;
+  institution?:string;
+  courseOfStudy?:string;
+  graduationDate?:string
+  name?:string;
+  endDate?:Date | null
+  country?:string;
+  state?:string;
+  twitter?:string;
+  facebook?:string;
+  linkedIn?:string;
+  instagram?:string;
+
 }
 
 export type InputFieldProps = {

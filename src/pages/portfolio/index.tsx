@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PortfolioLayout from "./layout";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { BsShare } from "react-icons/bs";
@@ -12,9 +12,23 @@ import { MdArrowRightAlt } from "react-icons/md";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import ModalDetails from "../buyers/Components/ModalDetails/ModalDetails";
+import { fetch_portfolio } from "../api/endpoints";
+import axiosInstance from "../api/axiosInstance";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
+
+interface PortfolioItem {
+  file: string;
+  projectTitle: string;
+  projectDescription: string;
+}
 
 export default function PersonalPortfolio() {
   const [open, setOpen] = useState(false);
+  const [createUserPortfolio, setCreateUserPortfolio] = useState<
+    PortfolioItem[]
+  >([]);
+  const [displayError, setDisplayError] = useState("");
 
   const onOpenModal = () => {
     setOpen(true);
@@ -23,6 +37,21 @@ export default function PersonalPortfolio() {
     setOpen(false);
   };
 
+  const fetchUserPortfolio = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_portfolio);
+      console.log(response.data);
+      setCreateUserPortfolio(response.data);
+    } catch (err: any) {
+      if (err.response) {
+        toast.error(err.response.data.message);
+        setDisplayError(err.response.data.message);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchUserPortfolio();
+  }, []);
   return (
     <PortfolioLayout>
       <div className="lg:px-[8.2rem]">
@@ -57,33 +86,40 @@ export default function PersonalPortfolio() {
             size="large"
             suffix={<MdArrowRightAlt />}
             className="p-2"
-            onClick={onOpenModal}
+            href="/portfolio/create-seller-portfolio"
           >
             Create new Portfolio
           </Button>
-          {open && (
+          {/* {open && (
             <Modal open={open} onClose={onCloseModal} center>
               <div className="py-20">
                 <ModalDetails />
               </div>
             </Modal>
-          )}
+          )} */}
         </div>
         <div className="my-10">
+          {displayError && (
+            <p className="text-black text-xl text-center">
+              {`User ${displayError}`}
+            </p>
+          )}
           <div className="grid lg:grid-cols-3 gap-5">
-            {PortfolioData.map((data, index) => (
+            {createUserPortfolio.map((data, index) => (
               <div className="border" key={index}>
                 <Image
-                  src={data.imgSrc}
+                  src={data.file}
                   alt="data img"
                   width={400}
                   height={400}
                   className="w-full"
                 />
                 <div className="my-5 px-5">
-                  <h1 className="text-black font-bold text-xl">{data.title}</h1>
+                  <h1 className="text-black font-bold text-xl">
+                    {data.projectTitle}
+                  </h1>
                   <Text variant="small" className="my-2">
-                    {data.text}
+                    {data.projectDescription}
                   </Text>
                 </div>
               </div>
