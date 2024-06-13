@@ -91,6 +91,7 @@ const SellerProfileCreation = () => {
                 label="Password"
                 name="password"
                 placeholder="************"
+                type="password"
                 value={password}
                 register={register}
                 errors={errors}

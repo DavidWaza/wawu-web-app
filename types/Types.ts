@@ -55,6 +55,7 @@ export interface FormFields {
   facebook?:string;
   linkedIn?:string;
   instagram?:string;
+  role?:number;
 
 }
 

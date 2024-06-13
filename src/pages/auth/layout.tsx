@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import Header from "../buyers/Components/Header/Header";
 import AuthNavbar from "./login/Components/Header/Header";
 import Illustrator from "./login/Components/Illustrator/Illustrator";
@@ -28,6 +29,7 @@ const LayoutAuth = ({ children }: AuthWrapperProps) => {
                     : ""}
                 </p>
               </div>
+              <Toaster richColors />
               {children}
             </div>
           </div>

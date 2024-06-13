@@ -5,26 +5,22 @@ import { BsEyeSlash } from "react-icons/bs";
 import Link from "next/link";
 import { IoEyeOutline } from "react-icons/io5";
 import axiosInstance from "@/pages/api/axiosInstance";
-import axios from "axios";
 import { useOnboarding } from "@/Context/onboardingContext";
 import { useRouter } from "next/navigation";
 import { sign_up_url } from "@/pages/api/endpoints";
-
-type FormFields = {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-};
+import InputField from "@/components/TextField/InputField";
+import { FormFields } from "../../../../../../types/Types";
+import SelectField from "@/components/TextField/SelectField";
+import { toast } from "sonner";
 
 const SignupForm = () => {
+  const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
+  const [lastName, setLastName] = useState<FormFields["lastName"]>("");
+  const [email, setEmail] = useState<FormFields["email"]>("");
+  const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
+  const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [role, setRole] = useState<FormFields["role"]>(0);
 
   const { goToNextStep } = useOnboarding();
   const router = useRouter();
@@ -39,10 +35,17 @@ const SignupForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+  const onSubmit: SubmitHandler<FormFields> = async () => {
     try {
-      const response = await axiosInstance.post(sign_up_url, data);
-      console.log("log", response.data.data);
+      const response = await axiosInstance.post(sign_up_url, {
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber,
+        role,
+      });
+      toast.success(response.data.message);
       goToNextStep();
       router.push("/onboarding/user-screen-about");
     } catch (err) {
@@ -50,97 +53,67 @@ const SignupForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="block">
+    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-7">
       <div>
-        <div className="mb-6">
-          <label className="text-black block">Email</label>
-          <input
-            {...register("email", {
-              required: "Email is required",
-              //   pattern: /^[A-Za-z]+$/i,
-              validate: (value) => {
-                if (!value.includes("@")) {
-                  return "Email must include @";
-                }
-              },
-            })}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="text"
-            placeholder="wawutech@gmail.com"
-            className="py-2 px-2 text-black border border-1 rounded-md w-full"
-          />
-          {errors.email && (
-            <p className="text-red-600">{errors.email.message}</p>
-          )}
-        </div>
+        <InputField
+          label="Email"
+          name="email"
+          placeholder="davidwaza@gmail.com"
+          type="email"
+          value={email}
+          register={register}
+          errors={errors}
+          setValue={(value) => setEmail(value)}
+        />
       </div>
-      <div className="2xl:flex 2xl:justify-between 2xl:text-left my-10">
-        {/* FIRST NAME */}
-        <div className="mb-2">
-          <label className="text-black block">First Name</label>
-          <input
-            {...register("firstName", {
-              required: "First Name is required",
-            })}
+      <div className="2xl:flex 2xl:justify-between 2xl:text-left">
+        <div className="pb-7">
+          {/* FIRST NAME */}
+          <InputField
+            label="First Name"
+            name="firstName"
+            placeholder="David"
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            type="text"
-            placeholder="Jane"
-            className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
+            register={register}
+            errors={errors}
+            setValue={(value) => setFirstName(value)}
           />
-          {errors.firstName && (
-            <p className="text-red-600">{errors.firstName.message}</p>
-          )}
         </div>
 
         {/* LAST NAME */}
-        <div className="flex-wrap">
-          <label className="text-black block">Last Name</label>
-          <input
-            {...register("lastName", {
-              required: "Last Name is required",
-            })}
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            type="text"
-            placeholder="Doe"
-            className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
-          />
-          {errors.lastName && (
-            <p className="text-red-600">{errors.lastName.message}</p>
-          )}
-        </div>
+        <InputField
+          label="Last Name"
+          name="lastName"
+          placeholder="Waza"
+          value={lastName}
+          register={register}
+          errors={errors}
+          setValue={(value) => setLastName(value)}
+        />
       </div>
+
+      {/* PHONE NUMBER */}
+      <InputField
+        label="Phone Number"
+        name="phoneNumber"
+        placeholder="0801122233334"
+        value={phoneNumber}
+        register={register}
+        errors={errors}
+        setValue={(value) => setPhoneNumber(value)}
+      />
 
       {/* PASSWORD */}
-      <div className="flex-wrap mb-5">
-        <label className="text-black block">Phone Number</label>
-        <input
-          {...register("phoneNumber", {
-            required: "Last Name is required",
-          })}
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          type="number"
-          placeholder="Phone number"
-          className="py-2 px-2 mr-3 text-black border border-1 rounded-md w-full"
-        />
-        {errors.phoneNumber && (
-          <p className="text-red-600">{errors.phoneNumber.message}</p>
-        )}
-      </div>
-
       <div className="relative">
-        <input
-          {...register("password", {
-            required: "Password is required",
-          })}
+        <InputField
+          label="Password"
+          name="password"
+          placeholder="***********"
+          type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type={passwordVisible ? "text" : "password"}
-          placeholder="Minimum of 8 characters"
-          className="py-2 px-2 text-black border border-1 rounded-md w-full "
+          register={register}
+          errors={errors}
+          setValue={(value) => setPassword(value)}
         />
         <div onClick={togglePassword}>
           {passwordVisible ? (
@@ -154,6 +127,20 @@ const SignupForm = () => {
           )}
         </div>
       </div>
+
+      {/* ROLE */}
+      <SelectField
+        label="Role"
+        name="role"
+        register={register}
+        errors={errors}
+        value={role}
+        setValue={(value) => setRole(value)}
+        options={[
+          { value: 1, label: "Buyer" },
+          { value: 2, label: "Seller" },
+        ]}
+      />
       <div className="flex justify-start my-2">
         <div className="flex gap-2">
           <input type="checkbox" className="w-4 h-auto" />

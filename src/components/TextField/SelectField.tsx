@@ -2,7 +2,8 @@ import { InputFieldProps } from "../../../types/Types";
 import { Text } from "../ui/Typography/Typography";
 
 type SelectFieldProps = InputFieldProps & {
-  options: { value: string; label: string }[];
+  options: { value: string | number; label: string }[];
+  setValue: (value: string | number) => void;
 };
 
 const SelectField = ({
@@ -18,7 +19,13 @@ const SelectField = ({
     <label className="text-black block text-sm">{label}</label>
     <select
       {...register(name, validation)}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => {
+        const selectedValue = e.target.value;
+        const numericValue = !isNaN(Number(selectedValue))
+          ? Number(selectedValue)
+          : selectedValue;
+        setValue(numericValue);
+      }}
       className={`py-2 px-4 text-black border border-1 rounded-md w-full ${
         errors[name] ? "border-red-500" : ""
       }`}

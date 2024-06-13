@@ -28,7 +28,7 @@ const UserExpertise: React.FC = () => {
   return (
     <React.Fragment>
       <OnboardingLayout>
-        <div className="bg-white lg:px-10 lg:w-1/2 border rounded-md py-10">
+        <div className="bg-white lg:px-10 lg:w-1/2 m-auto py-10 border rounded-md">
           <div className="flex gap-5">
             <Image
               src={"/assets/wave.svg"}

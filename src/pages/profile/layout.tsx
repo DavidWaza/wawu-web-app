@@ -1,4 +1,4 @@
-import { usePathname } from "next/navigation";
+
 import Header from "../buyers/Components/Header/Header";
 interface AuthWrapperProps {
   children: React.ReactNode;

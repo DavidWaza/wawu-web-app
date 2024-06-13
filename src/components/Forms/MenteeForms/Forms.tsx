@@ -254,6 +254,7 @@ const MenteeForms = () => {
           errors={errors}
           setValue={(value) => setInterests(value)}
         />
+
         {/* ADDITIONAL INFO */}
         <TextAreaField
           label="Any other interest"

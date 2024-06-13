@@ -5,11 +5,12 @@ import OnboardingLayout from './Layout';
 
 const OnboardingScreen: React.FC = () => {
   return (
-    <OnboardingProvider>
-      <OnboardingLayout>
-        <AboutUserProfileOnboarding />
-      </OnboardingLayout>
-    </OnboardingProvider>
+    // <OnboardingProvider>
+    //   <OnboardingLayout>
+    //     <AboutUserProfileOnboarding />
+    //   </OnboardingLayout>
+    // </OnboardingProvider>
+    <></>
   );
 };
 
