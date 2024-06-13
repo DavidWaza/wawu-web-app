@@ -4,13 +4,14 @@ import { BsEyeSlash } from "react-icons/bs";
 import { IoEyeOutline } from "react-icons/io5";
 import Link from "next/link";
 import axiosInstance from "@/pages/api/axiosInstance";
-
-type FormFields = {
-  email: string;
-  password: string;
-};
+import InputField from "@/components/TextField/InputField";
+import { FormFields } from "../../../../../../types/Types";
+import { login_url } from "@/pages/api/endpoints";
+import { toast } from "sonner";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState<FormFields["email"]>("");
+  const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   function togglePassword() {
@@ -22,57 +23,50 @@ const LoginForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data:FormFields) => {
-  
+  const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+    try {
+      const response = await axiosInstance.post(login_url, data);
+      toast.success(response.data.message);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="block">
-      <div className="mb-6">
-        <label className="text-black block">Email</label>
-        <input
-          {...register("email", {
-            required: "Email is required",
-            //   pattern: /^[A-Za-z]+$/i,
-            validate: (value) => {
-              if (!value.includes("@")) {
-                return "Email must include @";
-              }
-            },
-          })}
-          type="text"
-          placeholder="Email"
-          className="py-2 px-2 text-black border border-1 rounded-md w-full"
+    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-10">
+      <div>
+        <InputField
+          label="Email"
+          name="email"
+          placeholder="davidwaza@gmail.com"
+          type="email"
+          value={email}
+          register={register}
+          errors={errors}
+          setValue={(value) => setEmail(value)}
         />
-        {errors.email && <p className="text-red-600">{errors.email.message}</p>}
       </div>
-
-      <div className="mb-2">
-        <label className="text-black block">Password</label>
-        <div className="relative">
-          <input
-            {...register("password", {
-              required: "Password is required",
-            })}
-            type={passwordVisible ? "text" : "password"}
-            placeholder="Minimum of 8 characters"
-            className="py-2 px-2 text-black border border-1 rounded-md w-full "
-          />
-          <div onClick={togglePassword}>
-            {passwordVisible ? (
-              <>
-                <IoEyeOutline className="absolute top-3 right-0 mx-6 text-black" />
-              </>
-            ) : (
-              <>
-                <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
-              </>
-            )}
-          </div>
+      <div className="relative">
+        <InputField
+          label="Password"
+          name="password"
+          placeholder="***********"
+          type={passwordVisible ? "text" : "password"}
+          value={password}
+          register={register}
+          errors={errors}
+          setValue={(value) => setPassword(value)}
+        />
+        <div onClick={togglePassword}>
+          {passwordVisible ? (
+            <>
+              <IoEyeOutline className="absolute top-11 right-0 mx-6 text-black" />
+            </>
+          ) : (
+            <>
+              <BsEyeSlash className="absolute top-11 right-0 mx-6 text-black" />
+            </>
+          )}
         </div>
-
-        {errors.password && (
-          <p className="text-red-600">{errors.password.message}</p>
-        )}
       </div>
       <div className="flex justify-between">
         <div className="flex gap-2">

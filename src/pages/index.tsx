@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Header/Navbar/Navbar";
 import Hero from "@/components/Header/Hero/Hero";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";

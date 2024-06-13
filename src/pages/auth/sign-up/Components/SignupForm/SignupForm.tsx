@@ -118,11 +118,11 @@ const SignupForm = () => {
         <div onClick={togglePassword}>
           {passwordVisible ? (
             <>
-              <IoEyeOutline className="absolute top-3 right-0 mx-6 text-black" />
+              <IoEyeOutline className="absolute top-11 right-0 mx-6 text-black" />
             </>
           ) : (
             <>
-              <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
+              <BsEyeSlash className="absolute top-11 right-0 mx-6 text-black" />
             </>
           )}
         </div>
