@@ -1,8 +1,7 @@
 import axios from "axios";
-
-// Set the token and channel in local storage (e.g., during app initialization)
+const apiToken = process.env.NEXT_PUBLIC_API_TOKEN || "";
 if (typeof window !== "undefined") {
-  localStorage.setItem("Api-Token", "1|PTQIRN5njBYlBBz6c91y34hgjBDnQSg8Rf0");
+  localStorage.setItem("Api-Token", apiToken);
   localStorage.setItem("channel", "user");
 }
 

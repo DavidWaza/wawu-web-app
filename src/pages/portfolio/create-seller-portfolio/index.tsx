@@ -56,7 +56,7 @@ const CreateSellerPortfolio = () => {
   return (
     <React.Fragment>
       <Header />
-      <div className="lg:py-20 px-[8.4rem] p-10">
+      <div className="lg:py-20 lg:px-[8.4rem] p-10">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="lg:w-1/2">
             <InputField
@@ -95,7 +95,7 @@ const CreateSellerPortfolio = () => {
               <div>
                 <button
                   type="submit"
-                  className="py-2 bg-[#A812E3] px-10 w-1/2 m-auto rounded-md"
+                  className="py-2 bg-[#A812E3] px-10 lg:w-1/2 m-auto rounded-md text-nowrap"
                   disabled={isSubmitting}
                 >
                   + Add image/Doc file

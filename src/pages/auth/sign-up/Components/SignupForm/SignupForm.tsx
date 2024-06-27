@@ -109,7 +109,7 @@ const SignupForm = () => {
           label="Password"
           name="password"
           placeholder="***********"
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           value={password}
           register={register}
           errors={errors}
@@ -137,6 +137,7 @@ const SignupForm = () => {
         value={role}
         setValue={(value) => setRole(value)}
         options={[
+          { value: '', label: 'Select a role...' },
           { value: 1, label: "Buyer" },
           { value: 2, label: "Seller" },
         ]}

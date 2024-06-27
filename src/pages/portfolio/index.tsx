@@ -90,13 +90,6 @@ export default function PersonalPortfolio() {
           >
             Create new Portfolio
           </Button>
-          {/* {open && (
-            <Modal open={open} onClose={onCloseModal} center>
-              <div className="py-20">
-                <ModalDetails />
-              </div>
-            </Modal>
-          )} */}
         </div>
         <div className="my-10">
           {displayError && (

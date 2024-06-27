@@ -10,6 +10,9 @@ export const sign_up_url = `/api/user/register`;
 // Login
 export const login_url = `/api/user/login`;
 
+// Reset Password
+export const reset_password = `/api/user/password/forgot`
+
 // Create Portfolio
 export const create_portfolio = `/api/seller/portfolio`;
 

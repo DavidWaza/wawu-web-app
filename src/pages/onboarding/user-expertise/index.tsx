@@ -51,40 +51,42 @@ const UserExpertise: React.FC = () => {
               What is your current professional role?
             </p>
           </div>
-          <div className="grid lg:grid-cols-5 py-5 group">
-            {[
-              { src: "/assets/programmer.svg", title: "Programmer" },
-              { src: "/assets/designer.svg", title: "Designer" },
-              { src: "/assets/data-analyst.svg", title: "Data Analyst" },
-              { src: "/assets/marketer.svg", title: "Marketer" },
-              { src: "/assets/other.svg", title: "Other" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="hover:border hover:border-[#9510C9] rounded-md transition-all ease-in-out"
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid lg:grid-cols-5 py-5 group">
+              {[
+                { src: "/assets/programmer.svg", title: "Programmer" },
+                { src: "/assets/designer.svg", title: "Designer" },
+                { src: "/assets/data-analyst.svg", title: "Data Analyst" },
+                { src: "/assets/marketer.svg", title: "Marketer" },
+                { src: "/assets/other.svg", title: "Other" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="hover:border hover:border-[#9510C9] rounded-md transition-all ease-in-out"
+                >
+                  <Image
+                    src={item.src}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-[400px] h-auto object-contain object-center px-5 my-3"
+                    alt={item.title}
+                  />
+                  <p className="text-[#290D43] font-normal text-[16px] hover:text-[#9510C9] text-center">
+                    {item.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="my-5 flex justify-center">
+              <button
+                className="bg-[#ED459A] w-2/3 py-2 px-6 rounded-xl"
+                type="submit"
               >
-                <Image
-                  src={item.src}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-[400px] h-auto object-contain object-center px-5 my-3"
-                  alt={item.title}
-                />
-                <p className="text-[#290D43] font-normal text-[16px] hover:text-[#9510C9] text-center">
-                  {item.title}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="my-5 flex justify-center">
-            <button
-              className="bg-[#ED459A] w-2/3 py-2 px-6 rounded-xl"
-              type="submit"
-            >
-              Continue
-            </button>
-          </div>
+                Continue
+              </button>
+            </div>
+          </form>
         </div>
       </OnboardingLayout>
     </React.Fragment>

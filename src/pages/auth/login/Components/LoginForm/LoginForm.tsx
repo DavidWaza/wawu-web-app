@@ -68,14 +68,14 @@ const LoginForm = () => {
           )}
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-5">
         <div className="flex gap-2">
           <input type="checkbox" />
-          <p className="text-black text-sm">Keep me logged in</p>
+          <p className="text-black text-sm text-nowrap">Keep me logged in</p>
         </div>
         <div>
-          <Link href="/forget-password">
-            <p className="text-[#ED459A] text-sm">Forgot Password?</p>
+          <Link href="/auth/forget-password">
+            <p className="text-[#ED459A] text-sm text-nowrap">Forgot Password?</p>
           </Link>
         </div>
       </div>

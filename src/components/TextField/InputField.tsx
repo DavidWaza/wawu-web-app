@@ -19,7 +19,7 @@ const InputField = ({
   }, [name, register, validation]);
 
   return (
-    <div className="flex flex-col gap-2 !py-1">
+    <div className="!py-1">
       <label className="text-black block text-sm">{label}</label>
       <input
         {...register(name, validation)}

@@ -10,7 +10,7 @@ const Logo = ({classname}:IlogoProps) => {
     <div>
       <Link href={"/"}>
         <Image
-          src="/assets/WAWU-logo.svg"
+          src="/assets/WAWU-LOGO.svg"
           alt=""
           className={`${classname} h-auto object-contain object-center`}
           width={0}
