@@ -9,7 +9,7 @@ import WawuPlatforms from "./WawuPlatforms/WawuPlatforms";
 const WawuPropsComponent = () => {
   return (
     <div className="pt-10">
-      <Section>
+      <div className="px-20 pt-20">
         <Heading variant="medium" fontColor="secondary">
           Wawu Props
         </Heading>
@@ -31,24 +31,24 @@ const WawuPropsComponent = () => {
                 />
               </div>
             ))}
-            <div className="flex 2xl:justify-start justify-center my-12">
+            <div className="flex 2xl:justify-start justify-center mt-12">
               <Button variant="tertiary" className="mt-20 py-2" size="medium">
                 Get Started
               </Button>
             </div>
           </div>
-          <div className="flex justify-center items-center relative">
+          <div className="flex justify-center items-center">
             <Image
               src="/assets/globe-girl.svg"
               alt="girl-with-earth"
               width={0}
               height={0}
               sizes="10vw"
-              className="w-full h-auto object-contain object-center pt-7 lg:pt-20"
+              className=" w-full md:w-1/2 lg:w-[70%] h-auto object-contain object-center pt-7 "
             />
           </div>
         </div>
-      </Section>
+      </div>
     </div>
   );
 };

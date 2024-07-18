@@ -4,7 +4,6 @@ import UserDetails from "../UserDetails/UserDetails";
 import { IoLocationOutline } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import Button from "@/components/ui/Button/Button";
 import UserAvatar from "../UserAvatar/UserAvatar";
 
 

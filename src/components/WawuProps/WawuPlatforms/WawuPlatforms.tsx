@@ -18,7 +18,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
         <img
           src={props.iconSrc}
           alt={props.alt}
-          className="w-10 h-auto mb-2 -mt-5 "
+          className="w-10 h-auto "
         />
         <div>
           <Text variant="small" textWeight="semi-bold">

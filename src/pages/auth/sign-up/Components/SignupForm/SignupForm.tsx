@@ -53,7 +53,7 @@ const SignupForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-7">
+    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-2">
       <div>
         <InputField
           label="Email"
@@ -157,7 +157,7 @@ const SignupForm = () => {
       </div>
       <button
         type="submit"
-        className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 "
+        className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Signing..." : "Sign up"}

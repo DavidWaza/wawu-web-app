@@ -7,7 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { GoLinkExternal } from "react-icons/go";
+
 import Image from "next/image";
+import Link from "next/link";
 
 const Demograph = () => {
   return (
@@ -26,13 +29,16 @@ const Demograph = () => {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-full h-auto object-contain object-center"
+            className="w-[600%] h-auto object-contain object-center"
           />
         </CardContent>
         <CardFooter>
-          <button className="bg-[#9510C9] p-2 rounded-lg w-full text-white">
-            View all
-          </button>
+          <Link href={""}>
+            <div className="flex gap-2 items-center font-medium text-[#810FAF]">
+              Open
+              <GoLinkExternal />
+            </div>
+          </Link>
         </CardFooter>
       </Card>
     </div>
