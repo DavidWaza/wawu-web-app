@@ -39,10 +39,12 @@ const AboutUs = () => {
           </div>
         </Section>
         <Section>
-          <Heading variant="medium" fontColor="secondary">
+          <Heading variant="medium" fontColor="secondary" className="!py-10">
             Popular Services
           </Heading>
-          <AboutCarousel />
+          <div className="py-5">
+            <AboutCarousel />
+          </div>
           <GetInTouch />
         </Section>
       </div>

@@ -55,7 +55,7 @@ const ForgetPassword: React.FC<FormFields> = () => {
           <div className="flex justify-center items-center">
             <button
               type="submit"
-              className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-5 "
+              className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-5 text-white"
               disabled={isSubmitting}
               onClick={(e) => console.log("click")}
             >

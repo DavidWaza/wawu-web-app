@@ -2,6 +2,7 @@ import React from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 import Link from "next/link";
 import { GoArrowRight } from "react-icons/go";
+import Image from "next/image";
 
 interface PlatFormProps {
   iconSrc: string;
@@ -14,21 +15,28 @@ interface PlatFormProps {
 const WawuPlatforms = (props: PlatFormProps) => {
   return (
     <>
-      <div className="2xl:flex gap-5 mt-10">
-        <img
+      <div className="lg:flex gap-5 mt-10">
+        <Image
           src={props.iconSrc}
           alt={props.alt}
-          className="w-10 h-auto "
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="w-10 h-auto"
         />
         <div>
           <Text variant="small" textWeight="semi-bold">
             {props.title}
           </Text>
-          <Text variant="small" className="leading-[30px]">{props.desc}</Text>
+          <Text variant="small" className="leading-[30px]">
+            {props.desc}
+          </Text>
           {props.link && (
-            <div className="flex gap-4 items-center mt-5">
+            <div className="flex gap-2 items-center mt-1">
               <Text variant="small">
-                <Link href={""} className="!text-[#ED459A]">{props.link}</Link>
+                <Link href={""} className="!text-[#ED459A]">
+                  {props.link}
+                </Link>
               </Text>
               <GoArrowRight className="text-[#ED459A]" />
             </div>

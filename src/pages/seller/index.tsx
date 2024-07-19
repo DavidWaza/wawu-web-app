@@ -5,9 +5,16 @@ import WawuPlatforms from "@/components/WawuProps/WawuPlatforms/WawuPlatforms";
 import Section from "@/components/ui/Section/Section";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import Accordion from "@/components/AccordionComponent/Accordion";
+// import Accordion from "@/components/AccordionComponent/Accordion";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
 import Image from "next/image";
+import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const professions = [
   "I am a developer",
@@ -39,23 +46,35 @@ const ProductFeatures = [
 const Seller = () => {
   return (
     <div>
-      <Navbar id={0} href={""} link={""} isCaret={false} />
+      <div className="hidden md:block">
+        <Navbar id={0} href={""} link={""} isCaret={false} />
+      </div>
+      <div className="block md:hidden">
+        <MobileNavbar />
+      </div>
       <HeroComponent
         header="Showcase your Skills. Get a Patron"
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
         buttonText="Become a seller"
         backgroundColor="bg-[#A812E3]"
-        imgSrc="/assets/artisan.png"
+        imgSrc="/assets/g1.svg"
       />
       <div className="bg-white">
         <div className="py-10">
           <Text variant="medium" className="text-center text-black">
             Join our growing steward’s community
           </Text>
-          <div className="flex justify-center gap-4 mt-10">
+          <div className="lg:px-[8rem] px-10 grid lg:grid-cols-4  gap-5 lg:gap-20 my-10">
             {professions.map((profession, index) => (
               <div key={index} className="block">
-                <img src={"/assets/photo-girl.png"} alt="photo-girl" />
+                <Image
+                  src={"/assets/steward-girl.svg"}
+                  alt="photo-girl"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-auto object-contain object-center"
+                />
                 <Text
                   variant="small"
                   textWeight="bold"
@@ -67,12 +86,14 @@ const Seller = () => {
             ))}
           </div>
           <div className="bg-white">
-            <Adverts />
+            <div className="pb-10">
+              <Adverts />
+            </div>
             <Section>
-              <Heading variant="medium" fontColor="secondary">
+              <Heading variant="medium" fontColor="secondary" className="mt-10">
                 Redefining Product Features
               </Heading>
-              <Text variant="small" className="leading-6 mt-5">
+              <Text variant="small" className="leading-6 mt-2">
                 Keeping your eye on the ball while performing a deep dive on the
                 start-up mentality to drive <br /> convergence
               </Text>
@@ -80,7 +101,7 @@ const Seller = () => {
                 <div className="block">
                   {ProductFeatures.map((product, index) => (
                     <>
-                      <div key={index}>
+                      <div key={index} className="w-[60%]">
                         <WawuPlatforms
                           iconSrc={product.iconSrc}
                           alt={product.alt}
@@ -91,13 +112,15 @@ const Seller = () => {
                       </div>
                     </>
                   ))}
-                  <Button size="large" variant="tertiary">
-                    Get Started
-                  </Button>
+                  <div className="py-10">
+                    <Button size="small" variant="tertiary">
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
                 <div className="flex justify-center items-center">
                   <Image
-                    src="/assets/additional-service.png"
+                    src="/assets/girl-with-box.svg"
                     alt="right girl"
                     className="lg:w-3/4"
                     width={400}
@@ -110,7 +133,26 @@ const Seller = () => {
               <Text variant="large" className="text-black text-center pt-7">
                 Seller FAQs
               </Text>
-              <Accordion />
+              <div className="px-10 lg:px-52 py-10">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>
+                      What is Graphics designer?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>
+                      How do i top graphics designers?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </div>
             <div className="bg-[#290D43] py-10">
               <Section>
@@ -120,13 +162,13 @@ const Seller = () => {
               </Section>
             </div>
             <div className="">
-              <Section>
-                <DigitalReality
-                  backgroundColor="bg-white"
-                  textColor="text-black"
-                  borderColor="border-[#ED459A]" 
-                  placeholder={""}                />
-              </Section>
+              <DigitalReality
+                backgroundColor="bg-white"
+                textColor="text-black"
+                borderColor="border-[#ED459A]"
+                submitText="Submit"
+                placeholder={"Enter you email"}
+              />
             </div>
           </div>
         </div>

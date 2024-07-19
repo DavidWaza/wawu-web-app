@@ -15,7 +15,7 @@ interface toggleButtonProps {
 const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
   return (
     <button
-      className={`${active ? "bg-[#ED459A]" : "bg-[#290D43]"} py-2 px-10 `}
+      className={`${active ? "bg-[#ED459A]" : "bg-[#290D43]"} py-2 px-10  text-white`}
       onClick={onToggle}
     >
       {label}
@@ -62,13 +62,11 @@ const ButtonComponent = () => {
         label="Mentor"
         active={mentor.active}
         onToggle={() => handleToggle("mentor")}
-        className="text-white"
       />
       <ToggleButton
         label="Mentee"
         active={mentee.active}
         onToggle={() => handleToggle("mentee")}
-        className="text-white"
       />
       <div className="mt-20">
         {mentor.active ? (

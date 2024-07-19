@@ -32,7 +32,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-10">
+    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-5">
       <div>
         <InputField
           label="Email"
@@ -59,11 +59,11 @@ const LoginForm = () => {
         <div onClick={togglePassword}>
           {passwordVisible ? (
             <>
-              <IoEyeOutline className="absolute top-11 right-0 mx-6 text-black" />
+              <IoEyeOutline className="absolute top-10 right-0 mx-6 text-black" />
             </>
           ) : (
             <>
-              <BsEyeSlash className="absolute top-11 right-0 mx-6 text-black" />
+              <BsEyeSlash className="absolute top-10 right-0 mx-6 text-black" />
             </>
           )}
         </div>
@@ -75,13 +75,15 @@ const LoginForm = () => {
         </div>
         <div>
           <Link href="/auth/forget-password">
-            <p className="text-[#ED459A] text-sm text-nowrap">Forgot Password?</p>
+            <p className="text-[#ED459A] text-sm text-nowrap">
+              Forgot Password?
+            </p>
           </Link>
         </div>
       </div>
       <button
         type="submit"
-        className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 "
+        className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white "
         disabled={isSubmitting}
       >
         {isSubmitting ? "Loging in...." : "Login"}

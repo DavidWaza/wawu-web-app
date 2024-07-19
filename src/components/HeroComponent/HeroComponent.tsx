@@ -1,7 +1,5 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import Section from "../ui/Section/Section";
-import Container from "../Container/Container";
 import { FaAngleRight } from "react-icons/fa";
 import Image from "next/image";
 
@@ -12,39 +10,40 @@ interface HeroComponentProps {
   buttonText: string;
   backgroundColor: string;
   imgSrc: any;
-  link?:string;
+  link?: string;
 }
 
 const HeroComponent = (props: HeroComponentProps) => {
   return (
     <>
       <div className={`${props.backgroundColor}`}>
-        <div className="grid md:grid-cols-2 px-5 md:px-20 lg:px-[5rem] xl:px-[12rem]">
-          <div className=" lg:mt-[23%] pt-20 md:py-20 mb-5">
-            <Heading variant="large" fontColor="primary">
+        <div className="grid md:grid-cols-2 px-5 md:px-20 lg:px-[5rem] xl:px-[12rem] h-1/2">
+          <div className="flex flex-col justify-center mb-5 py-10">
+            <p className="text-[52px] font-bold text-white leading-[50px] lg:w-[75%]">
               {props.header}
-            </Heading>
+            </p>
             <Text
               variant="largeText"
               className=" text-[#FF0084] mt-[20px] md:leading-[45px] lg:leading-[30px]"
             >
               {props.secondaryText}
             </Text>
-            <Text variant="small" className="text-[#fff]  my-4 leading-[30px]">
+            <Text variant="small" className="text-[#fff]  my-4 leading-[20px]">
               {props.subText}
             </Text>
-            <Button
-              size="large"
-              className="p-2 border-none flex items-center justify-center gap-1 text-center"
-              href={props.link}
-            >
-              {props.buttonText}
-              {<FaAngleRight /> && <FaAngleRight />}
-            </Button>
+            <div className="py-10">
+              <Button
+                size="medium"
+                className="p-2 border-none gap-1 w-1/2 text-sm font-normal"
+                href={props.link}
+              >
+                {props.buttonText}
+              </Button>
+            </div>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-7">
             <Image
-              className="w-full mt-24 md:mt-[10rem] lg:mt-[14rem] d-block h-auto"
+              className="w-full d-block h-auto"
               width={0}
               height={0}
               sizes="100vw"

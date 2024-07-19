@@ -305,7 +305,7 @@ const MenteeForms = () => {
         <div>
           <button
             type="submit"
-            className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md"
+            className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md text-white"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Loading..." : "Submit"}
