@@ -5,9 +5,9 @@ import { FaRegHeart } from "react-icons/fa";
 const IconFolder = () => {
   return (
     <div className="2xl:flex gap-4 hidden">
-      <FaRegBell />
-      <MdOutlineEmail />
-      <FaRegHeart />
+      <FaRegBell color='#fff' />
+      <MdOutlineEmail color='#fff'/>
+      <FaRegHeart color='#fff'/>
     </div>
   );
 };

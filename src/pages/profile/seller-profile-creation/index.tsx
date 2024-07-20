@@ -9,6 +9,9 @@ import { FormFields } from "../../../../types/Types";
 import TextAreaField from "@/components/TextField/TextArea";
 import SelectField from "@/components/TextField/SelectField";
 import UploadImage from "../Components/UploadImage/UploadImage";
+import axiosInstance from "@/pages/api/axiosInstance";
+import { fetch_user_portfolio } from "@/pages/api/endpoints";
+import { toast } from "sonner";
 
 const SellerProfileCreation = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -42,8 +45,13 @@ const SellerProfileCreation = () => {
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    try {
+      const response = await axiosInstance.post(fetch_user_portfolio, data);
+      console.log(response.data);
+      toast.success(response.data.message);
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
 
   return (
@@ -51,7 +59,7 @@ const SellerProfileCreation = () => {
       <div className="-mt-10">
         <ProfileHero />
         <div className="flex  justify-center md:justify-end my-10">
-          <Button variant="primary" size="large" className="p-2">
+          <Button variant="primary" size="small" className="p-2 text-nowrap">
             Become a seller
           </Button>
         </div>
@@ -325,7 +333,7 @@ const SellerProfileCreation = () => {
             </div>
             <button
               type="submit"
-              className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md"
+              className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md text-white"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Loading..." : "Submit"}

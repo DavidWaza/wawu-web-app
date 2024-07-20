@@ -67,3 +67,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bg-profile-seller {
+  background-image: url("/assets/profile-seller.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30vh;
+}

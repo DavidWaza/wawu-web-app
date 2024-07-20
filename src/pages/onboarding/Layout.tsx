@@ -15,7 +15,7 @@ const OnboardingLayout: React.FC<ILayoutProps> = ({ children }) => {
       <div className="flex justify-center">
         <Stepper currentStep={currentStep} numberOfSteps={NUMBER_OF_STEPS} />
       </div>
-      <div className="bg-[#F5F7F6] py-20">
+      <div className="bg-[#F5F7F6] py-20 px-5">
         {children}
       </div>
     </div>

@@ -24,3 +24,7 @@ export const create_faq = `/api/seller/faq`;
 
 // Get FAQ
 export const fetch_faq = `/api/seller/faq`;
+
+// update portfolio
+
+export const fetch_user_portfolio = `/api/user/profile/update`

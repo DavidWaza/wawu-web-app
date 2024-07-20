@@ -7,7 +7,7 @@ const ProfileHero = () => {
     <div>
       {pathname.includes('seller-profile') ? (
         <>
-          <div className="bg-img-1"></div>
+          <div className="bg-profile-seller"></div>
           <div className="-mt-[50px] ml-20">
             <Image
               src="/assets/profile-pic.png"

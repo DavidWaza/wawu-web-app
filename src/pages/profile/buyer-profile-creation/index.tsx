@@ -1,11 +1,14 @@
 import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {  Text } from "@/components/ui/Typography/Typography";
+import { Text } from "@/components/ui/Typography/Typography";
 import { BsEyeSlash } from "react-icons/bs";
 import Education from "../Components/Education/Education";
 import ProfessionalCertificate from "../Components/ProfessionalCertificate/Certificate";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
+import axiosInstance from "@/pages/api/axiosInstance";
+import { fetch_user_portfolio } from "@/pages/api/endpoints";
+import { toast } from "sonner";
 
 type FormFields = {
   firstName: string;
@@ -25,8 +28,13 @@ const BuyerProfileCreation = () => {
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    try {
+      const response = await axiosInstance.post(fetch_user_portfolio, data);
+      console.log(response.data);
+      toast.success(response.data.message);
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
   };
   return (
     <LayoutProfile>

@@ -28,14 +28,14 @@ const UserExpertise: React.FC = () => {
   return (
     <React.Fragment>
       <OnboardingLayout>
-        <div className="bg-white lg:px-10 lg:w-1/2 m-auto py-10 border rounded-md">
-          <div className="flex gap-5">
+        <div className="bg-white lg:px-10 lg:w-1/2 m-auto py-10 border rounded-md px-5">
+          <div className="flex items-center gap-2">
             <Image
               src={"/assets/wave.svg"}
               width={0}
               height={0}
               sizes="100vw"
-              className="w-[5%] h-auto object-contain object-center"
+              className="w-5 h-auto object-contain object-center"
               alt="wave"
             />
             <p className="text-[#290D43] font-bold text-xl">
@@ -69,7 +69,7 @@ const UserExpertise: React.FC = () => {
                     width={0}
                     height={0}
                     sizes="100vw"
-                    className="w-[400px] h-auto object-contain object-center px-5 my-3"
+                    className="lg:w-[400px] w-[70%] m-auto h-auto object-contain object-center px-5 my-3"
                     alt={item.title}
                   />
                   <p className="text-[#290D43] font-normal text-[16px] hover:text-[#9510C9] text-center">
@@ -80,7 +80,7 @@ const UserExpertise: React.FC = () => {
             </div>
             <div className="my-5 flex justify-center">
               <button
-                className="bg-[#ED459A] w-2/3 py-2 px-6 rounded-xl"
+                className="bg-[#ED459A] w-2/3 py-2 px-6 rounded-xl text-white"
                 type="submit"
               >
                 Continue
