@@ -7,8 +7,9 @@ const nextConfig = {
         aggregateTimeout: 300, // Delay rebuild after the first change (300ms)
       };
     }
+
     return config;
-  }
+  },
 };
 
 export default nextConfig;

@@ -1,7 +1,7 @@
 import Button from "@/components/ui/Button/Button";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
-import Header from "../buyers/Components/Header/Header";
 import AddAccordion from "@/components/AccordionComponent/AddAccordion";
+import Header from "../sellers/Components/Header/Header";
 
 const FaqEdit = () => {
   return (

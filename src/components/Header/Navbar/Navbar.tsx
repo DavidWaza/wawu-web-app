@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import WhyFullDropDown from "./WhyFullDropDown";
 import FindFullNavigation from "./FindFullDropdown";
 import WorkFullDropdown from "./WorkFullDropdown";
+import HomeLogo from "./Logo/HomeLogo";
 
 interface linkProps {
   id: number;
@@ -83,37 +84,35 @@ const Navbar: React.FC<linkProps> = () => {
 
   return (
     <>
-      <nav className="bg-white w-[80%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
+      <nav className="bg-white w-[85%] h-[75px] top-[4rem] left-1/2 transform -translate-x-1/2 -translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
         <div className="flex justify-between items-center w-full">
-          <div className="flex items-center">
-            <Logo classname="w-full" />
-            <div className="hidden gap-4 z-10 2xl:text-black 2xl:flex">
-              {links.map((link) => (
-                <ul key={link.id}>
-                  <Link href={link.href}>
-                    <li className="flex justify-center items-center">
-                      {link.link}{" "}
-                      <button
-                        onClick={
-                          link.link === "Why Wawu"
-                            ? whyToggleNav
-                            : link.link === "Find Talent"
-                            ? findToggleNav
-                            : link.link === "Find Work"
-                            ? workToggleNav
-                            : undefined
-                        }
-                      >
-                        {link.isCaret && <RxCaretDown className="text-black" />}
-                      </button>
-                    </li>
-                  </Link>
-                </ul>
-              ))}
-              {whyIsToggle && <WhyFullDropDown />}
-              {findIsToggle && <FindFullNavigation />}
-              {workIsToggle && <WorkFullDropdown />}
-            </div>
+          <HomeLogo />
+          <div className="hidden gap-4 z-10 2xl:text-black 2xl:flex">
+            {links.map((link) => (
+              <ul key={link.id}>
+                <Link href={link.href}>
+                  <li className="flex justify-center items-center">
+                    {link.link}{" "}
+                    <button
+                      onClick={
+                        link.link === "Why Wawu"
+                          ? whyToggleNav
+                          : link.link === "Find Talent"
+                          ? findToggleNav
+                          : link.link === "Find Work"
+                          ? workToggleNav
+                          : undefined
+                      }
+                    >
+                      {link.isCaret && <RxCaretDown className="text-black" />}
+                    </button>
+                  </li>
+                </Link>
+              </ul>
+            ))}
+            {whyIsToggle && <WhyFullDropDown />}
+            {findIsToggle && <FindFullNavigation />}
+            {workIsToggle && <WorkFullDropdown />}
           </div>
           <div className="flex justify-end items-center space-x-4">
             <select className="px-4 py-3 border border-[#ED459A] bg-transparent text-black rounded-lg">
@@ -122,20 +121,24 @@ const Navbar: React.FC<linkProps> = () => {
               <option>French</option>
               <option>Spanish</option>
             </select>
-            <button
-              className="p-4 border-none bg-transparent text-[#ED459A]"
-              onClick={handleSignUp}
-            >
-              Sign Up
-            </button>
-            <Button
-              variant="primary"
-              size="small"
-              className="py-2 my-3"
-              onClick={handleLogin}
-            >
-              Log in
-            </Button>
+            <Link href={"/auth/sign-up"}>
+              <button
+                className="p-4 border-none bg-transparent text-[#ED459A]"
+                onClick={handleSignUp}
+              >
+                Sign Up
+              </button>
+            </Link>
+            <Link href={"/auth/login"}>
+              <Button
+                variant="primary"
+                size="small"
+                className="py-2 my-3"
+                onClick={handleLogin}
+              >
+                Log in
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>

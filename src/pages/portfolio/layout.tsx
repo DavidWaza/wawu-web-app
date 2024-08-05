@@ -1,5 +1,6 @@
-import GigPortfolio from "../buyers/Components/GigPortfolio/GigPortfolio";
-import Header from "../buyers/Components/Header/Header";
+import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
+import Header from "../sellers/Components/Header/Header";
+
 
 interface PortfolioLayoutProps {
   children: React.ReactNode;

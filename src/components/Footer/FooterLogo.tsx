@@ -5,12 +5,12 @@ import Image from "next/image";
 interface IlogoProps{
   classname?:string
 }
-const Logo = ({classname}:IlogoProps) => {
+const FooterLogo = ({classname}:IlogoProps) => {
   return (
     <div>
       <Link href={"/"}>
         <Image
-          src="/icons/wawulogo.svg"
+          src="/assets/footerlogo.png"
           alt=""
           className={`${classname} h-auto object-contain object-center`}
           width={0}
@@ -22,4 +22,4 @@ const Logo = ({classname}:IlogoProps) => {
     </div>
   );
 };
-export default Logo;
+export default FooterLogo;

@@ -20,7 +20,7 @@ const AboutUserProfileOnboarding: React.FC = () => {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     console.log(data);
     goToNextStep();
-    router.push("/onboarding/user-expertise");
+    router.push("/buyers");
   };
 
   return (

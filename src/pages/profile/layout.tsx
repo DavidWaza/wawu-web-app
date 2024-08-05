@@ -1,5 +1,6 @@
+import Header from "../sellers/Components/Header/Header";
 
-import Header from "../buyers/Components/Header/Header";
+
 interface AuthWrapperProps {
   children: React.ReactNode;
 }

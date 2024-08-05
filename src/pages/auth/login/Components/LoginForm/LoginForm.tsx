@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
@@ -8,12 +9,14 @@ import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../../../../types/Types";
 import { login_url } from "@/pages/api/endpoints";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");
   const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const router = useRouter()
   function togglePassword() {
     setPasswordVisible((prev) => !prev);
   }
@@ -27,8 +30,11 @@ const LoginForm = () => {
     try {
       const response = await axiosInstance.post(login_url, data);
       toast.success(response.data.message);
-    } catch (err) {
-      console.log(err);
+      const token = response.data.data.token;
+      localStorage.setItem('token', token)
+      router.push('/buyers')
+    } catch (err:any) {
+      toast.error(err.message)
     }
   };
   return (

@@ -15,7 +15,9 @@ interface toggleButtonProps {
 const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
   return (
     <button
-      className={`${active ? "bg-[#ED459A]" : "bg-[#290D43]"} py-2 px-10  text-white`}
+      className={`${
+        active ? "bg-[#ED459A]" : "bg-[#290D43]"
+      } py-2 px-10  text-white`}
       onClick={onToggle}
     >
       {label}

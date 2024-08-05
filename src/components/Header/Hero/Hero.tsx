@@ -41,7 +41,7 @@ const Hero = () => {
           <div key={index}>
             <div className={backgroundChange(heroContent.roles)}>
               <div className="grid md:grid-cols-2 lg:pt-20 px-10 lg:px-20">
-                <div className="lg:px-[5rem] pt-20">
+                <div className="lg:px-[3rem] pt-20">
                   <Image
                     src={`${heroContent.textSrc}`}
                     alt=""

@@ -6,19 +6,17 @@ import { BsShare } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
-import { PortfolioData } from "../../data/portfolioData";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
 import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
-import ModalDetails from "../buyers/Components/ModalDetails/ModalDetails";
 import { fetch_portfolio } from "../api/endpoints";
 import axiosInstance from "../api/axiosInstance";
 import { toast } from "sonner";
-import { AxiosError } from "axios";
 
 interface PortfolioItem {
   file: string;
+  link: string;
+  name:string
   projectTitle: string;
   projectDescription: string;
 }
@@ -28,7 +26,6 @@ export default function PersonalPortfolio() {
   const [createUserPortfolio, setCreateUserPortfolio] = useState<
     PortfolioItem[]
   >([]);
-  const [displayError, setDisplayError] = useState("");
 
   const onOpenModal = () => {
     setOpen(true);
@@ -40,12 +37,11 @@ export default function PersonalPortfolio() {
   const fetchUserPortfolio = async () => {
     try {
       const response = await axiosInstance.get(fetch_portfolio);
-      console.log(response.data);
-      setCreateUserPortfolio(response.data);
+      console.log("port", response.data?.data);
+      setCreateUserPortfolio(response.data?.data);
     } catch (err: any) {
       if (err.response) {
         toast.error(err.response.data.message);
-        setDisplayError(err.response.data.message);
       }
     }
   };
@@ -55,7 +51,7 @@ export default function PersonalPortfolio() {
   return (
     <PortfolioLayout>
       <div className="lg:px-[8.2rem]">
-        <div className=" bg-img-1">
+        <div className=" bg-profile-seller">
           <div className="flex justify-between px-7 py-10">
             <Link href={"#"}>
               <div className="flex gap-3 items-center text-white">
@@ -83,30 +79,27 @@ export default function PersonalPortfolio() {
         </div>
         <div className="flex justify-end my-10">
           <Button
-            size="large"
+            size="medium"
             suffix={<MdArrowRightAlt />}
-            className="p-2"
+            className="p-2 text-nowrap"
             href="/portfolio/create-seller-portfolio"
           >
             Create new Portfolio
           </Button>
         </div>
         <div className="my-10">
-          {displayError && (
-            <p className="text-black text-xl text-center">
-              {`User ${displayError}`}
-            </p>
-          )}
           <div className="grid lg:grid-cols-3 gap-5">
             {createUserPortfolio.map((data, index) => (
               <div className="border" key={index}>
-                <Image
-                  src={data.file}
-                  alt="data img"
-                  width={400}
-                  height={400}
-                  className="w-full"
-                />
+                {typeof data.file?.link === "string" && (
+                  <Image
+                    src={`${data.file.link}`} // Validate and use the link property within the file object
+                    alt={data.projectDescription} // Use the name property for alt text, with a fallback
+                    width={400}
+                    height={400}
+                    className="w-full"
+                  />
+                )}
                 <div className="my-5 px-5">
                   <h1 className="text-black font-bold text-xl">
                     {data.projectTitle}

@@ -9,6 +9,7 @@ import GetInTouch from "./components/AboutCompany/GetInTouch/GetInTouch";
 import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 import Image from "next/image";
 import PricePackage from "@/components/PricePackage/PricePackage";
+import ReactPlayer from "react-player";
 
 const AboutUs = () => {
   return (
@@ -20,33 +21,29 @@ const AboutUs = () => {
         <MobileNavbar />
       </div>
       <Hero />
-      <div className="bg-white">
-        <Section>
-          <div className="grid lg:grid-cols-2 gap-4 lg:gap-0 items-center">
-            <div className="flex lg:justify-center items-center">
-              <Image
-                src="/assets/ceo.png"
-                alt="the ceo"
-                className="lg:w-[70%] h-auto object-contain object-center"
-                width={0}
-                height={0}
-                sizes="100vw"
+      <div className=" bg-white">
+        <div className="lg:px-[7.5rem] md:px-[3rem] px-[1rem] ">
+          <div className="py-20">
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-10 items-center">
+              <ReactPlayer
+                url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE"
+                width={`100%`}
               />
-            </div>
-            <div className="py-3">
-              <AboutCompany />
+              <div className="py-3">
+                <AboutCompany />
+              </div>
             </div>
           </div>
-        </Section>
-        <Section>
-          <Heading variant="medium" fontColor="secondary" className="!py-10">
-            Popular Services
-          </Heading>
-          <div className="py-5">
-            <AboutCarousel />
-          </div>
-          <GetInTouch />
-        </Section>
+          <>
+            <Heading variant="medium" fontColor="secondary" className="!py-10">
+              Popular Services
+            </Heading>
+            <div className="py-5">
+              <AboutCarousel />
+            </div>
+            <GetInTouch />
+          </>
+        </div>
       </div>
     </>
   );

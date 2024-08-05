@@ -7,12 +7,13 @@ import { RiTeamLine } from "react-icons/ri";
 import { IoDiceOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import Logo from "@/components/Header/Navbar/Logo/Logo";
+import { usePathname } from "next/navigation";
 
 const siderbarLinks = [
   {
     icon: <IoHomeOutline />,
     label: "Home",
-    link: "/dashboard/home",
+    link: "/dashboard",
   },
   {
     icon: <GrBlog />,
@@ -42,10 +43,11 @@ const siderbarLinks = [
   {
     icon: <AiOutlineYoutube />,
     label: "Youtube",
-    link: "/dashboard/ads",
+    link: "/dashboard/yt",
   },
 ];
 const Sidebar = () => {
+  const pathname = usePathname();
   return (
     <div className="bg-white h-screen fixed pt-4">
       <div>
@@ -55,7 +57,11 @@ const Sidebar = () => {
         <div key={index} className="group">
           <Link href={side.link}>
             <div className="px-10 py-3">
-              <div className="flex items-center gap-2 group-hover:bg-[#A812E3] rounded-lg transition-all ease-in-out px-5 py-2">
+              <div
+                className={`flex items-center gap-2 group-hover:bg-[#A812E3] rounded-lg transition-all ease-in-out px-5 py-2 ${
+                  pathname === side.link ? "bg-[#A812E3] text-white" : ""
+                }`}
+              >
                 <div className="group-hover:text-white">{side.icon}</div>
                 <p className="font-semibold text-[16px] group-hover:text-white">
                   {side.label}

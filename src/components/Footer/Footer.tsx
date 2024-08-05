@@ -7,6 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
+import FooterLogo from "./FooterLogo";
 
 const Footer = () => {
   return (
@@ -14,7 +15,7 @@ const Footer = () => {
       <div className="lg:px-20 px-5 mx-auto">
         <div className="flex flex-col lg:flex-row text-left lg:text-left items-center">
           <div className="w-full lg:w-6/12">
-            <Logo classname="w-[30%] lg:w-[50%]" />
+            <FooterLogo classname="w-1/2" />
             {contactLinks.map((contactLink, index) => (
               <div className="block px-4" key={index}>
                 <div className="flex gap-3 align-middle items-center mt-3">

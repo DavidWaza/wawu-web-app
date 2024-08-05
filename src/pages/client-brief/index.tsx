@@ -1,24 +1,69 @@
+import { useState } from "react";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
-import Header from "../buyers/Components/Header/Header";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
-import CustomInput from "@/components/ui/Inputs/TextInput";
-import CustomSelect from "@/components/ui/Inputs/SelectInputs";
 import UploadImage from "../profile/Components/UploadImage/UploadImage";
+import Header from "../sellers/Components/Header/Header";
+import {
+  convertFileToBase64,
+  isValidFileSize,
+  isValidImageType,
+} from "../../../utilities/imageUtils";
+import { toast } from "sonner";
+import axiosInstance from "../api/axiosInstance";
+import { fetch_client_brief } from "../api/endpoints";
+import InputField from "@/components/TextField/InputField";
+import { FormFields } from "../../../types/Types";
+import SelectField from "@/components/TextField/SelectField";
 
 const ClientBrief = () => {
+  const [error, setError] = useState("");
+  const [project_brief_title, setProject_brief_title] = useState("");
+  const [get_done, setGet_done] = useState("");
+  const [best_project, setBest_project] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [budget, setBudget] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FieldValues>();
+  } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+    console.log("Form data:", data); // Log form data
+    if (data.file && data.file.length > 0) {
+      const signature = data.file[0];
+      if (!isValidImageType(signature) || !isValidFileSize(signature)) {
+        setError("Invalid image type or size.");
+        return;
+      }
+
+      try {
+        const base64Signature = await convertFileToBase64(signature);
+        const payload = {
+          title: project_brief_title,
+          description: best_project,
+          budget,
+          category: industry,
+          signature: {
+            fileName: signature.name,
+            file: base64Signature,
+          },
+        };
+        console.log("Payload:", payload); // Log payload
+        const response = await axiosInstance.post(fetch_client_brief, payload);
+        console.log("Response:", response); // Log response
+        toast.success(response.data.message);
+      } catch (err: any) {
+        console.error("Error:", err); // Log error
+        toast.error(err.response?.data?.message || "An error occurred");
+      }
+    } else {
+      setError("Please upload a signature image.");
+    }
   };
-  const salutationOptions = ["Reason number 1", "Reason number 2"];
 
   return (
     <>
@@ -33,7 +78,7 @@ const ClientBrief = () => {
               This is where you fill us in one of the big picture?
             </Text>
             <Button
-              className="border-none lg:w-[26rem] w-full p-1 lg:p-3 flex gap-10 items-center text-sm"
+              className="border-none lg:w-[26rem] w-full p-1 lg:p-3 flex items-center text-sm"
               size="large"
               suffix={<MdArrowRightAlt />}
             >
@@ -44,50 +89,58 @@ const ClientBrief = () => {
         <div className="my-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid lg:grid-cols-2 items-center gap-10">
-              <CustomInput
+              <InputField
                 label="Project brief title"
-                sublabel="Keep it as brief as possible, this will help us match you to the right category"
-                name="project"
-                className="bg-transparent pt-5 pb-12"
+                name="projectTitle"
                 placeholder="Example: Social media marketing for my business"
+                value={project_brief_title}
                 register={register}
+                setValue={(value) => setProject_brief_title(value)}
                 errors={errors}
                 type="text"
               />
-              <CustomSelect
+              <SelectField
                 label="Best category for your project"
-                name="capacity"
-                className="bg-transparent py-4"
-                options={salutationOptions}
+                name="bestProject"
+                value={best_project}
+                setValue={(value) => setBest_project(value)}
+                options={[
+                  { value: "true", label: "Facebook" },
+                  { value: "false", label: "Twitter" },
+                ]}
                 register={register}
                 errors={errors}
               />
-
-              <CustomInput
+              <InputField
                 label="What are you looking to get done?"
-                sublabel="This will help get your brief to the right talent. Sepcifics help here."
-                name="project"
-                className="bg-transparent pt-5 pb-12"
+                name="getDone"
                 placeholder="Example: Social media marketing for my business"
+                value={get_done}
                 register={register}
                 errors={errors}
+                setValue={(value) => setGet_done(value)}
                 type="text"
               />
-              <CustomSelect
+              <SelectField
                 label="Which industry are you in?"
-                name="capacity"
-                className="bg-transparent py-4"
-                options={salutationOptions}
+                name="industry"
+                value={industry}
+                options={[
+                  { value: "true", label: "Facebook" },
+                  { value: "false", label: "Twitter" },
+                ]}
                 register={register}
+                setValue={(value) => setIndustry(value)}
                 errors={errors}
               />
-              <CustomInput
+              <InputField
                 label="Budget"
-                name="project"
-                className="bg-transparent py-4"
+                name="budget"
                 placeholder="Up to"
+                value={budget}
                 register={register}
                 errors={errors}
+                setValue={(value) => setBudget(value)}
                 type="text"
               />
             </div>
@@ -97,14 +150,23 @@ const ClientBrief = () => {
                 <input type="checkbox" value={""} />
                 <label className="text-black">My budget is flexible</label>
               </div>
-              <Button
-                size="small"
-                className="p-2 flex gap-5 justify-center items-center"
-                href="/client-brief/client-brief-review"
-                suffix={<MdArrowRightAlt />}
-              >
-                Review
-              </Button>
+              <div className="flex gap-5 justify-center">
+                <button
+                  type="submit"
+                  className="p-2 flex gap-2 justify-center items-center bg-[#F060A8] text-white rounded-lg px-10"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+                <Button
+                  variant="secondary"
+                  size="small"
+                  className="p-2 flex gap-2 justify-center items-center !text-black"
+                  href="/client-brief/client-brief-review"
+                  suffix={<MdArrowRightAlt />}
+                >
+                  Review
+                </Button>
+              </div>
             </div>
           </form>
         </div>
@@ -112,4 +174,5 @@ const ClientBrief = () => {
     </>
   );
 };
+
 export default ClientBrief;

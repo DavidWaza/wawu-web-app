@@ -1,9 +1,10 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
-import Header from "../../buyers/Components/Header/Header";
+
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
 import { LuMoveLeft } from "react-icons/lu";
 import UploadImage from "../../profile/Components/UploadImage/UploadImage";
+import Header from "@/pages/sellers/Components/Header/Header";
 
 const ClientBriefReview = () => {
   return (

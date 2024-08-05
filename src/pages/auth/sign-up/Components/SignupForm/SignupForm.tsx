@@ -47,9 +47,11 @@ const SignupForm = () => {
       });
       toast.success(response.data.message);
       goToNextStep();
-      router.push("/onboarding/user-screen-about");
-    } catch (err) {
-      console.log(err);
+      router.push("/onboarding/user-expertise");
+    } catch (err:any) {
+      toast.error(err.message || 'Error signing up')
+      console.log(err)
+      
     }
   };
   return (
@@ -114,15 +116,16 @@ const SignupForm = () => {
           register={register}
           errors={errors}
           setValue={(value) => setPassword(value)}
+          
         />
         <div onClick={togglePassword}>
           {passwordVisible ? (
             <>
-              <IoEyeOutline className="absolute top-11 right-0 mx-6 text-black" />
+              <IoEyeOutline className="absolute top-10 right-0 mx-6 text-black" />
             </>
           ) : (
             <>
-              <BsEyeSlash className="absolute top-11 right-0 mx-6 text-black" />
+              <BsEyeSlash className="absolute top-10 right-0 mx-6 text-black" />
             </>
           )}
         </div>

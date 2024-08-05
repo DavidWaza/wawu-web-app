@@ -17,7 +17,7 @@ const UserProfile = () => {
         <Text variant="medium" className="text-black">
           Jane Doe
         </Text>
-        <div className="lg:flex gap-5 my-5 items-center space-y-3">
+        <div className="lg:flex gap-5 py-5 items-center space-y-3">
           <UserDetails
             prefix={<IoLocationOutline className="text-black" size={20} />}
             suffix="Nigeria"

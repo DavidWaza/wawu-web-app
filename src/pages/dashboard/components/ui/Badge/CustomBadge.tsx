@@ -6,7 +6,7 @@ interface IbadgeProps {
 const CustomBadge: React.FC<IbadgeProps> = ({ status }) => {
   return (
     <div
-      className={`rounded-lg text-center font-semibold flex items-center justify-center gap-2 p-2 ${
+      className={`rounded-lg text-center font-semibold flex items-center justify-center gap-2 p-1 ${
         status === "Verify"
           ? "bg-[#F0FAF0] text-[#2D8A39] "
           : status === "Pending"

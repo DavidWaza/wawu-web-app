@@ -62,6 +62,8 @@ const UploadImage: React.FC = () => {
             <Image
               src={URL.createObjectURL(selectedImage)}
               alt="selected h-full w-full"
+              width={0}
+              height={0}
             />
           )}
         </div>

@@ -1,8 +1,8 @@
 import { Toaster } from "sonner";
-import Header from "../buyers/Components/Header/Header";
 import AuthNavbar from "./login/Components/Header/Header";
 import Illustrator from "./login/Components/Illustrator/Illustrator";
 import { usePathname } from "next/navigation";
+import Header from "../sellers/Components/Header/Header";
 interface AuthWrapperProps {
   children: React.ReactNode;
 }

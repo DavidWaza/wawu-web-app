@@ -60,10 +60,10 @@ const SellerProfileCreation = () => {
         <ProfileHero />
         <div className="flex  justify-center md:justify-end my-10">
           <Button variant="primary" size="small" className="p-2 text-nowrap">
-            Become a seller
+            Become a buyer
           </Button>
         </div>
-        <div className="py-12 grid lg:grid-cols-2">
+        <div className="py-2 grid lg:grid-cols-2">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid lg:grid-cols-2 items-center gap-10">
               <InputField

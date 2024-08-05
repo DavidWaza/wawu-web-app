@@ -14,8 +14,8 @@ const Custom404 = () => {
         className="w-[30%] m-auto h-auto object-contain object-center"
       />
       <p className="text-[#FF0084] text-[28px] font-semibold">404 Not Found</p>
-      <p className="text-black text-[36px] font-semibold">
-        Whoops! This page doesn&pos;t exit.
+      <p className="text-black text-[36px] font-semibold -mt-10">
+        Whoops! This page doesn&apos;t exist.
       </p>
       <Link href={"/"}>
         <button className="bg-[#9510C9] rounded-md p-2 text-white">

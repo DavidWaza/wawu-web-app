@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+import CreatePortfolioSection from "./Components/CreatePortfolioSection/CreatePortfolioSection";
+import GigPortfolio from "./Components/GigPortfolio/GigPortfolio";
+import Header from "./Components/Header/Header";
+import { Heading, Text } from "@/components/ui/Typography/Typography";
+import { GoArrowRight } from "react-icons/go";
+import RecentSearch from "./Components/RecentSearch/RecentSearch";
 import Section from "@/components/ui/Section/Section";
 import Card from "@/components/Cards/Card";
 import Adverts from "@/components/Adverts/Adverts";
 import axiosInstance from "../api/axiosInstance";
 import { fetch_user_profile } from "../api/endpoints";
 import { toast } from "sonner";
-import Header from "../auth/login/Components/Header/Header";
-import { Heading, Text } from "@/components/ui/Typography/Typography";
-import CreatePortfolioSection from "../sellers/Components/CreatePortfolioSection/CreatePortfolioSection";
-import { GoArrowRight } from "react-icons/go";
-import RecentSearch from "../sellers/Components/RecentSearch/RecentSearch";
 
-const Buyers = () => {
+const Sellers = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -41,7 +41,7 @@ const Buyers = () => {
   
   return (
     <div>
-      <Header id={0} href={""} link={""} isCaret={false} />
+      <Header />
       {/* <GigPortfolio /> */}
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black">
@@ -152,4 +152,4 @@ const Buyers = () => {
     </div>
   );
 };
-export default Buyers;
+export default Sellers;

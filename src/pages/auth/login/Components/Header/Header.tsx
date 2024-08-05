@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { RxCaretDown } from "react-icons/rx";
 import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
+import Logo from "@/components/Header/Navbar/Logo/Logo";
 
 interface linkProps {
   id: number;
@@ -60,9 +61,7 @@ const AuthNavbar: React.FC<linkProps> = () => {
       >
         <div className="flex justify-between items-center w-full h-[5rem]">
           <div className=" flex justify-center items-center px-20 gap-10">
-            <Link href={"/"}>
-              <Image src={AuthLogo} className=" w-auto h-full" alt="logo" />
-            </Link>
+            <Logo classname="w-[70%]" />
             <div className="hidden gap-4 z-10 2xl:text-white 2xl:flex items-center">
               {links.map((link) => (
                 <ul key={link.id}>

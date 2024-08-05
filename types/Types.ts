@@ -56,6 +56,14 @@ export interface FormFields {
   linkedIn?:string;
   instagram?:string;
   role?:number;
+  advert_link?:string
+  post_advert?:string;
+  call_to_action_button?:string;
+  advert_time_frame?:string
+  bestProject?:string;
+  getDone?:string;
+  industry?:string;
+  budget?:string
 
 }
 

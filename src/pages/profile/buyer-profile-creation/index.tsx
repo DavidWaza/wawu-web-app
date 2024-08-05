@@ -41,8 +41,8 @@ const BuyerProfileCreation = () => {
       <div className="-mt-10">
         <ProfileHero />
         <div className="flex justify-end">
-          <Button variant="primary" size="large" className="p-2">
-            Provide a service
+          <Button variant="primary" size="medium" className="p-2">
+            Provide service
           </Button>
         </div>
         <div className="py-12 grid lg:grid-cols-2">
