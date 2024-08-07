@@ -7,7 +7,7 @@ const Type = () => {
   return (
     <div className="bg-[#F7ABD1] py-10">
       <Section>
-        <Text variant="medium" className="sora text-black">
+        <Text variant="medium" className="sora text-black !font-semibold">
           {" "}
           Who is your Girl?
         </Text>
