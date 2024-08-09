@@ -17,12 +17,12 @@ const MobileNavbar = () => {
   return (
     <nav className="bg-[#fefefe] h-[10.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
       <Image
-        src={"/assets/w-logo.svg"}
+        src={"/assets/WAWU-LOGO.svg"}
         width={0}
         height={0}
         sizes="100vw"
         alt="logo"
-        className="w-full md:w-[50%] h-auto object-cover object-center"
+        className="w-full h-auto object-contain object-center"
       />
       <div>
         <button
@@ -37,9 +37,9 @@ const MobileNavbar = () => {
         </button>
       </div>
       {hamburgerClick && (
-        <div className="fixed top-0 right-0 h-full w-[70%] bg-[#ffffff] flex flex-col items-right px-10 space-y-4 py-32 z-50 transition-all ease-in-out">
+        <div className="fixed top-0 right-0 h-full w-[70%] bg-[#ffffff] flex flex-col items-right px-10 space-y-4 py-14 z-50 transition-all ease-in-out">
           <div onClick={handleClose} className="absolute right-[30px] top-7">
-            <RiCloseLargeLine className="text-black" size={30}/>
+            <RiCloseLargeLine className="text-black" size={30} />
           </div>
           <Link href="/" className="text-black text-lg font-bold">
             Home
@@ -56,10 +56,16 @@ const MobileNavbar = () => {
           <Link href="/faq" className="text-black text-lg font-bold">
             FAQ
           </Link>
-          <Link href="/auth/login" className="text-black text-lg pt-10 font-bold">
+          <Link
+            href="/auth/login"
+            className="text-black text-lg pt-10 font-bold"
+          >
             Login
           </Link>
-          <Link href="/auth/sign-up" className=" text-lg text-red-600 font-bold">
+          <Link
+            href="/auth/sign-up"
+            className=" text-lg text-red-600 font-bold"
+          >
             Sign up
           </Link>
         </div>

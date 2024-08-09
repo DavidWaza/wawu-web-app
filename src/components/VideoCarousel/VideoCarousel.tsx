@@ -21,17 +21,28 @@ const VideoCarousel = () => {
   return (
     <div className="grid 2xl:grid-cols-2 gap-10 lg:px-[5rem]">
       <div className="bg-[#471471]">
-        <ReactPlayer url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE" width={`100%`} />
+        <ReactPlayer
+          url="https://youtu.be/L8c3PGSjMIs?si=0I-2FZVN_sEkaFgE"
+          width={`100%`}
+        />
       </div>
-      <div className="flex py-10 2xl:gap-5 flex-col">
+      <div className="flex 2xl:gap-5 flex-col">
         <Heading variant="medium" fontColor="primary">
           Welcome to Wawu Africa
         </Heading>
         <div className="flex-col mt-5">
-          <Text variant="small" className="text-[#F7ABD1]">
-            Velit purus egestas tellus phasellus. Mattis eget sed faucibus magna
-            vulputate pellentesque a diam tincidunt. Aenean malesuada tellus
-            tellus faucibus mauris quisque mauris in.
+        <Text variant="small" className="text-[#F7ABD1]">
+            By nature, we are incubators, creators, caretakers, protectors &
+            preservers. We are everything that’s required to serve enterprises
+            through cutting edge digital solutions & experiences. Stewards that
+            observe ongoing trends and analyze upcoming technologies to
+            transform the digital persona of clients with our unbeatable
+            performance. Wawu Technology believes in a world where access to
+            knowledge, innovation and business opportunities are based on
+            interest and ability, not gender. We do everything to make women
+            feel included, seen and compensated no matter where we call home, so
+            they can live decently, live their dreams and support their
+            families back home.
           </Text>
           <ul className="mt-3">
             {perks.map(({ icon, perk }) => (

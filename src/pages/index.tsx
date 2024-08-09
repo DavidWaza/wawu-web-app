@@ -26,7 +26,6 @@ const Home = () => {
         submitText="Submit"
         placeholder="Enter your email"
       />
-      <Adverts />
     </div>
   );
 };

@@ -16,7 +16,6 @@ const FooterLogo = ({classname}:IlogoProps) => {
           width={0}
           height={0}
           sizes="100vw"
-          
         />
       </Link>
     </div>

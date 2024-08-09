@@ -24,9 +24,9 @@ const VideoComponent = () => {
             </div>
           )}
         </div>
-        <div className={`flex lg:px-[12rem] 2xl:justify-end px-9`}>
+        <div className={`flex lg:px-[12rem] 2xl:justify-end px-9 py-5`}>
           <div
-            className="flex justify-center items-center gap-2 py-2 px-3 border-none cursor-pointer bg-[#E54D9A] rounded-md"
+            className="flex justify-center items-center gap-2 py-2 px-3 border-none cursor-pointer bg-[#E54D9A] rounded-md text-white"
             onClick={NextVideoSlider}
             role="button"
             tabIndex={0}
