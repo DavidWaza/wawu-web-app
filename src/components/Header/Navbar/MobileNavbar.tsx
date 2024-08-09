@@ -41,20 +41,26 @@ const MobileNavbar = () => {
           <div onClick={handleClose} className="absolute right-[30px] top-7">
             <RiCloseLargeLine className="text-black" size={30}/>
           </div>
-          <Link href="/" className="text-black text-lg">
+          <Link href="/" className="text-black text-lg font-bold">
             Home
           </Link>
-          <Link href="/about" className="text-black text-lg">
+          <Link href="/about" className="text-black text-lg font-bold">
             About
           </Link>
-          <Link href="/mentorship" className="text-black text-lg">
+          <Link href="/mentorship" className="text-black text-lg font-bold">
             Mentorship
           </Link>
-          <Link href="/contact-us" className="text-black text-lg">
+          <Link href="/contact-us" className="text-black text-lg font-bold">
             Contact us
           </Link>
-          <Link href="/faq" className="text-black text-lg">
+          <Link href="/faq" className="text-black text-lg font-bold">
             FAQ
+          </Link>
+          <Link href="/auth/login" className="text-black text-lg pt-10 font-bold">
+            Login
+          </Link>
+          <Link href="/auth/sign-up" className=" text-lg text-red-600 font-bold">
+            Sign up
           </Link>
         </div>
       )}
