@@ -6,15 +6,15 @@ import ReactPlayer from "react-player";
 const perks = [
   {
     icon: <IoCheckmark />,
-    perk: "Enterprise-grade security",
+    perk: "Excellence, Integrity, Equit, Scalability & Sustainability",
   },
   {
     icon: <IoCheckmark />,
-    perk: "99.9% guaranteed uptime SLA",
+    perk: "Women Inclusion & Empowerment",
   },
   {
     icon: <IoCheckmark />,
-    perk: "Designated customer success team",
+    perk: "99.9% service delivery guaranteed",
   },
 ];
 const VideoCarousel = () => {
@@ -31,7 +31,7 @@ const VideoCarousel = () => {
           Welcome to Wawu Africa
         </Heading>
         <div className="flex-col mt-5">
-        <Text variant="small" className="text-[#F7ABD1]">
+          <Text variant="small" className="text-[#F7ABD1]">
             By nature, we are incubators, creators, caretakers, protectors &
             preservers. We are everything that’s required to serve enterprises
             through cutting edge digital solutions & experiences. Stewards that

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Logo from "../Header/Navbar/Logo/Logo";
 import { Text } from "../ui/Typography/Typography";
 import Link from "next/link";
 import { contactLinks, pageLinks } from "@/data/portfolioData";
