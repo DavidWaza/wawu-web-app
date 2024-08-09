@@ -10,7 +10,7 @@ const DashboardLayout: React.FC<IChildrenProps> = ({ children }) => {
       <div className="col-span-1">
         <Sidebar />
       </div>
-      <div className="col-span-5 p-10">{children}</div>
+      <div className="col-span-5 py-10 pr-10">{children}</div>
     </div>
   );
 };

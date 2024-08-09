@@ -5,10 +5,15 @@ import WawuPlatforms from "@/components/WawuProps/WawuPlatforms/WawuPlatforms";
 import Section from "@/components/ui/Section/Section";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import Accordion from "@/components/AccordionComponent/Accordion";
 import DigitalReality from "@/components/DigitalReality/DigitalReality";
 import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
 import Image from "next/image";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const professions = [
   "I am a developer",
@@ -51,7 +56,7 @@ const BuyerLandingComponent = () => {
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
         buttonText="Become a buyer"
         backgroundColor="bg-[#A812E3]"
-        imgSrc="/assets/hanger-girl.png"
+        imgSrc="/assets/Girl-with-hangers.svg"
       />
       <div className="bg-white">
         <div className="py-10">
@@ -82,7 +87,11 @@ const BuyerLandingComponent = () => {
           <div className="bg-white">
             <Adverts />
             <Section>
-              <Heading variant="medium" fontColor="secondary">
+              <Heading
+                variant="medium"
+                fontColor="secondary"
+                className="!font-bold"
+              >
                 Redefining Product Features
               </Heading>
               <Text variant="small" className="leading-6 mt-5">
@@ -104,14 +113,19 @@ const BuyerLandingComponent = () => {
                       </div>
                     </>
                   ))}
-                  <Button size="large" variant="tertiary">
-                    Get Started
-                  </Button>
+                  <div className="py-10">
+                    <Button size="small" variant="tertiary">
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
                 <div className="flex justify-center items-center">
-                  <img
+                  <Image
                     src="/assets/laptop-girl.png"
                     alt="right girl"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     className="lg:w-3/4"
                   />
                 </div>
@@ -119,9 +133,28 @@ const BuyerLandingComponent = () => {
             </Section>
             <div className="bg-[#ECECEC] py-10">
               <Text variant="large" className="text-black text-center pt-7">
-                Seller FAQs
+                Buyer FAQs
               </Text>
-              <Accordion />
+              <div className="px-10 lg:px-52 py-10">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>
+                      What is Graphics designer?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>
+                      How do i top graphics designers?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
             </div>
             <div className="bg-[#290D43] py-10">
               <Section>
@@ -131,15 +164,13 @@ const BuyerLandingComponent = () => {
               </Section>
             </div>
             <div className="">
-              <Section>
-                <DigitalReality
-                  backgroundColor="bg-white"
-                  textColor="text-black"
-                  borderColor="border-[#ED459A]"
-                  placeholder={""}
-                  submitText="Get Started"
-                />
-              </Section>
+              <DigitalReality
+                backgroundColor="bg-white"
+                textColor="text-black"
+                borderColor="border-[#ED459A]"
+                placeholder={""}
+                submitText="Get Started"
+              />
             </div>
           </div>
         </div>

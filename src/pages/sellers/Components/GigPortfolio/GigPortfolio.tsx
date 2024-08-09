@@ -14,13 +14,13 @@ const portfolios = [
 ];
 
 const PortfolioItem = ({ portfolio }: any) => (
-  <Marquee>
+  
     <p className="text-black sora">{portfolio}</p>
-  </Marquee>
+  
 );
 
 const GigPortfolio = () => (
-  <div className="bg-white gap-4 flex py-10 border border-b-1">
+  <div className="bg-white flex justify-between px-5 py-10 border border-b-1">
     {portfolios.map((portfolio, index) => (
       <PortfolioItem key={index} portfolio={portfolio} />
     ))}

@@ -64,6 +64,7 @@ export interface FormFields {
   getDone?:string;
   industry?:string;
   budget?:string
+  description?:string;
 
 }
 

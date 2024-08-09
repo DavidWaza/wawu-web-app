@@ -8,6 +8,7 @@ import { IoDiceOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import Logo from "@/components/Header/Navbar/Logo/Logo";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const siderbarLinks = [
   {
@@ -49,9 +50,17 @@ const siderbarLinks = [
 const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-white h-screen fixed pt-4">
+    <div className="bg-white h-screen fixed">
       <div>
-        <Logo classname="w-full" />
+        {/* <Logo classname="w-full" /> */}
+        <Image
+          src={'/assets/WAWU-LOGO.svg'}
+          width={0}
+          height={0}
+          alt="logo"
+          sizes="100vw"
+          className="w-full h-auto object-center object-contain"
+        />
       </div>
       {siderbarLinks.map((side, index) => (
         <div key={index} className="group">

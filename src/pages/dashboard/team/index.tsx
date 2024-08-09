@@ -1,9 +1,10 @@
+'use client'
 import React, { useState } from "react";
 import DataTable from "../components/DataTable/DataTable";
-import Search from "@/pages/sellers/Components/Search/Search";
 import DashboardLayout from "../layout";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Modal from "react-responsive-modal";
+import { usePathname } from "next/navigation";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,10 +26,15 @@ import {
 import axiosInstance from "@/pages/api/axiosInstance";
 import { mentor_url } from "@/pages/api/endpoints";
 import { toast } from "sonner";
+import TextAreaField from "@/components/TextField/TextArea";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 const Team = () => {
+
   const [open, setOpen] = useState<boolean>(false);
   const [email, setEmail] = useState<FormFields["email"]>("");
+  const [description, setDescription] = useState<FormFields["description"]>("");
 
   const {
     register,
@@ -70,24 +76,32 @@ const Team = () => {
     }
   };
 
+  const pathname = usePathname()
+  const pathParts = pathname.split('/').filter(Boolean);
+  const currentPath = pathParts.length > 0 ? pathParts[pathParts.length - 1] : '';
+  
   return (
     <DashboardLayout>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <div>
-          <p className="text-lg font-semibold">Teams</p>
-          <p className="text-sm font-normal">
-            Let&apos;s get creative , Create new content
+          <p className="text-[28px] font-semibold sora capitalize">{currentPath}</p>
+          <p className="text-[16px] text-[#5f6d7e] sora">
+            Let&apos;s get creative, create new content
           </p>
         </div>
-        <div>
-          <Search placeholder="Search" />
+        <div className="relative w-[20%]">
+          <Search className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+          <Input
+            className="bg-transparent pl-10 w-full"
+            placeholder="Search..."
+          />
         </div>
       </div>
 
       <AlertDialog>
         <div className="flex justify-end py-10">
           <AlertDialogTrigger className="py-2 px-20 bg-[#730C99] text-white rounded-xl">
-            Add item
+            Add team
           </AlertDialogTrigger>
         </div>
         <AlertDialogContent>
@@ -110,12 +124,23 @@ const Team = () => {
                   errors={errors}
                   setValue={(value) => setEmail(value)}
                 />
+                <TextAreaField
+                  label="Description"
+                  placeholder="Start typing..."
+                  register={register}
+                  name="description"
+                  value={description}
+                  setValue={(value) => setDescription(value)}
+                  errors={errors}
+                />
               </form>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction className="bg-[#730C99]">
+              Create
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

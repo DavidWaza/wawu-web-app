@@ -42,7 +42,7 @@ const Sellers = () => {
   return (
     <div>
       <Header />
-      {/* <GigPortfolio /> */}
+      <GigPortfolio />
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black">
           Nice to see you, {userProfileName}
@@ -66,7 +66,7 @@ const Sellers = () => {
         </div>
         <RecentSearch src={""} title={""} index={0} />
         <div className="mt-32">
-          <Heading variant="medium" fontColor="secondary">
+          <Heading variant="medium" fontColor="secondary" className="!sora">
             {" "}
             Most popular Gigs in{" "}
             <span className="text-[#9510c9]">Software Development</span>

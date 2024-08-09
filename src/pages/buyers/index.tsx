@@ -12,6 +12,7 @@ import { Heading, Text } from "@/components/ui/Typography/Typography";
 import CreatePortfolioSection from "../sellers/Components/CreatePortfolioSection/CreatePortfolioSection";
 import { GoArrowRight } from "react-icons/go";
 import RecentSearch from "../sellers/Components/RecentSearch/RecentSearch";
+import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
 
 const Buyers = () => {
   const settings = {
@@ -27,7 +28,7 @@ const Buyers = () => {
   const fetchUserProfile = async () => {
     try {
       const response = await axiosInstance.get(fetch_user_profile);
-      console.log('name',response.data.data.firstName);
+      console.log("name", response.data.data.firstName);
       setUserProfileName(response.data.data.firstName);
     } catch (err: any) {
       if (err.response) {
@@ -38,11 +39,11 @@ const Buyers = () => {
   useEffect(() => {
     fetchUserProfile();
   }, []);
-  
+
   return (
     <div>
       <Header id={0} href={""} link={""} isCaret={false} />
-      {/* <GigPortfolio /> */}
+      <GigPortfolio />
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black">
           Nice to see you, {userProfileName}
@@ -136,17 +137,6 @@ const Buyers = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <Adverts />
-        </div>
-        <div className="bg-white">
-          <Section>
-            <div className="flex justify-center items-center align-middle">
-              {" "}
-              blog posts
-            </div>
-          </Section>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -68,6 +70,9 @@
   }
 }
 
+.sora {
+  font-family: "Sora", sans-serif;
+}
 .bg-profile-seller {
   background-image: url("/assets/profile-seller.png");
   background-position: center;

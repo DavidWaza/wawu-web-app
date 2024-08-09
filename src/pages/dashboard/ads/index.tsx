@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DashboardLayout from "../layout";
 import { Input } from "@/components/ui/input";
-import Search from "@/pages/sellers/Components/Search/Search";
 import { FormFields } from "../../../../types/Types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
@@ -14,6 +13,9 @@ import { mentor_url } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import InputField from "@/components/TextField/InputField";
 import SelectField from "@/components/TextField/SelectField";
+import { Search } from "lucide-react";
+import DragDrop from "../components/DragImageUpload/DragImageUpload";
+import { usePathname } from "next/navigation";
 
 const Adverts = () => {
   const {
@@ -57,17 +59,21 @@ const Adverts = () => {
     }
   };
 
+  const pathname = usePathname()
+const pathParts = pathname.split('/').filter(Boolean);
+const currentPath = pathParts.length > 0 ? pathParts[pathParts.length - 1] : '';
   return (
     <DashboardLayout>
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <div>
-          <p className="text-lg font-semibold">Advertisement</p>
-          <p className="text-sm font-normal">
-            Let&apos;s get creative , Create new content
+        <p className="text-[28px] font-semibold sora capitalize">{currentPath}</p>
+          <p className="text-[16px] text-[#5f6d7e] sora">
+            Let&apos;s get creative, create new content
           </p>
         </div>
-        <div>
-          <Search placeholder="Search" />
+        <div className="relative w-[20%]">
+          <Search className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+          <Input className="bg-transparent pl-10 w-full" placeholder="Search..." />
         </div>
       </div>
       <div className="py-10">
@@ -119,13 +125,16 @@ const Adverts = () => {
               setValue={(value) => setAdvert_time_frame(value)}
             />
           </div>
-          <div className="py-10">
+          {/* <div className="py-10">
             <input
               {...register("file")}
               type="file"
               accept="image/*"
               className="py-20 px-4 text-black border border-1 rounded-md w-full"
             />
+          </div> */}
+          <div className="py-10">
+            <DragDrop />
           </div>
           <div className="py-5 flex justify-center">
             <button
