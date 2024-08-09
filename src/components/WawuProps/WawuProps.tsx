@@ -10,7 +10,7 @@ const WawuPropsComponent = () => {
     <div className="py-10">
       <div className="px-10 md:px-20">
         <div className="lg:px-[3rem]">
-          <div className="grid grid-cols-2">
+          <div className="grid lg:grid-cols-2">
             <div>
               <Heading variant="medium" fontColor="secondary">
                 Wawu Props
