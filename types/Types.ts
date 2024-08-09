@@ -65,7 +65,6 @@ export interface FormFields {
   industry?:string;
   budget?:string
   description?:string;
-
 }
 
 export type InputFieldProps = {

@@ -46,7 +46,7 @@ const CreateSellerPortfolio = () => {
       }
 
       const base64Signature = await convertFileToBase64(file);
-      setValue("file", base64Signature);
+      // setValue("file");
     }
   };
 
