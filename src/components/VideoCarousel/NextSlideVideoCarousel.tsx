@@ -35,7 +35,7 @@ const NextSlideVideoCarousel = () => {
           <Text variant="small" className="text-[#F7ABD1]">
             By nature, we are incubators, creators, caretakers, protectors &
             preservers. We are everything that’s required to serve enterprises
-            through cutting edge digital solutions & experiences. Stewards that
+            through cutting-edge digital solutions & experiences. Stewards who
             observe ongoing trends and analyze upcoming technologies to
             transform the digital persona of clients with our unbeatable
             performance. Wawu Technology believes in a world where access to
