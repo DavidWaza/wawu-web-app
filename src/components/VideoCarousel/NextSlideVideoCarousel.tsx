@@ -7,7 +7,7 @@ import ReactPlayer from "react-player";
 const perks = [
   {
     icon: <IoCheckmark />,
-    perk: "Excellence, Integrity, Equit, Scalability & Sustainability",
+    perk: "Excellence, Integrity, Equity, Scalability & Sustainability",
   },
   {
     icon: <IoCheckmark />,
