@@ -18,6 +18,8 @@ const SellerProfileCreation = () => {
   const [lastName, setLastName] = useState<FormFields["lastName"]>("");
   const [email, setEmail] = useState<FormFields["email"]>("");
   const [password, setPassword] = useState<FormFields["password"]>("");
+  const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
+
   const [about, setAbout] = useState<FormFields["about"]>("");
   const [skills, setSkills] = useState<FormFields["skills"]>("");
   const [preferredLanguage, setPreferredLanguage] =
@@ -38,6 +40,8 @@ const SellerProfileCreation = () => {
   const [linkedIn, setLinkedIn] = useState<FormFields["linkedIn"]>("");
   const [instagram, setInstagram] = useState<FormFields["instagram"]>("");
 
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -45,8 +49,47 @@ const SellerProfileCreation = () => {
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    const formData = new FormData();
+
+    // Append form fields
+    if (firstName) formData.append("firstName", firstName);
+    if (lastName) formData.append("lastName", lastName);
+    if (email) formData.append("email", email);
+    if (password) formData.append("password", password);
+    if (phoneNumber) formData.append("phoneNumber", phoneNumber);
+
+    if (about) formData.append("about", about);
+    if (skills) formData.append("skills", skills);
+    if (preferredLanguage)
+      formData.append("preferredLanguage", preferredLanguage);
+    if (certification) formData.append("certification", certification);
+    if (institution) formData.append("institution", institution);
+    if (courseOfStudy) formData.append("courseOfStudy", courseOfStudy);
+    if (graduationDate) formData.append("graduationDate", graduationDate);
+    if (name) formData.append("name", name);
+    if (endDate) formData.append("endDate", endDate?.toString() || "");
+    if (country) formData.append("country", country);
+    if (state) formData.append("state", state);
+    if (twitter) formData.append("twitter", twitter);
+    if (facebook) formData.append("facebook", facebook);
+    if (linkedIn) formData.append("linkedIn", linkedIn);
+    if (instagram) formData.append("instagram", instagram);
+
+    // Append the selected image, if any
+    if (selectedImage) {
+      formData.append("image", selectedImage);
+    }
+
     try {
-      const response = await axiosInstance.post(fetch_user_portfolio, data);
+      const response = await axiosInstance.post(
+        fetch_user_portfolio,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log(response.data);
       toast.success(response.data.message);
     } catch (err: any) {
@@ -54,68 +97,78 @@ const SellerProfileCreation = () => {
     }
   };
 
+  const handleUpload = (file: File | null) => {
+    setSelectedImage(file);
+  };
+
   return (
     <LayoutProfile>
-      <div className="-mt-10">
+      <>
         <ProfileHero />
-        <div className="flex  justify-center md:justify-end my-10">
-          <Button variant="primary" size="small" className="p-2 text-nowrap">
-            Become a buyer
-          </Button>
-        </div>
-        <div className="py-2 grid lg:grid-cols-2">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid lg:grid-cols-2 items-center gap-10">
+        <div className="grid lg:grid-cols-2">
+          <div className="py-10">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid lg:grid-cols-2 items-center gap-5 lg:gap-10">
+                <InputField
+                  label="First Name"
+                  name="firstName"
+                  placeholder="David"
+                  value={firstName}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setFirstName(value)}
+                />
+                <InputField
+                  label="Last Name"
+                  name="lastName"
+                  placeholder="Waza"
+                  value={lastName}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setLastName(value)}
+                />
+                {/* EMAIL AND PASSWORD */}
+                <InputField
+                  label="Email"
+                  name="email"
+                  placeholder="davidwaza@gmail.com"
+                  type="email"
+                  value={email}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setEmail(value)}
+                />
+                <InputField
+                  label="Password"
+                  name="password"
+                  placeholder="************"
+                  type="password"
+                  value={password}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setPassword(value)}
+                />
+              </div>
+
               <InputField
-                label="First Name"
-                name="firstName"
-                placeholder="David"
-                value={firstName}
+                label="Phone number"
+                name="phoneNumber"
+                placeholder="090112233345"
+                type="number"
+                value={phoneNumber}
                 register={register}
                 errors={errors}
-                setValue={(value) => setFirstName(value)}
+                setValue={(value) => setPhoneNumber(value)}
               />
-              <InputField
-                label="Last Name"
-                name="lastName"
-                placeholder="Waza"
-                value={lastName}
+              <TextAreaField
+                label="About"
+                name="about"
+                placeholder="Type here"
+                value={about}
                 register={register}
                 errors={errors}
-                setValue={(value) => setLastName(value)}
+                setValue={(value) => setAbout(value)}
               />
-              {/* EMAIL AND PASSWORD */}
-              <InputField
-                label="Email"
-                name="email"
-                placeholder="davidwaza@gmail.com"
-                type="email"
-                value={email}
-                register={register}
-                errors={errors}
-                setValue={(value) => setEmail(value)}
-              />
-              <InputField
-                label="Password"
-                name="password"
-                placeholder="************"
-                type="password"
-                value={password}
-                register={register}
-                errors={errors}
-                setValue={(value) => setPassword(value)}
-              />
-            </div>
-            <TextAreaField
-              label="About"
-              name="about"
-              placeholder="Type here"
-              value={about}
-              register={register}
-              errors={errors}
-              setValue={(value) => setAbout(value)}
-            />
-            <div className="my-6">
               <TextAreaField
                 label="Skills"
                 name="skills"
@@ -125,25 +178,21 @@ const SellerProfileCreation = () => {
                 errors={errors}
                 setValue={(value) => setSkills(value)}
               />
-              <div>
-                <SelectField
-                  label="Preferred Language"
-                  name="preferredLanguage"
-                  register={register}
-                  errors={errors}
-                  value={preferredLanguage}
-                  setValue={(value) => setPreferredLanguage(value)}
-                  options={[
-                    { value: "true", label: "English" },
-                    { value: "false", label: "French" },
-                    { value: "false", label: "Spanish" },
-                    { value: "false", label: "Latin" },
-                  ]}
-                />
-              </div>
-            </div>
-            <div>
-              <div className="flex gap-1 items-center">
+              <SelectField
+                label="Preferred Language"
+                name="preferredLanguage"
+                register={register}
+                errors={errors}
+                value={preferredLanguage}
+                setValue={(value) => setPreferredLanguage(value)}
+                options={[
+                  { value: "English", label: "English" },
+                  { value: "French", label: "French" },
+                  { value: "Spanish", label: "Spanish" },
+                  { value: "Latin", label: "Latin" },
+                ]}
+              />
+              <div className="flex gap-1 items-center my-3">
                 <Text variant="small">Education</Text>
                 <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
               </div>
@@ -155,11 +204,11 @@ const SellerProfileCreation = () => {
                 value={certification}
                 setValue={(value) => setCertification(value)}
                 options={[
-                  { value: "true", label: "BSc" },
-                  { value: "false", label: "HND" },
-                  { value: "false", label: "OND" },
-                  { value: "false", label: "Masters" },
-                  { value: "false", label: "PHD" },
+                  { value: "BSc", label: "BSc" },
+                  { value: "HND", label: "HND" },
+                  { value: "OND", label: "OND" },
+                  { value: "Masters", label: "Masters" },
+                  { value: "PHD", label: "PHD" },
                 ]}
               />
               <SelectField
@@ -170,9 +219,15 @@ const SellerProfileCreation = () => {
                 value={institution}
                 setValue={(value) => setInstitution(value)}
                 options={[
-                  { value: "true", label: "Salem University" },
-                  { value: "false", label: "Nasarawa State University" },
-                  { value: "false", label: "Covenant University" },
+                  { value: "Salem University", label: "Salem University" },
+                  {
+                    value: "Nasarawa State University",
+                    label: "Nasarawa State University",
+                  },
+                  {
+                    value: "Covenant University",
+                    label: "Covenant University",
+                  },
                 ]}
               />
               <SelectField
@@ -183,165 +238,147 @@ const SellerProfileCreation = () => {
                 value={courseOfStudy}
                 setValue={(value) => setCourseOfStudy(value)}
                 options={[
-                  { value: "true", label: "Computer Science" },
-                  { value: "false", label: "Information Technology" },
-                  { value: "false", label: "Artificial Intelligence" },
+                  { value: "Computer Science", label: "Computer Science" },
+                  {
+                    value: "Information Technology",
+                    label: "Information Technology",
+                  },
+                  {
+                    value: "Artificial Intelligence",
+                    label: "Artificial Intelligence",
+                  },
                 ]}
               />
               <InputField
                 label="Graduation Date"
                 name="graduationDate"
                 value={graduationDate}
+                type="date"
+                placeholder="Date"
                 register={register}
                 errors={errors}
                 setValue={(value) => setGraduationDate(value)}
               />
-              <Button variant="tertiary" className="!my-5">
-                Add
-              </Button>
-              <div className="mt-10">
+              <div className="space-y-5 my-5">
                 <div className="flex gap-1 items-center">
-                  <Text variant="small" className="text-nowrap">
-                    Professional Certificate
-                  </Text>
+                  <Text variant="small">Experience</Text>
                   <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
                 </div>
-                <SelectField
+                <InputField
                   label="Name"
                   name="name"
-                  register={register}
-                  errors={errors}
+                  placeholder="Company name"
                   value={name}
-                  setValue={(value) => setName(value)}
-                  options={[
-                    { value: "true", label: "English" },
-                    { value: "false", label: "French" },
-                    { value: "false", label: "Spanish" },
-                    { value: "false", label: "Latin" },
-                  ]}
-                />
-                <SelectField
-                  label="Institution"
-                  name="institution"
                   register={register}
                   errors={errors}
-                  value={institution}
-                  setValue={(value) => setInstitution(value)}
-                  options={[
-                    { value: "true", label: "Salem University" },
-                    { value: "false", label: "Nasarawa State University" },
-                    { value: "false", label: "Covenant University" },
-                  ]}
+                  setValue={(value) => setName(value)}
                 />
                 <InputField
                   label="End Date"
                   name="endDate"
-                  value={endDate}
+                  value={endDate || ""} // Convert endDate to string for the input field
+                  type="date"
+                  placeholder="Date"
                   register={register}
                   errors={errors}
                   setValue={(value) => setEndDate(value)}
                 />
-                <UploadImage />
-                <Button variant="tertiary" className="!my-5">
-                  Add
-                </Button>
-              </div>
-              <div className="my-10">
-                <div className="flex gap-1 items-center">
-                  <Text variant="small" className="text-nowrap">
-                    Means of identification
-                  </Text>
-                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
-                </div>
-                <UploadImage />
-                <SelectField
+                <InputField
                   label="Country"
                   name="country"
-                  register={register}
-                  errors={errors}
+                  placeholder="Country"
                   value={country}
-                  setValue={(value) => setCountry(value)}
-                  options={[
-                    { value: "true", label: "Nigeria" },
-                    { value: "false", label: "Ghana" },
-                    { value: "false", label: "London" },
-                    { value: "false", label: "Namibia" },
-                  ]}
-                />
-                <SelectField
-                  label="State(This information will be used for analytical purposes only)"
-                  name="state"
                   register={register}
                   errors={errors}
-                  value={state}
-                  setValue={(value) => setState(value)}
-                  options={[
-                    { value: "true", label: "Akwa Ibom" },
-                    { value: "false", label: "Benin" },
-                    { value: "false", label: "Abuja" },
-                    { value: "false", label: "Benue" },
-                  ]}
+                  setValue={(value) => setCountry(value)}
                 />
-                <Button variant="tertiary" className="!my-5">
-                  Verify
-                </Button>
+                <InputField
+                  label="State"
+                  name="state"
+                  placeholder="State"
+                  value={state}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setState(value)}
+                />
               </div>
-            </div>
-            <div className="my-10 space-y-7">
-              <div className="flex gap-1 items-center my-10">
-                <Text variant="small" className="text-nowrap">
-                  Social Handles
-                </Text>
-                <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+              <div className="space-y-5">
+                <div className="flex gap-1 items-center">
+                  <Text variant="small">Social Media Handles</Text>
+                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+                </div>
+                <InputField
+                  label="Twitter"
+                  name="twitter"
+                  placeholder="Twitter"
+                  value={twitter}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setTwitter(value)}
+                />
+                <InputField
+                  label="Facebook"
+                  name="facebook"
+                  placeholder="Facebook"
+                  value={facebook}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setFacebook(value)}
+                />
+                <InputField
+                  label="LinkedIn"
+                  name="linkedIn"
+                  placeholder="LinkedIn"
+                  value={linkedIn}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setLinkedIn(value)}
+                />
+                <InputField
+                  label="Instagram"
+                  name="instagram"
+                  placeholder="Instagram"
+                  value={instagram}
+                  register={register}
+                  errors={errors}
+                  setValue={(value) => setInstagram(value)}
+                />
               </div>
-              <InputField
-                label="Twitter"
-                name="twitter"
-                placeholder="Twitter Handle"
-                value={twitter}
-                register={register}
-                errors={errors}
-                setValue={(value) => setTwitter(value)}
-              />
-              <InputField
-                label="LinkedIn"
-                name="linkedIn"
-                placeholder="LinkedIn Username"
-                value={linkedIn}
-                register={register}
-                errors={errors}
-                setValue={(value) => setLinkedIn(value)}
-              />
-              <InputField
-                label="Facebook"
-                name="facebook"
-                placeholder="Facebook Handle"
-                value={facebook}
-                register={register}
-                errors={errors}
-                setValue={(value) => setFacebook(value)}
-              />
-              <InputField
-                label="Instagram"
-                name="instagram"
-                placeholder="Instagram Handle"
-                value={instagram}
-                register={register}
-                errors={errors}
-                setValue={(value) => setInstagram(value)}
-              />
+              <div className="my-5">
+                <UploadImage
+                  handleUpload={handleUpload}
+                  uploadEndpoint="/api/upload"
+                  maxFileSize={500 * 1024} // 500KB
+                  acceptedFileTypes="image/*"
+                />
+              </div>
+
+              <div className="my-10">
+                <button
+                  type="submit"
+                  className="p-2 text-nowrap bg-[#E54D9A] py-2 px-10 rounded-xl text-white font-semibold sora"
+                  disabled={isSubmitting}
+                >
+                  {!isSubmitting ? "Submit form" : "Submitting..."}
+                </button>
+              </div>
+            </form>
+          </div>
+          <div>
+            <div className="flex justify-center md:justify-end my-10">
+              <Button
+                variant="primary"
+                size="small"
+                className="p-2 text-nowrap"
+              >
+                Become a buyer
+              </Button>
             </div>
-            <button
-              type="submit"
-              className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md text-white"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Loading..." : "Submit"}
-            </button>
-          </form>
+          </div>
         </div>
-      </div>
+      </>
     </LayoutProfile>
   );
 };
+
 export default SellerProfileCreation;

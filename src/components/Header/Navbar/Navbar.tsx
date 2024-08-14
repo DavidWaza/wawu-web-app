@@ -19,16 +19,14 @@ interface linkProps {
 const links = [
   {
     id: 1,
-    href: "",
+    href: "/seller-landing",
     link: "Find Talent",
-    isCaret: true,
   },
 
   {
     id: 2,
-    href: "",
+    href: "/buyer-landing",
     link: "Find Work",
-    isCaret: true,
   },
   {
     id: 3,
@@ -87,7 +85,7 @@ const Navbar: React.FC<linkProps> = () => {
       <nav className="bg-white 2xl:w-[85%] h-[75px] 2xl:top-[4rem] 2xl:left-1/2 transform 2xl:-translate-x-1/2 2xl:-translate-y-1/2 2xl:fixed rounded-full flex items-center px-10 z-10">
         <div className="flex justify-between items-center w-full">
           <HomeLogo />
-          <div className="flex gap-4 z-10 2xl:text-black 2xl:flex">
+          <div className="flex gap-4 z-10 2xl:text-black 2xl:flex sora">
             {links.map((link) => (
               <ul key={link.id}>
                 <Link href={link.href}>
@@ -114,7 +112,7 @@ const Navbar: React.FC<linkProps> = () => {
             {findIsToggle && <FindFullNavigation />}
             {workIsToggle && <WorkFullDropdown />}
           </div>
-          <div className="flex justify-end items-center space-x-4">
+          <div className="flex justify-end items-center space-x-4 sora">
             <select className="px-4 py-3 border border-[#ED459A] bg-transparent text-black rounded-lg">
               <option>English</option>
               <option>Arabic</option>

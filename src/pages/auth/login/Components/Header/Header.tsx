@@ -17,16 +17,14 @@ interface linkProps {
 const links = [
   {
     id: 1,
-    href: "",
+    href: "/seller-landing",
     link: "Find Talent",
-    isCaret: true,
   },
 
   {
     id: 2,
-    href: "",
+    href: "buyer-landing",
     link: "Find Work",
-    isCaret: true,
   },
   {
     id: 3,

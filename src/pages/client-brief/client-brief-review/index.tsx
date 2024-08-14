@@ -5,8 +5,16 @@ import { MdArrowRightAlt } from "react-icons/md";
 import { LuMoveLeft } from "react-icons/lu";
 import UploadImage from "../../profile/Components/UploadImage/UploadImage";
 import Header from "@/pages/sellers/Components/Header/Header";
+import { useState } from "react";
+
+
 
 const ClientBriefReview = () => {
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+  const handleUpload = (file: File | null) => {
+    setSelectedImage(file);
+  };
   return (
     <>
       <Header />
@@ -67,7 +75,12 @@ const ClientBriefReview = () => {
                 Attachments
               </Heading>
               <div>
-                <UploadImage />
+              <UploadImage
+                  handleUpload={handleUpload}
+                  uploadEndpoint="/api/upload"
+                  maxFileSize={500 * 1024} // 500KB
+                  acceptedFileTypes="image/*"
+                />
               </div>
             </div>
           </div>

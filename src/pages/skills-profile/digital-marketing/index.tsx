@@ -175,10 +175,10 @@ export default function DigitalMarketing() {
         <div className="px-[5rem] py-20 bg-white">
           <Text className="text-black">Recommended for you</Text>
           <div className="grid grid-cols-4 gap-5 py-5">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Card name="name for you" />
+            <Card name="name for you" />
+            <Card name="name for you" />
+            <Card name="name for you" />
           </div>
         </div>
         <div>

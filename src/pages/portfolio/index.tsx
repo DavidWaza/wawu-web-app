@@ -9,14 +9,14 @@ import { Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
 import "react-responsive-modal/styles.css";
-import { fetch_portfolio } from "../api/endpoints";
+import { fetch_portfolio, fetch_user_profile } from "../api/endpoints";
 import axiosInstance from "../api/axiosInstance";
 import { toast } from "sonner";
 
 interface PortfolioItem {
   file: string;
   link: string;
-  name:string
+  name: string;
   projectTitle: string;
   projectDescription: string;
 }
@@ -26,12 +26,24 @@ export default function PersonalPortfolio() {
   const [createUserPortfolio, setCreateUserPortfolio] = useState<
     PortfolioItem[]
   >([]);
+  const [userProfileName, setUserProfileName] = useState<string>('');
 
-  const onOpenModal = () => {
-    setOpen(true);
-  };
-  const onCloseModal = () => {
-    setOpen(false);
+  useEffect(() => {
+    fetchUserProfile();
+  });
+
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_user_profile);
+      console.log("name", response.data.data.firstName);
+      setUserProfileName(
+        `${response.data.data.firstName} ${response.data.data.lastName}'s`
+      );
+    } catch (err: any) {
+      if (err.response) {
+        toast.error(err.response.data.message);
+      }
+    }
   };
 
   const fetchUserPortfolio = async () => {
@@ -74,10 +86,10 @@ export default function PersonalPortfolio() {
               height={400}
               className="w-20"
             />
-            <Text>Jane Doe Portfolio</Text>
+            <Text>{userProfileName} Portfolio</Text>
           </div>
         </div>
-        <div className="flex justify-end my-10">
+        <div className="flex justify-end my-10 px-5">
           <Button
             size="medium"
             suffix={<MdArrowRightAlt />}

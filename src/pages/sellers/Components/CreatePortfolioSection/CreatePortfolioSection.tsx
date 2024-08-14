@@ -30,7 +30,11 @@ const CreatePortfolioSection = () => {
         <Button
           variant="secondary"
           size="large"
-          href="/buyers/create-seller-portfolio"
+          href={`${ pathname.includes("buyers")
+            ? "/client-brief"
+            : pathname.includes("sellers")
+            ? ""
+            : ""}`}
           className="py-2 !w-[10rem] !font-semibold !bg-[#EBEBEB] hover:bg-slate-50 ease-in transition-all text-black"
         >
           {pathname.includes("buyers")

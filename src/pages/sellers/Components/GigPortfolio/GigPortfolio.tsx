@@ -1,30 +1,42 @@
-import React from "react";
-import Marquee from "react-fast-marquee";
+"use client";
+import React, { useState, useEffect } from "react";
+import axiosInstance from "@/pages/api/axiosInstance";
+import { fetch_service_categories } from "@/pages/api/endpoints";
+import Link from "next/link";
 
-const portfolios = [
-  "Graphics & Design",
-  "Programming & Tech",
-  "Digital Marketing",
-  "Video & Animation",
-  "Writing & Translation",
-  "Music & Video",
-  "Data",
-  "Business",
-  "Photography",
-];
+interface ICategoryProps {
+  uuid: string;
+  name: string;
+}
 
-const PortfolioItem = ({ portfolio }: any) => (
-  
-    <p className="text-black sora">{portfolio}</p>
-  
-);
+const GigPortfolio = () => {
+  const [fetchCategories, setFetchCategories] = useState<ICategoryProps[] | null>(null);
 
-const GigPortfolio = () => (
-  <div className="bg-white flex justify-between px-5 py-10 border border-b-1">
-    {portfolios.map((portfolio, index) => (
-      <PortfolioItem key={index} portfolio={portfolio} />
-    ))}
-  </div>
-);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_service_categories);
+      console.log(response.data.data);
+      setFetchCategories(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden">
+      {fetchCategories?.slice(0,10).map((item) => (
+        <div key={item.name}>
+          <Link href={'#'}>
+          <p key={item.uuid} className="text-nowrap sora hover:bg-[#e5e7e9] p-3 rounded-lg">{item.name}</p>
+          </Link>
+        </div>
+      )) || <p>No categories available.</p>}
+    </div>
+  );
+};
 
 export default GigPortfolio;

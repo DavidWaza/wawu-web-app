@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Retrieve the API token from environment variables or set a default
 const apiToken = process.env.NEXT_PUBLIC_API_TOKEN || "";
-// const token =
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+
 
 // Check if running in the browser (not in a Node.js environment)
 if (typeof window !== "undefined") {
@@ -14,7 +15,7 @@ if (typeof window !== "undefined") {
 
 // Create an Axios instance with a base URL and default headers
 const axiosInstance = axios.create({
-  baseURL: "https://wawu-backend-s7a8s.ondigitalocean.app/",
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
   },

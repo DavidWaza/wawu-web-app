@@ -60,7 +60,7 @@ const SignupForm = () => {
         <InputField
           label="Email"
           name="email"
-          placeholder="davidwaza@gmail.com"
+          placeholder="wawu@gmail.com"
           type="email"
           value={email}
           register={register}
@@ -74,7 +74,7 @@ const SignupForm = () => {
           <InputField
             label="First Name"
             name="firstName"
-            placeholder="David"
+            placeholder="Jonny"
             value={firstName}
             register={register}
             errors={errors}
@@ -86,7 +86,7 @@ const SignupForm = () => {
         <InputField
           label="Last Name"
           name="lastName"
-          placeholder="Waza"
+          placeholder="Doe"
           value={lastName}
           register={register}
           errors={errors}

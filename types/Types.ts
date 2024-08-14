@@ -78,3 +78,24 @@ export type InputFieldProps = {
   value: any;
   placeholder?: string;
 };
+
+export type ServiceSubCategory = {
+  uuid: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string | null;
+  serviceCategory: string | null;
+};
+
+export type ServiceItem = {
+  uuid: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string | null;
+  popularCount: number;
+  serviceSubCategory: ServiceSubCategory;
+};
+
+export type ServiceCategoryData = {
+  [key: string]: ServiceItem[];
+};

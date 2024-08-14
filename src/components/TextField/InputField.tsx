@@ -1,5 +1,4 @@
 import { Text } from "../ui/Typography/Typography";
-import { FormFields } from "../../../types/Types";
 import { useEffect } from "react";
 import { InputFieldProps } from "../../../types/Types";
 

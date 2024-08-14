@@ -10,7 +10,7 @@ const Userportfolio = () => {
       <div className="flex justify-between my-10 text-black">
         <p className="text-2xl font-semibold">My Portfolio</p>
         <div className="flex items-center gap-4">
-          <Link href={"#"} className="!underline font-semibold text-[16px]">
+          <Link href={"/portfolio"} className="!underline font-semibold text-[16px]">
             See All
           </Link>
           <GoArrowRight className="text-[#ED459A]" />

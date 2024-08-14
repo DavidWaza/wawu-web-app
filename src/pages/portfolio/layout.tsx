@@ -10,7 +10,7 @@ export default function PortfolioLayout({ children }: PortfolioLayoutProps) {
   return (
     <div>
       <Header />
-      <GigPortfolio />
+      <GigPortfolio  />
       {children}
     </div>
   );

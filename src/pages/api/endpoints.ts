@@ -33,3 +33,9 @@ export const fetch_user_profile = `/api/user/profile`
 
 // post client brief
 export const fetch_client_brief = `/api/buyer/lists`
+
+// fetch buyers Feed
+export const fetch_buyers_feed = `/api/feed`
+
+// get categories
+export const fetch_service_categories = `/api/categories?paginate=1&pageNumber=1`

@@ -131,10 +131,10 @@ export default function GraphicsAndDesign() {
       <div className="px-[5rem] py-20 bg-white">
         <Text className="text-black">Recommended for you</Text>
         <div className="grid grid-cols-4 gap-5 py-5">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card name="your name"/>
+          <Card name="your name"/>
+          <Card name="your name"/>
+          <Card name="your name"/>
         </div>
       </div>
       <div>

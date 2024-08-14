@@ -1,4 +1,4 @@
-import Marquee from "react-fast-marquee";
+
 import Image from "next/image";
 
 const images = [
@@ -58,7 +58,6 @@ const images = [
 const Testimonial = () => {
   return (
     <div className="bg-white">
-      <Marquee className="flex gap-[50px] justify-center items-center">
         {images.map((image) => (
           <Image
             key={image.id}
@@ -69,7 +68,7 @@ const Testimonial = () => {
             className="mx-5"
           />
         ))}
-      </Marquee>
+     
     </div>
   );
 };

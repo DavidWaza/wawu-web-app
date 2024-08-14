@@ -10,8 +10,9 @@ import Section from "@/components/ui/Section/Section";
 import Card from "@/components/Cards/Card";
 import Adverts from "@/components/Adverts/Adverts";
 import axiosInstance from "../api/axiosInstance";
-import { fetch_user_profile } from "../api/endpoints";
+import { fetch_buyers_feed, fetch_user_profile } from "../api/endpoints";
 import { toast } from "sonner";
+import { ServiceCategoryData } from "../../../types/Types";
 
 const Sellers = () => {
   const settings = {
@@ -23,11 +24,16 @@ const Sellers = () => {
   };
 
   const [userProfileName, setUserProfileName] = useState([]);
+  const [fetchFeed, setFetchFeed] = useState<ServiceCategoryData | null>(null);
+
+  useEffect(() => {
+    fetchUserProfile();
+    fetchUserFeeds()
+  }, []);
 
   const fetchUserProfile = async () => {
     try {
       const response = await axiosInstance.get(fetch_user_profile);
-      console.log('name',response.data.data.firstName);
       setUserProfileName(response.data.data.firstName);
     } catch (err: any) {
       if (err.response) {
@@ -35,25 +41,35 @@ const Sellers = () => {
       }
     }
   };
-  useEffect(() => {
-    fetchUserProfile();
-  }, []);
-  
+
+
+  const fetchUserFeeds = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_buyers_feed);
+      console.log("feeds", Object.keys(response.data.data));
+      setFetchFeed(response.data.data);
+    } catch (err: any) {
+      if (err.response) {
+        toast.error(err.response.data.message);
+      }
+    }
+  };
+
   return (
     <div>
       <Header />
       <GigPortfolio />
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
-        <Text variant="medium" className="text-black">
+        <Text variant="medium" className="text-black sora">
           Nice to see you, {userProfileName}
         </Text>
         <CreatePortfolioSection />
         <div className="mt-20 mb-10 flex justify-between">
           <div className="block">
-            <Text variant="base" className="text-black" textWeight="bold">
+            <Text variant="base" className="text-black sora" textWeight="bold">
               Based on your recent search
             </Text>
-            <Text variant="extrasmall" className="text-black">
+            <Text variant="extrasmall" className="text-black sora">
               Here are the basic tools you need
             </Text>
           </div>
@@ -65,89 +81,35 @@ const Sellers = () => {
           </div>
         </div>
         <RecentSearch src={""} title={""} index={0} />
-        <div className="mt-32">
-          <Heading variant="medium" fontColor="secondary" className="!sora">
-            {" "}
-            Most popular Gigs in{" "}
-            <span className="text-[#9510c9]">Software Development</span>
-          </Heading>
-          <div {...settings}>
-            <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* GIGS YOU MAY LIKE */}
-        <div className="mt-32">
-          <Heading variant="medium" fontColor="secondary">
-            {" "}
-            Gigs you may like{" "}
-          </Heading>
-          <div {...settings}>
-            <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
+        {fetchFeed &&
+          Object.keys(fetchFeed).map((category) => (
+            <div key={category}>
+              <div className="mt-32">
+                <Heading
+                  variant="medium"
+                  fontColor="secondary"
+                  className="sora"
+                >
+                  {" "}
+                  Most popular Gigs in{" "}
+                  <span className="text-[#9510c9] sora">{category}</span>
+                </Heading>
+                <div {...settings}>
+                  <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
+                    {fetchFeed[category].map((item) => (
+                      <>
+                        <div>
+                          <Link href={"/sellers/seller-profile"}>
+                            <Card name={item.name} />
+                          </Link>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* VIDEO AND ANIMATION */}
-        <div className="mt-32">
-          <Heading variant="medium" fontColor="secondary">
-            {" "}
-            Most popular Gigs in{" "}
-            <span className="text-[#9510c9]">Video & Animation</span>
-          </Heading>
-          <div {...settings}>
-            <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-              <div>
-                <Card />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <Adverts />
-        </div>
-        <div className="bg-white">
-          <Section>
-            <div className="flex justify-center items-center align-middle">
-              {" "}
-              blog posts
-            </div>
-          </Section>
-        </div>
+          ))}
       </div>
     </div>
   );

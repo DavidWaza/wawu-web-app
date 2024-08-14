@@ -1,12 +1,3 @@
-import TextHeader from "../Components/TextHeaderComponent/TextHeader";
-
-import Rating from "../Components/Rating/Rating";
-import UserProfile from "../Components/UserPorfile/Userprofile";
-import AboutSection from "../Components/AboutSellerProfile/AboutSection";
-import SkillsSection from "../Components/SkillsSection/SkillsSection";
-import AboutTheGig from "../Components/AboutTheGig/AboutTheGig";
-import AboutSeller from "../Components/AboutSeller/AboutSeller";
-import Userportfolio from "../Components/UserPortfolio/Userportfolio";
 import Card from "@/components/Cards/Card";
 import Header from "@/pages/sellers/Components/Header/Header";
 import GigPortfolio from "@/pages/sellers/Components/GigPortfolio/GigPortfolio";
@@ -16,6 +7,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import TextHeader from "@/pages/profile/Components/TextHeaderComponent/TextHeader";
+import Rating from "@/pages/profile/Components/Rating/Rating";
+import UserProfile from "@/pages/profile/Components/UserPorfile/Userprofile";
+import AboutSection from "@/pages/profile/Components/AboutSellerProfile/AboutSection";
+import SkillsSection from "@/pages/profile/Components/SkillsSection/SkillsSection";
+import AboutTheGig from "@/pages/profile/Components/AboutTheGig/AboutTheGig";
+import AboutSeller from "@/pages/profile/Components/AboutSeller/AboutSeller";
+import Userportfolio from "@/pages/profile/Components/UserPortfolio/Userportfolio";
 
 export default function SellerProfile() {
   return (
@@ -58,11 +57,11 @@ export default function SellerProfile() {
           Recommended for you.
         </span>
         <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
         </div>
       </div>
       <div className="px-10 lg:px-[8.4rem] my-20">
@@ -70,11 +69,11 @@ export default function SellerProfile() {
           browsing history.
         </span>
         <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
+          <Card name={""} />
         </div>
       </div>
     </>

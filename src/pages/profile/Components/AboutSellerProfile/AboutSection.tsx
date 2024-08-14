@@ -1,13 +1,11 @@
 import { Text } from "@/components/ui/Typography/Typography";
-import { FaArrowRight } from "react-icons/fa6";
-
 import Link from "next/link";
 import React from "react";
 
 const AboutSection = () => {
   return (
     <div className="py-4">
-      <Text className="text-black" variant="small">
+      <Text className="text-black !sora !text-[16px]" variant="small">
         Hi, I&apos;m a certified Shopify Developer and Partner having 6 years+
         experience! I&apos;m on the mission to empower 10,000 entrepreneurs to
         become successful with their ecommerce business. Designing and

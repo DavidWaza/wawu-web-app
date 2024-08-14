@@ -4,9 +4,9 @@ import { FaRegStar } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 
 // Turn this props when the data is given
-const Card = () => {
+const Card = ({name}:{name:string}) => {
   return (
-    <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3">
+    <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3 cursor-pointer">
       <div>
         <img src={"/assets/SD.jpg"} alt="img-placeholder" />
       </div>
@@ -24,8 +24,8 @@ const Card = () => {
         </div>
       </div>
       <div className="mb-[10px]">
-        <Text variant="small">
-          I will write 1500 words seo article and blog post for you
+        <Text variant="small" className="!font-semibold">
+         {name}
         </Text>
       </div>
       <div className="flex items-center gap-2 my-5">

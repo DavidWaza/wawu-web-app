@@ -24,6 +24,8 @@ const ClientBrief = () => {
   const [best_project, setBest_project] = useState("");
   const [industry, setIndustry] = useState("");
   const [budget, setBudget] = useState("");
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
 
   const {
     register,
@@ -39,32 +41,29 @@ const ClientBrief = () => {
         setError("Invalid image type or size.");
         return;
       }
-
       try {
-        const base64Signature = await convertFileToBase64(signature);
         const payload = {
           title: project_brief_title,
           description: best_project,
           budget,
           category: industry,
-          signature: {
-            fileName: signature.name,
-            file: base64Signature,
-          },
+         
         };
-        console.log("Payload:", payload); // Log payload
+        console.log("Payload:", payload);
         const response = await axiosInstance.post(fetch_client_brief, payload);
-        console.log("Response:", response); // Log response
+        console.log("Response:", response);
         toast.success(response.data.message);
       } catch (err: any) {
-        console.error("Error:", err); // Log error
+        console.error("Error:", err);
         toast.error(err.response?.data?.message || "An error occurred");
       }
     } else {
       setError("Please upload a signature image.");
     }
   };
-
+  const handleUpload = (file: File | null) => {
+    setSelectedImage(file);
+  };
   return (
     <>
       <Header />
@@ -88,7 +87,7 @@ const ClientBrief = () => {
         </div>
         <div className="my-10">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid lg:grid-cols-2 items-center gap-10">
+            <div className="grid lg:grid-cols-2 items-center lg:gap-10">
               <InputField
                 label="Project brief title"
                 name="projectTitle"
@@ -144,7 +143,12 @@ const ClientBrief = () => {
                 type="text"
               />
             </div>
-            <UploadImage />
+            <UploadImage
+                  handleUpload={handleUpload}
+                  uploadEndpoint="/api/upload"
+                  maxFileSize={500 * 1024} // 500KB
+                  acceptedFileTypes="image/*"
+                />
             <div className="my-6">
               <div className="flex gap-2 items-center py-5 ">
                 <input type="checkbox" value={""} />
@@ -154,6 +158,7 @@ const ClientBrief = () => {
                 <button
                   type="submit"
                   className="p-2 flex gap-2 justify-center items-center bg-[#F060A8] text-white rounded-lg px-10"
+                  onClick={() => console.log('luggy')}
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>

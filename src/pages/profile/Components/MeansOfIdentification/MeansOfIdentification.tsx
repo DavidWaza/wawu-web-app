@@ -25,7 +25,7 @@ const MeansOfIdentification = () => {
         
         <div className="lg:w-2/3 w-full px-10 lg:px-0">
           <div className="my-10">
-            <UploadImage />
+            {/* <UploadImage /> */}
             <div className="mt-10">
               <label className="text-black block text-sm">Country</label>
               <select
