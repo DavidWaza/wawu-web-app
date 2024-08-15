@@ -32,10 +32,13 @@ export const fetch_user_portfolio = `/api/user/profile/update`
 export const fetch_user_profile = `/api/user/profile`
 
 // post client brief
-export const fetch_client_brief = `/api/buyer/lists`
+export const post_client_brief = `/api/buyer/briefs`
 
 // fetch buyers Feed
 export const fetch_buyers_feed = `/api/feed`
 
 // get categories
 export const fetch_service_categories = `/api/categories?paginate=1&pageNumber=1`
+
+// get sub categories
+export const fetch_sub_categories = `/api/categories/d3ba7dfc-dd60-4905-9e34-50eb8212d5f3/subcategories?paginate=1&pageNumber=1`

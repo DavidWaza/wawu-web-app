@@ -19,7 +19,7 @@ const InputField = ({
 
   return (
     <div className="!py-1">
-      <label className="text-black block text-sm">{label}</label>
+      <label className="text-black block text-sm sora py-2">{label}</label>
       <input
         {...register(name, validation)}
         type={type}

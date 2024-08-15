@@ -33,7 +33,7 @@ const CreatePortfolioSection = () => {
           href={`${ pathname.includes("buyers")
             ? "/client-brief"
             : pathname.includes("sellers")
-            ? ""
+            ? "/client-brief"
             : ""}`}
           className="py-2 !w-[10rem] !font-semibold !bg-[#EBEBEB] hover:bg-slate-50 ease-in transition-all text-black"
         >

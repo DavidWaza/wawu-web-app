@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
 import { MdArrowRightAlt } from "react-icons/md";
@@ -12,17 +12,27 @@ import {
 } from "../../../utilities/imageUtils";
 import { toast } from "sonner";
 import axiosInstance from "../api/axiosInstance";
-import { fetch_client_brief } from "../api/endpoints";
+import {
+  fetch_service_categories,
+  fetch_sub_categories,
+  post_client_brief,
+} from "../api/endpoints";
 import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../types/Types";
 import SelectField from "@/components/TextField/SelectField";
 
+interface ICategoryProps {
+  uuid: string;
+  name: string;
+}
+
 const ClientBrief = () => {
   const [error, setError] = useState("");
-  const [project_brief_title, setProject_brief_title] = useState("");
-  const [get_done, setGet_done] = useState("");
-  const [best_project, setBest_project] = useState("");
-  const [industry, setIndustry] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [delivery_date, setDelivery_date] = useState("");
+  const [category, setCategory] = useState<ICategoryProps[]>([]);
+  const [sub_category, setSub_category] = useState<ICategoryProps[]>([]);
   const [budget, setBudget] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
@@ -33,25 +43,58 @@ const ClientBrief = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axiosInstance.get(fetch_service_categories);
+        setCategory(response.data.data);
+      } catch (error) {
+        console.error("Failed to fetch categories", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchSubCategories = async () => {
+      if (!sub_category) return;
+
+      try {
+        const response = await axiosInstance.get(fetch_sub_categories);
+        console.log("sub", response.data.data);
+        setSub_category(response.data.data);
+      } catch (error) {
+        console.error("Failed to fetch subcategories", error);
+      }
+    };
+
+    fetchSubCategories();
+  }, []);
+
   const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
     console.log("Form data:", data); // Log form data
-    if (data.file && data.file.length > 0) {
-      const signature = data.file[0];
-      if (!isValidImageType(signature) || !isValidFileSize(signature)) {
+
+    if (selectedImage) {
+      if (!isValidImageType(selectedImage) || !isValidFileSize(selectedImage)) {
         setError("Invalid image type or size.");
         return;
       }
       try {
-        const payload = {
-          title: project_brief_title,
-          description: best_project,
-          budget,
-          category: industry,
-         
+        const imageBase64 = await convertFileToBase64(selectedImage);
+        const postData = {
+          title,
+          description,
+          delivery_date: "2024-08-15",
+          category: category.length ? category[0].uuid : "",
+          sub_category: sub_category.length ? sub_category[0].uuid : "",
+          budget: Number(budget),
+          image: imageBase64,
         };
-        console.log("Payload:", payload);
-        const response = await axiosInstance.post(fetch_client_brief, payload);
+        console.log("Post Data:", postData);
+
+        const response = await axiosInstance.post(post_client_brief, postData);
         console.log("Response:", response);
+
         toast.success(response.data.message);
       } catch (err: any) {
         console.error("Error:", err);
@@ -61,9 +104,11 @@ const ClientBrief = () => {
       setError("Please upload a signature image.");
     }
   };
+
   const handleUpload = (file: File | null) => {
     setSelectedImage(file);
   };
+
   return (
     <>
       <Header />
@@ -90,46 +135,51 @@ const ClientBrief = () => {
             <div className="grid lg:grid-cols-2 items-center lg:gap-10">
               <InputField
                 label="Project brief title"
-                name="projectTitle"
+                name="title"
                 placeholder="Example: Social media marketing for my business"
-                value={project_brief_title}
+                value={title}
                 register={register}
-                setValue={(value) => setProject_brief_title(value)}
+                setValue={(value) => setTitle(value)}
                 errors={errors}
                 type="text"
               />
               <SelectField
                 label="Best category for your project"
-                name="bestProject"
-                value={best_project}
-                setValue={(value) => setBest_project(value)}
-                options={[
-                  { value: "true", label: "Facebook" },
-                  { value: "false", label: "Twitter" },
-                ]}
+                name="category"
+                value={category[0]?.uuid || category}
+                setValue={(value) => setCategory([{ uuid: value, name: "" }])}
+                options={category.map((item) => ({
+                  value: item.uuid,
+                  label: item.name,
+                }))}
                 register={register}
                 errors={errors}
               />
+
               <InputField
                 label="What are you looking to get done?"
-                name="getDone"
+                name="description"
                 placeholder="Example: Social media marketing for my business"
-                value={get_done}
+                value={description}
                 register={register}
                 errors={errors}
-                setValue={(value) => setGet_done(value)}
+                setValue={(value) => setDescription(value)}
                 type="text"
               />
               <SelectField
-                label="Which industry are you in?"
-                name="industry"
-                value={industry}
-                options={[
-                  { value: "true", label: "Facebook" },
-                  { value: "false", label: "Twitter" },
-                ]}
+                label="Subcategory"
+                name="sub_category"
+                value={sub_category[0]?.uuid || sub_category}
+                setValue={(value) => setSub_category([{ uuid: value, name: "" }])}
+                options={
+                  sub_category.length > 0
+                    ? sub_category.map((item) => ({
+                        value: item.uuid,
+                        label: item.name,
+                      }))
+                    : [{ value: "", label: "No subcategories available" }]
+                }
                 register={register}
-                setValue={(value) => setIndustry(value)}
                 errors={errors}
               />
               <InputField
@@ -144,11 +194,11 @@ const ClientBrief = () => {
               />
             </div>
             <UploadImage
-                  handleUpload={handleUpload}
-                  uploadEndpoint="/api/upload"
-                  maxFileSize={500 * 1024} // 500KB
-                  acceptedFileTypes="image/*"
-                />
+              handleUpload={handleUpload}
+              uploadEndpoint="/api/upload"
+              maxFileSize={500 * 1024} // 500KB
+              acceptedFileTypes="image/*"
+            />
             <div className="my-6">
               <div className="flex gap-2 items-center py-5 ">
                 <input type="checkbox" value={""} />
@@ -158,7 +208,7 @@ const ClientBrief = () => {
                 <button
                   type="submit"
                   className="p-2 flex gap-2 justify-center items-center bg-[#F060A8] text-white rounded-lg px-10"
-                  onClick={() => console.log('luggy')}
+                  onClick={(e: any) => onSubmit(e)}
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>

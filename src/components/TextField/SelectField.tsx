@@ -16,7 +16,7 @@ const SelectField = ({
   validation = {},
 }: SelectFieldProps) => (
   <div className="flex flex-col gap-2 !py-5">
-    <label className="text-black block text-sm">{label}</label>
+    <label className="text-black block text-sm sora">{label}</label>
     <select
       {...register(name, validation)}
       onChange={(e) => {

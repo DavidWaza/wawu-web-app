@@ -38,7 +38,7 @@ const ClientBriefReview = () => {
               Social media marketing for my buisness
             </Text>
           </div>
-          <div className="grid lg:grid-cols-2 my-10">
+          <div className="grid lg:grid-cols-2 my-10 space-y-5">
             <div>
               <Heading fontColor="secondary" variant="small">
                 Industry
