@@ -6,7 +6,7 @@ import { BsEyeSlash } from "react-icons/bs";
 import Education from "../Components/Education/Education";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
 import axiosInstance from "@/pages/api/axiosInstance";
-import { fetch_user_portfolio } from "@/pages/api/endpoints";
+import { fetch_portfolio } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import UploadImage from "../Components/UploadImage/UploadImage";
 import { useState } from "react";
@@ -40,7 +40,7 @@ const BuyerProfileCreation = () => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      const response = await axiosInstance.post(fetch_user_portfolio, data);
+      const response = await axiosInstance.post(fetch_portfolio, data);
       console.log(response.data);
       toast.success(response.data.message);
     } catch (err: any) {

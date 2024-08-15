@@ -10,7 +10,9 @@ interface ICategoryProps {
 }
 
 const GigPortfolio = () => {
-  const [fetchCategories, setFetchCategories] = useState<ICategoryProps[] | null>(null);
+  const [fetchCategories, setFetchCategories] = useState<
+    ICategoryProps[] | null
+  >(null);
 
   useEffect(() => {
     fetchCategory();
@@ -19,7 +21,6 @@ const GigPortfolio = () => {
   const fetchCategory = async () => {
     try {
       const response = await axiosInstance.get(fetch_service_categories);
-      console.log(response.data.data);
       setFetchCategories(response.data.data);
     } catch (err) {
       console.log(err);
@@ -27,14 +28,19 @@ const GigPortfolio = () => {
   };
 
   return (
-    <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden">
-      {fetchCategories?.slice(0,10).map((item) => (
+    <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden overflow-hidden">
+      {fetchCategories?.slice(0, 10).map((item) => (
         <div key={item.name}>
-          <Link href={'#'}>
-          <p key={item.uuid} className="text-nowrap sora hover:bg-[#e5e7e9] p-3 rounded-lg">{item.name}</p>
+          <Link href={"#"}>
+            <p
+              key={item.uuid}
+              className="text-nowrap sora hover:bg-[#e5e7e9] p-3 rounded-lg"
+            >
+              {item.name}
+            </p>
           </Link>
         </div>
-      )) || <p>No categories available.</p>}
+      )) || <p className="text-center">No categories available.</p>}
     </div>
   );
 };

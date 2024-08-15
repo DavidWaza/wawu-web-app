@@ -28,7 +28,7 @@ const Sellers = () => {
 
   useEffect(() => {
     fetchUserProfile();
-    fetchUserFeeds()
+    fetchUserFeeds();
   }, []);
 
   const fetchUserProfile = async () => {
@@ -42,12 +42,25 @@ const Sellers = () => {
     }
   };
 
-
   const fetchUserFeeds = async () => {
     try {
       const response = await axiosInstance.get(fetch_buyers_feed);
-      console.log("feeds", Object.keys(response.data.data));
-      setFetchFeed(response.data.data);
+      console.log("feeds", response.data.data);
+
+      const data = response.data.data;
+
+      // Iterate through categories and items to extract the 'about' field
+      Object.keys(data).forEach((category) => {
+        data[category].forEach((item: any) => {
+          if (item.additionalInfo && item.additionalInfo.about) {
+            console.log(
+              `About for ${item.firstName} in ${category}: ${item.additionalInfo.about}`
+            );
+          }
+        });
+      });
+
+      setFetchFeed(data);
     } catch (err: any) {
       if (err.response) {
         toast.error(err.response.data.message);
@@ -99,8 +112,13 @@ const Sellers = () => {
                     {fetchFeed[category].map((item) => (
                       <>
                         <div>
-                          <Link href={"/sellers/seller-profile"}>
-                            <Card name={item.name} />
+                          <Link
+                            href={`/sellers/seller-profile?name=${item.firstName}&last=${item.lastName}&about=${item.additionalInfo?.about}`}
+                          >
+                            <Card
+                              name={`${item.firstName} ${item.lastName}`}
+                              about={item.additionalInfo?.about}
+                            />
                           </Link>
                         </div>
                       </>

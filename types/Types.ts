@@ -80,6 +80,7 @@ export type InputFieldProps = {
   validation?: object;
   value: any;
   placeholder?: string;
+  className?:string
 };
 
 export type ServiceSubCategory = {
@@ -92,7 +93,9 @@ export type ServiceSubCategory = {
 
 export type ServiceItem = {
   uuid: string;
-  name: string;
+  firstName: string;
+  lastName:string;
+  additionalInfo:IInfo
   createdAt: string;
   updatedAt: string | null;
   popularCount: number;
@@ -102,3 +105,7 @@ export type ServiceItem = {
 export type ServiceCategoryData = {
   [key: string]: ServiceItem[];
 };
+
+interface IInfo {
+  about:string
+}

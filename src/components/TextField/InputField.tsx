@@ -11,6 +11,7 @@ const InputField = ({
   value,
   setValue,
   errors,
+  className,
   validation = {},
 }: InputFieldProps) => {
   useEffect(() => {

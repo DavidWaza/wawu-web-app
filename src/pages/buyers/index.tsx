@@ -98,7 +98,7 @@ const Buyers = () => {
                       <>
                         <div>
                           <Link href={"/sellers/seller-profile"}>
-                            <Card name={item.name} />
+                            <Card name={item.firstName} />
                           </Link>
                         </div>
                       </>

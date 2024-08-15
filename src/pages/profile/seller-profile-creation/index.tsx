@@ -10,8 +10,15 @@ import TextAreaField from "@/components/TextField/TextArea";
 import SelectField from "@/components/TextField/SelectField";
 import UploadImage from "../Components/UploadImage/UploadImage";
 import axiosInstance from "@/pages/api/axiosInstance";
-import { fetch_user_portfolio } from "@/pages/api/endpoints";
+import { post_user_portfolio } from "@/pages/api/endpoints";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const SellerProfileCreation = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -19,9 +26,9 @@ const SellerProfileCreation = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");
   const [password, setPassword] = useState<FormFields["password"]>("");
   const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
-
   const [about, setAbout] = useState<FormFields["about"]>("");
-  const [skills, setSkills] = useState<FormFields["skills"]>("");
+  const [role, setRole] = useState<number>(2);
+  const [skills, setSkills] = useState<string[]>([]);
   const [preferredLanguage, setPreferredLanguage] =
     useState<FormFields["preferredLanguage"]>("");
   const [certification, setCertification] =
@@ -48,18 +55,25 @@ const SellerProfileCreation = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  const onSubmit: SubmitHandler<FormFields> = async () => {
     const formData = new FormData();
 
+    const skills = [
+      "9fc660a1-d3e8-4b66-b7d0-366a9b1593e0",
+      "26fc6a23-d66b-4110-9678-0b55d48122f2",
+    ];
     // Append form fields
     if (firstName) formData.append("firstName", firstName);
     if (lastName) formData.append("lastName", lastName);
     if (email) formData.append("email", email);
     if (password) formData.append("password", password);
     if (phoneNumber) formData.append("phoneNumber", phoneNumber);
-
+    formData.append("role", role.toString());
     if (about) formData.append("about", about);
-    if (skills) formData.append("skills", skills);
+    if (skills) {
+      skills.forEach((skill) => formData.append("skills[]", skill));
+    }
+
     if (preferredLanguage)
       formData.append("preferredLanguage", preferredLanguage);
     if (certification) formData.append("certification", certification);
@@ -81,15 +95,11 @@ const SellerProfileCreation = () => {
     }
 
     try {
-      const response = await axiosInstance.post(
-        fetch_user_portfolio,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axiosInstance.post(post_user_portfolio, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log(response.data);
       toast.success(response.data.message);
     } catch (err: any) {
@@ -99,6 +109,11 @@ const SellerProfileCreation = () => {
 
   const handleUpload = (file: File | null) => {
     setSelectedImage(file);
+  };
+
+  const handleSkillsInput = (value: string) => {
+    const skillsArray = value.split(",").map((skill) => skill.trim());
+    setSkills(skillsArray);
   };
 
   return (
@@ -160,6 +175,24 @@ const SellerProfileCreation = () => {
                 errors={errors}
                 setValue={(value) => setPhoneNumber(value)}
               />
+              <div className="pt-5">
+                <label className="text-sm text-[#5E5989] py-3">Role</label>
+                <Select
+                  {...register("role")}
+                  value={role.toString()}
+                  name="role"
+                  onValueChange={(value: string) => setRole(Number(value))}
+                >
+                  <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
+                    <SelectValue placeholder="" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">Buyer</SelectItem>
+                    <SelectItem value="2">Seller</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <TextAreaField
                 label="About"
                 name="about"
@@ -172,12 +205,13 @@ const SellerProfileCreation = () => {
               <TextAreaField
                 label="Skills"
                 name="skills"
-                placeholder="Type here"
-                value={skills}
+                placeholder="Type here, separated by commas"
+                value={skills.join(", ")}
                 register={register}
                 errors={errors}
-                setValue={(value) => setSkills(value)}
+                setValue={handleSkillsInput}
               />
+
               <SelectField
                 label="Preferred Language"
                 name="preferredLanguage"

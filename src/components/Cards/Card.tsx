@@ -3,8 +3,13 @@ import { Text } from "../ui/Typography/Typography";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 
+interface ICardPros {
+  name:string;
+  about?:string
+  onClick?: () => void
+}
 // Turn this props when the data is given
-const Card = ({name}:{name:string}) => {
+const Card:React.FC<ICardPros> = ({name, about, onClick}) => {
   return (
     <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3 cursor-pointer">
       <div>
@@ -14,7 +19,7 @@ const Card = ({name}:{name:string}) => {
         <div className="flex items-center gap-2">
           <UserAvatar />
           <Text variant="small" textWeight="bold">
-            Daisy Slump
+           {name}
           </Text>
         </div>
         <div>
@@ -25,7 +30,7 @@ const Card = ({name}:{name:string}) => {
       </div>
       <div className="mb-[10px]">
         <Text variant="small" className="!font-semibold">
-         {name}
+         {about}
         </Text>
       </div>
       <div className="flex items-center gap-2 my-5">

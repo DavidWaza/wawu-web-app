@@ -26,7 +26,7 @@ export const create_faq = `/api/seller/faq`;
 export const fetch_faq = `/api/seller/faq`;
 
 // update portfolio
-export const fetch_user_portfolio = `/api/user/profile/update`
+export const post_user_portfolio = `/api/user/profile/update`
 
 // get user profile
 export const fetch_user_profile = `/api/user/profile`

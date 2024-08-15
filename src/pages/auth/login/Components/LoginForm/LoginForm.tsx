@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { BsEyeSlash } from "react-icons/bs";
@@ -10,13 +10,14 @@ import { FormFields } from "../../../../../../types/Types";
 import { login_url } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");
   const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
   function togglePassword() {
     setPasswordVisible((prev) => !prev);
   }
@@ -31,10 +32,10 @@ const LoginForm = () => {
       const response = await axiosInstance.post(login_url, data);
       toast.success(response.data.message);
       const token = response.data.data.token;
-      localStorage.setItem('token', token)
-      router.push('/buyers')
-    } catch (err:any) {
-      toast.error(err.message)
+      localStorage.setItem("token", token);
+      router.push("/sellers");
+    } catch (err: any) {
+      toast.error(err.message);
     }
   };
   return (
@@ -62,18 +63,14 @@ const LoginForm = () => {
           errors={errors}
           setValue={(value) => setPassword(value)}
         />
-        <div onClick={togglePassword}>
-          {passwordVisible ? (
-            <>
-              <IoEyeOutline className="absolute top-10 right-0 mx-6 text-black" />
-            </>
-          ) : (
-            <>
-              <BsEyeSlash className="absolute top-10 right-0 mx-6 text-black" />
-            </>
-          )}
+        <div
+          onClick={togglePassword}
+          className="absolute top-1/2 right-0 bottom-0 flex items-center justify-center w-10"
+        >
+          {passwordVisible ? <Eye size={15} /> : <EyeOff size={15} />}
         </div>
       </div>
+
       <div className="flex justify-between gap-5">
         <div className="flex gap-2">
           <input type="checkbox" />
