@@ -64,6 +64,16 @@ const MenteeForms = () => {
           },
         });
         toast.success(response.data.message);
+        if (response.data.success) {
+          await axiosInstance.post("/api/send-email", {
+            email: data.email,
+            subject: "Form Submission Successful",
+            message: `Dear ${data.firstName},\n\nThank you for your submission. We have received your details and will get back to you shortly.`,
+            formData: data,
+          });
+        } else {
+          null;
+        }
       } catch (err: any) {
         // toast.error(err);
         console.error(err);
