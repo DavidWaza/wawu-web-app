@@ -12,6 +12,7 @@ import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../../../../types/Types";
 import SelectField from "@/components/TextField/SelectField";
 import { toast } from "sonner";
+import { Eye, EyeOff } from "lucide-react";
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -45,15 +46,20 @@ const SignupForm = () => {
         phoneNumber,
         role,
       });
+
       toast.success(response.data.message);
+
+      // Store the selected role in local storage
+      localStorage.setItem("selectedRole", JSON.stringify(role));
+
       goToNextStep();
-      router.push("/onboarding/user-expertise");
-    } catch (err:any) {
-      toast.error(err.message || 'Error signing up')
-      console.log(err)
-      
+      router.push("/onboarding/user-screen-about");
+    } catch (err: any) {
+      toast.error(err.response.data.message || "Error signing up");
+      console.log(err);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block space-y-2">
       <div>
@@ -68,7 +74,7 @@ const SignupForm = () => {
           setValue={(value) => setEmail(value)}
         />
       </div>
-      <div className="2xl:flex 2xl:justify-between 2xl:text-left">
+      <div className="grid lg:grid-cols-2 gap-10">
         <div className="pb-7">
           {/* FIRST NAME */}
           <InputField
@@ -116,18 +122,12 @@ const SignupForm = () => {
           register={register}
           errors={errors}
           setValue={(value) => setPassword(value)}
-          
         />
-        <div onClick={togglePassword}>
-          {passwordVisible ? (
-            <>
-              <IoEyeOutline className="absolute top-10 right-0 mx-6 text-black" />
-            </>
-          ) : (
-            <>
-              <BsEyeSlash className="absolute top-10 right-0 mx-6 text-black" />
-            </>
-          )}
+        <div
+          onClick={togglePassword}
+          className="absolute top-1/2 right-0 bottom-0 flex items-center justify-center w-10"
+        >
+          {passwordVisible ? <Eye size={15} /> : <EyeOff size={15} />}
         </div>
       </div>
 
@@ -140,23 +140,21 @@ const SignupForm = () => {
         value={role}
         setValue={(value) => setRole(value)}
         options={[
-          { value: '', label: 'Select a role...' },
+          { value: "", label: "Select a role..." },
           { value: 1, label: "Buyer" },
           { value: 2, label: "Seller" },
         ]}
       />
-      <div className="flex justify-start my-2">
-        <div className="flex gap-2">
+      <div className="flex justify-start items-center gap-1 py-5">
           <input type="checkbox" className="w-4 h-auto" />
-          <p className="text-black text-sm">
+          <p className="text-black text-sm sora text-nowrap">
             By continuing you agree to our{" "}
             <span className="!text-[#ED459A]">
               <Link href={"#"}>
-                terms of <br /> use and privacy policy
+                terms of use and privacy policy
               </Link>
             </span>
           </p>
-        </div>
       </div>
       <button
         type="submit"

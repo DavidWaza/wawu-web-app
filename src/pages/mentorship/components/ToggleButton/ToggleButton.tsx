@@ -25,7 +25,7 @@ const ToggleButton = ({ label, active, onToggle }: toggleButtonProps) => {
   );
 };
 
-const ButtonComponent = () => {
+const MentorComponent = () => {
   const [mentor, setMentor] = useState({ toggle: false, active: true });
   const [mentee, setMentee] = useState({ toggle: false, active: false });
 
@@ -99,4 +99,4 @@ If you have any questions regarding the mentoring programme or the application p
     </div>
   );
 };
-export default ButtonComponent;
+export default MentorComponent;

@@ -1,8 +1,7 @@
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Text } from "@/components/ui/Typography/Typography";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
 import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../../types/Types";
@@ -10,15 +9,22 @@ import TextAreaField from "@/components/TextField/TextArea";
 import SelectField from "@/components/TextField/SelectField";
 import UploadImage from "../Components/UploadImage/UploadImage";
 import axiosInstance from "@/pages/api/axiosInstance";
-import { post_user_portfolio } from "@/pages/api/endpoints";
-import { toast } from "sonner";
 import {
-  Select,
+  Select as UiSelect,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import { fetch_services, post_user_portfolio } from "@/pages/api/endpoints";
+import { toast } from "sonner";
+import Select, { MultiValue } from "react-select";
+
+interface SkillOption {
+  value: string; // UUID of the skill
+  label: string; // Name of the skill
+}
 
 const SellerProfileCreation = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -28,7 +34,6 @@ const SellerProfileCreation = () => {
   const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
   const [about, setAbout] = useState<FormFields["about"]>("");
   const [role, setRole] = useState<number>(2);
-  const [skills, setSkills] = useState<string[]>([]);
   const [preferredLanguage, setPreferredLanguage] =
     useState<FormFields["preferredLanguage"]>("");
   const [certification, setCertification] =
@@ -46,8 +51,9 @@ const SellerProfileCreation = () => {
   const [facebook, setFacebook] = useState<FormFields["facebook"]>("");
   const [linkedIn, setLinkedIn] = useState<FormFields["linkedIn"]>("");
   const [instagram, setInstagram] = useState<FormFields["instagram"]>("");
-
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedSkills, setSelectedSkills] = useState<SkillOption[]>([]);
+  const [skillOptions, setSkillOptions] = useState<SkillOption[]>([]);
 
   const {
     register,
@@ -55,13 +61,26 @@ const SellerProfileCreation = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_services);
+      const skills = response.data.data.map((skill: any) => ({
+        value: skill.uuid, // UUID of the skill
+        label: skill.name, // Name of the skill
+      }));
+      setSkillOptions(skills);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const onSubmit: SubmitHandler<FormFields> = async () => {
     const formData = new FormData();
 
-    const skills = [
-      "9fc660a1-d3e8-4b66-b7d0-366a9b1593e0",
-      "26fc6a23-d66b-4110-9678-0b55d48122f2",
-    ];
     // Append form fields
     if (firstName) formData.append("firstName", firstName);
     if (lastName) formData.append("lastName", lastName);
@@ -70,10 +89,10 @@ const SellerProfileCreation = () => {
     if (phoneNumber) formData.append("phoneNumber", phoneNumber);
     formData.append("role", role.toString());
     if (about) formData.append("about", about);
-    if (skills) {
-      skills.forEach((skill) => formData.append("skills[]", skill));
+    if (selectedSkills.length > 0) {
+      const skillsArray = selectedSkills.map((skill) => skill.value);
+      formData.append("skills", JSON.stringify(skillsArray));
     }
-
     if (preferredLanguage)
       formData.append("preferredLanguage", preferredLanguage);
     if (certification) formData.append("certification", certification);
@@ -111,9 +130,8 @@ const SellerProfileCreation = () => {
     setSelectedImage(file);
   };
 
-  const handleSkillsInput = (value: string) => {
-    const skillsArray = value.split(",").map((skill) => skill.trim());
-    setSkills(skillsArray);
+  const handleSkillsChange = (selectedOptions: MultiValue<SkillOption>) => {
+    setSelectedSkills(selectedOptions as SkillOption[]);
   };
 
   return (
@@ -127,7 +145,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="First Name"
                   name="firstName"
-                  placeholder="David"
+                  placeholder="John"
                   value={firstName}
                   register={register}
                   errors={errors}
@@ -136,7 +154,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="Last Name"
                   name="lastName"
-                  placeholder="Waza"
+                  placeholder="Doe"
                   value={lastName}
                   register={register}
                   errors={errors}
@@ -146,7 +164,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="Email"
                   name="email"
-                  placeholder="davidwaza@gmail.com"
+                  placeholder="wawuafrica@gmail.com"
                   type="email"
                   value={email}
                   register={register}
@@ -176,8 +194,8 @@ const SellerProfileCreation = () => {
                 setValue={(value) => setPhoneNumber(value)}
               />
               <div className="pt-5">
-                <label className="text-sm text-[#5E5989] py-3">Role</label>
-                <Select
+                <label className="text-sm text-[#5E5989] py-3 sora">Role</label>
+                <UiSelect
                   {...register("role")}
                   value={role.toString()}
                   name="role"
@@ -190,7 +208,7 @@ const SellerProfileCreation = () => {
                     <SelectItem value="1">Buyer</SelectItem>
                     <SelectItem value="2">Seller</SelectItem>
                   </SelectContent>
-                </Select>
+                </UiSelect>
               </div>
 
               <TextAreaField
@@ -202,15 +220,19 @@ const SellerProfileCreation = () => {
                 errors={errors}
                 setValue={(value) => setAbout(value)}
               />
-              <TextAreaField
-                label="Skills"
-                name="skills"
-                placeholder="Type here, separated by commas"
-                value={skills.join(", ")}
-                register={register}
-                errors={errors}
-                setValue={handleSkillsInput}
-              />
+              <>
+                <label className="py-2 text-sm sora">Skills</label>
+                <Select
+                  isMulti
+                  name="skills"
+                  options={skillOptions}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  value={selectedSkills}
+                  onChange={handleSkillsChange}
+                  placeholder="Select skills"
+                />
+              </>
 
               <SelectField
                 label="Preferred Language"
@@ -227,7 +249,7 @@ const SellerProfileCreation = () => {
                 ]}
               />
               <div className="flex gap-1 items-center my-3">
-                <Text variant="small">Education</Text>
+                <p className="text-lg sora capitalize">Education</p>
                 <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
               </div>
               <SelectField
@@ -295,7 +317,7 @@ const SellerProfileCreation = () => {
               />
               <div className="space-y-5 my-5">
                 <div className="flex gap-1 items-center">
-                  <Text variant="small">Experience</Text>
+                  <p className="text-lg sora capitalize">Experience</p>
                   <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
                 </div>
                 <InputField
@@ -338,7 +360,9 @@ const SellerProfileCreation = () => {
               </div>
               <div className="space-y-5">
                 <div className="flex gap-1 items-center">
-                  <Text variant="small">Social Media Handles</Text>
+                  <p className="text-lg sora capitalize">
+                    Social Media Handles
+                  </p>
                   <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
                 </div>
                 <InputField

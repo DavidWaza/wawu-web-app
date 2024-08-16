@@ -1,8 +1,8 @@
 import Section from "@/components/ui/Section/Section";
 import Navbar from "@/components/Header/Navbar/Navbar";
 import HeroComponent from "@/components/HeroComponent/HeroComponent";
-import ButtonComponent from "./components/ToggleButton/ToggleButton";
 import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
+import MentorComponent from "./components/ToggleButton/ToggleButton";
 
 export default function Mentorship() {
   return (
@@ -28,7 +28,7 @@ export default function Mentorship() {
       />
       <div className="bg-white">
         <div className=" px-10 md:px-20 lg:px-[5rem] xl:px-[12rem] py-20">
-          <ButtonComponent />
+          <MentorComponent />
         </div>
       </div>
     </>

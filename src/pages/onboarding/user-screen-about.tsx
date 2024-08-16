@@ -1,14 +1,27 @@
+"use client";
 import { useOnboarding } from "@/Context/onboardingContext";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import OnboardingLayout from "./Layout";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectLabel,
+  SelectGroup,
+} from "@/components/ui/select";
+import axios from "axios";
+import axiosInstance from "../api/axiosInstance";
 
 type FormFields = {
   mentorReasons: string;
 };
 
 const AboutUserProfileOnboarding: React.FC = () => {
+  const [fetchCountries, setFetchCountries] = useState([]);
   const { goToNextStep } = useOnboarding();
   const {
     register,
@@ -20,9 +33,22 @@ const AboutUserProfileOnboarding: React.FC = () => {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     console.log(data);
     goToNextStep();
-    router.push("/buyers");
+    router.push("/onboarding/user-expertise");
   };
 
+  useEffect(() => {
+    fetchCountry();
+  }, []);
+
+  const fetchCountry = async () => {
+    try {
+      const response = await axiosInstance.get("/api/countries");
+      console.log("count", response.data);
+      setFetchCountries(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <React.Fragment>
       <OnboardingLayout>
@@ -39,44 +65,63 @@ const AboutUserProfileOnboarding: React.FC = () => {
           >
             <div>
               <div className="pb-10">
-                <label className="text-black block text-sm">
+                <label className="text-black block text-sm py-2">
                   What are you using Wawu for?
                 </label>
-                <select
-                  {...register("mentorReasons")}
-                  className="py-2 px-2 text-black border border-1 rounded-md my-2 w-[20rem]"
-                >
-                  <option>Select one</option>
-                  <option>Reason number 2</option>
-                </select>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select one" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="days">Stewards</SelectItem>
+                      <SelectItem value="weeks">Artisan</SelectItem>
+                      <SelectItem value="months">Patrons</SelectItem>
+                      <SelectItem value="years">Others</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="pb-10">
-                <label className="text-black block text-sm">
+                <label className="text-black block text-sm py-2">
                   You are using Wawu as an?
                 </label>
-                <select
-                  {...register("mentorReasons")}
-                  className="py-2 px-2 text-black border border-1 rounded-md my-2 w-[20rem]"
-                >
-                  <option>Select one</option>
-                  <option>Reason number 2</option>
-                </select>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select one" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="days">Individual</SelectItem>
+                      <SelectItem value="weeks">Organisation</SelectItem>
+                      <SelectItem value="months">Others</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="pb-10">
                 <label className="text-black block text-sm">
                   What is your location?
                 </label>
-                <select
-                  {...register("mentorReasons")}
-                  className="py-2 px-2 text-black border border-1 rounded-md my-2 w-[20rem]"
-                >
-                  <option>Select one</option>
-                  <option>Reason number 2</option>
-                </select>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select one" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>All Countries</SelectLabel>
+                      {fetchCountries.map((item, index) => (
+                        <SelectItem value="days" key={index}>
+                          {item}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="my-5 flex justify-center">
                 <button
-                  className="bg-[#A8A8A8] py-2 px-6 rounded-xl"
+                  className="bg-[#9510C9] py-2 px-10 text-white rounded-xl"
                   type="submit"
                 >
                   Continue

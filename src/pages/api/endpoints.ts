@@ -1,3 +1,4 @@
+
 // Post Mentor
 export const mentor_url = "/api/mentor";
 
@@ -42,3 +43,9 @@ export const fetch_service_categories = `/api/categories?paginate=1&pageNumber=1
 
 // get sub categories
 export const fetch_sub_categories = `/api/categories/d3ba7dfc-dd60-4905-9e34-50eb8212d5f3/subcategories?paginate=1&pageNumber=1`
+
+// get services
+export const fetch_services = `/api/service`
+
+// post otp
+export const verify_otp_url = `/api/user/otp/verify`

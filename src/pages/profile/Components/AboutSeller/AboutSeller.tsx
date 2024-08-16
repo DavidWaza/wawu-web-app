@@ -1,36 +1,16 @@
 import { Text } from "@/components/ui/Typography/Typography";
-import React, { useEffect, useState } from "react";
-import UserProfile from "../UserPorfile/Userprofile";
+import React from "react";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import UserDetails from "../UserDetails/UserDetails";
 import { IoLocationOutline } from "react-icons/io5";
 import { LuBadgeCheck } from "react-icons/lu";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import axiosInstance from "@/pages/api/axiosInstance";
-import { fetch_user_profile } from "@/pages/api/endpoints";
-import { toast } from "sonner";
+import { useRouter } from "next/router";
 
 const AboutSeller = () => {
-  const [userProfileName, setUserProfileName] = useState<string>('');
+  const router = useRouter();
+  const { name, last } = router.query;
 
-  useEffect(() => {
-    fetchUserProfile();
-  });
-
-  const fetchUserProfile = async () => {
-    try {
-      const response = await axiosInstance.get(fetch_user_profile);
-      console.log("name", response.data.data.firstName);
-      setUserProfileName(
-        `${response.data.data.firstName} ${response.data.data.lastName}`
-      );
-    } catch (err: any) {
-      if (err.response) {
-        toast.error(err.response.data.message);
-      }
-    }
-  };
-  
   return (
     <React.Fragment>
       <div>
@@ -48,7 +28,7 @@ const AboutSeller = () => {
           </div>
           <div className="space-y-5">
             <Text variant="small" className="text-black" textWeight="bold">
-              {userProfileName}
+              {name} {last}
             </Text>
             <Text variant="small" className="text-black">
               passionate about design
@@ -71,13 +51,6 @@ const AboutSeller = () => {
             </div>
           </div>
           <div className="space-y-5">
-            {/* <Text
-              variant="small"
-              className="text-transparent"
-              textWeight="bold"
-            >
-              Jane Doe
-            </Text> */}
             <div className="border border-1 border-[#ED459A]  rounded-md my-5 lg:my-0 w-32 p-2">
               <p className="text-black text-center">online</p>
             </div>
