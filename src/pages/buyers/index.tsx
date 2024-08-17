@@ -4,13 +4,14 @@ import Card from "@/components/Cards/Card";
 import axiosInstance from "../api/axiosInstance";
 import { fetch_buyers_feed, fetch_user_profile } from "../api/endpoints";
 import { toast } from "sonner";
-import Header from "../auth/login/Components/Header/Header";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import CreatePortfolioSection from "../sellers/Components/CreatePortfolioSection/CreatePortfolioSection";
 import { GoArrowRight } from "react-icons/go";
 import RecentSearch from "../sellers/Components/RecentSearch/RecentSearch";
 import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
 import { ServiceCategoryData } from "../../../types/Types";
+import Header from "../sellers/Components/Header/Header";
+
 
 const Buyers = () => {
   const settings = {
@@ -53,7 +54,7 @@ const Buyers = () => {
 
   return (
     <div>
-      <Header id={0} href={""} link={""} isCaret={false} />
+      <Header />
       <div className="hidden lg:block">
         <GigPortfolio />
       </div>

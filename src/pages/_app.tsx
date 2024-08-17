@@ -7,12 +7,13 @@ import { usePathname } from "next/navigation";
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
+
   return (
     <div className="bg-[#F5F7F6]" suppressHydrationWarning>
       <OnboardingProvider>
         <Toaster richColors />
         <Component {...pageProps} />
-        {pathname.includes("dashboard") ? null : <Footer />}
+        {pathname && !pathname.includes("dashboard") && <Footer />}
       </OnboardingProvider>
     </div>
   );

@@ -7,13 +7,14 @@ import { RxCaretDown } from "react-icons/rx";
 import { useRouter } from "next/router";
 import SkillsHeaderNav from "./Components/skills-nav-header";
 import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
+import Image from "next/image";
 
 interface linkProps {
   id: number;
   href: string;
   link: string;
   isCaret: boolean;
-  children:React.ReactNode
+  children: React.ReactNode;
 }
 const links = [
   {
@@ -49,7 +50,7 @@ const links = [
   },
 ];
 
-const SkillsNavbarLayout: React.FC<linkProps> = ({children}) => {
+const SkillsNavbarLayout: React.FC<linkProps> = ({ children }) => {
   const [isToggle, setIsToggle] = useState(false);
 
   const router = useRouter();
@@ -67,15 +68,22 @@ const SkillsNavbarLayout: React.FC<linkProps> = ({children}) => {
   };
   return (
     <>
-      <nav className="px-[5rem]">
+      <nav className="px-[5rem] border-b py-5">
         <div className="flex justify-between items-center w-full">
           <div className="flex">
-            <Logo  />
+            <Image
+              src="/icons/homelogo.png"
+              alt=""
+              className={`w-full h-auto object-contain object-center`}
+              width={0}
+              height={0}
+              sizes="100vw"
+            />
             <div className="hidden gap-4 pt-[2.7rem] z-10 2xl:text-black 2xl:flex">
               {links.map((link) => (
                 <ul key={link.id}>
                   <Link href={link.href}>
-                    <li className="flex justify-center items-center">
+                    <li className="flex justify-center items-center sora">
                       {link.link}{" "}
                       <button onClick={toggleNav}>
                         {link.isCaret && <RxCaretDown className="text-black" />}
@@ -87,7 +95,7 @@ const SkillsNavbarLayout: React.FC<linkProps> = ({children}) => {
               {isToggle && <FullDropDown />}
             </div>
           </div>
-          <div className="flex justify-end items-center space-x-4">
+          {/* <div className="flex justify-end items-center space-x-4">
             <button
               className="p-4 border-none bg-transparent text-[#ED459A]"
               onClick={handleSignUp}
@@ -102,10 +110,10 @@ const SkillsNavbarLayout: React.FC<linkProps> = ({children}) => {
             >
               Log in
             </Button>
-          </div>
+          </div> */}
         </div>
       </nav>
-      <SkillsHeaderNav />
+      {/* <SkillsHeaderNav /> */}
       {children}
     </>
   );

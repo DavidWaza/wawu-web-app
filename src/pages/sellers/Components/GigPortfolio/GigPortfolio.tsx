@@ -31,7 +31,7 @@ const GigPortfolio = () => {
     <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden overflow-hidden">
       {fetchCategories?.slice(0, 10).map((item) => (
         <div key={item.name}>
-          <Link href={"#"}>
+          <Link href={`categories/${item.uuid}`}>
             <p
               key={item.uuid}
               className="text-nowrap sora hover:bg-[#e5e7e9] p-3 rounded-lg"

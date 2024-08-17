@@ -5,7 +5,7 @@ import ExploreCard from "./ExploreCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const RelatedArticles = () => {
+const RelatedArticles = ({ category }: { category: string }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -16,7 +16,7 @@ const RelatedArticles = () => {
   return (
     <div className="bg-[#290D43] p-20">
       <Text variant="medium" className="text-white">
-        Graphics & Design Related Articles
+        {category} Related Articles
       </Text>
       <Text variant="small" className="text-white lg:w-[60rem] py-4">
         Completely synergize resource taxing relationships via premier niche
@@ -24,30 +24,36 @@ const RelatedArticles = () => {
         robust ideas.
       </Text>
       <Slider {...settings}>
-          <ExploreCard
-            cardImg="/assets/related-article-img.png"
-            title="Reach your users with new tool"
-            fontColor="secondary"
-          >
+        <ExploreCard
+          cardImg="/assets/related-article-img.png"
+          title="Reach your users with new tools"
+          fontColor="secondary"
+        >
+          <p className="text-white py-2 w-full lg:w-[90%]">
             Efficiently unleash cross-media information without cross-media
             value. Quickly maximize.
-          </ExploreCard>
-          <ExploreCard
-            cardImg="/assets/related-article-img.png"
-            title="Reach your users with new tools"
-            fontColor="secondary"
-          >
+          </p>
+        </ExploreCard>
+        <ExploreCard
+          cardImg="/assets/related-article-img.png"
+          title="Reach your users with new tools"
+          fontColor="secondary"
+        >
+          <p className="text-white py-2 w-full lg:w-[90%]">
             Efficiently unleash cross-media information without cross-media
             value. Quickly maximize.
-          </ExploreCard>
-          <ExploreCard
-            cardImg="/assets/related-article-img.png"
-            title="Reach your users with new tools"
-            fontColor="secondary"
-          >
+          </p>
+        </ExploreCard>
+        <ExploreCard
+          cardImg="/assets/related-article-img.png"
+          title="Reach your users with new tools"
+          fontColor="secondary"
+        >
+          <p className="text-white py-2 w-full lg:w-[90%]">
             Efficiently unleash cross-media information without cross-media
             value. Quickly maximize.
-          </ExploreCard>
+          </p>
+        </ExploreCard>
       </Slider>
     </div>
   );

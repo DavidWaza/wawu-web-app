@@ -31,7 +31,7 @@ const Search: React.FC<ISearchProps> = ({ placeholder }) => {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full hidden lg:block">
       <div className="relative">
         <input
           onChange={FilterBySearch}
