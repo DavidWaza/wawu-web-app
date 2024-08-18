@@ -14,13 +14,6 @@ import InputField from "@/components/TextField/InputField";
 import TextAreaField from "@/components/TextField/TextArea";
 import Header from "@/pages/sellers/Components/Header/Header";
 
-
-type FormField = {
-  projectTitle: string;
-  projectDescription: string;
-  file: string; 
-};
-
 const CreateSellerPortfolio = () => {
   const {
     register,
@@ -30,23 +23,24 @@ const CreateSellerPortfolio = () => {
   } = useForm<FormFields>();
 
   const [projectTitle, setProjectTitle] =
-    useState<FormField["projectTitle"]>("");
+    useState<FormFields["projectTitle"]>("");
   const [projectDescription, setProjectDescription] =
-    useState<FormField["projectDescription"]>("");
-  const [fileName, setFileName] = useState<FormField["file"]>("");
+    useState<FormFields["projectDescription"]>("");
+  const [fileName, setFileName] = useState<FormFields["fileName"]>(""); // Update: Manage fileName in state
+  const [base64File, setBase64File] = useState<string | null>(null); // Store the base64 file
   const [error, setError] = useState("");
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
-      setFileName(file.name);
+      setFileName(file.name); // Update: Set the file name here
       if (!isValidImageType(file) || !isValidFileSize(file)) {
         setError("Invalid image type or size.");
         return;
       }
 
       const base64Signature = await convertFileToBase64(file);
-      // setValue("file");
+      setBase64File(base64Signature); // Store the base64 file for submission
     }
   };
 
@@ -56,11 +50,8 @@ const CreateSellerPortfolio = () => {
         ...data,
         projectTitle,
         projectDescription,
-        fileName,
-        signature: {
-          fileName: fileName,
-          file: data.file, // file is already a base64 string
-        },
+        fileName, // Update: Ensure fileName is passed here
+        file: base64File, // Use the base64 file string for submission
       });
       toast.success(response.data.message);
     } catch (err: any) {
@@ -107,22 +98,11 @@ const CreateSellerPortfolio = () => {
                   </Text>
                 )}
               </div>
-              <div>
-                <button
-                  type="button"
-                  className="py-2 bg-[#A812E3] px-10 lg:w-1/2 m-auto rounded-md text-nowrap"
-                  // onClick={() => document.querySelector('input[type="file"]').click()}
-                  disabled={isSubmitting}
-                >
-                  + Add image/Doc file
-                </button>
-              </div>
             </div>
-
             <div className="my-10">
               <button
                 type="submit"
-                className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md"
+                className="py-2 bg-[#ED459A] px-10 w-1/2 m-auto rounded-md text-white"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Loading..." : "Submit"}

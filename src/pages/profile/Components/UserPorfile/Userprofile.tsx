@@ -10,11 +10,8 @@ import UserAvatar from "../UserAvatar/UserAvatar";
 import { useRouter } from "next/router";
 
 const UserProfile = () => {
-
   const router = useRouter();
   const { name, last, about } = router.query;
-
-
 
   return (
     <div className="lg:flex gap-5 my-10 items-center">
@@ -27,9 +24,6 @@ const UserProfile = () => {
               className="text-black !font-semibold capitalize !sora"
             >
               {name} {last}
-            </Text>
-            <Text variant="small" className="text-black">
-              {about}
             </Text>
           </>
         )}

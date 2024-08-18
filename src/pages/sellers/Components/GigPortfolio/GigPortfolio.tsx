@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { fetch_service_categories } from "@/pages/api/endpoints";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface ICategoryProps {
   uuid: string;
@@ -27,18 +28,35 @@ const GigPortfolio = () => {
     }
   };
 
+  const pathname = usePathname();
+
   return (
     <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden overflow-hidden">
       {fetchCategories?.slice(0, 10).map((item) => (
         <div key={item.name}>
-          <Link href={`categories/${item.uuid}`}>
+          {pathname.includes('categories') ? (<>
+            <Link href={`/categories/${item.uuid}`}>
             <p
               key={item.uuid}
-              className="text-nowrap sora hover:bg-[#e5e7e9] p-3 rounded-lg"
+              className={`text-nowrap sora hover:text-[#290D42] p-3 rounded-lg ${
+                pathname === item.uuid ? "text-[#290D42]" : ""
+              }`}
             >
               {item.name}
             </p>
           </Link>
+          </>) : (<>
+            <Link href={`categories/${item.uuid}`}>
+            <p
+              key={item.uuid}
+              className={`text-nowrap sora hover:text-[#290D42] p-3 rounded-lg ${
+                pathname === item.uuid ? "text-[#290D42]" : ""
+              }`}
+            >
+              {item.name}
+            </p>
+          </Link></>)}
+          
         </div>
       )) || <p className="text-center">No categories available.</p>}
     </div>

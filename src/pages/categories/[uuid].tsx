@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
 
 interface ICategoryDetails {
   uuid: string;
@@ -64,6 +65,7 @@ const DigitalMarketing = () => {
   return (
     <div>
       <Header />
+      <GigPortfolio  />
       <div className="pt-10">
         {categoryDetails?.name === "Graphics & Design" ? (
           <SkillsHero

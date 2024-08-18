@@ -20,6 +20,7 @@ import {
 import { fetch_services, post_user_portfolio } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import Select, { MultiValue } from "react-select";
+import { useRouter } from "next/navigation";
 
 interface SkillOption {
   value: string; // UUID of the skill
@@ -65,6 +66,8 @@ const SellerProfileCreation = () => {
     fetchCategories();
   }, []);
 
+  const router = useRouter();
+
   const fetchCategories = async () => {
     try {
       const response = await axiosInstance.get(fetch_services);
@@ -91,7 +94,7 @@ const SellerProfileCreation = () => {
     if (about) formData.append("about", about);
     if (selectedSkills.length > 0) {
       const skillsArray = selectedSkills.map((skill) => skill.value);
-      formData.append("skills", JSON.stringify(skillsArray));
+      skillsArray.forEach((skill) => formData.append("skills[]", skill));
     }
     if (preferredLanguage)
       formData.append("preferredLanguage", preferredLanguage);
@@ -121,6 +124,9 @@ const SellerProfileCreation = () => {
       });
       console.log(response.data);
       toast.success(response.data.message);
+      setTimeout(() => {
+        router.push("/sellers");
+      }, 3000);
     } catch (err: any) {
       toast.error(err.response.data.message);
     }

@@ -34,6 +34,7 @@ const Sellers = () => {
   const fetchUserFeeds = async () => {
     try {
       const response = await axiosInstance.get(fetch_buyers_feed);
+      console.log('feeds', response.data.data)
       setFetchFeed(response.data.data);
     } catch (err: any) {
       if (err.response) {
@@ -48,11 +49,10 @@ const Sellers = () => {
       <GigPortfolio />
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black sora">
-          Nice to see you, {userProfileName}
+          Nice to see you,{" "}
+          <span className="text-[#F52585] !text-normal italic">{userProfileName}.</span>
         </Text>
         <CreatePortfolioSection />
-
-        {/* Conditionally Render Categories with Cards */}
         {fetchFeed &&
           Object.keys(fetchFeed).map((category) => {
             const items = fetchFeed[category];
@@ -84,7 +84,7 @@ const Sellers = () => {
                 </div>
               );
             }
-            return null; 
+            return null;
           })}
       </div>
     </div>

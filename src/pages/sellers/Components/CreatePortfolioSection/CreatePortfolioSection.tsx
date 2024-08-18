@@ -7,7 +7,7 @@ const CreatePortfolioSection = () => {
   const pathname = usePathname();
   return (
     <div className="2xl:flex justify-between border border-[#ED459A] my-5 rounded-md md:px-10 px-5 2xl:px-20 py-10">
-      <div className="md:flex gap-10 text-nowrap space-y-4">
+      <div className="md:flex gap-10 space-y-4">
         <Image
           src={"/icons/wand.svg"}
           width={0}
@@ -16,7 +16,7 @@ const CreatePortfolioSection = () => {
           alt="magic wand"
           className="lg:w-full !w-[10%] h-auto object-center object-contain"
         />
-        <div>
+        <div className="space-y-4">
           <Text variant="small" textWeight="bold">
             Get proposals from the most relevant seller
           </Text>
@@ -33,7 +33,7 @@ const CreatePortfolioSection = () => {
           href={`${ pathname.includes("buyers")
             ? "/client-brief"
             : pathname.includes("sellers")
-            ? "/client-brief"
+            ? "/portfolio"
             : ""}`}
           className="py-2 !w-[10rem] !font-semibold !bg-[#EBEBEB] hover:bg-slate-50 ease-in transition-all text-black"
         >

@@ -12,21 +12,22 @@ import "react-responsive-modal/styles.css";
 import { fetch_portfolio, fetch_user_profile } from "../api/endpoints";
 import axiosInstance from "../api/axiosInstance";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface PortfolioItem {
-  file: string;
-  link: string;
-  name: string;
+  file: {
+    name: string;
+    link: string;
+  };
   projectTitle: string;
   projectDescription: string;
 }
 
 export default function PersonalPortfolio() {
-  const [open, setOpen] = useState(false);
   const [createUserPortfolio, setCreateUserPortfolio] = useState<
     PortfolioItem[]
   >([]);
-  const [userProfileName, setUserProfileName] = useState<string>('');
+  const [userProfileName, setUserProfileName] = useState<string>("");
 
   useEffect(() => {
     fetchUserProfile();
@@ -46,6 +47,7 @@ export default function PersonalPortfolio() {
     }
   };
 
+  const router = useRouter();
   const fetchUserPortfolio = async () => {
     try {
       const response = await axiosInstance.get(fetch_portfolio);
@@ -65,12 +67,12 @@ export default function PersonalPortfolio() {
       <div className="lg:px-[8.2rem]">
         <div className=" bg-profile-seller">
           <div className="flex justify-between px-7 py-10">
-            <Link href={"#"}>
+            <div onClick={() => router.back()}>
               <div className="flex gap-3 items-center text-white">
                 <IoArrowBackSharp />
                 <p>Back</p>
               </div>
-            </Link>
+            </div>
             <Link href={"#"}>
               <div className="flex gap-3 items-center text-white">
                 <BsShare />
@@ -78,20 +80,20 @@ export default function PersonalPortfolio() {
               </div>
             </Link>
           </div>
-          <div className="flex justify-center items-center align-middle gap-5">
+          <div className="lg:flex justify-center items-center align-middle gap-5">
             <Image
               src="/assets/photo-girl.png"
               alt="photo girl"
               width={400}
               height={400}
-              className="w-20"
+              className="w-20 flex justify-center"
             />
             <Text>{userProfileName} Portfolio</Text>
           </div>
         </div>
-        <div className="flex justify-end my-10 px-5">
+        <div className="flex justify-center lg:justify-end my-10 px-5">
           <Button
-            size="medium"
+            size="large"
             suffix={<MdArrowRightAlt />}
             className="p-2 text-nowrap"
             href="/portfolio/create-seller-portfolio"
@@ -99,17 +101,15 @@ export default function PersonalPortfolio() {
             Create new Portfolio
           </Button>
         </div>
-        <div className="my-10">
+        <div className="my-10 px-10">
           <div className="grid lg:grid-cols-3 gap-5">
             {createUserPortfolio.map((data, index) => (
               <div className="border" key={index}>
-                {typeof data.file?.link === "string" && (
-                  <Image
-                    src={`${data.file.link}`} // Validate and use the link property within the file object
-                    alt={data.projectDescription} // Use the name property for alt text, with a fallback
-                    width={400}
-                    height={400}
-                    className="w-full"
+                {data.file && data.file.link && (
+                  <img
+                    src={"/assets/design-card-1.png"}
+                    alt={data.projectDescription || data.file.name}
+                    className="w-full h-auto object-cover object-center"
                   />
                 )}
                 <div className="my-5 px-5">
