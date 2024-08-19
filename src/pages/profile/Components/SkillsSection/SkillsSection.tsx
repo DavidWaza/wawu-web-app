@@ -1,6 +1,6 @@
+import React, { useEffect, useState, useCallback } from "react";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { fetch_buyers_feed } from "@/pages/api/endpoints";
-import React, { useEffect, useState } from "react";
 
 interface Skill {
   name: string;
@@ -18,61 +18,51 @@ const SkillsSection: React.FC = () => {
     fetchSkills();
   }, []);
 
-  const fetchSkills = async () => {
+  const fetchSkills = useCallback(async () => {
     try {
       const response = await axiosInstance.get(fetch_buyers_feed);
-      const fetchedCategories = response.data.data || [];
+      const categories = response.data.data;
 
-      const randomColor = (): string => {
-        const colors = [
-          "bg-[#F7ABD1]",
-          "bg-[#D66FFF]",
-          "bg-[#FFDF8E]",
-          "bg-[#8EFFA7]",
-          "bg-[#FF8E8E]",
-          "bg-[#8EDDFF]",
-          "bg-[#000]",
-        ];
-        return colors[Math.floor(Math.random() * colors.length)];
-      };
+      const skillsByCategory: CategorySkills = {};
 
-      // Map categories to their respective skills
-      const mappedSkills = fetchedCategories.reduce(
-        (acc: CategorySkills, category: Record<string, any>) => {
-          const categoryKey = Object.keys(category)[0];
-          const skills = category[categoryKey];
-          console.log('shh', skills)
-
-          if (skills && skills.length > 0) {
-            const mappedCategorySkills = skills.map((skill: { name: string }) => ({
+      Object.entries(categories).forEach(([category, items]) => {
+        if (Array.isArray(items) && items.length > 0) {
+          const { additionalInfo } = items[0];
+          
+          if (additionalInfo?.skills) {
+            skillsByCategory[category] = additionalInfo.skills.map((skill: any) => ({
               name: skill.name,
-              bgColor: randomColor(),
+              bgColor: getRandomBgColor(),
             }));
-            acc[categoryKey] = mappedCategorySkills;
           }
+        }
+      });
 
-          return acc;
-        },
-        {}
-      );
-
-      setUserSkills(mappedSkills);
+      setUserSkills(skillsByCategory);
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching skills:", err);
     }
-  };
+  }, []);
+
+  const getRandomBgColor = useCallback((): string => {
+    const colors = [
+      "bg-red-500", "bg-green-500", "bg-blue-500", "bg-yellow-500",
+      "bg-purple-500", "bg-pink-500", "bg-indigo-500", "bg-teal-500",
+      "bg-orange-500", "bg-cyan-500", "bg-lime-500", "bg-amber-500",
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }, []);
 
   return (
     <div className="w-full">
-      <p className="text-black text-lg py-10">Skills</p>
-      {Object.keys(userSkills).map((category, idx) => (
+      <p className="text-black text-lg pt-10">Skills</p>
+      {Object.entries(userSkills).map(([category, skills], idx) => (
         <div key={idx}>
-          <h2 className="text-xl font-bold py-3">{category}</h2>
-          <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3">
-            {userSkills[category].map((skill, index) => (
+          <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 py-3 gap-3">
+            {skills.map((skill, index) => (
               <div
                 key={index}
-                className={`rounded-xl p-3 ${skill.bgColor} text-sm whitespace-normal ${
+                className={`rounded-xl p-3 ${skill.bgColor} text-lg whitespace-normal ${
                   skill.bgColor === "bg-[#000]" ? "text-white" : "text-black"
                 }`}
               >

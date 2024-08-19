@@ -16,7 +16,7 @@ const Userportfolio = () => {
           <GoArrowRight className="text-[#ED459A]" />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 py-3 gap-3">
         {PortfolioData.slice(0, 3).map((data, index) => (
           <div className="border" key={index}>
             <Image

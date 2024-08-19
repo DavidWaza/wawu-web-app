@@ -34,7 +34,7 @@ const Sellers = () => {
   const fetchUserFeeds = async () => {
     try {
       const response = await axiosInstance.get(fetch_buyers_feed);
-      console.log('feeds', response.data.data)
+      console.log("feeds", response.data.data);
       setFetchFeed(response.data.data);
     } catch (err: any) {
       if (err.response) {
@@ -50,7 +50,9 @@ const Sellers = () => {
       <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
         <Text variant="medium" className="text-black sora">
           Nice to see you,{" "}
-          <span className="text-[#F52585] !text-normal italic">{userProfileName}.</span>
+          <span className="text-[#F52585] !text-normal italic">
+            {userProfileName}.
+          </span>
         </Text>
         <CreatePortfolioSection />
         {fetchFeed &&
