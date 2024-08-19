@@ -57,7 +57,7 @@ const UserExpertise: React.FC = () => {
 
     try {
       goToNextStep();
-      router.push("/auth/login");
+      router.push("/sellers");
     } catch (err: any) {
       toast.error(err.message || "Error submitting role");
       console.log(err);

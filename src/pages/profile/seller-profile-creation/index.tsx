@@ -21,7 +21,7 @@ import { fetch_services, post_user_portfolio } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import Select, { MultiValue } from "react-select";
 import { useRouter } from "next/navigation";
-
+import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 interface SkillOption {
   value: string; // UUID of the skill
   label: string; // Name of the skill
@@ -55,6 +55,7 @@ const SellerProfileCreation = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [selectedSkills, setSelectedSkills] = useState<SkillOption[]>([]);
   const [skillOptions, setSkillOptions] = useState<SkillOption[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -115,7 +116,7 @@ const SellerProfileCreation = () => {
     if (selectedImage) {
       formData.append("image", selectedImage);
     }
-
+    setLoading(false);
     try {
       const response = await axiosInstance.post(post_user_portfolio, formData, {
         headers: {
@@ -127,6 +128,7 @@ const SellerProfileCreation = () => {
       setTimeout(() => {
         router.push("/sellers");
       }, 3000);
+      setLoading(true);
     } catch (err: any) {
       toast.error(err.response.data.message);
     }
@@ -142,6 +144,7 @@ const SellerProfileCreation = () => {
 
   return (
     <LayoutProfile>
+      {loading && <LoadingScreen />}
       <>
         <ProfileHero />
         <div className="grid lg:grid-cols-2">
@@ -432,7 +435,7 @@ const SellerProfileCreation = () => {
             <div className="flex justify-center md:justify-end my-10">
               <Button
                 variant="primary"
-                size="small"
+                size="medium"
                 className="p-2 text-nowrap"
               >
                 Become a buyer

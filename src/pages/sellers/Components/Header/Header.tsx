@@ -90,7 +90,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/"
+                href="/auth/login"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 onClick={toggleDropdown}
               >
@@ -132,7 +132,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/auth/login"
                   className="block px-4 py-2 font-semibold text-sm text-gray-700 hover:bg-gray-100"
                   onClick={toggleDrawer}
                 >

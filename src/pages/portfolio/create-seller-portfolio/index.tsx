@@ -13,6 +13,8 @@ import { toast } from "sonner";
 import InputField from "@/components/TextField/InputField";
 import TextAreaField from "@/components/TextField/TextArea";
 import Header from "@/pages/sellers/Components/Header/Header";
+import { useRouter } from "next/navigation";
+import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 
 const CreateSellerPortfolio = () => {
   const {
@@ -29,7 +31,8 @@ const CreateSellerPortfolio = () => {
   const [fileName, setFileName] = useState<FormFields["fileName"]>(""); // Update: Manage fileName in state
   const [base64File, setBase64File] = useState<string | null>(null); // Store the base64 file
   const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(false)
+ 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
@@ -44,16 +47,22 @@ const CreateSellerPortfolio = () => {
     }
   };
 
+  const router = useRouter()
   const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
+    setLoading(false)
     try {
       const response = await axiosInstance.post(create_portfolio, {
         ...data,
         projectTitle,
         projectDescription,
-        fileName, // Update: Ensure fileName is passed here
-        file: base64File, // Use the base64 file string for submission
+        fileName, 
+        file: base64File, 
       });
       toast.success(response.data.message);
+      setTimeout(() => {
+        router.push('/portfolio')
+      }, 3000);
+      setLoading(true)
     } catch (err: any) {
       toast.error(err.response.data.message);
     }
@@ -61,6 +70,7 @@ const CreateSellerPortfolio = () => {
 
   return (
     <React.Fragment>
+      {loading && <LoadingScreen />}
       <Header />
       <div className="lg:py-20 lg:px-[8.4rem] p-10">
         <form onSubmit={handleSubmit(onSubmit)}>

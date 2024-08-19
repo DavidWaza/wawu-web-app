@@ -38,8 +38,8 @@ const GigPortfolio = () => {
             <Link href={`/categories/${item.uuid}`}>
             <p
               key={item.uuid}
-              className={`text-nowrap sora hover:text-[#290D42] p-3 rounded-lg ${
-                pathname === item.uuid ? "text-[#290D42]" : ""
+              className={`text-nowrap sora !hover:text-[#290D42] p-3 rounded-lg ${
+                pathname === item.uuid ? "!text-[#290D42]" : ""
               }`}
             >
               {item.name}

@@ -101,13 +101,13 @@ export default function PersonalPortfolio() {
             Create new Portfolio
           </Button>
         </div>
-        <div className="my-10 px-10">
+        <div className="my-10">
           <div className="grid lg:grid-cols-3 gap-5">
             {createUserPortfolio.map((data, index) => (
               <div className="border" key={index}>
                 {data.file && data.file.link && (
                   <img
-                    src={"/assets/design-card-1.png"}
+                    src={"/assets/analytics.png"}
                     alt={data.projectDescription || data.file.name}
                     className="w-full h-auto object-cover object-center"
                   />

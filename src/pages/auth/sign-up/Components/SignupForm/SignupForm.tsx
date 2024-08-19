@@ -13,6 +13,7 @@ import { FormFields } from "../../../../../../types/Types";
 import SelectField from "@/components/TextField/SelectField";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
+import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -22,6 +23,7 @@ const SignupForm = () => {
   const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [role, setRole] = useState<FormFields["role"]>(0);
+  const [loading, setLoading] = useState(false);
 
   const { goToNextStep } = useOnboarding();
   const router = useRouter();
@@ -37,6 +39,7 @@ const SignupForm = () => {
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = async () => {
+    setLoading(false);
     try {
       const response = await axiosInstance.post(sign_up_url, {
         firstName,
@@ -47,13 +50,19 @@ const SignupForm = () => {
         role,
       });
 
+      // store the token in localStorage
+      localStorage.setItem("token", response.data.token);
+
       toast.success(response.data.message);
 
       // Store the selected role in local storage
       localStorage.setItem("selectedRole", JSON.stringify(role));
 
       goToNextStep();
-      router.push("/onboarding/user-screen-about");
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/onboarding/user-screen-about");
+      }, 2000);
     } catch (err: any) {
       toast.error(err.response.data.message || "Error signing up");
       console.log(err);
@@ -61,117 +70,118 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="block space-y-2">
-      <div>
-        <InputField
-          label="Email"
-          name="email"
-          placeholder="wawu@gmail.com"
-          type="email"
-          value={email}
-          register={register}
-          errors={errors}
-          setValue={(value) => setEmail(value)}
-        />
-      </div>
-      <div className="grid lg:grid-cols-2 gap-10">
-        <div className="pb-7">
-          {/* FIRST NAME */}
+    <>
+      {loading && <LoadingScreen />}
+      <form onSubmit={handleSubmit(onSubmit)} className="block space-y-2">
+        <div>
           <InputField
-            label="First Name"
-            name="firstName"
-            placeholder="Jonny"
-            value={firstName}
+            label="Email"
+            name="email"
+            placeholder="wawu@gmail.com"
+            type="email"
+            value={email}
             register={register}
             errors={errors}
-            setValue={(value) => setFirstName(value)}
+            setValue={(value) => setEmail(value)}
+          />
+        </div>
+        <div className="grid lg:grid-cols-2 gap-10">
+          <div className="pb-7">
+            {/* FIRST NAME */}
+            <InputField
+              label="First Name"
+              name="firstName"
+              placeholder="Jonny"
+              value={firstName}
+              register={register}
+              errors={errors}
+              setValue={(value) => setFirstName(value)}
+            />
+          </div>
+
+          {/* LAST NAME */}
+          <InputField
+            label="Last Name"
+            name="lastName"
+            placeholder="Doe"
+            value={lastName}
+            register={register}
+            errors={errors}
+            setValue={(value) => setLastName(value)}
           />
         </div>
 
-        {/* LAST NAME */}
+        {/* PHONE NUMBER */}
         <InputField
-          label="Last Name"
-          name="lastName"
-          placeholder="Doe"
-          value={lastName}
+          label="Phone Number"
+          name="phoneNumber"
+          placeholder="0801122233334"
+          value={phoneNumber}
           register={register}
           errors={errors}
-          setValue={(value) => setLastName(value)}
+          setValue={(value) => setPhoneNumber(value)}
         />
-      </div>
 
-      {/* PHONE NUMBER */}
-      <InputField
-        label="Phone Number"
-        name="phoneNumber"
-        placeholder="0801122233334"
-        value={phoneNumber}
-        register={register}
-        errors={errors}
-        setValue={(value) => setPhoneNumber(value)}
-      />
-
-      {/* PASSWORD */}
-      <div className="relative">
-        <InputField
-          label="Password"
-          name="password"
-          placeholder="***********"
-          type={passwordVisible ? "text" : "password"}
-          value={password}
-          register={register}
-          errors={errors}
-          setValue={(value) => setPassword(value)}
-        />
-        <div
-          onClick={togglePassword}
-          className="absolute top-1/2 right-0 bottom-0 flex items-center justify-center w-10"
-        >
-          {passwordVisible ? <Eye size={15} /> : <EyeOff size={15} />}
+        {/* PASSWORD */}
+        <div className="relative">
+          <InputField
+            label="Password"
+            name="password"
+            placeholder="***********"
+            type={passwordVisible ? "text" : "password"}
+            value={password}
+            register={register}
+            errors={errors}
+            setValue={(value) => setPassword(value)}
+          />
+          <div
+            onClick={togglePassword}
+            className="absolute top-1/2 right-0 bottom-0 flex items-center justify-center w-10"
+          >
+            {passwordVisible ? <Eye size={15} /> : <EyeOff size={15} />}
+          </div>
         </div>
-      </div>
 
-      {/* ROLE */}
-      <SelectField
-        label="Role"
-        name="role"
-        register={register}
-        errors={errors}
-        value={role}
-        setValue={(value) => setRole(value)}
-        options={[
-          { value: "", label: "Select a role..." },
-          { value: 1, label: "Buyer" },
-          { value: 2, label: "Seller" },
-        ]}
-      />
-      <div className="flex justify-start items-center gap-1 py-5">
+        {/* ROLE */}
+        <SelectField
+          label="Role"
+          name="role"
+          register={register}
+          errors={errors}
+          value={role}
+          setValue={(value) => setRole(value)}
+          options={[
+            { value: "", label: "Select a role..." },
+            { value: 1, label: "Buyer" },
+            { value: 2, label: "Seller" },
+          ]}
+        />
+        <div className="flex justify-start items-center gap-1 py-5">
           <input type="checkbox" className="w-4 h-auto" />
           <p className="text-black text-sm sora text-nowrap">
             By continuing you agree to our{" "}
             <span className="!text-[#ED459A]">
-              <Link href={"#"}>
-                terms of use and privacy policy
-              </Link>
+              <Link href={"#"}>terms of use and privacy policy</Link>
             </span>
           </p>
-      </div>
-      <button
-        type="submit"
-        className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "Signing..." : "Sign up"}
-      </button>
-      <p className="text-black text-center mt-4">
-        Already have an account?{" "}
-        <span className="font-bold ">
-          <Link href={"/auth/login"} className="!text-[#ED459A]">
-            Login
-          </Link>
-        </span>
-      </p>
-    </form>
+        </div>
+        <button
+          type="submit"
+          className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Signing..." : "Sign up"}
+        </button>
+        <p className="text-black text-center mt-4">
+          Already have an account?{" "}
+          <span className="font-bold ">
+            <Link href={"/auth/login"} className="!text-[#ED459A]">
+              Login
+            </Link>
+          </span>
+        </p>
+      </form>
+    </>
   );
 };
 

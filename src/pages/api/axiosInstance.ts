@@ -26,6 +26,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // Retrieve tokens and other required information from localStorage
+
     const apitoken = localStorage.getItem("Api-Token");
     const channel = localStorage.getItem("channel");
     const token = localStorage.getItem("token");  // Assuming Bearer token is stored here

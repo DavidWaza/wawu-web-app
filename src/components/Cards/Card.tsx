@@ -1,3 +1,4 @@
+import { truncateText } from "../../../utilities/Truncate";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import { Text } from "../ui/Typography/Typography";
 import { FaRegStar } from "react-icons/fa";
@@ -9,6 +10,8 @@ interface ICardPros {
   onClick?: () => void
 }
 // Turn this props when the data is given
+
+
 const Card:React.FC<ICardPros> = ({name, about, onClick}) => {
   return (
     <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3 cursor-pointer">
@@ -29,8 +32,8 @@ const Card:React.FC<ICardPros> = ({name, about, onClick}) => {
         </div>
       </div>
       <div className="mb-[10px]">
-        <Text variant="small" className="!font-semibold">
-         {about}
+        <Text variant="small" className="!font-medium">
+        {truncateText(about, 20)}
         </Text>
       </div>
       <div className="flex items-center gap-2 my-5">
