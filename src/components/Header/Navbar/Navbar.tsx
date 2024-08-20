@@ -128,14 +128,12 @@ const Navbar: React.FC<linkProps> = () => {
               </button>
             </Link>
             <Link href={"/auth/login"}>
-              <Button
-                variant="primary"
-                size="small"
-                className="py-2 my-3"
+              <button
+                className="py-2 px-10 my-3 bg-[#ED459A] rounded-lg text-white"
                 onClick={handleLogin}
               >
                 Log in
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
