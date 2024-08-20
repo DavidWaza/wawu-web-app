@@ -11,7 +11,7 @@ import {
   miscellanous,
   translations,
   writingSkills,
-} from "@/pages/categories/Data/Data";
+} from "../../../../utilities/Data/Data";
 
 const Writing = () => {
   return (

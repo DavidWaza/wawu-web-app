@@ -2,7 +2,7 @@ import React from 'react'
 import SkillsPopularHeader from "../Components/SkillsPopularHeader";
 import ExploreCard from "../Components/ExploreCard";
 import PopularGigs from "../Components/PopularGigs";
-import { analytics, industryPurpose, marketSkills, methodTechniques, search, social } from '@/pages/categories/Data/Data';
+import { analytics, industryPurpose, marketSkills, methodTechniques, search, social } from '../../../../utilities/Data/Data';
 import { Text } from "@/components/ui/Typography/Typography";
 
 

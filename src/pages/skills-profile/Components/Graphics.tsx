@@ -8,7 +8,7 @@ import {
   graphicsSkills,
   marketing,
   visualSkills,
-} from "@/pages/categories/Data/Data";
+} from "../../../../utilities/Data/Data";
 import { Text } from "@/components/ui/Typography/Typography";
 
 const Graphics = () => {
