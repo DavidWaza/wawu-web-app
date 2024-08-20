@@ -9,7 +9,6 @@ import { buttons, heroContents } from "@/data/portfolioData";
 const Hero = () => {
   const settings = {
     dots: false,
-    fade: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -18,7 +17,6 @@ const Hero = () => {
     speed: 5000,
     autoplaySpeed: 10000,
     arrows: false,
-    cssEase: "linear",
   };
 
   const backgroundChange = (roles: any) => {
