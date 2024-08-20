@@ -5,6 +5,8 @@ const apiToken = process.env.NEXT_PUBLIC_API_TOKEN || "";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 
+
+
 // Check if running in the browser (not in a Node.js environment)
 if (typeof window !== "undefined") {
   // Store the API token and channel information in localStorage
