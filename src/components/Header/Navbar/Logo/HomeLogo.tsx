@@ -10,7 +10,7 @@ const HomeLogo = ({ classname }: IlogoProps) => {
     <div>
       <Link href={"/"}>
         <Image
-          src="/assets/homelogo.png"
+          src="https://res.cloudinary.com/dgbl43ljm/image/upload/v1724197587/homelogo_r8tiaw.png"
           alt=""
           width={180}
           height={180}

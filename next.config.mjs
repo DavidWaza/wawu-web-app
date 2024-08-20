@@ -12,7 +12,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['console.cloudinary.com'], 
+    domains: ['console.cloudinary.com', 'res.cloudinary.com'], 
   },
 };
 
