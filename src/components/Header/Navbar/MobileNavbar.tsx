@@ -1,29 +1,34 @@
+'use client'
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { CldImage } from 'next-cloudinary';
 
 const MobileNavbar = () => {
   const [hamburgerClick, setHamburgerClick] = useState(false);
 
+  console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
   const handleClickHamburger = () => {
     setHamburgerClick(!hamburgerClick);
   };
   const handleClose = () => {
     setHamburgerClick(false);
+
   };
   return (
     <nav className="bg-[#fefefe] h-[10.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
       <Image
-        src={"/assets/WAWU-LOGO.svg"}
+        src={"https://res.cloudinary.com/dgbl43ljm/image/upload/v1724196543/whuhzy57xu4hxsl098qi.svg"}
         width={0}
         height={0}
         sizes="100vw"
         alt="logo"
         className="lg:w-full md:w-full w-2/3 h-auto object-cover object-center"
       />
+   
       <div>
         <button
           onClick={handleClickHamburger}
