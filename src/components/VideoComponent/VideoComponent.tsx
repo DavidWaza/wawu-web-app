@@ -13,7 +13,7 @@ const VideoComponent = () => {
   };
   return (
     <>
-      <div className="bg-[#471471] py-20 transition-all ease-linear">
+      <div className="bg-[#471471] py-[10rem] transition-all ease-linear">
         <div className="lg:px-20 px-5">
           <div className={`${!nextVideo ? "block" : "hidden"}`}>
             <VideoCarousel />
