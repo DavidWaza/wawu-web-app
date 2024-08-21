@@ -33,30 +33,17 @@ const GigPortfolio = () => {
   return (
     <div className="bg-white lg:flex justify-between px-20 py-10 border border-b hidden overflow-hidden">
       {fetchCategories?.slice(0, 10).map((item) => (
-        <div key={item.name}>
-          {pathname.includes('categories') ? (<>
-            <Link href={`/categories/${item.uuid}`}>
+        <div key={item.uuid}>
+          <Link href={`/categories/${item.uuid}`}>
             <p
               key={item.uuid}
-              className={`text-nowrap sora !hover:text-[#290D42] p-3 rounded-lg ${
-                pathname === item.uuid ? "!text-[#290D42]" : ""
+              className={`text-nowrap sora hover:text-[#290D42] p-3 rounded-lg ${
+                pathname.includes(item.uuid) ? "text-[#E54D9A] font-bold" : ""
               }`}
             >
               {item.name}
             </p>
           </Link>
-          </>) : (<>
-            <Link href={`categories/${item.uuid}`}>
-            <p
-              key={item.uuid}
-              className={`text-nowrap sora hover:text-[#290D42] p-3 rounded-lg ${
-                pathname === item.uuid ? "text-[#290D42]" : ""
-              }`}
-            >
-              {item.name}
-            </p>
-          </Link></>)}
-          
         </div>
       )) || <p className="text-center">No categories available.</p>}
     </div>
