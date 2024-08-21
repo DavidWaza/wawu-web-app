@@ -44,7 +44,7 @@ const LoginForm = () => {
         <InputField
           label="Email"
           name="email"
-          placeholder="davidwaza@gmail.com"
+          placeholder="wawu@gmail.com"
           type="email"
           value={email}
           register={register}
