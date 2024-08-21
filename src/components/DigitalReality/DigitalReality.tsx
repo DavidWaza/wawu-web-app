@@ -13,7 +13,7 @@ interface DigitalProps {
 }
 const DigitalReality = (props: DigitalProps) => {
   return (
-    <div className={`${props.backgroundColor} py-10 px-10 lg:px-[5rem] sora`}>
+    <div className={`${props.backgroundColor} py-[7rem] px-10 lg:px-[5rem] sora`}>
       <div className="grid 2xl:grid-cols-2 gap-5 lg:gap-10">
         <div className="block">
           <Text variant="medium" className={`${props.textColor}`}>

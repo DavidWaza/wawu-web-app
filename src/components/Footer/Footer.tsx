@@ -68,24 +68,29 @@ const Footer = () => {
             2023 wawutech. All Rights Reserved
           </Text>
           <div className="flex gap-5 items-center justify-center md:justify-start">
-            <Text
-              variant="small"
-              className="w-full text-center md:text-left text-nowrap"
-            >
-              Privacy Policy
-            </Text>
+            <Link href={"/legal"}>
+              <Text
+                variant="small"
+                className="w-full text-center md:text-left text-nowrap"
+              >
+                Privacy Policy
+              </Text>
+            </Link>
+
             <Text
               variant="small"
               className="w-full text-center md:text-left text-nowrap"
             >
               Cookie Policy
             </Text>
-            <Text
-              variant="small"
-              className="w-full text-center md:text-left text-nowrap"
-            >
-              Terms & Condition
-            </Text>
+            <Link href={"/legal"}>
+              <Text
+                variant="small"
+                className="w-full text-center md:text-left text-nowrap"
+              >
+                Terms & Condition
+              </Text>
+            </Link>
           </div>
         </div>
       </div>
