@@ -116,7 +116,7 @@ const Team = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <InputField
                   label="Email"
-                  placeholder="wawu@gmail.com"
+                  placeholder="Support@wawuafrica.com"
                   name="email"
                   type=""
                   value={email}

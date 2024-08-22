@@ -67,7 +67,7 @@ const Footer = () => {
           >
             2023 wawutech. All Rights Reserved
           </Text>
-          <div className="flex gap-5 items-center justify-center md:justify-start">
+          <div className="flex flex-col md:flex-row gap-5 items-center md:items-start justify-center md:justify-start">
             <Link href={"/legal"}>
               <Text
                 variant="small"
@@ -83,6 +83,7 @@ const Footer = () => {
             >
               Cookie Policy
             </Text>
+
             <Link href={"/legal"}>
               <Text
                 variant="small"

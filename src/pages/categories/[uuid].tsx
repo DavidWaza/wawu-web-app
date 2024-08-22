@@ -141,7 +141,7 @@ const DigitalMarketing = () => {
         </div>
       </div>
       <div>
-        <DigitalReality backgroundColor="bg-[#290D43]" placeholder={""} />
+        <DigitalReality backgroundColor="bg-[#290D43]" placeholder={"Support@wawuafrica.com"} />
       </div>
     </div>
   );

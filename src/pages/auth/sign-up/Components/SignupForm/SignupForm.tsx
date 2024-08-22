@@ -47,7 +47,7 @@ const SignupForm = () => {
         email,
         password,
         phoneNumber,
-        role,
+        role: 2,
       });
 
       // store the token in localStorage
@@ -77,7 +77,7 @@ const SignupForm = () => {
           <InputField
             label="Email"
             name="email"
-            placeholder="wawu@gmail.com"
+            placeholder="Support@wawuafrica.com"
             type="email"
             value={email}
             register={register}
@@ -85,13 +85,13 @@ const SignupForm = () => {
             setValue={(value) => setEmail(value)}
           />
         </div>
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div className="pb-7">
+        <div className="grid lg:grid-cols-2 lg:gap-10">
+          <div className="">
             {/* FIRST NAME */}
             <InputField
               label="First Name"
               name="firstName"
-              placeholder="Jonny"
+              placeholder="Leora"
               value={firstName}
               register={register}
               errors={errors}
@@ -103,7 +103,7 @@ const SignupForm = () => {
           <InputField
             label="Last Name"
             name="lastName"
-            placeholder="Doe"
+            placeholder="Leora"
             value={lastName}
             register={register}
             errors={errors}
@@ -142,23 +142,9 @@ const SignupForm = () => {
           </div>
         </div>
 
-        {/* ROLE */}
-        <SelectField
-          label="Role"
-          name="role"
-          register={register}
-          errors={errors}
-          value={role}
-          setValue={(value) => setRole(value)}
-          options={[
-            { value: "", label: "Select a role..." },
-            { value: 1, label: "Buyer" },
-            { value: 2, label: "Seller" },
-          ]}
-        />
-        <div className="flex justify-start items-center gap-1 py-5">
+        <div className="flex justify-start items-start lg:items-center gap-1 py-5">
           <input type="checkbox" className="w-4 h-auto" />
-          <p className="text-black text-sm sora text-nowrap">
+          <p className="text-black text-sm sora">
             By continuing you agree to our{" "}
             <span className="!text-[#ED459A]">
               <Link href={"#"}>terms of use and privacy policy</Link>

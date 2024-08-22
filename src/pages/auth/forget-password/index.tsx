@@ -44,7 +44,7 @@ const ForgetPassword: React.FC<FormFields> = () => {
             <InputField
               label="Email"
               name="email"
-              placeholder="davidwaza@gmail.com"
+              placeholder="Support@wawuafrica.com"
               type="email"
               value={email}
               register={register}

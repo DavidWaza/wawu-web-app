@@ -44,7 +44,7 @@ const LoginForm = () => {
         <InputField
           label="Email"
           name="email"
-          placeholder="wawu@gmail.com"
+          placeholder="Support@wawuafrica.com"
           type="email"
           value={email}
           register={register}

@@ -31,7 +31,7 @@ const HeroComponent = (props: HeroComponentProps) => {
             <Text variant="small" className="text-[#fff]  my-4 leading-[20px]">
               {props.subText}
             </Text>
-            <div className="py-10">
+            <div className="pt-5">
               <Button
                 size="medium"
                 className="p-2 border-none gap-1 w-1/2 text-sm font-normal"
@@ -41,7 +41,7 @@ const HeroComponent = (props: HeroComponentProps) => {
               </Button>
             </div>
           </div>
-          <div className="flex justify-center items-center mt-7">
+          <div className="flex justify-center items-center">
             <Image
               className="w-full d-block h-auto"
               width={0}

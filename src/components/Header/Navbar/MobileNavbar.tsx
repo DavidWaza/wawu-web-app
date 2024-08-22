@@ -5,7 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import { RiCloseLargeLine } from "react-icons/ri";
-import { CldImage } from 'next-cloudinary';
+import { usePathname } from "next/navigation";
 
 const MobileNavbar = () => {
   const [hamburgerClick, setHamburgerClick] = useState(false);
@@ -18,8 +18,10 @@ const MobileNavbar = () => {
     setHamburgerClick(false);
 
   };
+
   return (
     <nav className="bg-[#fefefe] h-[10.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
+      
       <Image
         src={"https://res.cloudinary.com/dgbl43ljm/image/upload/v1724197587/homelogo_r8tiaw.png"}
         width={0}

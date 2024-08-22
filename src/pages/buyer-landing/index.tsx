@@ -168,7 +168,7 @@ const BuyerLandingComponent = () => {
                 backgroundColor="bg-white"
                 textColor="text-black"
                 borderColor="border-[#ED459A]"
-                placeholder={""}
+                placeholder={"Support@wawuafrica.com"}
                 submitText="Get Started"
               />
             </div>

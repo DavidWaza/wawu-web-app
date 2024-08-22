@@ -28,7 +28,6 @@ const UserExpertise: React.FC = () => {
       const role = JSON.parse(storedRole);
       setSelectedRole(role);
     }
-
   }, []);
 
   const fetchUserProfile = async () => {
@@ -104,7 +103,7 @@ const UserExpertise: React.FC = () => {
             </p>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid lg:grid-cols-5 py-5 group gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 py-5 group gap-4">
               {roles.map((item, index) => (
                 <div
                   key={index}

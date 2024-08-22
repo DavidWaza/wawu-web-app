@@ -154,7 +154,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="First Name"
                   name="firstName"
-                  placeholder="John"
+                  placeholder="Leora"
                   value={firstName}
                   register={register}
                   errors={errors}
@@ -163,7 +163,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="Last Name"
                   name="lastName"
-                  placeholder="Doe"
+                  placeholder="Leora"
                   value={lastName}
                   register={register}
                   errors={errors}
@@ -173,7 +173,7 @@ const SellerProfileCreation = () => {
                 <InputField
                   label="Email"
                   name="email"
-                  placeholder="wawuafrica@gmail.com"
+                  placeholder="Support@wawuafrica.com"
                   type="email"
                   value={email}
                   register={register}

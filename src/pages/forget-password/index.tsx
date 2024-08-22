@@ -38,7 +38,7 @@ const ForgetPassword = () => {
                 },
               })}
               type="text"
-              placeholder="Email"
+              placeholder="Support@wawuafrica.com"
               className="py-2 px-2 text-black border border-1 rounded-md w-[20rem]"
             />
             {errors.email && (

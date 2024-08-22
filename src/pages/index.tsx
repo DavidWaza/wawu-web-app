@@ -24,7 +24,7 @@ const Home = () => {
       <DigitalReality
         backgroundColor="bg-[#290D43]"
         submitText="Submit"
-        placeholder="Enter your email"
+        placeholder="Support@wawuafrica.com"
       />
     </div>
   );

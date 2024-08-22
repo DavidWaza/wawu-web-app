@@ -31,19 +31,13 @@ const ContactUs = () => {
         <Heading fontColor="secondary" variant="medium">
           Get In Touch With Us
         </Heading>
-        <Text variant="small" className="text-[#5F6D7E]">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum
-          eligendi magni voluptatum porro quo? Quod modi dolore, voluptatum ad
-          corrupti officia ut reiciendis eos quidem distinctio iure placeat
-          harum ab?
-        </Text>
         <div className="mt-10 lg:mt-20">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="lg:grid grid-cols-2 gap-10">
               <CustomInput
                 label="Full Name"
                 name="first name"
-                placeholder="First Name"
+                placeholder="Leora"
                 register={register}
                 errors={errors}
                 type="text"
@@ -52,7 +46,7 @@ const ContactUs = () => {
               <CustomInput
                 label="Email"
                 name="email"
-                placeholder="Email"
+                placeholder="Support@wawuafrica.com"
                 register={register}
                 errors={errors}
                 type="email"
