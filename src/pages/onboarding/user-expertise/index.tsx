@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import OnboardingLayout from "../Layout";
 import Image from "next/image";
-import { fetch_user_profile } from "@/pages/api/endpoints";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { toast } from "sonner";
 
@@ -15,18 +14,21 @@ type FormFields = {
 
 const UserExpertise: React.FC = () => {
   const { goToNextStep } = useOnboarding();
-
   const [userProfileName, setUserProfileName] = useState<string | null>(null);
   const [selectedRole, setSelectedRole] = useState<string>("");
 
   useEffect(() => {
     fetchUserProfile();
-
+  
     // Get the selected role from local storage
     const storedRole = localStorage.getItem("selectedRole");
     if (storedRole) {
-      const role = JSON.parse(storedRole);
-      setSelectedRole(role);
+      try {
+        const role = JSON.parse(storedRole);
+        setSelectedRole(role);
+      } catch (error) {
+        console.error("Error parsing selected role from local storage:", error);
+      }
     }
   }, []);
 
@@ -56,7 +58,12 @@ const UserExpertise: React.FC = () => {
 
     try {
       goToNextStep();
-      router.push("/sellers");
+      
+      if (["stewards", "artisan"].includes(selectedRole)) {
+        router.push("/payment"); // Redirect to payment page
+      } else {
+        router.push("/sellers"); // Redirect to seller's page
+      }
     } catch (err: any) {
       toast.error(err.message || "Error submitting role");
       console.log(err);

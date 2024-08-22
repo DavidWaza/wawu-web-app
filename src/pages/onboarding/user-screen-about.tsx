@@ -1,4 +1,3 @@
-"use client";
 import { useOnboarding } from "@/Context/onboardingContext";
 import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -13,7 +12,6 @@ import {
   SelectLabel,
   SelectGroup,
 } from "@/components/ui/select";
-import axios from "axios";
 import axiosInstance from "../api/axiosInstance";
 
 type FormFields = {
@@ -27,14 +25,13 @@ const AboutUserProfileOnboarding: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setValue,
+    watch,
   } = useForm<FormFields>();
 
   const router = useRouter();
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    console.log(data);
-    goToNextStep();
-    router.push("/onboarding/user-expertise");
-  };
+
+  const selectedRole = watch("mentorReasons");
 
   useEffect(() => {
     fetchCountry();
@@ -43,12 +40,26 @@ const AboutUserProfileOnboarding: React.FC = () => {
   const fetchCountry = async () => {
     try {
       const response = await axiosInstance.get("/api/countries");
-      console.log("count", response.data);
       setFetchCountries(response.data.data);
     } catch (err) {
       console.log(err);
     }
   };
+
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    // Save selected role to local storage
+    if (selectedRole === undefined) {
+      console.error("Selected role is undefined.");
+      return;
+    }
+  
+    // Save selected role to local storage
+    localStorage.setItem("selectedRole", JSON.stringify(selectedRole));
+    
+    goToNextStep();
+    router.push("/onboarding/user-expertise");
+  };
+
   return (
     <React.Fragment>
       <OnboardingLayout>
@@ -59,25 +70,24 @@ const AboutUserProfileOnboarding: React.FC = () => {
           <p className="text-center text-black text-sm sora">
             Your answer will be used to..
           </p>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex justify-center mt-5"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center mt-5">
             <div>
               <div className="pb-10">
                 <label className="text-black block text-sm py-2">
                   What are you using Wawu for?
                 </label>
-                <Select>
+                <Select
+                  {...register("mentorReasons")}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select one" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectItem value="days">Stewards</SelectItem>
-                      <SelectItem value="weeks">Artisan</SelectItem>
-                      <SelectItem value="months">Patrons</SelectItem>
-                      <SelectItem value="years">Others</SelectItem>
+                      <SelectItem value="stewards">Stewards</SelectItem>
+                      <SelectItem value="artisan">Artisan</SelectItem>
+                      <SelectItem value="patrons">Patrons</SelectItem>
+                      <SelectItem value="others">Others</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
