@@ -60,7 +60,7 @@ const UserExpertise: React.FC = () => {
         router.push("/sellers");
       } else {
         // Handle any other role-specific routing logic here
-        router.push("/auth/login");
+        router.push("/payment");
       }
     } catch (err: any) {
       console.log(err);
