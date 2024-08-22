@@ -14,7 +14,7 @@ const PaystackButton = dynamic(
 const Payment = () => {
   const publicKey = "pk_your_public_key_here";
   const amount = 1000000;
-  const currency = 'NGN'
+  const currency = "NGN";
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -58,7 +58,6 @@ const Payment = () => {
         <MobileNavbar />
       </div>
       <div className="container py-[10rem] lg:w-1/2">
-        <div className="py-10"></div>
         <div>
           <form className="space-y-10 border p-5 lg:p-20 rounded-xl shadow-sm">
             <div>

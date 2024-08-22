@@ -1,6 +1,5 @@
-import { useOnboarding } from "@/Context/onboardingContext";
 import React, { useState, useEffect } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import OnboardingLayout from "./Layout";
 import {
@@ -13,25 +12,22 @@ import {
   SelectGroup,
 } from "@/components/ui/select";
 import axiosInstance from "../api/axiosInstance";
+import { useOnboarding } from "@/Context/onboardingContext";
 
 type FormFields = {
   mentorReasons: string;
 };
 
 const AboutUserProfileOnboarding: React.FC = () => {
-  const [fetchCountries, setFetchCountries] = useState([]);
+  const [fetchCountries, setFetchCountries] = useState<string[]>([]);
   const { goToNextStep } = useOnboarding();
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
-    setValue,
-    watch,
   } = useForm<FormFields>();
 
   const router = useRouter();
-
-  const selectedRole = watch("mentorReasons");
 
   useEffect(() => {
     fetchCountry();
@@ -42,20 +38,20 @@ const AboutUserProfileOnboarding: React.FC = () => {
       const response = await axiosInstance.get("/api/countries");
       setFetchCountries(response.data.data);
     } catch (err) {
-      console.log(err);
+      console.error("Error fetching countries:", err);
     }
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    // Save selected role to local storage
-    if (selectedRole === undefined) {
+    const selectedRole = data.mentorReasons;
+
+    if (!selectedRole) {
       console.error("Selected role is undefined.");
       return;
     }
-  
-    // Save selected role to local storage
+
     localStorage.setItem("selectedRole", JSON.stringify(selectedRole));
-    
+
     goToNextStep();
     router.push("/onboarding/user-expertise");
   };
@@ -68,7 +64,7 @@ const AboutUserProfileOnboarding: React.FC = () => {
             Tell me about yourself
           </p>
           <p className="text-center text-black text-sm sora">
-            Your answer will be used to..
+            Your answer will be used to personalize your experience.
           </p>
           <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center mt-5">
             <div>
@@ -76,25 +72,30 @@ const AboutUserProfileOnboarding: React.FC = () => {
                 <label className="text-black block text-sm py-2">
                   What are you using Wawu for?
                 </label>
-                <Select
-                  {...register("mentorReasons")}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select one" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="stewards">Stewards</SelectItem>
-                      <SelectItem value="artisan">Artisan</SelectItem>
-                      <SelectItem value="patrons">Patrons</SelectItem>
-                      <SelectItem value="others">Others</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+                <Controller
+                  name="mentorReasons"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <Select {...field} onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select one" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem value="stewards">Stewards</SelectItem>
+                          <SelectItem value="artisan">Artisan</SelectItem>
+                          <SelectItem value="patrons">Patrons</SelectItem>
+                          <SelectItem value="others">Others</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
               </div>
               <div className="pb-10">
                 <label className="text-black block text-sm py-2">
-                  You are using Wawu as an?
+                  You are using Wawu as a(n)?
                 </label>
                 <Select>
                   <SelectTrigger>
@@ -102,9 +103,9 @@ const AboutUserProfileOnboarding: React.FC = () => {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectItem value="days">Individual</SelectItem>
-                      <SelectItem value="weeks">Organisation</SelectItem>
-                      <SelectItem value="months">Others</SelectItem>
+                      <SelectItem value="individual">Individual</SelectItem>
+                      <SelectItem value="organisation">Organisation</SelectItem>
+                      <SelectItem value="others">Others</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -121,7 +122,7 @@ const AboutUserProfileOnboarding: React.FC = () => {
                     <SelectGroup>
                       <SelectLabel>All Countries</SelectLabel>
                       {fetchCountries.map((item, index) => (
-                        <SelectItem value="days" key={index}>
+                        <SelectItem value={item} key={index}>
                           {item}
                         </SelectItem>
                       ))}
@@ -133,8 +134,9 @@ const AboutUserProfileOnboarding: React.FC = () => {
                 <button
                   className="bg-[#9510C9] py-2 px-10 text-white rounded-xl"
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  Continue
+                  {isSubmitting ? "Submitting..." : "Continue"}
                 </button>
               </div>
             </div>

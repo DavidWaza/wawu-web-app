@@ -56,7 +56,7 @@ const SignupForm = () => {
       toast.success(response.data.message);
 
       // Store the selected role in local storage
-      localStorage.setItem("selectedRole", JSON.stringify(role));
+     
 
       goToNextStep();
       setTimeout(() => {
