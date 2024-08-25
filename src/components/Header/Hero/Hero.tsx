@@ -5,6 +5,7 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { buttons, heroContents } from "@/data/portfolioData";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
   const settings = {
@@ -32,14 +33,17 @@ const Hero = () => {
       return "bg-black";
     }
   };
+
+  const { t } = useTranslation();
+
   return (
     <>
       <Slider {...settings}>
         {heroContents.map((heroContent, index) => (
-          <div key={index}>
-            <div className={backgroundChange(heroContent.roles)}>
-              <div className="grid md:grid-cols-2 lg:pt-20 px-10 lg:px-20">
-                <div className="lg:px-[3rem] pt-20">
+          <div key={index} className="h-full flex items-center justify-center">
+            <div className={`${backgroundChange(heroContent.roles)} h-full`}>
+              <div className="grid md:grid-cols-2 lg:py-20 px-10 lg:px-20 h-full">
+                <div className="lg:px-[3rem] pt-20 flex flex-col justify-center">
                   <Image
                     src={`${heroContent.textSrc}`}
                     alt=""
@@ -64,7 +68,6 @@ const Hero = () => {
                       variant="primary"
                       className="rounded-l-none p-2 border-none"
                     >
-                      {" "}
                       Search
                     </Button>
                   </div>
@@ -99,4 +102,5 @@ const Hero = () => {
     </>
   );
 };
+
 export default Hero;

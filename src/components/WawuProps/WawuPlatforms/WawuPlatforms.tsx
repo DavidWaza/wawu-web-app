@@ -15,7 +15,7 @@ interface PlatFormProps {
 const WawuPlatforms = (props: PlatFormProps) => {
   return (
     <>
-      <div className="lg:flex items-start gap-5 mt-10">
+      <div className="lg:flex items-start gap-5 mt-10 space-y-2">
         <Image
           src={props.iconSrc}
           alt={props.alt}
@@ -32,7 +32,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
             {props.desc}
           </Text>
           {props.link && (
-            <div className="flex gap-2 items-center mt-1">
+            <div className="flex gap-2 items-center mt-1 leading-[22px]">
               <Text variant="small">
                 <Link href={""} className="!text-[#ED459A]">
                   {props.link}

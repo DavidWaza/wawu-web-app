@@ -23,7 +23,7 @@ const GetInTouch = () => {
           />
         </div>
         <div className="mt-5 lg:mt-0">
-          <Button variant="tertiary" className="py-2 px-3">
+          <Button variant="tertiary" className="py-2 px-3" href="/contact-us">
             Get in touch
           </Button>
         </div>

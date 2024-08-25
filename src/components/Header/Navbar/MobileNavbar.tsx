@@ -51,6 +51,11 @@ const MobileNavbar = () => {
           <Link href="/" className="text-black text-lg font-bold">
             Home
           </Link>
+          <Link href="/seller-landing" className="text-black text-lg font-bold">
+            Find Services
+          </Link> <Link href="/buyer-landing" className="text-black text-lg font-bold">
+            Offer Services
+          </Link>
           <Link href="/about" className="text-black text-lg font-bold">
             About
           </Link>

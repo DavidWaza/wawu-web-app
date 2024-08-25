@@ -1,3 +1,5 @@
+import { Mail } from "lucide-react";
+
 interface PortfolioDataProps {
   imgSrc: string;
   title: string;
@@ -42,39 +44,24 @@ export const platforms = [
     iconSrc: "/icons/paper-plane.svg",
     alt: "paper plain",
     title: "Stewards",
-    desc: `Leaving no one behind as we set out on this amazing journey building
-          sustainable businesses, creating employment opportunities and becoming
-          effective, efficient and transformative stewards.`,
+    desc: `Embarking on this remarkable endeavor, we are committed to inclusive progress, fostering sustainable enterprises, generating employment avenues, and evolving into impactful and efficient custodians.
+`,
   },
   {
     iconSrc: "/icons/light-bulb.svg",
     alt: "light bulb",
     title: "Mentorship",
-    desc: `The NextGen community of stewards, incubators, builders, creators, and leaders`,
+    desc: `The NextGen community of custodians, nurturers, architects, innovators, and pioneers`,
   },
   {
     iconSrc: "/icons/pie-chart.svg",
     alt: "pie chart",
     title: "Patrons",
-    desc: `Savy Startups, Industry Leaders, Movers + Shakers, Innovators, Great Partnerships, Daring Disruptors, all Start here .`,
+    desc: `Esteemed entrepreneurs, industry pioneers, influential change-makers, innovators, and exceptional collaborators, embark on your journey here.`,
   },
 ];
 
-export const contactLinks = [
-  {
-    src: "/icons/mail.svg",
-    contact: "help@wawutech.com",
-  },
-  {
-    src: "/icons/link.svg",
-    contact: ` 14 Ibiyinka Salvador, Off African Lane Lekki Phase 1, Lagos
-      Nigeria.`,
-  },
-  {
-    src: "/icons/link.svg",
-    contact: "+2348089925524",
-  },
-];
+
 export const pageLinks = [
   {
     link: "",
@@ -152,13 +139,13 @@ export const sliderContent = [
     text: "text-black",
   },
   {
-    src: "/assets/graphics.png",
+    src: "/assets/graphics-girl.svg",
     backgroundColor: "bg-[#290D43]",
     title: "Graphics & Design",
     text: "text-white",
   },
   {
-    src: "/assets/tech.png",
+    src: "/assets/tech-girl.svg",
     backgroundColor: "bg-[#F5F7F6]",
     title: "Programming & Tech",
     text: "text-black",
