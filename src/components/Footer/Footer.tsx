@@ -1,13 +1,29 @@
 import Image from "next/image";
 import { Text } from "../ui/Typography/Typography";
 import Link from "next/link";
-import { contactLinks, pageLinks } from "@/data/portfolioData";
+import { pageLinks } from "@/data/portfolioData";
 import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
 import FooterLogo from "./FooterLogo";
+import { Mail, MapPin, Phone } from "lucide-react";
 
+const contactLinks = [
+  {
+    icon: <Mail size={20} />,
+    contact: "support@wawuafrica.com",
+  },
+  {
+    icon: <MapPin  />,
+    contact: ` 14 Ibiyinka Salvador, Off African Lane Lekki Phase 1, Lagos
+      Nigeria.`,
+  },
+  {
+    icon: <Phone size={20} />,
+    contact: "+2348089925524",
+  },
+];
 const Footer = () => {
   return (
     <footer className="bg-slate-50 pt-8 pb-6">
@@ -17,13 +33,8 @@ const Footer = () => {
             <FooterLogo classname="w-[40%]" />
             {contactLinks.map((contactLink, index) => (
               <div className="block px-4" key={index}>
-                <div className="flex gap-3 align-middle items-center mt-3">
-                  <Image
-                    src={contactLink.src}
-                    alt="icon"
-                    width={15}
-                    height={15}
-                  />
+                <div className="flex gap-3 align-middle items-center mt-3 py-3">
+                  {contactLink.icon}
                   <Text variant="small">{contactLink.contact}</Text>
                 </div>
               </div>
@@ -65,7 +76,7 @@ const Footer = () => {
             variant="small"
             className="w-full text-center md:text-left mb-4 md:mb-0"
           >
-            2023 wawutech. All Rights Reserved
+            2024 wawuafrica. All Rights Reserved
           </Text>
           <div className="flex flex-col md:flex-row gap-5 items-center md:items-start justify-center md:justify-start">
             <Link href={"/legal"}>

@@ -31,7 +31,7 @@ const VideoCarousel = () => {
           Welcome to Wawu Africa
         </Heading>
         <div className="flex-col mt-5">
-          <Text variant="base" className="text-[#F7ABD1]">
+          <Text variant="base" className="text-[#F7ABD1] !leading-[24px]">
             By nature, we are incubators, creators, caretakers, protectors &
             preservers. We are everything that&apos;s required to serve
             enterprises through cutting-edge digital solutions & experiences.
@@ -47,7 +47,7 @@ const VideoCarousel = () => {
           <ul className="mt-3">
             {perks.map(({ icon, perk }) => (
               <li
-                className="flex gap-2 items-center text-white mb-2 mt-2"
+                className="flex gap-2 items-center text-white mb-2 mt-2 text-[16px]"
                 key={perk}
               >
                 {icon}

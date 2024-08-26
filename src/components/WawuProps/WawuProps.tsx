@@ -15,11 +15,14 @@ const WawuPropsComponent = () => {
               <Heading variant="medium" fontColor="secondary">
                 Wawu Props
               </Heading>
-              <Text variant="small" className="mt-3 leading-[30px]">
-                Aggregating a diverse pool of women spearheads, professionals
-                for patrons or businesses so they <br />
-                can find the right stewards for their projects or digital
-                assignments on a single trusted platform.
+              <Text
+                variant="small"
+                className="mt-3 lg:leading-[30px] leading-[20px]"
+              >
+                By bringing together a diverse group of experienced female
+                professionals, we provide a trusted platform where clients can
+                easily find the right individuals to manage their projects or
+                digital tasks.
               </Text>
               <div>
                 {platforms.map((platform, index) => (
