@@ -8,9 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Doughnut } from "react-chartjs-2";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 import RecentSales from "../RecentSales/RecentSales";
 import DoughnutData from "./DoughnutData";
+import { Ellipsis } from "lucide-react";
 
 ChartJS.register(ArcElement, Legend, Tooltip);
 
@@ -39,7 +40,7 @@ const DoughnutComponent = () => {
         <CardHeader>
           <CardTitle className="flex justify-between items-center">
             Your Wallet
-            <HiOutlineDotsHorizontal />
+            <Ellipsis />
           </CardTitle>
         </CardHeader>
         <CardContent>

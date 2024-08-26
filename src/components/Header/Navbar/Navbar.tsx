@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { RxCaretDown } from "react-icons/rx";
+
 import { useRouter } from "next/router";
 import WhyFullDropDown from "./WhyFullDropDown";
 import FindFullNavigation from "./FindFullDropdown";
 import WorkFullDropdown from "./WorkFullDropdown";
 import HomeLogo from "./Logo/HomeLogo";
 import { useTranslation } from 'react-i18next';
+import { ChevronDown } from "lucide-react";
 
 interface linkProps {
   id: number;
@@ -119,7 +120,7 @@ const Navbar: React.FC<linkProps> = () => {
                           : undefined
                       }
                     >
-                      {link.isCaret && <RxCaretDown className="text-black" />}
+                      {link.isCaret && <ChevronDown />}
                     </button>
                   </li>
                 </Link>

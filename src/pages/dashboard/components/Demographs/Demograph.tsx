@@ -6,11 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { GoLinkExternal } from "react-icons/go";
+
 
 import Image from "next/image";
 import Link from "next/link";
+import { Ellipsis, SquareArrowOutUpRight } from "lucide-react";
 
 const Demograph = () => {
   return (
@@ -19,7 +19,7 @@ const Demograph = () => {
         <CardHeader>
           <CardTitle className="flex justify-between items-center">
             Demograph
-            <HiOutlineDotsHorizontal />
+            <Ellipsis />
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -36,7 +36,7 @@ const Demograph = () => {
           <Link href={""}>
             <div className="flex gap-2 items-center font-medium text-[#810FAF]">
               Open
-              <GoLinkExternal />
+              <SquareArrowOutUpRight />
             </div>
           </Link>
         </CardFooter>

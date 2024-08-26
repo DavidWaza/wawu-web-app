@@ -6,7 +6,7 @@ import { fetch_buyers_feed, fetch_user_profile } from "../api/endpoints";
 import { toast } from "sonner";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import CreatePortfolioSection from "../sellers/Components/CreatePortfolioSection/CreatePortfolioSection";
-import { GoArrowRight } from "react-icons/go";
+
 import RecentSearch from "../sellers/Components/RecentSearch/RecentSearch";
 import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
 import { ServiceCategoryData } from "../../../types/Types";
@@ -76,7 +76,7 @@ const Buyers = () => {
             <Text variant="small" className="underline">
               <Link href={"#"}>See All</Link>
             </Text>
-            <GoArrowRight className="text-[#ED459A]" />
+           
           </div>
         </div>
         <RecentSearch src={""} title={""} index={0} />

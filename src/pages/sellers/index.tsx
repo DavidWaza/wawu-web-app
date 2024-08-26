@@ -4,7 +4,6 @@ import CreatePortfolioSection from "./Components/CreatePortfolioSection/CreatePo
 import GigPortfolio from "./Components/GigPortfolio/GigPortfolio";
 import Header from "./Components/Header/Header";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
-
 import Card from "@/components/Cards/Card";
 import axiosInstance from "../api/axiosInstance";
 import { fetch_buyers_feed, fetch_user_profile } from "../api/endpoints";

@@ -60,32 +60,7 @@ const BuyerLandingComponent = () => {
       />
       <div className="bg-white">
         <div className="py-10">
-          <Text variant="medium" className="text-center text-black">
-            Join our growing steward’s community
-          </Text>
-          <div className="grid grid-cols-2 md:grid-cols-4 mt-10 px-10 justify-center">
-            {professions.map((profession, index) => (
-              <div key={index} className="block">
-                <Image
-                  src={`/assets/photo-girl.png`}
-                  alt=""
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-[80%] m-auto h-auto object-contain object-center"
-                />
-                <Text
-                  variant="small"
-                  textWeight="semi-bold"
-                  className="text-black text-center my-2 capitalize"
-                >
-                  {profession}
-                </Text>
-              </div>
-            ))}
-          </div>
           <div className="bg-white">
-            <Adverts />
             <Section>
               <Heading
                 variant="medium"
@@ -155,6 +130,7 @@ const BuyerLandingComponent = () => {
                   </AccordionItem>
                 </Accordion>
               </div>
+              <Adverts />
             </div>
             <div className="bg-[#290D43] py-10">
               <Section>

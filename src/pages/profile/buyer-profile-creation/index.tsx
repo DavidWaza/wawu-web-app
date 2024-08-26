@@ -2,7 +2,7 @@ import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Text } from "@/components/ui/Typography/Typography";
-import { BsEyeSlash } from "react-icons/bs";
+
 import Education from "../Components/Education/Education";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
 import axiosInstance from "@/pages/api/axiosInstance";
@@ -10,6 +10,7 @@ import { fetch_portfolio } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import UploadImage from "../Components/UploadImage/UploadImage";
 import { useState } from "react";
+import { EyeOff } from "lucide-react";
 
 type FormFields = {
   firstName: string;
@@ -124,7 +125,8 @@ const BuyerProfileCreation = () => {
                 className="py-2 px-2 text-black border border-1 rounded-md w-full "
               />
               <div>
-                <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
+              <EyeOff className="absolute top-3 right-0 mx-6 text-black"  />
+               
               </div>
             </div>
 

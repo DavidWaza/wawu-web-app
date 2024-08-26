@@ -1,19 +1,15 @@
 import React from "react";
 import { Heading, Text } from "../ui/Typography/Typography";
-import { IoCheckmark } from "react-icons/io5";
 import ReactPlayer from "react-player";
 
 const perks = [
   {
-    icon: <IoCheckmark />,
     perk: "Excellence, Integrity, Equity, Scalability & Sustainability",
   },
   {
-    icon: <IoCheckmark />,
     perk: "Women Inclusion & Empowerment",
   },
   {
-    icon: <IoCheckmark />,
     perk: "99.9% service delivery guaranteed",
   },
 ];
@@ -45,13 +41,14 @@ const VideoCarousel = () => {
             families back home.
           </Text>
           <ul className="mt-3">
-            {perks.map(({ icon, perk }) => (
+            {perks.map(({ perk }) => (
               <li
-                className="flex gap-2 items-center text-white mb-2 mt-2 text-[16px]"
+                className="flex gap-2 items-center text-white mb-2 mt-2 "
                 key={perk}
               >
-                {icon}
-                <p className="text-[#F7ABD1] mb-0">{perk}</p>
+                <p className="text-[#F7ABD1] !text-[16px] leading-[21px] mb-0">
+                  {perk}
+                </p>
               </li>
             ))}
           </ul>

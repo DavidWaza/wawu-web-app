@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import { GoArrowLeft } from "react-icons/go";
+
 import { FormFields } from "../../../../types/Types";
 import InputField from "@/components/TextField/InputField";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { reset_password } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 const ForgetPassword: React.FC<FormFields> = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");
@@ -67,7 +68,8 @@ const ForgetPassword: React.FC<FormFields> = () => {
           className="flex gap-3 items-center justify-center"
           onClick={() => router.back()}
         >
-          <GoArrowLeft className="text-[#ed459a]" />
+          <ArrowLeft className="text-[#ed459a]" />
+
           <p className="text-center text-[#ed459a] my-5">Go back</p>
         </div>
       </div>

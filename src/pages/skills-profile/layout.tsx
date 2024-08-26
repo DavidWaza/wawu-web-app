@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/Header/Navbar/Logo/Logo";
 import Button from "@/components/ui/Button/Button";
-import { RxCaretDown } from "react-icons/rx";
+
 import { useRouter } from "next/router";
 import SkillsHeaderNav from "./Components/skills-nav-header";
 import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
@@ -30,12 +30,7 @@ const links = [
     link: "Find Work",
     isCaret: true,
   },
-  {
-    id: 3,
-    href: "",
-    link: "Why Wawu",
-    isCaret: true,
-  },
+
   {
     id: 4,
     href: "/mentorship",
@@ -85,9 +80,7 @@ const SkillsNavbarLayout: React.FC<linkProps> = ({ children }) => {
                   <Link href={link.href}>
                     <li className="flex justify-center items-center sora">
                       {link.link}{" "}
-                      <button onClick={toggleNav}>
-                        {link.isCaret && <RxCaretDown className="text-black" />}
-                      </button>
+                     
                     </li>
                   </Link>
                 </ul>

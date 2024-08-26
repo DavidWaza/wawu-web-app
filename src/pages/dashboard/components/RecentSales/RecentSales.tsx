@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { FaChevronRight } from "react-icons/fa6";
+
 
 const recentSalesUsers = [
   {
@@ -40,7 +40,7 @@ const RecentSales = () => {
               <Badge variant="outline">Online</Badge>
             </div>
             <div className="ml-auto font-medium">
-              <FaChevronRight />
+              {/* <FaChevronRight /> */}
             </div>
           </div>
         </>

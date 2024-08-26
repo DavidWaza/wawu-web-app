@@ -53,55 +53,34 @@ const Seller = () => {
         <MobileNavbar />
       </div>
       <HeroComponent
-        header="Showcase your Skills. Get a Patron"
-        subText="Give us this day, our daily food. We bring the food: You use your spoon"
+        header="Incubators, Creators, Caretakers, Protectors & Preservers just for you."
+        subText="Get the best female spearheads to deliver your projects with a wow experience"
         buttonText="Become a seller"
         backgroundColor="bg-[#A812E3]"
         imgSrc="/assets/g1.svg"
       />
       <div className="bg-white">
         <div className="py-10">
-          <Text variant="medium" className="text-center text-black">
-            Join our growing steward’s community
-          </Text>
-          <div className="lg:px-[8rem] px-10 grid lg:grid-cols-4  gap-5 lg:gap-20 my-10">
-            {professions.map((profession, index) => (
-              <div key={index} className="block">
-                <Image
-                  src={"/assets/steward-girl.svg"}
-                  alt="photo-girl"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-full h-auto object-contain object-center"
-                />
-                <Text
-                  variant="small"
-                  textWeight="bold"
-                  className="text-black text-center my-2 capitalize"
-                >
-                  {profession}
-                </Text>
-              </div>
-            ))}
-          </div>
           <div className="bg-white">
-            <div className="pb-10">
-              <Adverts />
-            </div>
+            <div className="pb-10"></div>
+
             <Section>
-              <Heading variant="medium" fontColor="secondary" className="mt-10">
+              <Heading
+                variant="medium"
+                fontColor="secondary"
+                className="!font-bold"
+              >
                 Redefining Product Features
               </Heading>
-              <Text variant="small" className="leading-6 mt-2">
+              <Text variant="small" className="leading-6 mt-5">
                 Keeping your eye on the ball while performing a deep dive on the
-                start-up mentality to drive <br /> convergence
+                start-up mentality to drive convergence
               </Text>
               <div className="grid lg:grid-cols-2">
                 <div className="block">
                   {ProductFeatures.map((product, index) => (
                     <>
-                      <div key={index} className="w-[60%]">
+                      <div key={index}>
                         <WawuPlatforms
                           iconSrc={product.iconSrc}
                           alt={product.alt}
@@ -120,15 +99,17 @@ const Seller = () => {
                 </div>
                 <div className="flex justify-center items-center">
                   <Image
-                    src="/assets/girl-with-box.svg"
+                    src="/assets/laptop-girl.png"
                     alt="right girl"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     className="lg:w-3/4"
-                    width={400}
-                    height={400}
                   />
                 </div>
               </div>
             </Section>
+
             <div className="bg-[#ECECEC] py-10">
               <Text variant="large" className="text-black text-center pt-7">
                 Seller FAQs
@@ -154,6 +135,7 @@ const Seller = () => {
                 </Accordion>
               </div>
             </div>
+            <Adverts />
             <div className="bg-[#290D43] py-10">
               <Section>
                 <Text variant="small" className="text-center text-white">

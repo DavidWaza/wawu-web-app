@@ -1,8 +1,8 @@
 import React from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 import Link from "next/link";
-import { GoArrowRight } from "react-icons/go";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 interface PlatFormProps {
   iconSrc: string;
@@ -28,7 +28,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
           <Text variant="small" textWeight="semi-bold">
             {props.title}
           </Text>
-          <Text variant="small" className="leading-[30px]">
+          <Text variant="small" className="leading-[21px]">
             {props.desc}
           </Text>
           {props.link && (
@@ -38,7 +38,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
                   {props.link}
                 </Link>
               </Text>
-              <GoArrowRight className="text-[#ED459A]" />
+              <ArrowRight className="text-[#ED459A]" />
             </div>
           )}
         </div>

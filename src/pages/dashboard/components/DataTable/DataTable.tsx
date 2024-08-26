@@ -36,9 +36,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { RxCaretSort } from "react-icons/rx";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { IoChevronDownOutline } from "react-icons/io5";
+
 import {
   Table,
   TableBody,
@@ -50,6 +48,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import CustomBadge from "../ui/Badge/CustomBadge";
+import { ArrowDownUp } from "lucide-react";
 
 const data: UserInfo[] = [
   {
@@ -164,7 +163,7 @@ export const columns: ColumnDef<UserInfo>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Profession
-          <RxCaretSort className="ml-2 h-4 w-4" />
+          <ArrowDownUp className="ml-2 h-4 w-4" />
         </Button>
       );
     },
@@ -181,7 +180,8 @@ export const columns: ColumnDef<UserInfo>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Country
-          <RxCaretSort className="ml-2 h-4 w-4" />
+          <ArrowDownUp className="ml-2 h-4 w-4" />
+
         </Button>
       );
     },
@@ -198,7 +198,8 @@ export const columns: ColumnDef<UserInfo>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Status
-          <RxCaretSort className="ml-2 h-4 w-4" />
+          <ArrowDownUp className="ml-2 h-4 w-4" />
+
         </Button>
       );
     },
@@ -215,7 +216,8 @@ export const columns: ColumnDef<UserInfo>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Profile info
-          <RxCaretSort className="ml-2 h-4 w-4" />
+          <ArrowDownUp className="ml-2 h-4 w-4" />
+
         </Button>
       );
     },
@@ -239,7 +241,7 @@ export const columns: ColumnDef<UserInfo>[] = [
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
-              <HiOutlineDotsHorizontal className="h-4 w-4" />
+              {/* <HiOutlineDotsHorizontal className="h-4 w-4" /> */}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

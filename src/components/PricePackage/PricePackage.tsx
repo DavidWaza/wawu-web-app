@@ -1,16 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { IoMdCheckmark } from "react-icons/io";
-import { BiX } from "react-icons/bi";
+
 import { usePathname } from "next/navigation";
+import { Check, X } from "lucide-react";
 
 interface TableCellsProps {
   value: string | JSX.Element;
   isTotal: boolean;
 }
 const TableCell: React.FC<TableCellsProps> = ({ value, isTotal }) => (
-  <td className={isTotal ? "text-center md:px-5 font-medium text-sm lg:text-[16px]" : ""}>
+  <td
+    className={
+      isTotal ? "text-center md:px-5 font-medium text-sm lg:text-[16px]" : ""
+    }
+  >
     {value}
     {isTotal && (
       <button className="bg-[#ED459A] hover:bg-[#cf2279] w-full rounded-lg py-2 px-4 text-white mt-2 transition-all ease-in-out">
@@ -74,9 +78,9 @@ const PricePackage = () => {
 
   const checkIsValid = (value: string) => {
     if (value === "check") {
-      return <IoMdCheckmark />;
+      return <Check />;
     } else if (value === "no-check") {
-      return <BiX />;
+      return <X />;
     } else {
       return value;
     }

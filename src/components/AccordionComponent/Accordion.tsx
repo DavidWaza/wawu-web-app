@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import data from "./AccordionData";
 
+import data from "./AccordionData";
+import { ChevronDown } from "lucide-react";
 
 interface AccordionProps {
   question: string;
@@ -15,21 +15,18 @@ const AccordionItem = ({
   answer,
   isOpen,
   onClick,
-}:
-AccordionProps) => {
+}: AccordionProps) => {
   const contentHeight = useRef<HTMLDivElement | null>(null);
   return (
     <div className={`wrapper`}>
       <button
-        className={`question-container text-black ${
-          isOpen ? "active" : ""
-        }`}
+        className={`question-container text-black ${isOpen ? "active" : ""}`}
         onClick={onClick}
       >
-        <p className="question-content text-sm lg:text-lg text-black">{question}</p>
-        <RiArrowDropDownLine
-          className={`arrow text-black ${isOpen ? "active" : ""}`}
-        />
+        <p className="question-content text-sm lg:text-lg text-black">
+          {question}
+        </p>
+        <ChevronDown className={`arrow text-black ${isOpen ? "active" : ""}`} />
       </button>
 
       <div
@@ -49,7 +46,7 @@ AccordionProps) => {
 
 const Accordion = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-  
+
   const handleItemClick = (index: any) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };

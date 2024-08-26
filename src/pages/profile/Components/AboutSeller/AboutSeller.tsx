@@ -2,12 +2,11 @@ import { Text } from "@/components/ui/Typography/Typography";
 import React, { useState, useEffect } from "react";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import UserDetails from "../UserDetails/UserDetails";
-import { IoLocationOutline } from "react-icons/io5";
-import { LuBadgeCheck } from "react-icons/lu";
-import { BiMessageSquareDetail } from "react-icons/bi";
+
 import { useRouter } from "next/router";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { fetch_buyers_feed } from "@/pages/api/endpoints";
+import { BadgeCheck, CalendarFold, CircleDashed, Globe, MapPin, Timer } from "lucide-react";
 
 const AboutSeller = () => {
   const [country, setCountry] = useState(null);
@@ -77,16 +76,16 @@ const AboutSeller = () => {
           
             <div className="space-y-3">
               <UserDetails
-                prefix={<IoLocationOutline className="text-black" size={20} />}
+                prefix={<MapPin size={20} />}
                 suffix={country || "Country not found"}
               />
               <UserDetails
-                prefix={<LuBadgeCheck className="text-black" size={20} />}
+                prefix={<BadgeCheck size={20}/>}
                 suffix="232 orders completed"
               />
               <UserDetails
                 prefix={
-                  <BiMessageSquareDetail className="text-black" size={20} />
+                  <Globe size={20} />
                 }
                 suffix={language || "No specific language"}
               />
@@ -98,16 +97,16 @@ const AboutSeller = () => {
             </div>
             <div className="space-y-3">
               <UserDetails
-                prefix={<IoLocationOutline className="text-black" size={20} />}
+                prefix={<CalendarFold size={20}/>}
                 suffix="Joined March, 2022"
               />
               <UserDetails
-                prefix={<LuBadgeCheck className="text-black" size={20} />}
+                prefix={<CircleDashed />}
                 suffix={`Pending orders: 4 orders`}
               />
               <UserDetails
                 prefix={
-                  <BiMessageSquareDetail className="text-black" size={20} />
+                  <Timer size={20} />
                 }
                 suffix="Avg. response time: 1 hour"
               />

@@ -1,48 +1,51 @@
 import React from "react";
 import Link from "next/link";
-import { IoHomeOutline } from "react-icons/io5";
-import { GrBlog } from "react-icons/gr";
-import { AiOutlineYoutube } from "react-icons/ai";
-import { RiTeamLine } from "react-icons/ri";
-import { IoDiceOutline } from "react-icons/io5";
-import { TiMessages } from "react-icons/ti";
+
 import Logo from "@/components/Header/Navbar/Logo/Logo";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import {
+  Dices,
+  House,
+  MessageCircle,
+  Rss,
+  ShieldHalf,
+  Youtube,
+} from "lucide-react";
 
 const siderbarLinks = [
   {
-    icon: <IoHomeOutline />,
+    icon: <House />,
     label: "Home",
     link: "/dashboard",
   },
   {
-    icon: <GrBlog />,
+    icon: <Rss />,
     label: "Blog",
     link: "/dashboard/blog",
   },
   {
-    icon: <AiOutlineYoutube />,
+    icon: <Youtube />,
     label: "Advertisement",
     link: "/dashboard/ads",
   },
   {
-    icon: <RiTeamLine />,
+    icon: <ShieldHalf />,
     label: "Team",
     link: "/dashboard/team",
   },
   {
-    icon: <IoDiceOutline />,
+    icon: <Dices />,
     label: "Mentorship",
     link: "/dashboard/mentor",
   },
   {
-    icon: <TiMessages />,
+    icon: <MessageCircle />,
     label: "Messages",
     link: "/dashboard/message",
   },
   {
-    icon: <AiOutlineYoutube />,
+    icon: <Youtube />,
     label: "Youtube",
     link: "/dashboard/yt",
   },
@@ -54,7 +57,7 @@ const Sidebar = () => {
       <div>
         {/* <Logo classname="w-full" /> */}
         <Image
-          src={'/assets/WAWU-LOGO.svg'}
+          src={"/assets/WAWU-LOGO.svg"}
           width={0}
           height={0}
           alt="logo"

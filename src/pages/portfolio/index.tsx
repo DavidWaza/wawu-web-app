@@ -1,18 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import PortfolioLayout from "./layout";
-import { IoArrowBackSharp } from "react-icons/io5";
-import { BsShare } from "react-icons/bs";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import { MdArrowRightAlt } from "react-icons/md";
+
 import "react-responsive-modal/styles.css";
 import { fetch_portfolio, fetch_user_profile } from "../api/endpoints";
 import axiosInstance from "../api/axiosInstance";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { MoveLeft, MoveRight, Share2 } from "lucide-react";
 
 interface PortfolioItem {
   file: {
@@ -69,13 +69,13 @@ export default function PersonalPortfolio() {
           <div className="flex justify-between px-7 py-10">
             <div onClick={() => router.back()}>
               <div className="flex gap-3 items-center text-white">
-                <IoArrowBackSharp />
+              <MoveLeft />
                 <p>Back</p>
               </div>
             </div>
             <Link href={"#"}>
               <div className="flex gap-3 items-center text-white">
-                <BsShare />
+              <Share2 />
                 <p>Share Portfolio</p>
               </div>
             </Link>
@@ -94,7 +94,7 @@ export default function PersonalPortfolio() {
         <div className="flex justify-center lg:justify-end my-10 px-5">
           <Button
             size="large"
-            suffix={<MdArrowRightAlt />}
+            suffix={<MoveRight />}
             className="p-2 text-nowrap"
             href="/portfolio/create-seller-portfolio"
           >
