@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
@@ -16,21 +16,21 @@ const MobileNavbar = () => {
   };
   const handleClose = () => {
     setHamburgerClick(false);
-
   };
 
   return (
-    <nav className="bg-[#fefefe] h-[10.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
-      
+    <nav className="bg-[#fefefe] h-[100.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
       <Image
-        src={"https://res.cloudinary.com/dgbl43ljm/image/upload/v1724197587/homelogo_r8tiaw.png"}
+        src={
+          "https://res.cloudinary.com/dgbl43ljm/image/upload/v1724197587/homelogo_r8tiaw.png"
+        }
         width={0}
         height={0}
         sizes="100vw"
         alt="logo"
         className="lg:w-full md:w-full w-2/3 h-auto object-cover object-center"
       />
-   
+
       <div>
         <button
           onClick={handleClickHamburger}
@@ -53,7 +53,8 @@ const MobileNavbar = () => {
           </Link>
           <Link href="/seller-landing" className="text-black text-lg font-bold">
             Find Services
-          </Link> <Link href="/buyer-landing" className="text-black text-lg font-bold">
+          </Link>{" "}
+          <Link href="/buyer-landing" className="text-black text-lg font-bold">
             Offer Services
           </Link>
           <Link href="/about" className="text-black text-lg font-bold">
