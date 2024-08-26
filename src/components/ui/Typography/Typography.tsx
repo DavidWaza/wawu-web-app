@@ -2,13 +2,20 @@ import React from "react";
 
 // Header component
 interface HeadingProps {
-  variant: "small" | "medium" | "large" | "xlarge";
+  variant?: "small" | "medium" | "large" | "xlarge";
   fontColor: "primary" | "secondary";
   children: React.ReactNode;
   className?: string;
+  minWidth?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ variant, children, fontColor }) => {
+const Heading: React.FC<HeadingProps> = ({
+  variant,
+  children,
+  fontColor,
+  className,
+  minWidth,
+}) => {
   let fontSize = "text-[36px]";
   let lineHeight = "leading-[36px]";
   let letterSpacing = `tracking[-1.125px]`;
@@ -42,7 +49,8 @@ const Heading: React.FC<HeadingProps> = ({ variant, children, fontColor }) => {
   }
   return (
     <h1
-      className={` ${fontSize} ${lineHeight} ${letterSpacing} ${fontWeight} ${textColor}`}
+      className={` ${fontSize} ${lineHeight} ${letterSpacing} ${fontWeight} ${textColor} ${className}`}
+      style={{ minWidth }}
     >
       {children}
     </h1>
@@ -75,7 +83,14 @@ const Title: React.FC<Titleprops> = ({ children, small }) => {
 // Text component
 interface TextProps {
   children: React.ReactNode;
-  variant?: "tiny" | "extrasmall" | "small" | "base" | "largeText" | "medium" | "large";
+  variant?:
+    | "tiny"
+    | "extrasmall"
+    | "small"
+    | "base"
+    | "largeText"
+    | "medium"
+    | "large";
   textWeight?: "medium" | "semi-bold" | "bold" | "normal";
   hover?: boolean;
   textCenter?: boolean;

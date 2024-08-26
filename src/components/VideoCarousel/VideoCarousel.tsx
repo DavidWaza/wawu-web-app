@@ -31,15 +31,15 @@ const VideoCarousel = () => {
           Welcome to Wawu Africa
         </Heading>
         <div className="flex-col mt-5">
-          <Text variant="small" className="text-[#F7ABD1] !leading-[24px]">
+          <Text variant="base" className="text-[#F7ABD1] !leading-[24px]">
             By nature, we are incubators, creators, caretakers, protectors &
-            preservers. We are everything that’s required to serve enterprises
-            through cutting-edge digital solutions & experiences. Stewards who
-            observe ongoing trends and analyze upcoming technologies to
-            transform the digital persona of clients with our unbeatable
-            performance. Wawu Technology believes in a world where access to
-            knowledge, innovation and business opportunities are based on
-            interest and ability, not gender. We do everything to make women
+            preservers. We are everything that&apos;s required to serve
+            enterprises through cutting-edge digital solutions & experiences.
+            Stewards who observe ongoing trends and analyze upcoming
+            technologies to transform the digital persona of clients with our
+            unbeatable performance. Wawu Technology believes in a world where
+            access to knowledge, innovation and business opportunities are based
+            on interest and ability, not gender. We do everything to make women
             feel included, seen and compensated no matter where we call home, so
             they can live decently, live their dreams and support their
             families back home.

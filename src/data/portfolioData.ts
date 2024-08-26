@@ -61,7 +61,6 @@ export const platforms = [
   },
 ];
 
-
 export const pageLinks = [
   {
     link: "",

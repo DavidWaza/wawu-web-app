@@ -7,7 +7,7 @@ import WhyFullDropDown from "./WhyFullDropDown";
 import FindFullNavigation from "./FindFullDropdown";
 import WorkFullDropdown from "./WorkFullDropdown";
 import HomeLogo from "./Logo/HomeLogo";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 interface linkProps {
   id: number;
@@ -18,20 +18,13 @@ interface linkProps {
 const links = [
   {
     id: 1,
-    href: "/seller-landing",
-    link: "Find Services",
-  },
-
-  {
-    id: 2,
     href: "/buyer-landing",
     link: "Offer Services",
   },
   {
-    id: 3,
-    href: "",
-    link: "Why Wawu",
-    isCaret: true,
+    id: 2,
+    href: "/seller-landing",
+    link: "Find Services",
   },
   {
     id: 4,
@@ -93,7 +86,7 @@ const Navbar: React.FC<linkProps> = () => {
 
   const { i18n } = useTranslation();
 
-  const changeLanguage = (event:any) => {
+  const changeLanguage = (event: any) => {
     i18n.changeLanguage(event.target.value);
   };
 
