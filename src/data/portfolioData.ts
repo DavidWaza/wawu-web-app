@@ -63,7 +63,7 @@ export const platforms = [
 export const contactLinks = [
   {
     src: "/icons/mail.svg",
-    contact: "help@wawutech.com",
+    contact: "support@wawuafrica.com",
   },
   {
     src: "/icons/link.svg",
