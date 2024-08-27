@@ -13,6 +13,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { FormFields } from "../../../../../types/Types";
+import { FileUploader } from "react-drag-drop-files";
+import { Camera } from "lucide-react";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 const ProfileHero = () => {
   const [profilePic, setProfilePic] = useState("/assets/profile-pic.png");
@@ -49,16 +53,14 @@ const ProfileHero = () => {
       .catch((error) => console.error("Error fetching images:", error));
   }, []);
 
-  const handleProfilePicChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleProfilePicChange = (file: File) => {
     if (file) {
       setSelectedProfilePic(file);
       setPreviewProfilePic(URL.createObjectURL(file));
     }
   };
 
-  const handleCoverImageChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleCoverImageChange = (file: File) => {
     if (file) {
       setSelectedCoverImage(file);
       setPreviewCoverImage(URL.createObjectURL(file));
@@ -105,11 +107,21 @@ const ProfileHero = () => {
       {pathname.includes("seller-profile") ? (
         <>
           <div
-            className="bg-profile-seller"
+            className="bg-profile-seller relative"
             style={{
               backgroundImage: `url(${previewCoverImage || coverImage})`,
             }}
-          ></div>
+          >
+            <div className="absolute right-10 bottom-10">
+            <Camera
+            className="text-white"
+              onClick={() =>
+                document.getElementById("coverImageInput")?.click()
+              }
+            />
+            </div>
+           
+          </div>
           <Dialog>
             <DialogTrigger>
               <div className="-mt-[50px] ml-20">
@@ -131,25 +143,12 @@ const ProfileHero = () => {
                     <label className="text-sm sora py-2">
                       Upload profile image
                     </label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleProfilePicChange}
-                      className="mt-4"
+                    <FileUploader
+                      handleChange={handleProfilePicChange}
+                      name="profilePic"
+                      types={fileTypes}
                     />
                   </div>
-                  <div>
-                    <label className="text-sm sora py-2">
-                      Upload cover image
-                    </label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleCoverImageChange}
-                      className="mt-4"
-                    />
-                  </div>
-
                   {(previewProfilePic || previewCoverImage) && (
                     <div className="mt-4">
                       {previewProfilePic && (
@@ -204,7 +203,10 @@ const ProfileHero = () => {
         </>
       ) : (
         <>
-          <div className="bg-[#FF0084] w-full h-[40vh]"></div>
+          <div
+            className="bg-[#FF0084] w-full h-[40vh]"
+            onClick={() => document.getElementById("coverImageInput")?.click()}
+          ></div>
           <div className="-mt-[50px] ml-20 relative">
             <Image
               src={profilePic}

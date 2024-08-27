@@ -17,11 +17,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { fetch_services, post_user_portfolio } from "@/pages/api/endpoints";
+import {
+  fetch_services,
+  fetch_user_profile,
+  post_user_portfolio,
+} from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import Select, { MultiValue } from "react-select";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+
 interface SkillOption {
   value: string; // UUID of the skill
   label: string; // Name of the skill
@@ -56,6 +64,11 @@ const SellerProfileCreation = () => {
   const [selectedSkills, setSelectedSkills] = useState<SkillOption[]>([]);
   const [skillOptions, setSkillOptions] = useState<SkillOption[]>([]);
   const [loading, setLoading] = useState(false);
+  const [userProfileName, setUserProfileName] = useState<string>("");
+  const [userProfileLastName, setUserProfileLastName] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [phone, setPhone] = useState("");
 
   const {
     register,
@@ -65,6 +78,7 @@ const SellerProfileCreation = () => {
 
   useEffect(() => {
     fetchCategories();
+    fetchUserProfile();
   }, []);
 
   const router = useRouter();
@@ -142,6 +156,31 @@ const SellerProfileCreation = () => {
     setSelectedSkills(selectedOptions as SkillOption[]);
   };
 
+  // fetch profile
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axiosInstance.get(fetch_user_profile);
+      setUserProfileName(response.data.data.firstName);
+      setUserProfileLastName(response.data.data.lastName);
+    } catch (err: any) {
+      if (err.response) {
+        toast.error(err.response.data.message);
+      }
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleNextStep = () => {
+    setCurrentStep((prevStep) => prevStep + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setCurrentStep((prevStep) => prevStep - 1);
+  };
+
   return (
     <LayoutProfile>
       {loading && <LoadingScreen />}
@@ -150,297 +189,379 @@ const SellerProfileCreation = () => {
         <div className="grid lg:grid-cols-2">
           <div className="py-10">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid lg:grid-cols-2 items-center gap-5 lg:gap-10">
-                <InputField
-                  label="First Name"
-                  name="firstName"
-                  placeholder="Leora"
-                  value={firstName}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setFirstName(value)}
-                />
-                <InputField
-                  label="Last Name"
-                  name="lastName"
-                  placeholder="Leora"
-                  value={lastName}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setLastName(value)}
-                />
-                {/* EMAIL AND PASSWORD */}
-                <InputField
-                  label="Email"
-                  name="email"
-                  placeholder="Support@wawuafrica.com"
-                  type="email"
-                  value={email}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setEmail(value)}
-                />
-                <InputField
-                  label="Password"
-                  name="password"
-                  placeholder="************"
-                  type="password"
-                  value={password}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setPassword(value)}
-                />
-              </div>
+              {currentStep === 1 ? (
+                <p className="text-lg font-medium">Personal Data</p>
+              ) : currentStep === 2 ? (
+                <p className="text-lg font-medium">Educational Data</p>
+              ) : currentStep === 3 ? (
+                <p className="text-lg font-medium">Experience</p>
+              ) : currentStep === 4 ? (
+                <p className="text-lg font-medium">Means of Identification</p>
+              ) : currentStep === 5 ? (
+                <p className="text-lg font-medium">Social Media</p>
+              ) : null}
+              <div className="grid lg:grid-cols-2 items-center gap-5">
+                {currentStep === 1 && (
+                  <>
+                    <InputField
+                      label="First Name"
+                      name="firstName"
+                      placeholder={userProfileName}
+                      value={userProfileName}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setFirstName(value)}
+                      className="!text-[#9CA3B7]"
+                    />
+                    <InputField
+                      label="Last Name"
+                      name="lastName"
+                      placeholder={userProfileLastName}
+                      value={userProfileLastName}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setLastName(value)}
+                      className="!text-[#9CA3B7]"
+                    />
+                    {/* EMAIL AND PASSWORD */}
+                    <InputField
+                      label="Email"
+                      name="email"
+                      placeholder="Support@wawuafrica.com"
+                      type="email"
+                      value={email}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setEmail(value)}
+                    />
+                    <div className="relative items-center mt-1">
+                      <InputField
+                        type={showPassword ? "text" : "password"}
+                        label="Password"
+                        name="password"
+                        placeholder="***********"
+                        value={password}
+                        register={register}
+                        errors={errors}
+                        setValue={(value) => setPassword(value)}
+                      />
+                      <div className="absolute right-2 top-[75%] transform -translate-y-1/2">
+                        <button
+                          type="button"
+                          onClick={togglePasswordVisibility}
+                          className=" focus:outline-none"
+                        >
+                          {showPassword ? (
+                            <EyeOffIcon className="w-5 h-5 text-black" />
+                          ) : (
+                            <EyeIcon className="w-5 h-5 text-black" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-black block text-sm sora py-2">
+                        Phone Number
+                      </label>
+                      <PhoneInput
+                        {...register("phoneNumber")}
+                        defaultCountry="ng"
+                        name="phoneNumber"
+                        placeholder="090112233345"
+                        value={phone}
+                        onChange={(phone) => setPhoneNumber(phone)}
+                      />
+                    </div>
 
-              <InputField
-                label="Phone number"
-                name="phoneNumber"
-                placeholder="090112233345"
-                type="number"
-                value={phoneNumber}
-                register={register}
-                errors={errors}
-                setValue={(value) => setPhoneNumber(value)}
-              />
-              <div className="pt-5">
-                <label className="text-sm text-[#5E5989] py-3 sora">Role</label>
-                <UiSelect
-                  {...register("role")}
-                  value={role.toString()}
-                  name="role"
-                  onValueChange={(value: string) => setRole(Number(value))}
-                >
-                  <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
-                    <SelectValue placeholder="" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">Buyer</SelectItem>
-                    <SelectItem value="2">Seller</SelectItem>
-                  </SelectContent>
-                </UiSelect>
-              </div>
+                    <div className="pt-5">
+                      <label className="text-sm text-[#5E5989] py-3 sora">
+                        Role
+                      </label>
+                      <UiSelect
+                        {...register("role")}
+                        value={role.toString()}
+                        name="role"
+                        onValueChange={(value: string) =>
+                          setRole(Number(value))
+                        }
+                      >
+                        <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
+                          <SelectValue placeholder="" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1" disabled>
+                            Buyer
+                          </SelectItem>
+                          <SelectItem value="2">Seller</SelectItem>
+                        </SelectContent>
+                      </UiSelect>
+                    </div>
 
-              <TextAreaField
-                label="About"
-                name="about"
-                placeholder="Type here"
-                value={about}
-                register={register}
-                errors={errors}
-                setValue={(value) => setAbout(value)}
-              />
-              <>
-                <label className="py-2 text-sm sora">Skills</label>
-                <Select
-                  isMulti
-                  name="skills"
-                  options={skillOptions}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                  value={selectedSkills}
-                  onChange={handleSkillsChange}
-                  placeholder="Select skills"
-                />
-              </>
-
-              <SelectField
-                label="Preferred Language"
-                name="preferredLanguage"
-                register={register}
-                errors={errors}
-                value={preferredLanguage}
-                setValue={(value) => setPreferredLanguage(value)}
-                options={[
-                  { value: "English", label: "English" },
-                  { value: "French", label: "French" },
-                  { value: "Spanish", label: "Spanish" },
-                  { value: "Latin", label: "Latin" },
-                ]}
-              />
-              <div className="flex gap-1 items-center my-3">
-                <p className="text-lg sora capitalize">Education</p>
-                <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+                    <TextAreaField
+                      label="About"
+                      name="about"
+                      placeholder="Type here"
+                      value={about}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setAbout(value)}
+                    />
+                    <div>
+                      <div>
+                        <label className="py-2 text-sm sora">Skills</label>
+                      </div>
+                      <Select
+                        isMulti
+                        name="skills"
+                        options={skillOptions}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        value={selectedSkills}
+                        onChange={handleSkillsChange}
+                        placeholder="Select skills"
+                      />
+                    </div>
+                    <SelectField
+                      label="Preferred Language"
+                      name="preferredLanguage"
+                      register={register}
+                      errors={errors}
+                      value={preferredLanguage}
+                      setValue={(value) => setPreferredLanguage(value)}
+                      options={[
+                        { value: "English", label: "English" },
+                        { value: "French", label: "French" },
+                        { value: "Spanish", label: "Spanish" },
+                        { value: "Latin", label: "Latin" },
+                      ]}
+                    />
+                  </>
+                )}
               </div>
-              <SelectField
-                label="Certification"
-                name="certification"
-                register={register}
-                errors={errors}
-                value={certification}
-                setValue={(value) => setCertification(value)}
-                options={[
-                  { value: "BSc", label: "BSc" },
-                  { value: "HND", label: "HND" },
-                  { value: "OND", label: "OND" },
-                  { value: "Masters", label: "Masters" },
-                  { value: "PHD", label: "PHD" },
-                ]}
-              />
-              <SelectField
-                label="Institution"
-                name="institution"
-                register={register}
-                errors={errors}
-                value={institution}
-                setValue={(value) => setInstitution(value)}
-                options={[
-                  { value: "Salem University", label: "Salem University" },
-                  {
-                    value: "Nasarawa State University",
-                    label: "Nasarawa State University",
-                  },
-                  {
-                    value: "Covenant University",
-                    label: "Covenant University",
-                  },
-                ]}
-              />
-              <SelectField
-                label="Course of Study"
-                name="courseOfStudy"
-                register={register}
-                errors={errors}
-                value={courseOfStudy}
-                setValue={(value) => setCourseOfStudy(value)}
-                options={[
-                  { value: "Computer Science", label: "Computer Science" },
-                  {
-                    value: "Information Technology",
-                    label: "Information Technology",
-                  },
-                  {
-                    value: "Artificial Intelligence",
-                    label: "Artificial Intelligence",
-                  },
-                ]}
-              />
-              <InputField
-                label="Graduation Date"
-                name="graduationDate"
-                value={graduationDate}
-                type="date"
-                placeholder="Date"
-                register={register}
-                errors={errors}
-                setValue={(value) => setGraduationDate(value)}
-              />
-              <div className="space-y-5 my-5">
-                <div className="flex gap-1 items-center">
-                  <p className="text-lg sora capitalize">Experience</p>
-                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+              {currentStep === 2 && (
+                <>
+                  <SelectField
+                    label="Certification"
+                    name="certification"
+                    register={register}
+                    errors={errors}
+                    value={certification}
+                    setValue={(value) => setCertification(value)}
+                    options={[
+                      { value: "BSc", label: "BSc" },
+                      { value: "HND", label: "HND" },
+                      { value: "OND", label: "OND" },
+                      { value: "Masters", label: "Masters" },
+                      { value: "PHD", label: "PHD" },
+                    ]}
+                  />
+                  <SelectField
+                    label="Institution"
+                    name="institution"
+                    register={register}
+                    errors={errors}
+                    value={institution}
+                    setValue={(value) => setInstitution(value)}
+                    options={[
+                      { value: "Salem University", label: "Salem University" },
+                      {
+                        value: "Nasarawa State University",
+                        label: "Nasarawa State University",
+                      },
+                      {
+                        value: "Covenant University",
+                        label: "Covenant University",
+                      },
+                    ]}
+                  />
+                  <SelectField
+                    label="Course of Study"
+                    name="courseOfStudy"
+                    register={register}
+                    errors={errors}
+                    value={courseOfStudy}
+                    setValue={(value) => setCourseOfStudy(value)}
+                    options={[
+                      { value: "Computer Science", label: "Computer Science" },
+                      {
+                        value: "Information Technology",
+                        label: "Information Technology",
+                      },
+                      {
+                        value: "Artificial Intelligence",
+                        label: "Artificial Intelligence",
+                      },
+                    ]}
+                  />
+
+                  <InputField
+                    label="Graduation Date"
+                    name="graduationDate"
+                    value={graduationDate}
+                    type="date"
+                    placeholder="Date"
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setGraduationDate(value)}
+                  />
+                </>
+              )}
+              {currentStep === 3 && (
+                <>
+                  <div className="space-y-5 my-5">
+                    <InputField
+                      label="Name"
+                      name="name"
+                      placeholder="Company name"
+                      value={name}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setName(value)}
+                    />
+                    <InputField
+                      label="End Date"
+                      name="endDate"
+                      value={endDate || ""} // Convert endDate to string for the input field
+                      type="date"
+                      placeholder="Date"
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setEndDate(value)}
+                    />
+                    <InputField
+                      label="Country"
+                      name="country"
+                      placeholder="Country"
+                      value={country}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setCountry(value)}
+                    />
+                    <InputField
+                      label="State"
+                      name="state"
+                      placeholder="State"
+                      value={state}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setState(value)}
+                    />
+                  </div>
+                </>
+              )}
+              {currentStep === 4 && (
+                <>
+                  <div className="my-5">
+                    <UploadImage
+                      handleUpload={handleUpload}
+                      uploadEndpoint="/api/upload"
+                      maxFileSize={500 * 1024} // 500KB
+                      acceptedFileTypes="image/*"
+                    />
+                  </div>
+                  <InputField
+                    label="Country"
+                    name="twitter"
+                    placeholder="Country"
+                    value={twitter}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setTwitter(value)}
+                  />
+                  <InputField
+                    label="State"
+                    name="twitter"
+                    placeholder="State"
+                    value={twitter}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setTwitter(value)}
+                  />
+                </>
+              )}
+              {currentStep === 5 && (
+                <>
+                  <div className="space-y-5">
+                    <InputField
+                      label="Twitter"
+                      name="twitter"
+                      placeholder="Twitter"
+                      value={twitter}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setTwitter(value)}
+                    />
+                    <InputField
+                      label="Facebook"
+                      name="facebook"
+                      placeholder="Facebook"
+                      value={facebook}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setFacebook(value)}
+                    />
+                    <InputField
+                      label="LinkedIn"
+                      name="linkedIn"
+                      placeholder="LinkedIn"
+                      value={linkedIn}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setLinkedIn(value)}
+                    />
+                    <InputField
+                      label="Instagram"
+                      name="instagram"
+                      placeholder="Instagram"
+                      value={instagram}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setInstagram(value)}
+                    />
+                  </div>
+                  <div className="my-5">
+                    <UploadImage
+                      handleUpload={handleUpload}
+                      uploadEndpoint="/api/upload"
+                      maxFileSize={500 * 1024} // 500KB
+                      acceptedFileTypes="image/*"
+                    />
+                  </div>
+                </>
+              )}
+              <div className="py-10 flex items-center gap-10">
+                <div>
+                  {currentStep > 1 && (
+                    <button
+                      className="bg-[#ecf0f1] rounded-lg text-black text-[16px] py-2 px-5"
+                      onClick={handlePreviousStep}
+                      type="button"
+                    >
+                      Prev {currentStep - 1}/5
+                    </button>
+                  )}
                 </div>
-                <InputField
-                  label="Name"
-                  name="name"
-                  placeholder="Company name"
-                  value={name}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setName(value)}
-                />
-                <InputField
-                  label="End Date"
-                  name="endDate"
-                  value={endDate || ""} // Convert endDate to string for the input field
-                  type="date"
-                  placeholder="Date"
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setEndDate(value)}
-                />
-                <InputField
-                  label="Country"
-                  name="country"
-                  placeholder="Country"
-                  value={country}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setCountry(value)}
-                />
-                <InputField
-                  label="State"
-                  name="state"
-                  placeholder="State"
-                  value={state}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setState(value)}
-                />
-              </div>
-              <div className="space-y-5">
-                <div className="flex gap-1 items-center">
-                  <p className="text-lg sora capitalize">
-                    Social Media Handles
-                  </p>
-                  <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
+                <div>
+                  {currentStep < 5 ? (
+                    <button
+                      className="bg-[#08A969] rounded-lg text-white text-[16px] py-2 px-5"
+                      onClick={handleNextStep}
+                      type="button"
+                    >
+                      Next {currentStep + 1}/5
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="p-2 text-nowrap bg-[#E54D9A] py-2 px-10 rounded-xl text-white font-semibold sora"
+                      disabled={isSubmitting}
+                    >
+                      {!isSubmitting ? "Submit form" : "Submitting..."}
+                    </button>
+                  )}
                 </div>
-                <InputField
-                  label="Twitter"
-                  name="twitter"
-                  placeholder="Twitter"
-                  value={twitter}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setTwitter(value)}
-                />
-                <InputField
-                  label="Facebook"
-                  name="facebook"
-                  placeholder="Facebook"
-                  value={facebook}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setFacebook(value)}
-                />
-                <InputField
-                  label="LinkedIn"
-                  name="linkedIn"
-                  placeholder="LinkedIn"
-                  value={linkedIn}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setLinkedIn(value)}
-                />
-                <InputField
-                  label="Instagram"
-                  name="instagram"
-                  placeholder="Instagram"
-                  value={instagram}
-                  register={register}
-                  errors={errors}
-                  setValue={(value) => setInstagram(value)}
-                />
-              </div>
-              <div className="my-5">
-                <UploadImage
-                  handleUpload={handleUpload}
-                  uploadEndpoint="/api/upload"
-                  maxFileSize={500 * 1024} // 500KB
-                  acceptedFileTypes="image/*"
-                />
-              </div>
-
-              <div className="my-10">
-                <button
-                  type="submit"
-                  className="p-2 text-nowrap bg-[#E54D9A] py-2 px-10 rounded-xl text-white font-semibold sora"
-                  disabled={isSubmitting}
-                >
-                  {!isSubmitting ? "Submit form" : "Submitting..."}
-                </button>
               </div>
             </form>
-          </div>
-          <div>
-            <div className="flex justify-center md:justify-end my-10">
-              <Button
-                variant="primary"
-                size="medium"
-                className="p-2 text-nowrap"
-              >
-                Become a buyer
-              </Button>
-            </div>
           </div>
         </div>
       </>

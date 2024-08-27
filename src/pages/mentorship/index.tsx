@@ -7,7 +7,7 @@ import MentorComponent from "./components/ToggleButton/ToggleButton";
 export default function Mentorship() {
   return (
     <>
-      <div className="hidden lg:block">
+      <div className=" hidden lg:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
       <div className="block lg:hidden">

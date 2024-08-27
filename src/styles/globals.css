@@ -132,3 +132,23 @@ body {
   height: 45px;
   margin-top: 40px;
 }
+
+.react-international-phone-input {
+  margin-top: 5px;
+  padding: 18px;
+}
+.react-international-phone-country-selector-button__button-content {
+  padding: 10px;
+}
+input:invalid, select:invalid, textarea:invalid {
+  border-color: red;
+}
+
+input:required::after,
+select:required::after,
+textarea:required::after {
+  content: "*";
+  color: red;
+  font-size: 1rem;
+  margin-left: 0.2rem;
+}

@@ -22,7 +22,7 @@ const WawuPlatforms = (props: PlatFormProps) => {
           width={0}
           height={0}
           sizes="100vw"
-          className="w-10 h-auto"
+          className="w-10 h-auto min-h-[4rem]"
         />
         <div>
           <Text variant="small" textWeight="semi-bold">

@@ -39,6 +39,7 @@
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.50.0",
     "react-i18next": "^15.0.1",
+    "react-international-phone": "^4.3.0",
     "react-loader-spinner": "^6.1.6",
     "react-paystack": "^6.0.0",
     "react-player": "^2.16.0",
