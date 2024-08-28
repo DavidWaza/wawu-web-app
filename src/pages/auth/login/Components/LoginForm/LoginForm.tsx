@@ -17,7 +17,7 @@ const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const router = useRouter();
-  
+
   function togglePassword() {
     setPasswordVisible((prev) => !prev);
   }
@@ -33,15 +33,15 @@ const LoginForm = () => {
       const response = await axiosInstance.post(login_url, data);
       toast.success(response.data.message);
       const token = response.data.data.token;
-      
+
       // Store token in localStorage or cookies based on rememberMe
       if (rememberMe) {
         localStorage.setItem("token", token);
         // Optional: Set a longer expiration time for cookies here if used
       } else {
-        sessionStorage.setItem("token", token); // Use sessionStorage for session-based login
+        localStorage.setItem("token", token); // Use sessionStorage for session-based login
       }
-      
+
       router.push("/sellers");
     } catch (err: any) {
       toast.error(err.message);
@@ -83,13 +83,16 @@ const LoginForm = () => {
 
       <div className="flex justify-between gap-5">
         <div className="flex gap-2">
-          <input 
-            type="checkbox" 
+          <input
+            type="checkbox"
             id="rememberMe"
             checked={rememberMe}
             onChange={() => setRememberMe(!rememberMe)}
           />
-          <label htmlFor="rememberMe" className="text-black text-sm text-nowrap">
+          <label
+            htmlFor="rememberMe"
+            className="text-black text-sm text-nowrap"
+          >
             Keep me logged in
           </label>
         </div>

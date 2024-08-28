@@ -61,7 +61,7 @@ const BuyerLandingComponent = () => {
       <div className="bg-white">
         <div className="py-10">
           <div className="bg-white">
-            <Section>
+            <Section className="!py-20">
               <Heading
                 variant="medium"
                 fontColor="secondary"

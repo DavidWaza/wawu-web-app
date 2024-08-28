@@ -2,8 +2,10 @@ import Logo from "@/components/Header/Navbar/Logo/Logo";
 import { useFlutterwave } from "flutterwave-react-v3";
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useRouter } from 'next/navigation';
 
 const FlutterwavePayment = () => {
+  const router = useRouter();
   const config = {
     public_key: "FLWPUBK_TEST-68faef794802d91e183102058142a4af-X",
     tx_ref: Date.now().toString(),
@@ -21,14 +23,16 @@ const FlutterwavePayment = () => {
       logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
     },
   };
+  const handlePaymentSuccess = (response: any) => {
+    console.log(response);
+    closePaymentModal(); // Close the payment modal
+    router.push('/'); // Redirect to the homepage
+  };
 
   const fwConfig = {
     ...config,
     text: "Pay N15,000.00",
-    callback: (response: any) => {
-      console.log(response);
-      closePaymentModal();
-    },
+    callback: handlePaymentSuccess,
     onClose: () => {},
   };
 

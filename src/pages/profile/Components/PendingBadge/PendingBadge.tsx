@@ -28,10 +28,10 @@ const PendingContractBanner = ({ showLink, days }: any) => {
   };
 
   return (
-    <div className="md:flex flex-row space-y-3 items-center md:h-[44px] rounded-md border border-[#ddd] px-4 gap-1 justify-between bg-[#FFF7ED] my-5">
+    <div className="md:flex flex-row items-center md:h-[44px] rounded-md border border-[#ddd] px-4 gap-1 justify-between bg-[#FFF7ED] my-5">
       <div className="flex flex-row items-center gap-1">
         <TriangleAlert className="w-[15px] h-[13.5px] hidden md:block" color="#EA580C" />
-        <p className="text-sm text-[#352C76] font-medium py-2">
+        <p className="text-sm text-[#352C76] font-medium py-2 lg:py-0">
           {`Welcome, ${userProfileName}! To gain access to all features, please update and complete your profile.`}
         </p>
       </div>
@@ -39,7 +39,7 @@ const PendingContractBanner = ({ showLink, days }: any) => {
       {showLink && (
         <Link
           href={"/profile/seller-profile-creation"}
-          className="text-sm text-[#352C76] font-medium underline my-2"
+          className="text-sm text-[#352C76] font-medium underline my-2 lg:my-0"
         >
           Update Profile
         </Link>

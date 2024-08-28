@@ -16,14 +16,14 @@ const HeroComponent = (props: HeroComponentProps) => {
   return (
     <>
       <div className={`${props.backgroundColor}`}>
-        <div className="grid md:grid-cols-2 px-5 md:px-20 lg:px-[5rem] xl:px-[12rem] h-[97vh]">
-          <div className="flex flex-col justify-center mb-5 py-10 mt-20">
-            <p className="text-[52px] font-bold text-white leading-[50px] lg:w-[75%]">
+        <div className="grid md:grid-cols-2 px-5 md:px-20 lg:px-[5rem] xl:px-[12rem]">
+          <div className="flex flex-col justify-center mb-5 py-20">
+            <p className=" text-[24px] lg:text-[52px] font-bold text-white leading-[33px] lg:leading-[50px] lg:w-[75%]">
               {props.header}
             </p>
             <Text
               variant="largeText"
-              className=" text-[#FF0084] mt-[20px] md:leading-[45px] lg:leading-[30px]"
+              className=" text-[#FF0084] mt-[10px] md:leading-[45px] lg:leading-[30px]"
             >
               {props.secondaryText}
             </Text>
@@ -40,7 +40,7 @@ const HeroComponent = (props: HeroComponentProps) => {
               </Button>
             </div>
           </div>
-          <div className="flex justify-center items-center mt-24 pt-10">
+          <div className="flex justify-center items-center -mt-24 lg:mt-24 lg:pt-10">
             <Image
               className="w-full d-block h-full"
               width={0}
