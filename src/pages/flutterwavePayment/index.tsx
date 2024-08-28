@@ -40,8 +40,7 @@ const FlutterwavePayment = () => {
       closePaymentModal();
     },
     onClose: () => {},
-
-  }
+  };
 
   return (
     <div className="py-20 flex justify-center items-center min-h-screen">
@@ -52,14 +51,17 @@ const FlutterwavePayment = () => {
             <TabsTrigger value="year">Yearly</TabsTrigger>
             <TabsTrigger value="month">Monthly</TabsTrigger>
           </TabsList>
-          <TabsContent value="year" className="flex flex-col justify-center py-5">
-            <div className="grid grid-cols-2 text-center pb-5 border-b ">
-                <p className="text-lg text-[#352C76] font-medium">Sub Total</p>
-                <p className="text-lg text-[#352C76]">N15,000</p>
-                <p className="text-lg text-[#352C76]">Discount</p>
-                <p className="text-lg text-[#352C76]">- N15,000</p>
-                <p className="text-lg text-[#352C76] !text-left">Tax</p>
-                <p className="text-lg text-[#352C76]">N0.00</p>
+          <TabsContent
+            value="year"
+            className="flex flex-col justify-center py-5"
+          >
+            <div className="grid grid-cols-2  pb-5 border-b ">
+              <p className="text-lg text-[#352C76] font-medium">Sub Total</p>
+              <p className="text-lg text-[#352C76] !text-right">N15,000</p>
+              <p className="text-lg text-[#352C76]">Discount</p>
+              <p className="text-lg text-[#352C76] !text-right">- N15,000</p>
+              <p className="text-lg text-[#352C76]">Tax</p>
+              <p className="text-lg text-[#352C76] !text-right">N0.00</p>
             </div>
 
             <FlutterWaveButton
@@ -68,7 +70,7 @@ const FlutterwavePayment = () => {
             />
           </TabsContent>
           <TabsContent value="month" className="flex justify-center py-5">
-          <FlutterWaveButton
+            <FlutterWaveButton
               {...fwConfig}
               className="bg-[#810FAF] rounded-lg py-2 px-10 text-white"
             />
