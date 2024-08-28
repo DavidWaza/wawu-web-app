@@ -63,7 +63,7 @@ const Hero = () => {
                     Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
-                 <SearchFilter />
+                  <SearchFilter />
                   {/* <div className="hidden 2xl:flex gap-2 w-full mt-4">
                     {buttons.map((button) => (
                       <Button
@@ -77,7 +77,7 @@ const Hero = () => {
                     ))}
                   </div> */}
                 </div>
-                <div className="flex justify-center items-center mt-20 pt-20">
+                <div className="h-full flex justify-center items-center mt-20 pt-20">
                   <Image
                     className="w-[80%] h-full object-contain object-center"
                     src={`${heroContent.imageSrc}`}
