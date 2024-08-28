@@ -51,14 +51,12 @@ const ServiceSearch = () => {
       </form>
 
       <div className="mt-4">
-        {results.length > 0 ? (
+        {results.length > 0 && (
           <ul>
             {results.map((result, index) => (
               <li key={index}>{result.label}</li> // Display the name of the service
             ))}
           </ul>
-        ) : (
-          <p>No results found.</p>
         )}
       </div>
     </div>

@@ -64,20 +64,9 @@ const Hero = () => {
                     Right now. Right here.
                   </Text>
                   <SearchFilter />
-                  {/* <div className="hidden 2xl:flex gap-2 w-full mt-4">
-                    {buttons.map((button) => (
-                      <Button
-                        variant="secondary"
-                        size="small"
-                        className="py-1"
-                        key={button.label}
-                      >
-                        {button.label}
-                      </Button>
-                    ))}
-                  </div> */}
+                
                 </div>
-                <div className="h-full flex justify-center items-center mt-20 pt-20">
+                <div className="h-full flex justify-center items-center mt-[4rem] pt-[1rem]">
                   <Image
                     className="w-[80%] h-full object-contain object-center"
                     src={`${heroContent.imageSrc}`}
