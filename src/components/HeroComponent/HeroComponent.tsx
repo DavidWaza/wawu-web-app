@@ -42,7 +42,7 @@ const HeroComponent = (props: HeroComponentProps) => {
           </div>
           <div className="flex justify-center items-center mt-24 pt-10">
             <Image
-              className="w-full d-block h-auto"
+              className="w-full d-block h-full"
               width={0}
               height={0}
               sizes="100vw"
