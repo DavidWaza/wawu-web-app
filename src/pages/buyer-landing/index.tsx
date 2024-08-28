@@ -61,7 +61,7 @@ const BuyerLandingComponent = () => {
       <div className="bg-white">
         <div className="py-10">
           <Text variant="medium" className="text-center text-black">
-            Join our growing steward’s community
+            Join our growing stewards community
           </Text>
           <div className="grid grid-cols-2 md:grid-cols-4 mt-10 px-10 justify-center">
             {professions.map((profession, index) => (
