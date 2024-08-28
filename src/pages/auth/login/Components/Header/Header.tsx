@@ -18,20 +18,13 @@ interface linkProps {
 const links = [
   {
     id: 1,
-    href: "/seller-landing",
-    link: "Find Talent",
+    href: "/buyer-landing",
+    link: "Offer Services",
   },
-
   {
     id: 2,
-    href: "buyer-landing",
-    link: "Find Work",
-  },
-  {
-    id: 3,
-    href: "",
-    link: "Why Wawu",
-    isCaret: true,
+    href: "/seller-landing",
+    link: "Find Services",
   },
   {
     id: 4,
@@ -43,6 +36,18 @@ const links = [
     id: 5,
     href: "/about",
     link: "About Us",
+    isCaret: false,
+  },
+  {
+    id: 6,
+    href: "/contact-us",
+    link: "Contact Us",
+    isCaret: false,
+  },
+  {
+    id: 5,
+    href: "/faq",
+    link: "FAQ",
     isCaret: false,
   },
 ];

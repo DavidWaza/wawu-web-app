@@ -90,7 +90,7 @@ const Header = () => {
 
       <div className="flex items-center gap-4">
         <Link href={"/profile/seller-profile-creation"}>
-          <button className="bg-[#F52585] text-white sora font-medium py-2 px-5 rounded-lg hover:bg-[#370f22] transition-all ease-in-out">
+          <button className="bg-[#F52585] hidden md:block text-white sora font-medium py-2 px-5 rounded-lg hover:bg-[#370f22] transition-all ease-in-out">
             Update Profile
           </button>
         </Link>
