@@ -457,13 +457,15 @@ const SellerProfileCreation = () => {
                       <UiSelect
                         {...register("country")}
                         name="country"
-                        value={country || ""}
+                        value={country}
                         onValueChange={(value: string) =>
                           handleCountryChange(value)
                         }
                       >
-                        <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
-                          <SelectValue placeholder="Select Country" />
+                        <SelectTrigger className="!text-black whitespace-nowrap">
+                          <SelectValue placeholder="Select Country">
+                            {country || "Select Country"}
+                          </SelectValue>
                         </SelectTrigger>
                         <SelectContent>
                           {countryList.map((nation) => (
