@@ -43,7 +43,7 @@ const Hero = () => {
         {heroContents.map((heroContent, index) => (
           <div
             key={index}
-            className="h-[100vh] flex items-center justify-center mt-8"
+            className="h-[100vh] flex items-center justify-center"
           >
             <div className={`${backgroundChange(heroContent.roles)} h-full`}>
               <div className="grid md:grid-cols-2 lg:py-20 px-10 lg:px-20 h-full">

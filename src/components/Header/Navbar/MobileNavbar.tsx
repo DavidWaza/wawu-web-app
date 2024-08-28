@@ -19,7 +19,7 @@ const MobileNavbar = () => {
   };
 
   return (
-    <nav className="bg-[#fefefe] h-[100.9375vh] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
+    <nav className="bg-[#fefefe] py-[35px] shrink-0 flex justify-between items-center px-5 lg:px-20 relative">
       <Image
         src={
           "https://res.cloudinary.com/dgbl43ljm/image/upload/v1724197587/homelogo_r8tiaw.png"
