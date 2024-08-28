@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { buttons, heroContents } from "@/data/portfolioData";
 import { useTranslation } from "react-i18next";
-import SearchFilter from "@/components/SearchFilter/SearchFilter";
 
 const Hero = () => {
   const settings = {
@@ -43,9 +42,11 @@ const Hero = () => {
         {heroContents.map((heroContent, index) => (
           <div
             key={index}
-            className="h-[100vh] flex items-center justify-center mt-8"
+            className="h-[100vh] flex items-center justify-center"
           >
-            <div className={`${backgroundChange(heroContent.roles)} h-full`}>
+            <div
+              className={`${backgroundChange(heroContent.roles)} h-full pt-10`}
+            >
               <div className="grid md:grid-cols-2 lg:py-20 px-10 lg:px-20 h-full">
                 <div className="h-full lg:px-[3rem] pt-20 flex flex-col justify-center">
                   <Image
@@ -63,8 +64,19 @@ const Hero = () => {
                     Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
-                  <SearchFilter />
-                  {/* <div className="hidden 2xl:flex gap-2 w-full mt-4">
+                  <div className="flex py-5">
+                    <input
+                      placeholder="Search for any services"
+                      className="py-2 px-3 rounded-r-none rounded-md w-full border-none"
+                    />
+                    <Button
+                      variant="primary"
+                      className="rounded-l-none p-2 border-none"
+                    >
+                      Search
+                    </Button>
+                  </div>
+                  <div className="hidden 2xl:flex gap-2 w-full mt-4">
                     {buttons.map((button) => (
                       <Button
                         variant="secondary"
@@ -75,9 +87,9 @@ const Hero = () => {
                         {button.label}
                       </Button>
                     ))}
-                  </div> */}
+                  </div>
                 </div>
-                <div className="h-full flex justify-center items-center mt-20 pt-20">
+                <div className="flex justify-center items-center mt-20 pt-20">
                   <Image
                     className="w-[80%] h-full object-contain object-center"
                     src={`${heroContent.imageSrc}`}
