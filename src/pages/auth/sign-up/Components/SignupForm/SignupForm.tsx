@@ -22,6 +22,7 @@ const SignupForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [role, setRole] = useState<FormFields["role"]>(0);
   const [loading, setLoading] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
 
   const { goToNextStep } = useOnboarding();
   const router = useRouter();
@@ -45,6 +46,7 @@ const SignupForm = () => {
         email,
         password,
         phoneNumber,
+        termsAccepted,
         role: 2,
       });
 
@@ -140,7 +142,14 @@ const SignupForm = () => {
         </div>
 
         <div className="flex justify-start items-start lg:items-center gap-1 py-5">
-          <input type="checkbox" className="w-4 h-auto" />
+          <input
+            type="checkbox"
+            className="w-4 h-auto"
+            {...register("termsAccepted")}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setTermsAccepted(e.target.checked)
+            }
+          />
           <p className="text-black text-sm sora">
             By continuing you agree to our{" "}
             <span className="!text-[#ED459A]">
@@ -148,13 +157,28 @@ const SignupForm = () => {
             </span>
           </p>
         </div>
-        <button
-          type="submit"
-          className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Signing..." : "Sign up"}
-        </button>
+        {termsAccepted === true ? (
+          <>
+            <button
+              type="submit"
+              className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Signing..." : "Sign up"}
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              type="submit"
+              className="py-3 bg-slate-200 px-10 w-full m-auto rounded-md mt-10 text-black"
+              disabled
+            >
+              {isSubmitting ? "Signing..." : "Sign up"}
+            </button>
+          </>
+        )}
+
         <p className="text-black text-center mt-4">
           Already have an account?{" "}
           <span className="font-bold ">

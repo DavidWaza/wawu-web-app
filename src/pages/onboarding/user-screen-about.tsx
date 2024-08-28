@@ -13,15 +13,21 @@ import {
 } from "@/components/ui/select";
 import axiosInstance from "../api/axiosInstance";
 import { useOnboarding } from "@/Context/onboardingContext";
+import { FormFields } from "../../../types/Types";
+import axios from "axios";
 
-type FormFields = {
-  mentorReasons: string;
-};
+interface Country {
+  code: string;
+  name: string;
+}
 
 const AboutUserProfileOnboarding: React.FC = () => {
-  const [fetchCountries, setFetchCountries] = useState<string[]>([]);
+  const [countryList, setCountryList] = useState<Country[]>([]);
+  const [country, setCountry] = useState<FormFields["country"]>("");
+
   const { goToNextStep } = useOnboarding();
   const {
+    register,
     control,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -30,15 +36,30 @@ const AboutUserProfileOnboarding: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetchCountry();
+    fetchCountries();
   }, []);
 
-  const fetchCountry = async () => {
+  const handleCountryChange = (value: string) => {
+    const country = countryList.find((item: Country) => item.code === value);
+    if (country) {
+      setCountry(country.name);
+    }
+  };
+
+  const fetchCountries = async () => {
     try {
-      const response = await axiosInstance.get("/api/countries");
-      setFetchCountries(response.data.data);
+      const response = await axios.get(
+        `https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code`
+      );
+      const countries: Country[] = response.data.countries.map(
+        (country: any) => ({
+          code: country.value,
+          name: country.label,
+        })
+      );
+      setCountryList(countries); // Set the list of countries
     } catch (err) {
-      console.error("Error fetching countries:", err);
+      console.log(err);
     }
   };
 
@@ -66,7 +87,10 @@ const AboutUserProfileOnboarding: React.FC = () => {
           <p className="text-center text-black text-sm sora">
             Your answer will be used to personalize your experience.
           </p>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center mt-5">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex justify-center mt-5"
+          >
             <div>
               <div className="pb-10">
                 <label className="text-black block text-sm py-2">
@@ -77,14 +101,22 @@ const AboutUserProfileOnboarding: React.FC = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <Select {...field} onValueChange={field.onChange} value={field.value}>
+                    <Select
+                      {...field}
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select one" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="stewards">Stewards(Seller)</SelectItem>
-                          <SelectItem value="patrons">Patrons(Buyers)</SelectItem>
+                          <SelectItem value="stewards">
+                            Stewards(Seller)
+                          </SelectItem>
+                          <SelectItem value="patrons">
+                            Patrons(Buyers)
+                          </SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -111,19 +143,23 @@ const AboutUserProfileOnboarding: React.FC = () => {
                 <label className="text-black block text-sm">
                   What is your location?
                 </label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select one" />
+                <Select
+                  {...register("country")}
+                  name="country"
+                  value={country}
+                  onValueChange={(value: string) => handleCountryChange(value)}
+                >
+                  <SelectTrigger className="!text-black whitespace-nowrap">
+                    <SelectValue placeholder="Select Country">
+                      {country || "Select Country"}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>All Countries</SelectLabel>
-                      {fetchCountries.map((item, index) => (
-                        <SelectItem value={item} key={index}>
-                          {item}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
+                    {countryList.map((nation) => (
+                      <SelectItem value={nation.code} key={nation.code}>
+                        {nation.name}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

@@ -81,7 +81,11 @@ const Footer = () => {
             2024 wawuafrica. All Rights Reserved
           </Text>
           <div className="flex flex-col md:flex-row gap-5 items-center md:items-start justify-center md:justify-start">
-            <Link href={"/legal"}>
+            <Link
+              href={
+                "https://drive.google.com/file/d/1wjfWmyRQwpq_agNSxHC9jGru63pM6_gR/view?usp=drive_link"
+              }
+            >
               <Text
                 variant="small"
                 className="w-full text-center md:text-left text-nowrap"
@@ -89,20 +93,41 @@ const Footer = () => {
                 Privacy Policy
               </Text>
             </Link>
-
-            <Text
-              variant="small"
-              className="w-full text-center md:text-left text-nowrap"
+            <Link
+              href={
+                "https://drive.google.com/file/d/1kXL2hWiAz3L5zH_vR84AybGnpE8QlfGv/view?usp=drive_link"
+              }
             >
-              Cookie Policy
-            </Text>
+              <Text
+                variant="small"
+                className="w-full text-center md:text-left text-nowrap"
+              >
+                Cookie Policy
+              </Text>
+            </Link>
 
-            <Link href={"/legal"}>
+            <Link
+              href={
+                "https://drive.google.com/file/d/1Uu6EAwJIWlH86USS1sjYNyYZTR-DGpii/view?usp=drive_link"
+              }
+            >
               <Text
                 variant="small"
                 className="w-full text-center md:text-left text-nowrap"
               >
                 Terms & Condition
+              </Text>
+            </Link>
+            <Link
+              href={
+                "https://drive.google.com/file/d/1zcZOLv4TbuSIIkN8MrSLbhrGMiltj4dr/view?usp=drive_link"
+              }
+            >
+              <Text
+                variant="small"
+                className="w-full text-center md:text-left text-nowrap"
+              >
+                Disclaimer
               </Text>
             </Link>
           </div>

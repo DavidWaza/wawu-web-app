@@ -69,6 +69,8 @@ export interface FormFields {
   category?:string
   sub_category?:string
   meansOfIdentification?:string
+  mentorReasons?:string
+  termsAccepted?:boolean
 }
 
 export type InputFieldProps = {

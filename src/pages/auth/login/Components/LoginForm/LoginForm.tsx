@@ -14,11 +14,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");
   const [password, setPassword] = useState<FormFields["password"]>("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const router = useRouter();
+  
   function togglePassword() {
     setPasswordVisible((prev) => !prev);
   }
+
   const {
     register,
     handleSubmit,
@@ -30,12 +33,21 @@ const LoginForm = () => {
       const response = await axiosInstance.post(login_url, data);
       toast.success(response.data.message);
       const token = response.data.data.token;
-      localStorage.setItem("token", token);
+      
+      // Store token in localStorage or cookies based on rememberMe
+      if (rememberMe) {
+        localStorage.setItem("token", token);
+        // Optional: Set a longer expiration time for cookies here if used
+      } else {
+        sessionStorage.setItem("token", token); // Use sessionStorage for session-based login
+      }
+      
       router.push("/sellers");
     } catch (err: any) {
       toast.error(err.message);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="block space-y-5">
       <div>
@@ -71,8 +83,15 @@ const LoginForm = () => {
 
       <div className="flex justify-between gap-5">
         <div className="flex gap-2">
-          <input type="checkbox" />
-          <p className="text-black text-sm text-nowrap">Keep me logged in</p>
+          <input 
+            type="checkbox" 
+            id="rememberMe"
+            checked={rememberMe}
+            onChange={() => setRememberMe(!rememberMe)}
+          />
+          <label htmlFor="rememberMe" className="text-black text-sm text-nowrap">
+            Keep me logged in
+          </label>
         </div>
         <div>
           <Link href="/auth/forget-password">
@@ -87,7 +106,7 @@ const LoginForm = () => {
         className="py-3 bg-[#290D43] px-10 w-full m-auto rounded-md mt-10 text-white "
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Loging in...." : "Login"}
+        {isSubmitting ? "Logging in...." : "Login"}
       </button>
       <p className="text-black text-center mt-4">
         Not registered?{" "}

@@ -1,15 +1,5 @@
-import {
-  useState,
-  useEffect,
-  AwaitedReactNode,
-  JSXElementConstructor,
-  Key,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-} from "react";
+import { useState, useEffect } from "react";
 import LayoutProfile from "../layout";
-import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
 import InputField from "@/components/TextField/InputField";
@@ -38,6 +28,7 @@ import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import axios from "axios";
+import PendingContractBanner from "../Components/PendingBadge/PendingBadge";
 
 interface SkillOption {
   value: string; // UUID of the skill
@@ -79,6 +70,7 @@ const SellerProfileCreation = () => {
   const [loading, setLoading] = useState(false);
   const [userProfileName, setUserProfileName] = useState<string>("");
   const [userProfileLastName, setUserProfileLastName] = useState<string>("");
+  const [userProfilePhonenumber, setUserProfilePhonenumber] = useState<string>()
   const [showPassword, setShowPassword] = useState(false);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [phone, setPhone] = useState("");
@@ -104,8 +96,8 @@ const SellerProfileCreation = () => {
     try {
       const response = await axiosInstance.get(fetch_services);
       const skills = response.data.data.map((skill: any) => ({
-        value: skill.uuid, // UUID of the skill
-        label: skill.name, // Name of the skill
+        value: skill.uuid,
+        label: skill.name,
       }));
       setSkillOptions(skills);
     } catch (err) {
@@ -201,17 +193,15 @@ const SellerProfileCreation = () => {
   const fetchUserProfile = async () => {
     try {
       const response = await axiosInstance.get(fetch_user_profile);
+    
       setUserProfileName(response.data.data.firstName);
       setUserProfileLastName(response.data.data.lastName);
+      setUserProfilePhonenumber(response.data.data.phoneNumber)
     } catch (err: any) {
       if (err.response) {
         toast.error(err.response.data.message);
       }
     }
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   const handleNextStep = () => {
@@ -227,6 +217,7 @@ const SellerProfileCreation = () => {
       {loading && <LoadingScreen />}
       <>
         <ProfileHero />
+        
         <div className="grid lg:grid-cols-2">
           <div className="py-10">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -270,7 +261,7 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="Email"
                       name="email"
-                      placeholder="Support@wawuafrica.com"
+                      placeholder="support@wawuafrica.com"
                       type="email"
                       value={email}
                       register={register}
@@ -284,7 +275,7 @@ const SellerProfileCreation = () => {
                       <PhoneInput
                         {...register("phoneNumber")}
                         country={"ng"}
-                        value={phone}
+                        value={userProfilePhonenumber}
                         onChange={(phone) => setPhoneNumber(phone)}
                         inputStyle={{
                           width: "100%",
@@ -377,45 +368,27 @@ const SellerProfileCreation = () => {
                       { value: "PHD", label: "PHD" },
                     ]}
                   />
-                  <SelectField
+                 
+                  <InputField
                     label="Institution"
                     name="institution"
-                    register={register}
-                    errors={errors}
+                    placeholder="Add you institution"
+                    type="texr"
                     value={institution}
-                    setValue={(value) => setInstitution(value)}
-                    options={[
-                      { value: "Salem University", label: "Salem University" },
-                      {
-                        value: "Nasarawa State University",
-                        label: "Nasarawa State University",
-                      },
-                      {
-                        value: "Covenant University",
-                        label: "Covenant University",
-                      },
-                    ]}
-                  />
-                  <SelectField
-                    label="Course of Study"
-                    name="courseOfStudy"
                     register={register}
                     errors={errors}
-                    value={courseOfStudy}
-                    setValue={(value) => setCourseOfStudy(value)}
-                    options={[
-                      { value: "Computer Science", label: "Computer Science" },
-                      {
-                        value: "Information Technology",
-                        label: "Information Technology",
-                      },
-                      {
-                        value: "Artificial Intelligence",
-                        label: "Artificial Intelligence",
-                      },
-                    ]}
+                    setValue={(value) => setInstitution(value)}
                   />
-
+                  <InputField
+                    label="Course of Study"
+                    name="institution"
+                    placeholder="Add your Course of Study"
+                    type="text"
+                    value={institution}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setCourseOfStudy(value)}
+                  />
                   <InputField
                     label="Graduation Date"
                     name="graduationDate"

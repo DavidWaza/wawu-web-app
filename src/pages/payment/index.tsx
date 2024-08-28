@@ -12,7 +12,7 @@ const PaystackButton = dynamic(
 );
 
 const Payment = () => {
-  const publicKey = "pk_your_public_key_here";
+  const publicKey = "";
   const amount = 1000000;
   const currency = "NGN";
   const [email, setEmail] = useState("");

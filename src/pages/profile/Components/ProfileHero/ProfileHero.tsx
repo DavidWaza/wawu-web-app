@@ -21,18 +21,10 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 const ProfileHero = () => {
   const [profilePic, setProfilePic] = useState("/assets/profile-pic.png");
   const [coverImage, setCoverImage] = useState("/assets/profile-seller.png");
-  const [selectedProfilePic, setSelectedProfilePic] = useState<File | null>(
-    null
-  );
-  const [selectedCoverImage, setSelectedCoverImage] = useState<File | null>(
-    null
-  );
-  const [previewProfilePic, setPreviewProfilePic] = useState<string | null>(
-    null
-  );
-  const [previewCoverImage, setPreviewCoverImage] = useState<string | null>(
-    null
-  );
+  const [selectedProfilePic, setSelectedProfilePic] = useState<File | null>(null);
+  const [selectedCoverImage, setSelectedCoverImage] = useState<File | null>(null);
+  const [previewProfilePic, setPreviewProfilePic] = useState<string | null>(null);
+  const [previewCoverImage, setPreviewCoverImage] = useState<string | null>(null);
   const pathname = usePathname();
 
   const {
@@ -113,18 +105,15 @@ const ProfileHero = () => {
             }}
           >
             <div className="absolute right-10 bottom-10">
-            <Camera
-            className="text-white"
-              onClick={() =>
-                document.getElementById("coverImageInput")?.click()
-              }
-            />
+              <Camera
+                className="text-white"
+                onClick={() => document.getElementById("coverImageInput")?.click()}
+              />
             </div>
-           
           </div>
           <Dialog>
             <DialogTrigger>
-              <div className="-mt-[50px] ml-20">
+              <div className="relative z-10 -mt-[50px] ml-20">
                 <Image
                   src={previewProfilePic || profilePic}
                   alt="Profile Picture"
@@ -140,9 +129,7 @@ const ProfileHero = () => {
                 <DialogTitle>Change Profile and Cover Images</DialogTitle>
                 <DialogDescription className="py-10 flex flex-col space-y-5">
                   <div>
-                    <label className="text-sm sora py-2">
-                      Upload profile image
-                    </label>
+                    <label className="text-sm sora py-2">Upload profile image</label>
                     <FileUploader
                       handleChange={handleProfilePicChange}
                       name="profilePic"
@@ -180,8 +167,6 @@ const ProfileHero = () => {
                               width="40"
                               color="#FFF"
                               ariaLabel="oval-loading"
-                              wrapperStyle={{}}
-                              wrapperClass=""
                             />
                           ) : (
                             "Update"
@@ -207,12 +192,13 @@ const ProfileHero = () => {
             className="bg-[#FF0084] w-full h-[40vh]"
             onClick={() => document.getElementById("coverImageInput")?.click()}
           ></div>
-          <div className="-mt-[50px] ml-20 relative">
+          <div className="relative z-10 -mt-[50px] ml-20">
             <Image
               src={profilePic}
               alt="Profile Picture"
               width={100}
               height={100}
+              className="rounded-full h-[100px] w-[100px] border border-slate-400 object-cover object-center"
             />
           </div>
         </>

@@ -9,6 +9,7 @@ import axiosInstance from "../api/axiosInstance";
 import { fetch_buyers_feed, fetch_user_profile } from "../api/endpoints";
 import { toast } from "sonner";
 import { ServiceCategoryData } from "../../../types/Types";
+import PendingContractBanner from "../profile/Components/PendingBadge/PendingBadge";
 
 const Sellers = () => {
   const [userProfileName, setUserProfileName] = useState<string>("");
@@ -46,7 +47,10 @@ const Sellers = () => {
     <div>
       <Header />
       <GigPortfolio />
-      <div className="bg-white px-[2rem] 2xl:p-[5rem] py-10">
+      <div className="bg-white px-[2rem] py-10">
+        <div className="pb-10">
+          <PendingContractBanner showLink />
+        </div>
         <Text variant="medium" className="text-black sora">
           Nice to see you,{" "}
           <span className="text-[#F52585] !text-normal italic">

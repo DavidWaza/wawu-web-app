@@ -60,7 +60,7 @@ const UserExpertise: React.FC = () => {
         router.push("/sellers");
       } else {
         // Handle any other role-specific routing logic here
-        router.push("/payment");
+        router.push("/flutterwavePayment");
       }
     } catch (err: any) {
       console.log(err);
