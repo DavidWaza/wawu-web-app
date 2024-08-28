@@ -43,11 +43,11 @@ const Hero = () => {
         {heroContents.map((heroContent, index) => (
           <div
             key={index}
-            className="h-[98vh] flex items-center justify-center"
+            className="h-[100vh] flex items-center justify-center mt-8"
           >
             <div className={`${backgroundChange(heroContent.roles)} h-full`}>
               <div className="grid md:grid-cols-2 lg:py-20 px-10 lg:px-20 h-full">
-                <div className="lg:px-[3rem] pt-20 flex flex-col justify-center">
+                <div className="h-full lg:px-[3rem] pt-20 flex flex-col justify-center">
                   <Image
                     src={`${heroContent.textSrc}`}
                     alt=""
@@ -63,7 +63,7 @@ const Hero = () => {
                     Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
-                 <SearchFilter />
+                  <SearchFilter />
                   {/* <div className="hidden 2xl:flex gap-2 w-full mt-4">
                     {buttons.map((button) => (
                       <Button
@@ -77,9 +77,9 @@ const Hero = () => {
                     ))}
                   </div> */}
                 </div>
-                <div className="flex justify-center items-center mt-20 pt-20">
+                <div className="h-full flex justify-center items-center mt-20 pt-20">
                   <Image
-                    className="w-[80%] h-auto object-contain object-center"
+                    className="w-[80%] h-full object-contain object-center"
                     src={`${heroContent.imageSrc}`}
                     alt="slide 1"
                     width={0}
