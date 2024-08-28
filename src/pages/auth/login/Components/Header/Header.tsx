@@ -4,9 +4,10 @@ import Link from "next/link";
 import AuthLogo from "../../../../../../public/assets/WAWU-logo.svg";
 import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
-import { RxCaretDown } from "react-icons/rx";
+
 import FullDropDown from "@/components/Header/Navbar/WhyFullDropDown";
 import Logo from "@/components/Header/Navbar/Logo/Logo";
+import { ChevronDown } from "lucide-react";
 
 interface linkProps {
   id: number;
@@ -67,7 +68,7 @@ const AuthNavbar: React.FC<linkProps> = () => {
                     <li className="flex justify-center items-center text-white">
                       {link.link}{" "}
                       <button onClick={toggleNav}>
-                        {link.isCaret && <RxCaretDown />}
+                        {link.isCaret && <ChevronDown />}
                       </button>
                     </li>
                   </Link>

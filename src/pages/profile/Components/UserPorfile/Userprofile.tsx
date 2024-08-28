@@ -2,13 +2,12 @@
 import { useState, useEffect } from "react";
 import { Text } from "@/components/ui/Typography/Typography";
 import UserDetails from "../UserDetails/UserDetails";
-import { IoLocationOutline } from "react-icons/io5";
-import { LuBadgeCheck } from "react-icons/lu";
-import { BiMessageSquareDetail } from "react-icons/bi";
+
 import UserAvatar from "../UserAvatar/UserAvatar";
 import { useRouter } from "next/router";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { fetch_buyers_feed } from "@/pages/api/endpoints";
+import { BadgeCheck, Globe, MapPin } from "lucide-react";
 
 const UserProfile = () => {
   const [country, setCountry] = useState(null);
@@ -67,18 +66,20 @@ const UserProfile = () => {
           </>
         )}
         <div className="lg:flex gap-5 py-2 items-center">
-          <UserDetails
-            prefix={<IoLocationOutline className="text-black" size={20} />}
-            suffix={country || 'Country not found'}
-          />
-          <UserDetails
-            prefix={<LuBadgeCheck className="text-black" size={20} />}
-            suffix="232 orders completed"
-          />
-          <UserDetails
-            prefix={<BiMessageSquareDetail className="text-black" size={20} />}
-            suffix={language || 'No specific language'}
-          />
+        <UserDetails
+                prefix={<MapPin size={20} />}
+                suffix={country || "Country not found"}
+              />
+              <UserDetails
+                prefix={<BadgeCheck size={20}/>}
+                suffix="232 orders completed"
+              />
+              <UserDetails
+                prefix={
+                  <Globe size={20} />
+                }
+                suffix={language || "No specific language"}
+              />
         </div>
         <button className="p-3 text-black bg-[#EBEBEB] rounded-lg sora font-semibold">
           Contact me

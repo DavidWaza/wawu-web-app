@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import { MdArrowRightAlt } from "react-icons/md";
+
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import UploadImage from "../profile/Components/UploadImage/UploadImage";
 import Header from "../sellers/Components/Header/Header";
@@ -124,7 +124,7 @@ const ClientBrief = () => {
             <Button
               className="border-none lg:w-[26rem] w-full p-1 lg:p-3 flex items-center text-sm"
               size="large"
-              suffix={<MdArrowRightAlt />}
+              
             >
               How does the matching thing work
             </Button>
@@ -217,7 +217,7 @@ const ClientBrief = () => {
                   size="small"
                   className="p-2 flex gap-2 justify-center items-center !text-black"
                   href="/client-brief/client-brief-review"
-                  suffix={<MdArrowRightAlt />}
+                 
                 >
                   Review
                 </Button>

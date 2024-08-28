@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Section from "../ui/Section/Section";
 import VideoCarousel from "../VideoCarousel/VideoCarousel";
 import NextSlideVideoCarousel from "../VideoCarousel/NextSlideVideoCarousel";
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const VideoComponent = () => {
   const [nextVideo, setNextVideo] = useState(false);
@@ -37,9 +37,9 @@ const VideoComponent = () => {
             }}
           >
             {!nextVideo ? (
-              <IoIosArrowRoundForward className="w-7 h-auto order-1" />
+              <ArrowRight className="w-7 h-auto order-1" />
             ) : (
-              <IoIosArrowRoundBack className="w-7 h-auto" />
+              <ArrowLeft className="w-7 h-auto" />
             )}
             {nextVideo ? "Previous Video" : "Next Video"}
           </div>

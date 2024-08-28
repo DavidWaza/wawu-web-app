@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Button from "@/components/ui/Button/Button";
 import { Text } from "@/components/ui/Typography/Typography";
-import { FaArrowRightLong } from "react-icons/fa6";
+
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -35,11 +35,7 @@ const SkillsHero: FC<SkillsHeroProps> = ({
           </Text>
           {buttonPresent && (
             <div className="py-5 flex justify-center lg:justify-end">
-              <Button
-                size="small"
-                suffix={<FaArrowRightLong />}
-                className="border-none p-2 my-4"
-              >
+              <Button size="small" className="border-none p-2 my-4">
                 Start now
               </Button>
             </div>

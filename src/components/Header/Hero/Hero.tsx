@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { buttons, heroContents } from "@/data/portfolioData";
 import { useTranslation } from "react-i18next";
+import SearchFilter from "@/components/SearchFilter/SearchFilter";
 
 const Hero = () => {
   const settings = {
@@ -62,19 +63,8 @@ const Hero = () => {
                     Forget the old rules. You can have the best girls <br />{" "}
                     Right now. Right here.
                   </Text>
-                  <div className="flex py-5">
-                    <input
-                      placeholder="Search for any services"
-                      className="py-2 px-3 rounded-r-none rounded-md w-full border-none"
-                    />
-                    <Button
-                      variant="primary"
-                      className="rounded-l-none p-2 border-none"
-                    >
-                      Search
-                    </Button>
-                  </div>
-                  <div className="hidden 2xl:flex gap-2 w-full mt-4">
+                 <SearchFilter />
+                  {/* <div className="hidden 2xl:flex gap-2 w-full mt-4">
                     {buttons.map((button) => (
                       <Button
                         variant="secondary"
@@ -85,7 +75,7 @@ const Hero = () => {
                         {button.label}
                       </Button>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex justify-center items-center mt-20 pt-20">
                   <Image

@@ -1,369 +1,303 @@
+import { useState, useEffect } from "react";
 import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Text } from "@/components/ui/Typography/Typography";
-import { BsEyeSlash } from "react-icons/bs";
-import Education from "../Components/Education/Education";
 import ProfileHero from "../Components/ProfileHero/ProfileHero";
-import axiosInstance from "@/pages/api/axiosInstance";
-import { fetch_portfolio } from "@/pages/api/endpoints";
-import { toast } from "sonner";
+import InputField from "@/components/TextField/InputField";
+import { FormFields } from "../../../../types/Types";
+import TextAreaField from "@/components/TextField/TextArea";
+import SelectField from "@/components/TextField/SelectField";
 import UploadImage from "../Components/UploadImage/UploadImage";
-import { useState } from "react";
+import axiosInstance from "@/pages/api/axiosInstance";
+import {
+  Select as UiSelect,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-type FormFields = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  overview: string;
-  skills: string;
-  language: string;
-  certificate: string;
-  institution: string;
-  course: string;
-  date: string;
-  certificateName: string;
-};
+import {
+  fetch_services,
+  fetch_user_profile,
+  post_user_portfolio,
+} from "@/pages/api/endpoints";
+import { toast } from "sonner";
+import Select, { MultiValue } from "react-select";
+import { useRouter } from "next/navigation";
+import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
+interface SkillOption {
+  value: string; // UUID of the skill
+  label: string; // Name of the skill
+}
 
 const BuyerProfileCreation = () => {
+  const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
+  const [lastName, setLastName] = useState<FormFields["lastName"]>("");
+  const [email, setEmail] = useState<FormFields["email"]>("");
+  const [phoneNumber, setPhoneNumber] = useState<FormFields["phoneNumber"]>("");
+  const [about, setAbout] = useState<FormFields["about"]>("");
+  const [role, setRole] = useState<number>(2);
+  const [twitter, setTwitter] = useState<FormFields["twitter"]>("");
+  const [facebook, setFacebook] = useState<FormFields["facebook"]>("");
+  const [linkedIn, setLinkedIn] = useState<FormFields["linkedIn"]>("");
+  const [instagram, setInstagram] = useState<FormFields["instagram"]>("");
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [userProfileName, setUserProfileName] = useState<string>("");
+  const [userProfileLastName, setUserProfileLastName] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [phone, setPhone] = useState("");
+  const [meansOfIdentification, setMeansOfIdentification] =
+    useState<FormFields["meansOfIdentification"]>("");
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<FormFields> = async () => {
+    const formData = new FormData();
+
+    // Append form fields
+    if (firstName) formData.append("firstName", firstName);
+    if (lastName) formData.append("lastName", lastName);
+    if (email) formData.append("email", email);
+    if (phoneNumber) formData.append("phoneNumber", phoneNumber);
+    formData.append("role", role.toString());
+    if (about) formData.append("about", about);
+    if (twitter) formData.append("twitter", twitter);
+    if (facebook) formData.append("facebook", facebook);
+    if (linkedIn) formData.append("linkedIn", linkedIn);
+    if (instagram) formData.append("instagram", instagram);
+
+    // Append the selected image, if any
+    if (selectedImage) {
+      formData.append("image", selectedImage);
+    }
+    setLoading(false);
+    try {
+      const response = await axiosInstance.post(post_user_portfolio, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response.data);
+      toast.success(response.data.message);
+      setTimeout(() => {
+        router.push("/sellers");
+      }, 3000);
+      setLoading(true);
+    } catch (err: any) {
+      toast.error(err.response.data.message);
+    }
+  };
 
   const handleUpload = (file: File | null) => {
     setSelectedImage(file);
   };
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+  // fetch profile
+  const fetchUserProfile = async () => {
     try {
-      const response = await axiosInstance.post(fetch_portfolio, data);
-      console.log(response.data);
-      toast.success(response.data.message);
+      const response = await axiosInstance.get(fetch_user_profile);
+      setUserProfileName(response.data.data.firstName);
+      setUserProfileLastName(response.data.data.lastName);
     } catch (err: any) {
-      toast.error(err.response.data.message);
+      if (err.response) {
+        toast.error(err.response.data.message);
+      }
     }
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleNextStep = () => {
+    setCurrentStep((prevStep) => prevStep + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setCurrentStep((prevStep) => prevStep - 1);
+  };
+
   return (
     <LayoutProfile>
-      <div className="-mt-10">
+      {loading && <LoadingScreen />}
+      <>
         <ProfileHero />
-        <div className="flex justify-end">
-          <Button variant="primary" size="medium" className="p-2">
-            Provide service
-          </Button>
-        </div>
-        <div className="py-12 grid lg:grid-cols-2">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="grid grid-cols-2 gap-5 lg:gap-10">
-              <div className="mb-6">
-                <label className="text-black block">First Name</label>
-                <input
-                  {...register("firstName", {
-                    required: "First Name is required",
-                  })}
-                  type="text"
-                  placeholder="First Name"
-                  className="p-2 mr-3 text-black border border-1 rounded-md w-full"
-                />
-                {errors.firstName && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.firstName.message}
-                  </Text>
-                )}
-              </div>
-              <div className="mb-6">
-                <label className="text-black block">Last Name</label>
-                <input
-                  {...register("lastName", {
-                    required: "Last Name is required",
-                  })}
-                  type="text"
-                  placeholder="Last Name"
-                  className="p-2  text-black border border-1 rounded-md w-full"
-                />
-                {errors.lastName && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.lastName.message}
-                  </Text>
-                )}
-              </div>
-            </div>
-            {/* EMAIL AND PASSWORD */}
-            <label className="text-black block">Email</label>
-            <input
-              {...register("email", {
-                required: "Email is required",
-                //   pattern: /^[A-Za-z]+$/i,
-                validate: (value) => {
-                  if (!value.includes("@")) {
-                    return "Email must include @";
-                  }
-                },
-              })}
-              type="text"
-              placeholder="Email"
-              className="p-2 text-black border border-1 rounded-md w-full"
-            />
-            {errors.email && (
-              <Text variant="small" className="text-red-600">
-                {errors.email.message}
-              </Text>
-            )}
-            <label className="text-black block">Password</label>
-            <div className="relative">
-              <input
-                {...register("password", {
-                  required: "Password is required",
-                })}
-                type="password"
-                placeholder="**********"
-                className="py-2 px-2 text-black border border-1 rounded-md w-full "
-              />
-              <div>
-                <BsEyeSlash className="absolute top-3 right-0 mx-6 text-black" />
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-2">
+          <div className="py-10">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid lg:grid-cols-2 items-center gap-5">
+                {currentStep === 1 && (
+                  <>
+                    <InputField
+                      label="First Name"
+                      name="firstName"
+                      placeholder={userProfileName}
+                      value={userProfileName}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setFirstName(value)}
+                      className="!text-[#9CA3B7]"
+                    />
+                    <InputField
+                      label="Last Name"
+                      name="lastName"
+                      placeholder={userProfileLastName}
+                      value={userProfileLastName}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setLastName(value)}
+                      className="!text-[#9CA3B7]"
+                    />
+                    {/* EMAIL AND PASSWORD */}
+                    <InputField
+                      label="Email"
+                      name="email"
+                      placeholder="Support@wawuafrica.com"
+                      type="email"
+                      value={email}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setEmail(value)}
+                    />
+                    <div>
+                      <label className="text-black block text-sm sora py-2">
+                        Phone Number
+                      </label>
+                      <PhoneInput
+                        {...register("phoneNumber")}
+                        country={"ng"}
+                        value={phone}
+                        onChange={(phone) => setPhoneNumber(phone)}
+                        inputStyle={{
+                          width: "100%",
+                          height: "41px",
+                          border: "1px solid #ddd",
+                          borderRadius: "8px",
+                        }}
+                      />
+                    </div>
 
-            {errors.password && (
-              <p className="text-red-600">{errors.password.message}</p>
-            )}
-            <div>
-              <div className="py-5">
-                <label className="text-black block text-sm">About</label>
-                <textarea
-                  {...register("overview", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                />
-                {errors.overview && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.overview.message}
-                  </Text>
-                )}
-              </div>
-              <div className="my-6">
-                <label className="text-black block">Skills</label>
-                <input
-                  {...register("skills", {
-                    required: "Skills",
-                  })}
-                  type="text"
-                  placeholder="Select a skill"
-                  className="p-2 mr-3 text-black border border-1 rounded-md w-full"
-                />
-                {errors.skills && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.skills.message}
-                  </Text>
-                )}
-              </div>
-              <div>
-                <label className="text-black block text-sm">
-                  Preferred language
-                </label>
-                <select
-                  {...register("language", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                >
-                  <option>{""}</option>
-                  <option>English</option>
-                  <option>French</option>
-                  <option>Arabic</option>
-                </select>
-                {errors.language && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.language.message}
-                  </Text>
-                )}
-              </div>
-            </div>
-            <div className="flex gap-1 items-center py-5">
-              <Text variant="small">Education</Text>
-              <div className="bg-[#A2A2A2] h-[1px] w-full"></div>
-            </div>
-            <div className="lg:w-2/3 w-full lg:px-0 px-10">
-              <div className="my-10">
-                <label className="text-black block text-sm">
-                  Certification
-                </label>
-                <select
-                  {...register("certificate", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                >
-                  <option>{""}</option>
-                  <option>BS.c</option>
-                  <option>HND</option>
-                  <option>OND</option>
-                </select>
-                {errors.certificate && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.certificate.message}
-                  </Text>
-                )}
-              </div>
-              <div className="mb-10">
-                <label className="text-black block text-sm">Institution</label>
-                <select
-                  {...register("institution", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                >
-                  <option>{""}</option>
-                  <option>Salem University</option>
-                  <option>Covenant University</option>
-                  <option>American University of Nigeria</option>
-                </select>
-                {errors.institution && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.institution.message}
-                  </Text>
-                )}
-              </div>
-              <div className="mb-10">
-                <label className="text-black block text-sm">
-                  Course of study
-                </label>
-                <select
-                  {...register("course", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
-                >
-                  <option>{""}</option>
-                  <option>Computer Science</option>
-                  <option>Information Technology</option>
-                  <option>Robotics</option>
-                </select>
-                {errors.course && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.course.message}
-                  </Text>
+                    <TextAreaField
+                      label="About"
+                      name="about"
+                      placeholder="Type here"
+                      value={about}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setAbout(value)}
+                    />
+                  </>
                 )}
               </div>
               <div className="">
-                <label className="text-black block text-sm">
-                  Graduation Date
-                </label>
-                <select
-                  {...register("date", {
-                    // required: "role is required",
-                  })}
-                  // type="text"
-                  // placeholder="Type here"
-                  className="p-2 text-black border border-1 rounded-md w-full"
+                <p className="text-lg sora text-black my-10 font-medium">
+                  Valid Means of Identification
+                </p>
+                <UiSelect
+                  {...register("meansOfIdentification")}
+                  name="courseOfStudy"
+                  value={meansOfIdentification}
+                  onValueChange={(value: string) =>
+                    setMeansOfIdentification(value)
+                  }
                 >
-                  <option>{""}</option>
-                </select>
-                {errors.date && (
-                  <Text variant="small" className="text-red-600">
-                    {errors.date.message}
-                  </Text>
-                )}
+                  <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
+                    <SelectValue placeholder="Means of Identification" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="nin">
+                      National Identity Number (NIN)
+                    </SelectItem>
+                    <SelectItem value="ip">International Passport</SelectItem>
+                    <SelectItem value="dl">Driver&apos;s License</SelectItem>
+                    <SelectItem value="vc">Voter&apos;s Card</SelectItem>
+                  </SelectContent>
+                </UiSelect>
+                <div className="items-center w-full">
+                  <div className="my-5">
+                    <UploadImage
+                      handleUpload={handleUpload}
+                      uploadEndpoint="/api/upload"
+                      maxFileSize={500 * 1024} // 500KB
+                      acceptedFileTypes="image/*"
+                    />
+                  </div>
+                </div>
               </div>
-              <Button variant="tertiary">Add</Button>
-            </div>
-            <div className="my-10">
-              <div className="lg:w-2/3 w-full lg:px-0 px-10">
-                <div className="my-10">
-                  <label className="text-black block text-sm">Name</label>
-                  <select
-                    {...register("certificateName", {
-                      // required: "role is required",
-                    })}
-                    // type="text"
-                    // placeholder="Type here"
-                    className="p-2 text-black border border-1 rounded-md w-full"
-                  >
-                    <option>{""}</option>
-                    <option>BS.c</option>
-                    <option>HND</option>
-                    <option>OND</option>
-                  </select>
-                  {errors.certificateName && (
-                    <Text variant="small" className="text-red-600">
-                      {errors.certificateName.message}
-                    </Text>
-                  )}
-                </div>
-                <div className="mb-10">
-                  <label className="text-black block text-sm">
-                    Institution
-                  </label>
-                  <select
-                    {...register("institution", {
-                      // required: "role is required",
-                    })}
-                    // type="text"
-                    // placeholder="Type here"
-                    className="p-2 text-black border border-1 rounded-md w-full"
-                  >
-                    <option>{""}</option>
-                    <option>Salem University</option>
-                    <option>Covenant University</option>
-                    <option>American University of Nigeria</option>
-                  </select>
-                  {errors.institution && (
-                    <Text variant="small" className="text-red-600">
-                      {errors.institution.message}
-                    </Text>
-                  )}
-                </div>
 
-                <div className="">
-                  <label className="text-black block text-sm">End Date</label>
-                  <select
-                    {...register("date", {
-                      // required: "role is required",
-                    })}
-                    // type="text"
-                    // placeholder="Type here"
-                    className="p-2 text-black border border-1 rounded-md w-full"
-                  >
-                    <option>{""}</option>
-                  </select>
-                  {errors.date && (
-                    <Text variant="small" className="text-red-600">
-                      {errors.date.message}
-                    </Text>
-                  )}
-                </div>
-                <div className="mt-10">
-                  <UploadImage
-                    handleUpload={handleUpload}
-                    uploadEndpoint="/api/upload"
-                    maxFileSize={500 * 1024} // 500KB
-                    acceptedFileTypes="image/*"
+              <>
+                <p className="text-lg sora text-black my-10 font-medium">
+                  Social Media handles
+                </p>
+                <div className="space-y-5">
+                  <InputField
+                    label="Twitter"
+                    name="twitter"
+                    placeholder="https://x.com/wawu_africa"
+                    value={twitter}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setTwitter(value)}
+                  />
+                  <InputField
+                    label="Facebook"
+                    name="facebook"
+                    placeholder="https://facebook.com/wawu-africa"
+                    value={facebook}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setFacebook(value)}
+                  />
+                  <InputField
+                    label="LinkedIn"
+                    name="linkedIn"
+                    placeholder="www.linkedin.com/in/wawu-africa"
+                    value={linkedIn}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setLinkedIn(value)}
+                  />
+                  <InputField
+                    label="Instagram"
+                    name="instagram"
+                    placeholder="https://www.instagram.com/wawu-africa"
+                    value={instagram}
+                    register={register}
+                    errors={errors}
+                    setValue={(value) => setInstagram(value)}
                   />
                 </div>
-                <Button variant="tertiary">Add</Button>
+              </>
+              <div className="py-5">
+                <button
+                  type="submit"
+                  className="p-2 text-nowrap bg-[#E54D9A] py-2 px-10 rounded-xl text-white font-semibold sora"
+                  disabled={isSubmitting}
+                >
+                  {!isSubmitting ? "Submit form" : "Submitting..."}
+                </button>
               </div>
-            </div>
-          </form>
-          <div></div>
+            </form>
+          </div>
         </div>
-       
-      </div>
+      </>
     </LayoutProfile>
   );
 };
+
 export default BuyerProfileCreation;

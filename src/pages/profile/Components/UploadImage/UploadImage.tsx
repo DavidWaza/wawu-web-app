@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from "react";
-import { MdDeleteOutline } from "react-icons/md";
+
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
+import { Trash2 } from "lucide-react";
 
 
 interface UploadImageProps {
@@ -34,7 +35,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
   return (
     <div className="border border-gray-400 rounded-md lg:w-[30%] my-5">
       <div className="flex justify-end p-3">
-        <MdDeleteOutline className="text-black" onClick={() => handleUpload(null)} />
+      <Trash2 className="text-black" onClick={() => handleUpload(null)}/>
       </div>
       <div className="text-center">
         <div className="py-10">

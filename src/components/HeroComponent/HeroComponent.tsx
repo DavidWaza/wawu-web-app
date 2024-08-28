@@ -1,6 +1,5 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 import Button from "@/components/ui/Button/Button";
-import { FaAngleRight } from "react-icons/fa";
 import Image from "next/image";
 
 interface HeroComponentProps {

@@ -5,6 +5,8 @@ import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import Button from "@/components/ui/Button/Button";
 import Navbar from "@/components/Header/Navbar/Navbar";
 import MobileNavbar from "@/components/Header/Navbar/MobileNavbar";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const salutationOptions = ["Reason number 1", "Reason number 2"];
 
@@ -31,9 +33,9 @@ const ContactUs = () => {
         <Heading fontColor="secondary" variant="medium">
           Get In Touch With Us
         </Heading>
-        <div className="mt-10 lg:mt-20">
+        <div className="mt-10">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="lg:grid grid-cols-2 gap-10">
+            <div className="lg:grid grid-cols-2 gap-5">
               <CustomInput
                 label="Full Name"
                 name="first name"
@@ -52,30 +54,22 @@ const ContactUs = () => {
                 type="email"
                 className="rounded-lg p-3 w-full"
               />
-              <CustomInput
-                label="Phone number"
-                name="number"
-                placeholder="+000"
-                register={register}
-                errors={errors}
-                type="number"
-                className="rounded-lg p-3 w-full"
-              />
-              <CustomSelect
-                label="How can we help?"
-                name="name"
-                register={register}
-                errors={errors}
-                options={salutationOptions}
-                // type="email"
-                className="rounded-lg p-3 w-full"
-              />
+              <div>
+                <label className=" text-black block font-medium sora text-left">Phone Number</label>
+                <PhoneInput
+                  country={"ng"}
+                  // 
+                  inputStyle={{
+                    width: "100%",
+                    height: "41px",
+                    border: "1px solid #ddd",
+                  }}
+                />
+              </div>
             </div>
             <div>
-              <div>
-                <label className="text-black block text-left text-medium text-sm">
-                  Message
-                </label>
+              <div className="py-5">
+              <label className=" text-black block font-medium sora text-left">Message</label>
                 <textarea
                   {...register("overview", {
                     // required: "role is required",

@@ -1,9 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { BsEyeSlash } from "react-icons/bs";
-import { IoEyeOutline } from "react-icons/io5";
-import Link from "next/link";
 import axiosInstance from "@/pages/api/axiosInstance";
 import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../../../../types/Types";
@@ -11,6 +8,7 @@ import { login_url } from "@/pages/api/endpoints";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [email, setEmail] = useState<FormFields["email"]>("");

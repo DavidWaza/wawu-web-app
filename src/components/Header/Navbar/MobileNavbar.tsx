@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { IoCloseOutline } from "react-icons/io5";
+
 import Image from "next/image";
 import Link from "next/link";
-import { RiCloseLargeLine } from "react-icons/ri";
+
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 const MobileNavbar = () => {
   const [hamburgerClick, setHamburgerClick] = useState(false);
@@ -36,17 +36,13 @@ const MobileNavbar = () => {
           onClick={handleClickHamburger}
           className="transition-all ease-linear"
         >
-          {hamburgerClick ? (
-            <IoCloseOutline className="text-black" size={30} />
-          ) : (
-            <RxHamburgerMenu className="text-black" size={30} />
-          )}
+          {hamburgerClick ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
       {hamburgerClick && (
         <div className="fixed top-0 right-0 h-full w-[70%] bg-[#ffffff] flex flex-col items-right px-10 space-y-4 py-14 z-50 transition-all ease-in-out">
           <div onClick={handleClose} className="absolute right-[30px] top-7">
-            <RiCloseLargeLine className="text-black" size={30} />
+            <X size={30} />
           </div>
           <Link href="/" className="text-black text-lg font-bold">
             Home

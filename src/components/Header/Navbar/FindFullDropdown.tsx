@@ -1,5 +1,5 @@
+import { ChevronRight } from "lucide-react";
 import React, { useState } from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
 
 const GuidesLinks = [
   {
@@ -43,7 +43,7 @@ const FindFullNavigation = () => {
                       onClick={() => handleClick(index)}
                     >
                       {guide.label}
-                      <MdKeyboardArrowRight
+                      <ChevronRight
                         size={20}
                         style={{
                           transform:

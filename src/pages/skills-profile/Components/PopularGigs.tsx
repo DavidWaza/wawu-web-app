@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
-import { GoArrowRight } from "react-icons/go";
+import { MoveRight } from "lucide-react";
+
 
 interface PopularGigsprops {
   src: string;
@@ -24,7 +25,7 @@ const PopularGigs: FC<PopularGigsprops> = ({ src, title }) => {
           <Text variant="small" className="text-slate-500">
             {title}
           </Text>
-          <GoArrowRight className="text-black" />
+          <MoveRight />
         </div>
       </div>
   );

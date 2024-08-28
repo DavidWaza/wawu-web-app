@@ -2,25 +2,33 @@ import Image from "next/image";
 import { Text } from "../ui/Typography/Typography";
 import Link from "next/link";
 import { pageLinks } from "@/data/portfolioData";
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaTiktok } from "react-icons/fa6";
-import { RiInstagramFill } from "react-icons/ri";
-import FooterLogo from "./FooterLogo";
-import { Mail, MapPin, Phone } from "lucide-react";
 
+import FooterLogo from "./FooterLogo";
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+} from "lucide-react";
+
+//facebook
+// twitter
+// tiktok
+// instagram
 const contactLinks = [
   {
-    icon: <Mail size={20} />,
+    icon: <Mail className="lg:w-[20px] w-[15px]" />,
     contact: "support@wawuafrica.com",
   },
   {
-    icon: <MapPin  />,
+    icon: <MapPin className="lg:w-[20px] w-[25px]" />,
     contact: ` 14 Ibiyinka Salvador, Off African Lane Lekki Phase 1, Lagos
       Nigeria.`,
   },
   {
-    icon: <Phone size={20} />,
+    icon: <Phone className="lg:w-[20px] w-[15px]" />,
     contact: "+2348089925524",
   },
 ];
@@ -33,7 +41,7 @@ const Footer = () => {
             <FooterLogo classname="w-[40%]" />
             {contactLinks.map((contactLink, index) => (
               <div className="block px-4" key={index}>
-                <div className="flex gap-3 align-middle items-center mt-3 py-3">
+                <div className="flex gap-3 align-middle items-center mt-3 py-1">
                   {contactLink.icon}
                   <Text variant="small">{contactLink.contact}</Text>
                 </div>
@@ -54,18 +62,12 @@ const Footer = () => {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center lg:justify-end gap-4 lg:gap-10 mt-10">
-              <Link href={"#"}>
-                <FaFacebook size={25} />
+            <div className="flex justify-center lg:justify-end gap-4 lg:gap-5 mt-10">
+              <Link href={"https://x.com/wawu_africa"}>
+                <Twitter size={25} />
               </Link>
-              <Link href={"#"}>
-                <FaXTwitter size={25} />
-              </Link>
-              <Link href={"#"}>
-                <FaTiktok size={25} />
-              </Link>
-              <Link href={"#"}>
-                <RiInstagramFill size={25} />
+              <Link href={"https://www.instagram.com/wawu.africa/"}>
+                <Instagram size={25} />
               </Link>
             </div>
           </div>

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { RiArrowDropDownLine } from "react-icons/ri";
+
 import Button from "../ui/Button/Button";
 import "react-responsive-modal/styles.css";
 import Modal from "react-responsive-modal";
 import AccordionModal from "./AccordionModal";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { fetch_faq } from "@/pages/api/endpoints";
+import { ChevronDown } from "lucide-react";
 
 interface AccordionProps {
   question: string;
@@ -36,9 +37,7 @@ const AccordionItem: React.FC<AccordionProps> = ({
         <p className="question-content text-sm lg:text-lg text-black">
           {question}
         </p>
-        <RiArrowDropDownLine
-          className={`arrow text-black ${isOpen ? "active" : ""}`}
-        />
+        <ChevronDown className={`arrow text-black ${isOpen ? "active" : ""}`} />
       </button>
 
       <div

@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import { Undo2 } from "lucide-react";
 
 type FormFields = {
   email: string;
@@ -53,7 +53,8 @@ const ForgetPassword = () => {
             {isSubmitting ? "Sending...." : "Send Password"}
           </button>
           <div className="flex justify-center gap-4 items-center my-6 group">
-            <IoIosArrowRoundBack className="!text-[#ED459A]" />
+            <Undo2 className="!text-[#ED459A]" />
+
             <button onClick={() => router.back()} className=" !text-[#ED459A]">
               Go back
             </button>

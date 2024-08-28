@@ -3,7 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { Text } from "@/components/ui/Typography/Typography";
 import Link from "next/link";
-import { GoArrowRight } from "react-icons/go";
+import { MoveRight } from "lucide-react";
+
 const Userportfolio = () => {
   return (
     <div>
@@ -13,7 +14,8 @@ const Userportfolio = () => {
           <Link href={"/portfolio"} className="!underline font-semibold text-[16px]">
             See All
           </Link>
-          <GoArrowRight className="text-[#ED459A]" />
+          <MoveRight className="text-[#ED459A]" />
+        
         </div>
       </div>
       <div className="grid grid-cols-1 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 py-3 gap-3">

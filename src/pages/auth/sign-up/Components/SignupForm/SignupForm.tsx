@@ -1,9 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { BsEyeSlash } from "react-icons/bs";
 import Link from "next/link";
-import { IoEyeOutline } from "react-icons/io5";
 import axiosInstance from "@/pages/api/axiosInstance";
 import { useOnboarding } from "@/Context/onboardingContext";
 import { useRouter } from "next/navigation";
@@ -56,7 +54,6 @@ const SignupForm = () => {
       toast.success(response.data.message);
 
       // Store the selected role in local storage
-     
 
       goToNextStep();
       setTimeout(() => {
@@ -115,7 +112,7 @@ const SignupForm = () => {
         <InputField
           label="Phone Number"
           name="phoneNumber"
-          placeholder="0801122233334"
+          placeholder="08151611293"
           value={phoneNumber}
           register={register}
           errors={errors}

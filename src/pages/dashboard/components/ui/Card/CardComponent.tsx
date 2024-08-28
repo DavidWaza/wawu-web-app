@@ -6,8 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 import RecentSales from "../../RecentSales/RecentSales";
+import { Ellipsis } from "lucide-react";
 
 const CardComponent = () => {
   return (
@@ -16,7 +17,7 @@ const CardComponent = () => {
         <CardHeader>
           <CardTitle className="flex justify-between items-center">
             Chart
-            <HiOutlineDotsHorizontal />
+            <Ellipsis />
           </CardTitle>
         </CardHeader>
         <CardContent>

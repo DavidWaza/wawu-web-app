@@ -1,8 +1,7 @@
 import { Heading, Text } from "@/components/ui/Typography/Typography";
 
 import Button from "@/components/ui/Button/Button";
-import { MdArrowRightAlt } from "react-icons/md";
-import { LuMoveLeft } from "react-icons/lu";
+
 import UploadImage from "../../profile/Components/UploadImage/UploadImage";
 import Header from "@/pages/sellers/Components/Header/Header";
 import { useState } from "react";
@@ -110,10 +109,10 @@ const ClientBriefReview = () => {
             href={'/client-brief'}
             className="p-2 !bg-[#151B28] mb-5 gap-3 flex items-center justify-center"
           >
-            <LuMoveLeft />
+          
             Back
           </Button>
-          <Button suffix={<MdArrowRightAlt />} size="large" className="p-2">
+          <Button size="large" className="p-2">
             Submit & get matched
           </Button>
         </div>
