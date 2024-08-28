@@ -43,6 +43,10 @@ interface SkillOption {
   value: string; // UUID of the skill
   label: string; // Name of the skill
 }
+interface Country {
+  code: string;
+  name: string;
+}
 
 const SellerProfileCreation = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -80,6 +84,8 @@ const SellerProfileCreation = () => {
   const [phone, setPhone] = useState("");
   const [meansOfIdentification, setMeansOfIdentification] =
     useState<FormFields["meansOfIdentification"]>("");
+  const [countryList, setCountryList] = useState<Country[]>([]);
+
   const {
     register,
     handleSubmit,
@@ -107,17 +113,30 @@ const SellerProfileCreation = () => {
     }
   };
 
+  const handleCountryChange = (value: string) => {
+    const country = countryList.find((item: Country) => item.code === value);
+    if (country) {
+      setCountry(country.name);
+    }
+  };
+
   const fetchCountries = async () => {
     try {
       const response = await axios.get(
         `https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code`
       );
-      console.log("count", response.data.countries);
-      setCountry(response.data.countries);
+      const countries: Country[] = response.data.countries.map(
+        (country: any) => ({
+          code: country.value,
+          name: country.label,
+        })
+      );
+      setCountryList(countries); // Set the list of countries
     } catch (err) {
       console.log(err);
     }
   };
+
   const onSubmit: SubmitHandler<FormFields> = async () => {
     const formData = new FormData();
 
@@ -438,24 +457,20 @@ const SellerProfileCreation = () => {
                       <UiSelect
                         {...register("country")}
                         name="country"
-                        value={country}
-                        onValueChange={(value: string) => setCountry(value)}
+                        value={country || ""}
+                        onValueChange={(value: string) =>
+                          handleCountryChange(value)
+                        }
                       >
                         <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
                           <SelectValue placeholder="Select Country" />
                         </SelectTrigger>
                         <SelectContent>
-                          {Array.isArray(country) &&
-                            country.map(
-                              (
-                                nation: { code: string; name: string },
-                                index: Key
-                              ) => (
-                                <SelectItem value={nation.code} key={index}>
-                                  {nation.name}
-                                </SelectItem>
-                              )
-                            )}
+                          {countryList.map((nation) => (
+                            <SelectItem value={nation.code} key={nation.code}>
+                              {nation.name}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </UiSelect>
                     </div>
@@ -576,6 +591,16 @@ const SellerProfileCreation = () => {
                       Next {currentStep + 1}/5
                     </button>
                   ) : (
+                    <button
+                      type="button" // Change this to "button" to prevent form submission
+                      className="bg-[#08A969] rounded-lg text-white text-[16px] py-2 px-5 hidden"
+                      onClick={handleNextStep}
+                    >
+                      Next {currentStep}/5
+                    </button>
+                  )}
+
+                  {currentStep === 5 && (
                     <button
                       type="submit"
                       className="p-2 text-nowrap bg-[#E54D9A] py-2 px-10 rounded-xl text-white font-semibold sora"
