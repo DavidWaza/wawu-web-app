@@ -56,15 +56,11 @@ const Hero = () => {
                     sizes="100vw"
                     className="w-full h-auto object-contain object-center"
                   />
-                  <Text
-                    className="text-white leading-[30px] capitalize py-7"
-                    variant="small"
-                  >
-                    Forget the old rules. You can have the best girls <br />{" "}
-                    Right now. Right here.
-                  </Text>
+                  <p className="text-white leading-[30px] text-[20px] capitalize py-7">
+                    Forget the old rules. You can have the best girls Right now.
+                    Right here.
+                  </p>
                   <SearchFilter />
-                
                 </div>
                 <div className="h-full flex justify-center items-center mt-[4rem] pt-[1rem]">
                   <Image
