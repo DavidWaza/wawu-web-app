@@ -55,7 +55,7 @@ const Seller = () => {
       <HeroComponent
         header="Incubators, Creators, Caretakers, Protectors & Preservers just for you."
         subText="Get the best female spearheads to deliver your projects with a wow experience"
-        buttonText="Become a seller"
+        buttonText="Become a Buyer"
         backgroundColor="bg-[#A812E3]"
         imgSrc="/assets/g1.svg"
       />

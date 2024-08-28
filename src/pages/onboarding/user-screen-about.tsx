@@ -83,9 +83,8 @@ const AboutUserProfileOnboarding: React.FC = () => {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectItem value="stewards">Stewards</SelectItem>
-                          <SelectItem value="artisan">Artisan</SelectItem>
-                          <SelectItem value="patrons">Patrons</SelectItem>
+                          <SelectItem value="stewards">Stewards(Seller)</SelectItem>
+                          <SelectItem value="patrons">Patrons(Buyers)</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>

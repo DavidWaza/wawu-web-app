@@ -72,7 +72,7 @@ const UserExpertise: React.FC = () => {
     { src: "/assets/designer.svg", title: "Designer" },
     { src: "/assets/data-analyst.svg", title: "Data Analyst" },
     { src: "/assets/marketer.svg", title: "Marketer" },
-    { src: "/assets/other.svg", title: "Other" },
+    { src: "/assets/other.svg", title: "Others" },
   ];
 
   return (

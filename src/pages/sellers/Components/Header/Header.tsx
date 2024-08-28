@@ -62,6 +62,12 @@ const Header = () => {
       </div>
 
       <div className="flex items-center gap-4">
+        <Link href={"/profile/seller-profile-creation"}>
+          <button className="bg-[#F52585] text-white sora font-medium py-2 px-5 rounded-lg">
+            Update Profile
+          </button>
+        </Link>
+
         <IconFolder />
         <UserAvatar onClick={isMobile ? toggleDrawer : toggleDropdown} />
       </div>

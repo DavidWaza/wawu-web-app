@@ -68,6 +68,7 @@ export interface FormFields {
   title?:string;
   category?:string
   sub_category?:string
+  meansOfIdentification?:string
 }
 
 export type InputFieldProps = {

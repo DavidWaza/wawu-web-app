@@ -1,4 +1,13 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  AwaitedReactNode,
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+} from "react";
 import LayoutProfile from "../layout";
 import Button from "@/components/ui/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -26,9 +35,9 @@ import { toast } from "sonner";
 import Select, { MultiValue } from "react-select";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { PhoneInput } from "react-international-phone";
-import "react-international-phone/style.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import axios from "axios";
 
 interface SkillOption {
   value: string; // UUID of the skill
@@ -69,7 +78,8 @@ const SellerProfileCreation = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [phone, setPhone] = useState("");
-
+  const [meansOfIdentification, setMeansOfIdentification] =
+    useState<FormFields["meansOfIdentification"]>("");
   const {
     register,
     handleSubmit,
@@ -79,6 +89,7 @@ const SellerProfileCreation = () => {
   useEffect(() => {
     fetchCategories();
     fetchUserProfile();
+    fetchCountries();
   }, []);
 
   const router = useRouter();
@@ -96,6 +107,17 @@ const SellerProfileCreation = () => {
     }
   };
 
+  const fetchCountries = async () => {
+    try {
+      const response = await axios.get(
+        `https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code`
+      );
+      console.log("count", response.data.countries);
+      setCountry(response.data.countries);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const onSubmit: SubmitHandler<FormFields> = async () => {
     const formData = new FormData();
 
@@ -196,7 +218,9 @@ const SellerProfileCreation = () => {
               ) : currentStep === 3 ? (
                 <p className="text-lg font-medium">Experience</p>
               ) : currentStep === 4 ? (
-                <p className="text-lg font-medium">Means of Identification</p>
+                <p className="text-lg font-medium">
+                  Valid Means of Identification
+                </p>
               ) : currentStep === 5 ? (
                 <p className="text-lg font-medium">Social Media</p>
               ) : null}
@@ -234,42 +258,21 @@ const SellerProfileCreation = () => {
                       errors={errors}
                       setValue={(value) => setEmail(value)}
                     />
-                    <div className="relative items-center mt-1">
-                      <InputField
-                        type={showPassword ? "text" : "password"}
-                        label="Password"
-                        name="password"
-                        placeholder="***********"
-                        value={password}
-                        register={register}
-                        errors={errors}
-                        setValue={(value) => setPassword(value)}
-                      />
-                      <div className="absolute right-2 top-[75%] transform -translate-y-1/2">
-                        <button
-                          type="button"
-                          onClick={togglePasswordVisibility}
-                          className=" focus:outline-none"
-                        >
-                          {showPassword ? (
-                            <EyeOffIcon className="w-5 h-5 text-black" />
-                          ) : (
-                            <EyeIcon className="w-5 h-5 text-black" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
                     <div>
                       <label className="text-black block text-sm sora py-2">
                         Phone Number
                       </label>
                       <PhoneInput
                         {...register("phoneNumber")}
-                        defaultCountry="ng"
-                        name="phoneNumber"
-                        placeholder="090112233345"
+                        country={"ng"}
                         value={phone}
                         onChange={(phone) => setPhoneNumber(phone)}
+                        inputStyle={{
+                          width: "100%",
+                          height: "41px",
+                          border: "1px solid #ddd",
+                          borderRadius: "8px",
+                        }}
                       />
                     </div>
 
@@ -421,36 +424,67 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="End Date"
                       name="endDate"
-                      value={endDate || ""} // Convert endDate to string for the input field
+                      value={endDate || ""}
                       type="date"
                       placeholder="Date"
                       register={register}
                       errors={errors}
                       setValue={(value) => setEndDate(value)}
                     />
-                    <InputField
-                      label="Country"
-                      name="country"
-                      placeholder="Country"
-                      value={country}
-                      register={register}
-                      errors={errors}
-                      setValue={(value) => setCountry(value)}
-                    />
-                    <InputField
-                      label="State"
-                      name="state"
-                      placeholder="State"
-                      value={state}
-                      register={register}
-                      errors={errors}
-                      setValue={(value) => setState(value)}
-                    />
+                    <div>
+                      <label className="text-black block text-sm sora py-2">
+                        Country
+                      </label>
+                      <UiSelect
+                        {...register("country")}
+                        name="country"
+                        value={country}
+                        onValueChange={(value: string) => setCountry(value)}
+                      >
+                        <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
+                          <SelectValue placeholder="Select Country" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Array.isArray(country) &&
+                            country.map(
+                              (
+                                nation: { code: string; name: string },
+                                index: Key
+                              ) => (
+                                <SelectItem value={nation.code} key={index}>
+                                  {nation.name}
+                                </SelectItem>
+                              )
+                            )}
+                        </SelectContent>
+                      </UiSelect>
+                    </div>
                   </div>
                 </>
               )}
               {currentStep === 4 && (
                 <>
+                  <UiSelect
+                    {...register("meansOfIdentification")}
+                    name="courseOfStudy"
+                    value={meansOfIdentification}
+                    onValueChange={(value: string) =>
+                      setMeansOfIdentification(value)
+                    }
+                  >
+                    <SelectTrigger className="bg-white hover:bg-white text-[#414457CC] whitespace-nowrap">
+                      <SelectValue placeholder="Means of Identification" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="nin">
+                        National Identity Number (NIN)
+                      </SelectItem>
+                      <SelectItem value="ip">International Passport</SelectItem>
+                      <SelectItem value="ip">International Passport</SelectItem>
+                      <SelectItem value="dl">Driver&apos;s License</SelectItem>
+                      <SelectItem value="vc">Voter&apos;s Card</SelectItem>
+                    </SelectContent>
+                  </UiSelect>
                   <div className="my-5">
                     <UploadImage
                       handleUpload={handleUpload}
@@ -459,15 +493,6 @@ const SellerProfileCreation = () => {
                       acceptedFileTypes="image/*"
                     />
                   </div>
-                  <InputField
-                    label="Country"
-                    name="twitter"
-                    placeholder="Country"
-                    value={twitter}
-                    register={register}
-                    errors={errors}
-                    setValue={(value) => setTwitter(value)}
-                  />
                   <InputField
                     label="State"
                     name="twitter"

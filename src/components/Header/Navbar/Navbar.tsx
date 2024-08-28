@@ -130,9 +130,6 @@ const Navbar: React.FC<linkProps> = () => {
               defaultValue={i18n.language}
             >
               <option value="en">English</option>
-              <option value="ar">Arabic</option>
-              <option value="fr">French</option>
-              <option value="es">Spanish</option>
             </select>
             <Link href={"/auth/sign-up"}>
               <button
