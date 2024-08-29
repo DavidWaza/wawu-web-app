@@ -10,6 +10,7 @@ import axiosInstance from "../api/axiosInstance";
 import { sign_up_url } from "../api/endpoints";
 import { toast } from "sonner";
 import InputField from "@/components/TextField/InputField";
+import axios from "axios";
 
 const FlutterwavePayment = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -21,6 +22,9 @@ const FlutterwavePayment = () => {
   const [zipcode, setZipcode] = useState<FormFields["zipcode"]>();
   const [discountCode, setDiscountCode] =
     useState<FormFields["discountCode"]>();
+    const [otp, setOtp] = useState("");
+    const [otpVerified, setOtpVerified] = useState(false);
+    
 
   const {
     register,
@@ -39,6 +43,27 @@ const FlutterwavePayment = () => {
       });
 
       toast.success(response.data.message);
+
+      await axios.post('https://api.flutterwave.com/v3/otps', {
+        length: 7,
+        customer: {
+          name: `${firstName} ${lastName}`,
+          email: email,
+          phone: phoneNumber,
+        },
+        sender: 'Wawu Africa',
+        send: true,
+        medium: ['email', 'whatsapp'],
+        expiry: 5,
+      }, {
+        headers: {
+          'Authorization': 'Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X',
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      toast.success("OTP sent to your email and phone number. Please verify.");
+
     } catch (err: any) {
       toast.error(err.response.data.message || "Error signing up");
       console.log(err);
