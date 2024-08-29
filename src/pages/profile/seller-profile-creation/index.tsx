@@ -508,6 +508,18 @@ const SellerProfileCreation = () => {
                       uploadEndpoint="/api/upload"
                       maxFileSize={500 * 1024} // 500KB
                       acceptedFileTypes="image/*"
+                      placeholder="/assets/avatar.png"
+                      text="Upload image"
+                    />
+                  </div>
+                  <div className="my-5">
+                    <UploadImage
+                      handleUpload={handleUpload}
+                      uploadEndpoint="/api/upload"
+                      maxFileSize={500 * 1024} // 500KB
+                      acceptedFileTypes="image/*"
+                      placeholder="/assets/avatar.png"
+                      text="Please upload an image of yourself holding your ID card"
                     />
                   </div>
                   <InputField
@@ -567,6 +579,8 @@ const SellerProfileCreation = () => {
                       uploadEndpoint="/api/upload"
                       maxFileSize={500 * 1024} // 500KB
                       acceptedFileTypes="image/*"
+                      placeholder="/assets/avatar.png"
+                      text="Upload Image"
                     />
                   </div>
                 </>
