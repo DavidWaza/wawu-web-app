@@ -90,8 +90,8 @@ const FlutterwavePayment = () => {
   };
   const handlePaymentSuccess = (response: any) => {
     console.log(response);
-    closePaymentModal(); // Close the payment modal
-    router.push("/"); // Redirect to the homepage
+    closePaymentModal();
+    router.push("/application-review"); 
   };
 
   const fwConfig = {

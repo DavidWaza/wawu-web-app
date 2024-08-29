@@ -12,7 +12,6 @@ import GigPortfolio from "../sellers/Components/GigPortfolio/GigPortfolio";
 import { ServiceCategoryData } from "../../../types/Types";
 import Header from "../sellers/Components/Header/Header";
 
-
 const Buyers = () => {
   const settings = {
     dots: true,
@@ -76,7 +75,6 @@ const Buyers = () => {
             <Text variant="small" className="underline">
               <Link href={"#"}>See All</Link>
             </Text>
-           
           </div>
         </div>
         <RecentSearch src={""} title={""} index={0} />
@@ -84,27 +82,44 @@ const Buyers = () => {
           Object.keys(fetchFeed).map((category) => (
             <div key={category}>
               <div className="mt-32">
-                <Heading
-                  variant="medium"
-                  fontColor="secondary"
-                  className="sora"
-                >
-                  {" "}
-                  Most popular Gigs in{" "}
-                  <span className="text-[#9510c9] sora">{category}</span>
-                </Heading>
+                
                 <div {...settings}>
-                  <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
-                    {fetchFeed[category].map((item) => (
-                      <>
-                        <div>
-                          <Link href={"/sellers/seller-profile"}>
-                            <Card name={item.firstName} />
-                          </Link>
-                        </div>
-                      </>
-                    ))}
-                  </div>
+                  {fetchFeed &&
+                    Object.keys(fetchFeed).map((category) => {
+                      const items = fetchFeed[category];
+                      if (items.length > 0) {
+                        return (
+                          <div key={category} className="mt-32">
+                            <Heading
+                              variant="medium"
+                              fontColor="secondary"
+                              className="sora"
+                            >
+                              Most popular Gigs in{" "}
+                              <span className="text-[#9510c9] sora">
+                                {category}
+                              </span>
+                            </Heading>
+                            <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-3 mt-3">
+                              {items.map((item) => (
+                                <div key={item.uuid}>
+                                  <Link
+                                    href={`/sellers/seller-profile?name=${item.firstName}&last=${item.lastName}&about=${item.additionalInfo?.about}`}
+                                  >
+                                    <Card
+                                      name={`${item.firstName} ${item.lastName}`}
+                                      last={item.lastName}
+                                      about={item.additionalInfo?.about}
+                                    />
+                                  </Link>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                 </div>
               </div>
             </div>

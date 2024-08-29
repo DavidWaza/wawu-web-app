@@ -20,6 +20,14 @@ import {
 import InputField from "@/components/TextField/InputField";
 import { FormFields } from "../../../types/Types";
 import SelectField from "@/components/TextField/SelectField";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface ICategoryProps {
   uuid: string;
@@ -35,7 +43,6 @@ const ClientBrief = () => {
   const [sub_category, setSub_category] = useState<ICategoryProps[]>([]);
   const [budget, setBudget] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
 
   const {
     register,
@@ -121,13 +128,19 @@ const ClientBrief = () => {
             <Text variant="small" className="text-white my-5">
               This is where you fill us in one of the big picture?
             </Text>
-            <Button
-              className="border-none lg:w-[26rem] w-full p-1 lg:p-3 flex items-center text-sm"
-              size="large"
-              
-            >
-              How does the matching thing work
-            </Button>
+            <Dialog>
+              <DialogTrigger>
+                <button className="border-none lg:w-[26rem] w-full p-1 text-[16px] text-white lg:p-3 flex items-center bg-[#F52585] py-2 px-5 rounded-lg">
+                  How does the matching thing work
+                </button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>How does th matching work?</DialogTitle>
+                  <DialogDescription className="py-20">WE NEED CONTENT</DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         <div className="my-10">
@@ -170,7 +183,9 @@ const ClientBrief = () => {
                 label="Subcategory"
                 name="sub_category"
                 value={sub_category[0]?.uuid || sub_category}
-                setValue={(value) => setSub_category([{ uuid: value, name: "" }])}
+                setValue={(value) =>
+                  setSub_category([{ uuid: value, name: "" }])
+                }
                 options={
                   sub_category.length > 0
                     ? sub_category.map((item) => ({
@@ -217,7 +232,6 @@ const ClientBrief = () => {
                   size="small"
                   className="p-2 flex gap-2 justify-center items-center !text-black"
                   href="/client-brief/client-brief-review"
-                 
                 >
                   Review
                 </Button>

@@ -55,7 +55,6 @@ const BuyerLandingComponent = () => {
       <HeroComponent
         header="We bring the work to you"
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
-      
         backgroundColor="bg-[#A812E3]"
         imgSrc="/assets/Girl-with-hangers.svg"
       />
@@ -90,12 +89,11 @@ const BuyerLandingComponent = () => {
                     </>
                   ))}
                   <div className="py-10">
-                    <Link href={'/auth/sign-up'}>
-                    <Button size="small" variant="tertiary">
-                      Get Started
-                    </Button>
+                    <Link href={"/auth/sign-up"}>
+                      <Button size="small" variant="tertiary">
+                        Get Started
+                      </Button>
                     </Link>
-                   
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
