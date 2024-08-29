@@ -54,7 +54,7 @@ const BuyerLandingComponent = () => {
       <HeroComponent
         header="We bring the work to you"
         subText="Give us this day, our daily food. We bring the food: You use your spoon"
-        buttonText="Become a Seller"
+      
         backgroundColor="bg-[#A812E3]"
         imgSrc="/assets/Girl-with-hangers.svg"
       />

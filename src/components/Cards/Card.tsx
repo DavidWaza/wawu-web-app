@@ -1,16 +1,17 @@
 import { Heart, Star } from "lucide-react";
 import { truncateText } from "../../../utilities/Truncate";
-import UserAvatar from "../UserAvatar/UserAvatar";
 import { Text } from "../ui/Typography/Typography";
+import { Badge } from "@/components/ui/badge";
 
 interface ICardPros {
-  name: string;
+  name?: string;
+  last?: string;
   about?: string;
   onClick?: () => void;
 }
 // Turn this props when the data is given
 
-const Card: React.FC<ICardPros> = ({ name, about, onClick }) => {
+const Card: React.FC<ICardPros> = ({ name, about, last, onClick }) => {
   return (
     <div className="shadow-md hover:shadow-none transition-all ease-linear rounded-md border border-slate-300 w-full h-full p-3 cursor-pointer">
       <div>
@@ -18,15 +19,20 @@ const Card: React.FC<ICardPros> = ({ name, about, onClick }) => {
       </div>
       <div className="flex justify-between items-center my-5">
         <div className="flex items-center gap-2">
-          <UserAvatar />
+          <div className="rounded-full border h-10 w-10 bg-[#f0f3f4] border-slate-500 flex items-center justify-center">
+            <p className="text-black text-lg sora font-medium">
+              {`${name?.charAt(0)}${last?.charAt(0)}`}
+            </p>
+          </div>
           <Text variant="small" textWeight="bold">
             {name}
           </Text>
         </div>
         <div>
-          <Text variant="small" textWeight="bold">
-            Level 2
-          </Text>
+          <Badge variant="active">
+            <span className="w-2 h-2 p-1 animate-pulse bg-green-700 rounded-full"></span>
+            Online
+          </Badge>
         </div>
       </div>
       <div className="mb-[10px]">

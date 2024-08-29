@@ -15,6 +15,9 @@ import InputField from "@/components/TextField/InputField";
 import TextAreaField from "@/components/TextField/TextArea";
 import SelectField from "@/components/TextField/SelectField";
 
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 const Forms = () => {
   const {
     register,
@@ -95,6 +98,7 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setFirstName(value)}
+            asterix={true}
           />
 
           {/* LAST NAME */}
@@ -106,6 +110,8 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setLastName(value)}
+            asterix={true}
+
           />
 
           {/* EMAIL */}
@@ -118,6 +124,8 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setEmail(value)}
+            asterix={true}
+
           />
 
           {/* GENDER */}
@@ -129,18 +137,22 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setGender(value)}
+            asterix={true}
+
           />
 
           {/* PHONE NUMBER*/}
-          <InputField
-            label="Contact Number"
-            name="contactNumber"
-            placeholder="0901112233345"
-            value={contactNumber}
-            register={register}
-            errors={errors}
-            setValue={(value) => setContactNumber(value)}
-          />
+          <div>
+                <label className=" text-black block text-sm sora py-2">Phone Number</label>
+                <PhoneInput
+                  country={"ng"}
+                  inputStyle={{
+                    width: "100%",
+                    height: "41px",
+                    border: "1px solid #ddd",
+                  }}
+                />
+              </div>
 
           {/* PROFESSIONAL ROLE */}
           <InputField
@@ -151,6 +163,8 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setProfessionalRole(value)}
+            asterix={true}
+
           />
 
           {/* YEARS OF EXPERIENCE */}
@@ -162,34 +176,38 @@ const Forms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setYearsOfExperience(value)}
+            asterix={true}
+
           />
         </div>
 
         {/* CURRENT JOB DETAILS */}
         <TextAreaField
-          label="*Please give a brief overview of your current job, main responsibilities and career to date."
+          label="Please give a brief overview of your current job, main responsibilities and career to date."
           name="currentJobDetails"
           placeholder="Type here"
           value={currentJobDetails}
           register={register}
           errors={errors}
           setValue={(value) => setCurrentJobDetails(value)}
+          asterix={true}
         />
 
         {/* Capacity */}
         <TextAreaField
-          label="**Are you able to (have capacity and) commit ten hours in sixteen weeks to your assigned mentee?."
+          label="Are you able to (have capacity and) commit ten hours in sixteen weeks to your assigned mentee?."
           name="capacity"
           placeholder="Type here"
           value={capacity}
           register={register}
           errors={errors}
           setValue={(value) => setCapacity(value)}
+          asterix={true}
         />
 
         {/* REASON */}
         <SelectField
-          label="*Please select the reason(s) for wanting to be a mentor:"
+          label="Please select the reason(s) for wanting to be a mentor:"
           name="reason"
           register={register}
           errors={errors}
@@ -203,18 +221,19 @@ const Forms = () => {
 
         {/* VALUES */}
         <TextAreaField
-          label="**Please share your top five values (core characteristics, what do you value the most?)"
+          label="Please share your top five values (core characteristics, what do you value the most?)"
           name="values"
           placeholder="Type here"
           value={values}
           register={register}
           errors={errors}
           setValue={(value) => setValues(value)}
+          asterix={true}
         />
 
         {/* COMMITMENT */}
         <TextAreaField
-          label="*How will you demonstrate your commitment to support your assigned
+          label="How will you demonstrate your commitment to support your assigned
           mentee in achieving their short- and/or long-term goals?"
           name="commitment"
           placeholder="Type here"
@@ -222,22 +241,24 @@ const Forms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setCommitment(value)}
+          asterix={true}
         />
 
         {/* CHALLENGES */}
         <TextAreaField
-          label="*How will you demonstrate your commitment to support your assigned mentee in achieving their short- and/or long-term goals?"
+          label="How will you demonstrate your commitment to support your assigned mentee in achieving their short- and/or long-term goals?"
           name="challenges"
           placeholder="Type here"
           value={challenges}
           register={register}
           errors={errors}
           setValue={(value) => setChallenges(value)}
+          asterix={true}
         />
 
         {/* BEEN A MENTOR */}
         <SelectField
-          label="**Have you mentored a mentee before formally or informally?"
+          label="Have you mentored a mentee before formally or informally?"
           name="beenAMentor"
           register={register}
           errors={errors}
@@ -258,6 +279,7 @@ const Forms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setAreaOfMentorship(value)}
+          asterix={true}
         />
 
         <div className="my-5">
@@ -292,7 +314,13 @@ const Forms = () => {
             <p className="text-sm text-black">
               By continuing you agree to our{" "}
               <span className="text-[#ED459A]">
-                <Link href={"#"}>terms of use and privacy policy</Link>
+                <Link
+                  href={
+                    "https://drive.google.com/file/d/1Uu6EAwJIWlH86USS1sjYNyYZTR-DGpii/view?usp=drive_link"
+                  }
+                >
+                  terms of use and privacy policy
+                </Link>
               </span>
             </p>
           </div>

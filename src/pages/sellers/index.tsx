@@ -80,6 +80,7 @@ const Sellers = () => {
                         >
                           <Card
                             name={`${item.firstName} ${item.lastName}`}
+                            last={item.lastName}
                             about={item.additionalInfo?.about}
                           />
                         </Link>

@@ -19,8 +19,8 @@ import { Camera } from "lucide-react";
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const ProfileHero = () => {
-  const [profilePic, setProfilePic] = useState("/assets/profile-pic.png");
-  const [coverImage, setCoverImage] = useState("/assets/profile-seller.png");
+  const [profilePic, setProfilePic] = useState("/assets/avi.jpg");
+  const [coverImage, setCoverImage] = useState("/assets/Header-1.png");
   const [selectedProfilePic, setSelectedProfilePic] = useState<File | null>(null);
   const [selectedCoverImage, setSelectedCoverImage] = useState<File | null>(null);
   const [previewProfilePic, setPreviewProfilePic] = useState<string | null>(null);
@@ -174,9 +174,9 @@ const ProfileHero = () => {
                         </button>
                         <button
                           onClick={handleCancelUpdate}
-                          className="bg-gray-500 text-white px-4 py-2 rounded"
+                          className="bg-red-700 text-white px-4 py-2 rounded"
                         >
-                          Cancel
+                          Remove Image
                         </button>
                       </div>
                     </div>

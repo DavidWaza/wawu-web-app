@@ -58,13 +58,14 @@ const SkillsSection: React.FC = () => {
       <p className="text-black text-lg pt-10">Skills</p>
       {Object.entries(userSkills).map(([category, skills], idx) => (
         <div key={idx}>
-          <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 py-3 gap-3">
+          <div className="grid grid-cols-1 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 items-center text-nowrap py-3 gap-3">
             {skills.map((skill, index) => (
               <div
                 key={index}
                 className={`rounded-xl p-3 ${skill.bgColor} text-lg whitespace-normal ${
                   skill.bgColor === "bg-[#000]" ? "text-white" : "text-black"
-                }`}
+                  
+                } ${skill.name.length > 15 ? 'text-sm' : ''}`}
               >
                 {skill.name}
               </div>

@@ -70,7 +70,8 @@ const SellerProfileCreation = () => {
   const [loading, setLoading] = useState(false);
   const [userProfileName, setUserProfileName] = useState<string>("");
   const [userProfileLastName, setUserProfileLastName] = useState<string>("");
-  const [userProfilePhonenumber, setUserProfilePhonenumber] = useState<string>()
+  const [userProfilePhonenumber, setUserProfilePhonenumber] =
+    useState<string>();
   const [showPassword, setShowPassword] = useState(false);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [phone, setPhone] = useState("");
@@ -193,10 +194,10 @@ const SellerProfileCreation = () => {
   const fetchUserProfile = async () => {
     try {
       const response = await axiosInstance.get(fetch_user_profile);
-    
+
       setUserProfileName(response.data.data.firstName);
       setUserProfileLastName(response.data.data.lastName);
-      setUserProfilePhonenumber(response.data.data.phoneNumber)
+      setUserProfilePhonenumber(response.data.data.phoneNumber);
     } catch (err: any) {
       if (err.response) {
         toast.error(err.response.data.message);
@@ -217,7 +218,7 @@ const SellerProfileCreation = () => {
       {loading && <LoadingScreen />}
       <>
         <ProfileHero />
-        
+
         <div className="grid lg:grid-cols-2">
           <div className="py-10">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -246,6 +247,7 @@ const SellerProfileCreation = () => {
                       errors={errors}
                       setValue={(value) => setFirstName(value)}
                       className="!text-[#9CA3B7]"
+                      disabled
                     />
                     <InputField
                       label="Last Name"
@@ -256,6 +258,7 @@ const SellerProfileCreation = () => {
                       errors={errors}
                       setValue={(value) => setLastName(value)}
                       className="!text-[#9CA3B7]"
+                      disabled
                     />
                     {/* EMAIL AND PASSWORD */}
                     <InputField
@@ -348,6 +351,15 @@ const SellerProfileCreation = () => {
                         { value: "Latin", label: "Latin" },
                       ]}
                     />
+                    <InputField
+                      label="State"
+                      name="twitter"
+                      placeholder="State"
+                      value={twitter}
+                      register={register}
+                      errors={errors}
+                      setValue={(value) => setTwitter(value)}
+                    />
                   </>
                 )}
               </div>
@@ -368,7 +380,7 @@ const SellerProfileCreation = () => {
                       { value: "PHD", label: "PHD" },
                     ]}
                   />
-                 
+
                   <InputField
                     label="Institution"
                     name="institution"
@@ -381,10 +393,10 @@ const SellerProfileCreation = () => {
                   />
                   <InputField
                     label="Course of Study"
-                    name="institution"
+                    name="courseOfStudy"
                     placeholder="Add your Course of Study"
                     type="text"
-                    value={institution}
+                    value={courseOfStudy}
                     register={register}
                     errors={errors}
                     setValue={(value) => setCourseOfStudy(value)}
@@ -470,7 +482,6 @@ const SellerProfileCreation = () => {
                         National Identity Number (NIN)
                       </SelectItem>
                       <SelectItem value="ip">International Passport</SelectItem>
-                      <SelectItem value="ip">International Passport</SelectItem>
                       <SelectItem value="dl">Driver&apos;s License</SelectItem>
                       <SelectItem value="vc">Voter&apos;s Card</SelectItem>
                     </SelectContent>
@@ -482,16 +493,16 @@ const SellerProfileCreation = () => {
                       maxFileSize={500 * 1024} // 500KB
                       acceptedFileTypes="image/*"
                     />
+                     <label className="text-black block text-sm sora pt-2">
+                        Upload a picture of your self holding an identification card.
+                      </label>
+                     <UploadImage
+                      handleUpload={handleUpload}
+                      uploadEndpoint="/api/upload"
+                      maxFileSize={500 * 1024} // 500KB
+                      acceptedFileTypes="image/*"
+                    />
                   </div>
-                  <InputField
-                    label="State"
-                    name="twitter"
-                    placeholder="State"
-                    value={twitter}
-                    register={register}
-                    errors={errors}
-                    setValue={(value) => setTwitter(value)}
-                  />
                 </>
               )}
               {currentStep === 5 && (
@@ -500,7 +511,7 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="Twitter"
                       name="twitter"
-                      placeholder="Twitter"
+                      placeholder="https://x.com/wawu_africa"
                       value={twitter}
                       register={register}
                       errors={errors}
@@ -509,7 +520,7 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="Facebook"
                       name="facebook"
-                      placeholder="Facebook"
+                      placeholder="https://facebook.com/wawuafrica/"
                       value={facebook}
                       register={register}
                       errors={errors}
@@ -518,7 +529,7 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="LinkedIn"
                       name="linkedIn"
-                      placeholder="LinkedIn"
+                      placeholder="www.linkedin.com/in/wawu-africa"
                       value={linkedIn}
                       register={register}
                       errors={errors}
@@ -527,19 +538,11 @@ const SellerProfileCreation = () => {
                     <InputField
                       label="Instagram"
                       name="instagram"
-                      placeholder="Instagram"
+                      placeholder="https://www.instagram.com/wawu.africa/"
                       value={instagram}
                       register={register}
                       errors={errors}
                       setValue={(value) => setInstagram(value)}
-                    />
-                  </div>
-                  <div className="my-5">
-                    <UploadImage
-                      handleUpload={handleUpload}
-                      uploadEndpoint="/api/upload"
-                      maxFileSize={500 * 1024} // 500KB
-                      acceptedFileTypes="image/*"
                     />
                   </div>
                 </>

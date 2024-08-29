@@ -86,6 +86,8 @@ export type InputFieldProps = {
   value: any;
   placeholder?: string;
   className?:string
+  asterix?:boolean
+  disabled?:boolean
 };
 
 export type ServiceSubCategory = {

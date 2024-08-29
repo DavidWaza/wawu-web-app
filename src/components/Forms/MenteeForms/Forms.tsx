@@ -14,6 +14,8 @@ import {
   isValidImageType,
 } from "../../../../utilities/imageUtils";
 import { toast } from "sonner";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const MenteeForms = () => {
   const {
@@ -114,6 +116,7 @@ const MenteeForms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setFirstName(value)}
+            asterix={true}
           />
 
           {/* LAST NAME */}
@@ -125,6 +128,7 @@ const MenteeForms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setLastName(value)}
+            asterix={true}
           />
 
           {/* EMAIL */}
@@ -137,18 +141,23 @@ const MenteeForms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setEmail(value)}
+            asterix={true}
           />
 
           {/* PHONE NUMBER*/}
-          <InputField
-            label="Contact Number"
-            name="phoneNumber"
-            placeholder="0901112233345"
-            value={phoneNumber}
-            register={register}
-            errors={errors}
-            setValue={(value) => setPhoneNumber(value)}
-          />
+          <div>
+            <label className="text-black block text-sm sora py-2">
+              Phone Number
+            </label>
+            <PhoneInput
+              country={"ng"}
+              inputStyle={{
+                width: "100%",
+                height: "41px",
+                border: "1px solid #ddd",
+              }}
+            />
+          </div>
 
           {/* CONTACT ADDRESS */}
           <InputField
@@ -159,6 +168,7 @@ const MenteeForms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setAddress(value)}
+            asterix={true}
           />
 
           {/* MAJOR */}
@@ -170,6 +180,7 @@ const MenteeForms = () => {
             register={register}
             errors={errors}
             setValue={(value) => setMajor(value)}
+            asterix={true}
           />
         </div>
 
@@ -182,6 +193,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setSpecialization(value)}
+          asterix={true}
         />
 
         {/* CONTACT TYPE */}
@@ -194,6 +206,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setBestContactType(value)}
+          asterix={true}
         />
 
         {/* REASON FOR APPLICATION */}
@@ -205,6 +218,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setReasonForApplication(value)}
+          asterix={true}
         />
 
         {/* COMMITMENT */}
@@ -216,6 +230,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setHelpToRender(value)}
+          asterix={true}
         />
 
         {/* REASON FOR APPLICATION */}
@@ -227,6 +242,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setIdealMentor(value)}
+          asterix={true}
         />
 
         {/* CHALLENGES */}
@@ -238,6 +254,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setChallenges(value)}
+          asterix={true}
         />
 
         {/* MENTOR EXPERIENCE GAIN */}
@@ -263,6 +280,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setInterests(value)}
+          asterix={true}
         />
 
         {/* ADDITIONAL INFO */}
@@ -274,6 +292,7 @@ const MenteeForms = () => {
           register={register}
           errors={errors}
           setValue={(value) => setAdditionalInfo(value)}
+          asterix={true}
         />
         <div className="my-5">
           <Heading
@@ -307,7 +326,13 @@ const MenteeForms = () => {
             <p className="text-sm text-black">
               By continuing you agree to our{" "}
               <span className="text-[#ED459A]">
-                <Link href={"#"}>terms of use and privacy policy</Link>
+                <Link
+                  href={
+                    "https://drive.google.com/file/d/1Uu6EAwJIWlH86USS1sjYNyYZTR-DGpii/view?usp=drive_link"
+                  }
+                >
+                  terms of use and privacy policy
+                </Link>
               </span>
             </p>
           </div>

@@ -78,10 +78,10 @@ body {
 }
 .bg-profile-seller {
   background-image: url("/assets/profile-seller.png");
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 30vh;
+  height: 40vh;
 }
 
 .loadingContainer {

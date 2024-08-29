@@ -58,7 +58,6 @@ const ContactUs = () => {
                 <label className=" text-black block font-medium sora text-left">Phone Number</label>
                 <PhoneInput
                   country={"ng"}
-                  // 
                   inputStyle={{
                     width: "100%",
                     height: "41px",

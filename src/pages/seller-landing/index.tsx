@@ -86,7 +86,7 @@ const Seller = () => {
                           alt={product.alt}
                           title={product.title}
                           desc={product.desc}
-                          link="Learn more"
+                        
                         />
                       </div>
                     </>

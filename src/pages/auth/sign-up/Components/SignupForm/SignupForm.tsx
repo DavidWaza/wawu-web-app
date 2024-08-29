@@ -12,6 +12,8 @@ import SelectField from "@/components/TextField/SelectField";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
 import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -111,7 +113,22 @@ const SignupForm = () => {
         </div>
 
         {/* PHONE NUMBER */}
-        <InputField
+        <div>
+          <label className=" text-black block text-sm sora py-2">
+            Phone Number
+          </label>
+          <PhoneInput
+            {...register("phoneNumber")}
+            onChange={(value:string) => setPhoneNumber(value)}
+            country={"ng"}
+            inputStyle={{
+              width: "100%",
+              height: "41px",
+              border: "1px solid #ddd",
+            }}
+          />
+        </div>
+        {/* <InputField
           label="Phone Number"
           name="phoneNumber"
           placeholder="08151611293"
@@ -119,7 +136,7 @@ const SignupForm = () => {
           register={register}
           errors={errors}
           setValue={(value) => setPhoneNumber(value)}
-        />
+        /> */}
 
         {/* PASSWORD */}
         <div className="relative">

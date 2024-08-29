@@ -56,25 +56,23 @@ export default function SellerProfile() {
         <span className="text-black font-semibold text-2xl ">
           Recommended for you.
         </span>
-        <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
+        {/* <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
-        </div>
+        </div> */}
       </div>
       <div className="px-10 lg:px-[8.4rem] my-20">
-        <span className="text-black font-semibold text-2xl ">
-          browsing history.
-        </span>
-        <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
+        
+        {/* <div className=" grid md:grid-cols-3 lg:grid-cols-5 gap-5 py-5">
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
           <Card name={""} />
-        </div>
+        </div> */}
       </div>
     </>
   );
