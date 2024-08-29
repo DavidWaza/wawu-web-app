@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "../ui/Button/Button";
 import { platforms } from "@/data/portfolioData";
 import WawuPlatforms from "./WawuPlatforms/WawuPlatforms";
+import Link from "next/link";
 
 const WawuPropsComponent = () => {
   return (
@@ -36,6 +37,7 @@ const WawuPropsComponent = () => {
                   </div>
                 ))}
                 <div className="flex 2xl:justify-start justify-center mt-12">
+                  <Link href={'/auth/sign-up'}>
                   <Button
                     variant="tertiary"
                     className="mt-20 py-2"
@@ -43,6 +45,8 @@ const WawuPropsComponent = () => {
                   >
                     Get Started
                   </Button>
+                  </Link>
+               
                 </div>
               </div>
             </div>

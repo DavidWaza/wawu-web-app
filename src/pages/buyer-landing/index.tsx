@@ -14,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 const professions = [
   "I am a developer",
@@ -89,9 +90,12 @@ const BuyerLandingComponent = () => {
                     </>
                   ))}
                   <div className="py-10">
+                    <Link href={'/auth/sign-up'}>
                     <Button size="small" variant="tertiary">
                       Get Started
                     </Button>
+                    </Link>
+                   
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
