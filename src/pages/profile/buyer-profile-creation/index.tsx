@@ -136,7 +136,7 @@ const BuyerProfileCreation = () => {
     <LayoutProfile>
       {loading && <LoadingScreen />}
       <>
-        <ProfileHero />
+        {/* <ProfileHero /> */}
         <div className="grid lg:grid-cols-2">
           <div className="py-10">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -152,6 +152,7 @@ const BuyerProfileCreation = () => {
                       errors={errors}
                       setValue={(value) => setFirstName(value)}
                       className="!text-[#9CA3B7]"
+                      disabled
                     />
                     <InputField
                       label="Last Name"
@@ -162,6 +163,7 @@ const BuyerProfileCreation = () => {
                       errors={errors}
                       setValue={(value) => setLastName(value)}
                       className="!text-[#9CA3B7]"
+                      disabled
                     />
                     {/* EMAIL AND PASSWORD */}
                     <InputField

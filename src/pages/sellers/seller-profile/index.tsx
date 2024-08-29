@@ -19,7 +19,7 @@ import Userportfolio from "@/pages/profile/Components/UserPortfolio/Userportfoli
 export default function SellerProfile() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <GigPortfolio />
       <div className="grid lg:grid-cols-3">
         <div className="px-10 lg:px-[8.4rem] py-4 col-span-2">

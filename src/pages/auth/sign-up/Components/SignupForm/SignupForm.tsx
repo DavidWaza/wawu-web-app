@@ -12,6 +12,7 @@ import SelectField from "@/components/TextField/SelectField";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
 import LoadingScreen from "@/components/LoadingScreen/LoadingScreen";
+import PhoneInput from "react-phone-input-2";
 
 const SignupForm = () => {
   const [firstName, setFirstName] = useState<FormFields["firstName"]>("");
@@ -107,18 +108,16 @@ const SignupForm = () => {
             setValue={(value) => setLastName(value)}
           />
         </div>
-
         {/* PHONE NUMBER */}
-        <InputField
-          label="Phone Number"
-          name="phoneNumber"
-          placeholder="08151611293"
-          value={phoneNumber}
-          register={register}
-          errors={errors}
-          setValue={(value) => setPhoneNumber(value)}
+        <PhoneInput
+          country={"ng"}
+          //
+          inputStyle={{
+            width: "100%",
+            height: "41px",
+            border: "1px solid #ddd",
+          }}
         />
-
         {/* PASSWORD */}
         <div className="relative">
           <InputField
@@ -138,7 +137,6 @@ const SignupForm = () => {
             {passwordVisible ? <Eye size={15} /> : <EyeOff size={15} />}
           </div>
         </div>
-
         <div className="flex justify-start items-start lg:items-center gap-1 py-5">
           <input type="checkbox" className="w-4 h-auto" />
           <p className="text-black text-sm sora">

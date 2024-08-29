@@ -19,8 +19,8 @@ import { Camera } from "lucide-react";
 const fileTypes = ["JPG", "PNG", "GIF"];
 
 const ProfileHero = () => {
-  const [profilePic, setProfilePic] = useState("/assets/profile-pic.png");
-  const [coverImage, setCoverImage] = useState("/assets/profile-seller.png");
+  const [profilePic, setProfilePic] = useState("/assets/avatar.png");
+  const [coverImage, setCoverImage] = useState("/assets/header-1.png");
   const [selectedProfilePic, setSelectedProfilePic] = useState<File | null>(
     null
   );
@@ -113,14 +113,13 @@ const ProfileHero = () => {
             }}
           >
             <div className="absolute right-10 bottom-10">
-            <Camera
-            className="text-white"
-              onClick={() =>
-                document.getElementById("coverImageInput")?.click()
-              }
-            />
+              <Camera
+                className="text-white"
+                onClick={() =>
+                  document.getElementById("coverImageInput")?.click()
+                }
+              />
             </div>
-           
           </div>
           <Dialog>
             <DialogTrigger>
@@ -131,7 +130,7 @@ const ProfileHero = () => {
                   width={100}
                   height={100}
                   sizes="100vw"
-                  className="rounded-full h-[100px] w-[100px] border border-slate-400 object-cover object-center"
+                  className="rounded-full h-[100px] w-[100px] mt-6 border border-slate-400 object-cover object-center "
                 />
               </div>
             </DialogTrigger>

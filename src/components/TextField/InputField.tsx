@@ -11,6 +11,7 @@ const InputField = ({
   value,
   setValue,
   errors,
+  disabled,
   className,
   validation = {},
 }: InputFieldProps) => {
@@ -27,10 +28,10 @@ const InputField = ({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
+        disabled={disabled}
         className={`py-2 px-4 text-black border border-1 rounded-md w-full ${
           errors[name] ? "border-red-500" : ""
         }`}
-      
       />
       {errors[name] && (
         <Text variant="small" className="text-red-600">

@@ -13,7 +13,10 @@ const TextAreaField = ({
   validation = {},
 }: TextAreaFieldProps) => (
   <div className="flex flex-col gap-2 !py-5">
-    <label className="text-black block !text-sm sora">{label}</label>
+    <div className="flex">
+      <p className="text-red-500">*</p>
+      <label className="text-black block !text-sm sora">{label}</label>
+    </div>
     <textarea
       {...register(name, validation)}
       value={value}

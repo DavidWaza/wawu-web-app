@@ -7,7 +7,7 @@ import MentorComponent from "./components/ToggleButton/ToggleButton";
 export default function Mentorship() {
   return (
     <>
-      <div className=" hidden lg:block">
+      <div className="hidden lg:block">
         <Navbar id={0} link="" href="" isCaret />
       </div>
       <div className="block lg:hidden">
@@ -22,7 +22,6 @@ export default function Mentorship() {
         a difference in her life. Whatever your line of work, we are
         confident a mentor has been encouraging you or pointing the way
         if you do it effectively.`}
-        buttonText="Sign In"
         link="/auth/sign-up"
         imgSrc={"/assets/life-mentor.svg"}
       />

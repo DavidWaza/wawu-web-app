@@ -5,7 +5,7 @@ export interface FormFields {
   lastName: string;
   email: string;
   gender?: string;
-  password?:string;
+  password?: string;
   contactNumber?: string;
   professionalRole?: string;
   highestLevelOfEducation?: string;
@@ -35,40 +35,40 @@ export interface FormFields {
   mentorExperienceGain?: string;
   interests?: string;
   additionalInfo?: string;
-  projectTitle?:string;
-  projectDescription?:string;
-  question?:string;
-  answer?:string;
-  about?:string;
-  skills?:string;
-  preferredLanguage?:string;
-  education?:string;
-  certification?:string;
-  institution?:string;
-  courseOfStudy?:string;
-  graduationDate?:string
-  name?:string;
-  endDate?:Date | null
-  country?:string;
-  state?:string;
-  twitter?:string;
-  facebook?:string;
-  linkedIn?:string;
-  instagram?:string;
-  role?:number;
-  advert_link?:string
-  post_advert?:string;
-  call_to_action_button?:string;
-  advert_time_frame?:string
-  bestProject?:string;
-  getDone?:string;
-  industry?:string;
-  budget?:string
-  description?:string;
-  title?:string;
-  category?:string
-  sub_category?:string
-  meansOfIdentification?:string
+  projectTitle?: string;
+  projectDescription?: string;
+  question?: string;
+  answer?: string;
+  about?: string;
+  skills?: string;
+  preferredLanguage?: string;
+  education?: string;
+  certification?: string;
+  institution?: string;
+  courseOfStudy?: string;
+  graduationDate?: string;
+  name?: string;
+  endDate?: Date | null;
+  country?: string;
+  state?: string;
+  twitter?: string;
+  facebook?: string;
+  linkedIn?: string;
+  instagram?: string;
+  role?: number;
+  advert_link?: string;
+  post_advert?: string;
+  call_to_action_button?: string;
+  advert_time_frame?: string;
+  bestProject?: string;
+  getDone?: string;
+  industry?: string;
+  budget?: string;
+  description?: string;
+  title?: string;
+  category?: string;
+  sub_category?: string;
+  meansOfIdentification?: string;
 }
 
 export type InputFieldProps = {
@@ -77,11 +77,12 @@ export type InputFieldProps = {
   type?: string;
   register: UseFormRegister<FormFields>;
   errors: FieldErrors<FormFields>;
+  disabled?: boolean; // Add the disabled prop here
   setValue: (value: any) => void;
   validation?: object;
   value: any;
   placeholder?: string;
-  className?:string
+  className?: string;
 };
 
 export type ServiceSubCategory = {
@@ -95,8 +96,8 @@ export type ServiceSubCategory = {
 export type ServiceItem = {
   uuid: string;
   firstName: string;
-  lastName:string;
-  additionalInfo:IInfo
+  lastName: string;
+  additionalInfo: IInfo;
   createdAt: string;
   updatedAt: string | null;
   popularCount: number;
@@ -108,5 +109,5 @@ export type ServiceCategoryData = {
 };
 
 interface IInfo {
-  about:string
+  about: string;
 }
