@@ -56,15 +56,18 @@ const Hero = () => {
                     sizes="100vw"
                     className="w-full h-auto object-contain object-center"
                   />
-                  <p className="text-white leading-[30px] text-[20px] capitalize py-7">
+                  <p className="text-white md:leading-[30px] text-[15px] md:text-[20px] capitalize py-7">
                     Forget the old rules. You can have the best girls Right now.
                     Right here.
                   </p>
+                  <div className="pt-5">
+
                   <SearchFilter />
+                  </div>
                 </div>
-                <div className="h-full flex justify-center items-center mt-[4rem] pt-[1rem]">
+                <div className="h-full flex justify-center items-center pt-[1rem]">
                   <Image
-                    className="w-[80%] h-full object-contain object-center"
+                    className="w-full h-full object-contain object-center"
                     src={`${heroContent.imageSrc}`}
                     alt="slide 1"
                     width={0}
