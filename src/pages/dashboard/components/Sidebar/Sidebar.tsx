@@ -53,7 +53,7 @@ const siderbarLinks = [
 const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-white h-screen fixed">
+    <aside className="py-10 h-screen min-h-screen w-full max-w-[260px] fixed overflow-y-auto hide-scrollbar bg-white">
       <div>
         {/* <Logo classname="w-full" /> */}
         <Image
@@ -83,7 +83,7 @@ const Sidebar = () => {
           </Link>
         </div>
       ))}
-    </div>
+    </aside>
   );
 };
 

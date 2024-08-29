@@ -51,7 +51,7 @@ const AboutCarousel = () => {
         <Slider {...settings}>
           {sliderContent.map((slide) => (
             <div key={slide.title}>
-              <Link href={"/seller/landing"}>
+              <Link href={"/seller-landing"}>
                 <div className={`h-[25rem] w-full ${slide.backgroundColor}`}>
                   <div className="flex justify-center">
                     <Image

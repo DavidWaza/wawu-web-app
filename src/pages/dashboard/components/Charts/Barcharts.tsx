@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   Chart as ChartJS,
   BarElement,
@@ -8,9 +8,28 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import axiosInstance from "@/pages/api/axiosInstance";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
+
 const Barcharts = () => {
+  useEffect(() => {
+    fetchChartData()
+  })
+
+  
+const fetchChartData = async () => {
+  try {
+    const resonse = await axiosInstance.get(
+      "/api/admin/users/chart?time=all_time&year=&month=&user_type=all"
+    );
+    console.log('bar',resonse.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
   const data = {
     labels: [
       "Apr",

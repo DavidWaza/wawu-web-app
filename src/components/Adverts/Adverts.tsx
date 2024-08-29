@@ -1,49 +1,70 @@
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { Text } from "../ui/Typography/Typography";
+import React from "react";
 import Slider from "react-slick";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
 
 const Adverts = () => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: false,
-    autoplay: true,
-    speed: 5000,
-    autoplaySpeed: 10000,
-    arrows: false,
-  };
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(1);
+  const [count, setCount] = React.useState(1);
 
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
   return (
-    <div className="bg-white pt-10">
-      <Text variant="medium" className="text-center py-2 !text-[#290C43] ">
-        Advertisement
-      </Text>
-      <div className="w-full overflow-hidden">
-        <Slider {...settings}>
-          <div className="w-full">
+    <div className="flex justify-center">
+      <Carousel
+        setApi={setApi}
+        className="w-full"
+        plugins={[
+          Autoplay({
+            delay: 4000,
+            stopOnInteraction:true,
+          }),
+        
+        ]}
+      >
+        <CarouselContent>
+          <CarouselItem>
             <Image
               src={"/assets/Header-1.png"}
               alt="banner"
               width={0}
               height={0}
               sizes={`100vw`}
-              className="w-full h-auto object-cover object-center"
+              className=" object-cover object-center"
             />
-          </div>
-          <div className="w-full">
+          </CarouselItem>
+          <CarouselItem>
             <Image
               src={"/assets/Header-2.png"}
               alt="banner"
               width={0}
               height={0}
               sizes={`100vw`}
-              className="w-full h-auto object-cover object-center"
+              className=" w-full h-auto object-cover object-center"
             />
-          </div>
-          <div className="w-full">
+          </CarouselItem>
+          <CarouselItem>
             <Image
               src={"/assets/Header-3.png"}
               alt="banner"
@@ -52,8 +73,8 @@ const Adverts = () => {
               sizes={`100vw`}
               className="w-full h-auto object-cover object-center"
             />
-          </div>
-          <div className="w-full">
+          </CarouselItem>
+          <CarouselItem>
             <Image
               src={"/assets/Header-4.png"}
               alt="banner"
@@ -62,9 +83,9 @@ const Adverts = () => {
               sizes={`100vw`}
               className="w-full h-auto object-cover object-center"
             />
-          </div>
-        </Slider>
-      </div>
+          </CarouselItem>
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 };

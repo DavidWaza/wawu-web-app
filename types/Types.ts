@@ -71,6 +71,8 @@ export interface FormFields {
   meansOfIdentification?:string
   mentorReasons?:string
   termsAccepted?:boolean
+  zipcode?:string,
+  discountCode?:string,
 }
 
 export type InputFieldProps = {
